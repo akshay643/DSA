@@ -1,0 +1,2219 @@
+{
+  "categories": [
+    {
+      "id": "two-pointers",
+      "name": "Two Pointers",
+      "description": "Problems that use two pointer technique to solve efficiently"
+    },
+    {
+      "id": "sliding-window",
+      "name": "Sliding Window",
+      "description": "Problems involving maintaining a window of elements"
+    },
+    {
+      "id": "binary-search",
+      "name": "Binary Search",
+      "description": "Problems using binary search technique"
+    },
+    {
+      "id": "dynamic-programming",
+      "name": "Dynamic Programming",
+      "description": "Problems requiring optimal substructure and memoization"
+    },
+    {
+      "id": "graphs",
+      "name": "Graphs",
+      "description": "Graph traversal and algorithms"
+    },
+    {
+      "id": "trees",
+      "name": "Trees",
+      "description": "Binary trees, BST, and tree traversals"
+    },
+    {
+      "id": "arrays",
+      "name": "Arrays",
+      "description": "Array manipulation and operations"
+    },
+    {
+      "id": "strings",
+      "name": "Strings",
+      "description": "String manipulation problems"
+    },
+    {
+      "id": "linked-lists",
+      "name": "Linked Lists",
+      "description": "Linked list operations and manipulations"
+    },
+    {
+      "id": "stack-queue",
+      "name": "Stack & Queue",
+      "description": "Stack and queue based problems"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "title": "Two Sum",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "topInterview": true,
+      "companies": ["Google", "Amazon", "Facebook", "Microsoft"],
+      "introduction": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice.",
+      "problemStatement": "Write a function that takes an array of integers and a target sum, and returns the indices of two numbers that add up to the target.\n\nConstraints:\n- 2 <= nums.length <= 10^4\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9\n- Only one valid answer exists",
+      "examples": [
+        {
+          "input": "nums = [2,7,11,15], target = 9",
+          "output": "[0,1]",
+          "explanation": "Because nums[0] + nums[1] == 9, we return [0, 1]."
+        },
+        {
+          "input": "nums = [3,2,4], target = 6",
+          "output": "[1,2]",
+          "explanation": "Because nums[1] + nums[2] == 6, we return [1, 2]."
+        }
+      ],
+      "hints": [
+        "Try using a hash map to store numbers you've seen",
+        "For each number, check if target - num exists in the map"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)",
+      "tags": ["array", "hash-table", "two-pointers"],
+      "starterCode": {
+        "javascript": "function twoSum(nums, target) {\n  // Write your code here\n  \n}",
+        "python": "def two_sum(nums, target):\n    # Write your code here\n    pass",
+        "java": "public int[] twoSum(int[] nums, int target) {\n    // Write your code here\n    return new int[0];\n}"
+      }
+    },
+    {
+      "id": "q2",
+      "title": "Container With Most Water",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "topInterview": true,
+      "companies": ["Amazon", "Facebook", "Bloomberg"],
+      "introduction": "You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]). Find two lines that together with the x-axis form a container that contains the most water.",
+      "problemStatement": "Find two lines that together with the x-axis form a container that contains the most water. Return the maximum amount of water a container can store.\n\nConstraints:\n- n == height.length\n- 2 <= n <= 10^5\n- 0 <= height[i] <= 10^4",
+      "examples": [
+        {
+          "input": "height = [1,8,6,2,5,4,8,3,7]",
+          "output": "49",
+          "explanation": "The vertical lines are at indices 1 and 8, and they form a container with max area = 49."
+        }
+      ],
+      "hints": [
+        "Start with two pointers at both ends",
+        "Move the pointer with smaller height inward",
+        "Calculate area at each step and keep track of maximum"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "two-pointers", "greedy"],
+      "starterCode": {
+        "javascript": "function maxArea(height) {\n  // Write your code here\n  \n}",
+        "python": "def max_area(height):\n    # Write your code here\n    pass",
+        "java": "public int maxArea(int[] height) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q3",
+      "title": "Longest Substring Without Repeating Characters",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "topInterview": true,
+      "companies": ["Amazon", "Google", "Facebook", "Microsoft", "Apple"],
+      "introduction": "Given a string s, find the length of the longest substring without repeating characters.",
+      "problemStatement": "Find the length of the longest substring without repeating characters.\n\nConstraints:\n- 0 <= s.length <= 5 * 10^4\n- s consists of English letters, digits, symbols and spaces.",
+      "examples": [
+        {
+          "input": "s = \"abcabcbb\"",
+          "output": "3",
+          "explanation": "The answer is \"abc\", with the length of 3."
+        },
+        {
+          "input": "s = \"bbbbb\"",
+          "output": "1",
+          "explanation": "The answer is \"b\", with the length of 1."
+        }
+      ],
+      "hints": [
+        "Use sliding window technique",
+        "Maintain a set or map to track characters in current window",
+        "Expand window by moving right pointer, shrink when duplicate found"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(min(m,n)) where m is charset size",
+      "tags": ["string", "sliding-window", "hash-table"],
+      "starterCode": {
+        "javascript": "function lengthOfLongestSubstring(s) {\n  // Write your code here\n  \n}",
+        "python": "def length_of_longest_substring(s):\n    # Write your code here\n    pass",
+        "java": "public int lengthOfLongestSubstring(String s) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q4",
+      "title": "Binary Search",
+      "category": "binary-search",
+      "difficulty": "easy",
+      "topInterview": true,
+      "companies": ["Google", "Amazon", "Microsoft", "Facebook"],
+      "introduction": "Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.",
+      "problemStatement": "Implement binary search algorithm on a sorted array.\n\nConstraints:\n- 1 <= nums.length <= 10^4\n- -10^4 < nums[i], target < 10^4\n- All integers in nums are unique\n- nums is sorted in ascending order",
+      "examples": [
+        {
+          "input": "nums = [-1,0,3,5,9,12], target = 9",
+          "output": "4",
+          "explanation": "9 exists in nums and its index is 4"
+        },
+        {
+          "input": "nums = [-1,0,3,5,9,12], target = 2",
+          "output": "-1",
+          "explanation": "2 does not exist in nums so return -1"
+        }
+      ],
+      "hints": [
+        "Use two pointers: left and right",
+        "Calculate mid = left + (right - left) / 2",
+        "Adjust pointers based on comparison with target"
+      ],
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "binary-search"],
+      "starterCode": {
+        "javascript": "function search(nums, target) {\n  // Write your code here\n  \n}",
+        "python": "def search(nums, target):\n    # Write your code here\n    pass",
+        "java": "public int search(int[] nums, int target) {\n    // Write your code here\n    return -1;\n}"
+      }
+    },
+    {
+      "id": "q5",
+      "title": "Climbing Stairs",
+      "category": "dynamic-programming",
+      "difficulty": "easy",
+      "topInterview": true,
+      "companies": ["Amazon", "Google", "Adobe"],
+      "introduction": "You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?",
+      "problemStatement": "Calculate the number of distinct ways to climb to the top of a staircase with n steps.\n\nConstraints:\n- 1 <= n <= 45",
+      "examples": [
+        {
+          "input": "n = 2",
+          "output": "2",
+          "explanation": "There are two ways to climb to the top: 1+1 or 2"
+        },
+        {
+          "input": "n = 3",
+          "output": "3",
+          "explanation": "There are three ways: 1+1+1, 1+2, or 2+1"
+        }
+      ],
+      "hints": [
+        "This is a Fibonacci sequence problem",
+        "ways(n) = ways(n-1) + ways(n-2)",
+        "Can be solved iteratively with O(1) space"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["dynamic-programming", "math"],
+      "starterCode": {
+        "javascript": "function climbStairs(n) {\n  // Write your code here\n  \n}",
+        "python": "def climb_stairs(n):\n    # Write your code here\n    pass",
+        "java": "public int climbStairs(int n) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q6",
+      "title": "Reverse Linked List",
+      "category": "linked-lists",
+      "difficulty": "easy",
+      "companies": ["Amazon", "Microsoft", "Facebook", "Google"],
+      "introduction": "Given the head of a singly linked list, reverse the list, and return the reversed list.",
+      "problemStatement": "Reverse a singly linked list.\n\nConstraints:\n- The number of nodes in the list is in the range [0, 5000]\n- -5000 <= Node.val <= 5000",
+      "examples": [
+        {
+          "input": "head = [1,2,3,4,5]",
+          "output": "[5,4,3,2,1]",
+          "explanation": "The linked list is reversed."
+        }
+      ],
+      "hints": [
+        "Use three pointers: prev, current, next",
+        "Iterate through the list reversing pointers",
+        "Can also be solved recursively"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1) iterative, O(n) recursive",
+      "tags": ["linked-list", "recursion"],
+      "starterCode": {
+        "javascript": "function reverseList(head) {\n  // Write your code here\n  \n}",
+        "python": "def reverse_list(head):\n    # Write your code here\n    pass",
+        "java": "public ListNode reverseList(ListNode head) {\n    // Write your code here\n    return null;\n}"
+      }
+    },
+    {
+      "id": "q7",
+      "title": "Valid Parentheses",
+      "category": "stack-queue",
+      "difficulty": "easy",
+      "companies": ["Amazon", "Google", "Facebook", "Microsoft"],
+      "introduction": "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+      "problemStatement": "An input string is valid if:\n1. Open brackets must be closed by the same type of brackets.\n2. Open brackets must be closed in the correct order.\n3. Every close bracket has a corresponding open bracket of the same type.\n\nConstraints:\n- 1 <= s.length <= 10^4\n- s consists of parentheses only '()[]{}',",
+      "examples": [
+        {
+          "input": "s = \"()[]{}\"",
+          "output": "true",
+          "explanation": "All brackets are properly closed."
+        },
+        {
+          "input": "s = \"([)]\"",
+          "output": "false",
+          "explanation": "Brackets are not closed in correct order."
+        }
+      ],
+      "hints": [
+        "Use a stack data structure",
+        "Push opening brackets onto stack",
+        "For closing brackets, check if they match stack top"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)",
+      "tags": ["string", "stack"],
+      "starterCode": {
+        "javascript": "function isValid(s) {\n  // Write your code here\n  \n}",
+        "python": "def is_valid(s):\n    # Write your code here\n    pass",
+        "java": "public boolean isValid(String s) {\n    // Write your code here\n    return false;\n}"
+      }
+    },
+    {
+      "id": "q8",
+      "title": "Three Sum",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Apple", "Bloomberg"],
+      "introduction": "Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0. Notice that the solution set must not contain duplicate triplets.",
+      "problemStatement": "Find all unique triplets in the array which gives the sum of zero.\n\nConstraints:\n- 3 <= nums.length <= 3000\n- -10^5 <= nums[i] <= 10^5",
+      "examples": [
+        {
+          "input": "nums = [-1,0,1,2,-1,-4]",
+          "output": "[[-1,-1,2],[-1,0,1]]",
+          "explanation": "nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0. nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0. nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0. The distinct triplets are [-1,0,1] and [-1,-1,2]."
+        },
+        {
+          "input": "nums = [0,1,1]",
+          "output": "[]",
+          "explanation": "The only possible triplet does not sum up to 0."
+        },
+        {
+          "input": "nums = [0,0,0]",
+          "output": "[[0,0,0]]",
+          "explanation": "The only possible triplet sums up to 0."
+        }
+      ],
+      "hints": [
+        "Sort the array first to use two pointers efficiently",
+        "Fix one element and use two pointers to find the other two",
+        "Skip duplicate elements to avoid duplicate triplets"
+      ],
+      "timeComplexity": "O(n²)",
+      "spaceComplexity": "O(1) excluding output array",
+      "tags": ["array", "two-pointers", "sorting"],
+      "starterCode": {
+        "javascript": "function threeSum(nums) {\n  // Write your code here\n  \n}",
+        "python": "def three_sum(nums):\n    # Write your code here\n    pass",
+        "java": "public List<List<Integer>> threeSum(int[] nums) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+      }
+    },
+    {
+      "id": "q9",
+      "title": "Remove Duplicates from Sorted Array",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": ["Facebook", "Amazon", "Microsoft", "Google"],
+      "introduction": "Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Return the number of unique elements.",
+      "problemStatement": "Remove duplicates from a sorted array in-place and return the count of unique elements.\n\nConstraints:\n- 1 <= nums.length <= 3 * 10^4\n- -100 <= nums[i] <= 100\n- nums is sorted in non-decreasing order",
+      "examples": [
+        {
+          "input": "nums = [1,1,2]",
+          "output": "2, nums = [1,2,_]",
+          "explanation": "Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively."
+        },
+        {
+          "input": "nums = [0,0,1,1,1,2,2,3,3,4]",
+          "output": "5, nums = [0,1,2,3,4,_,_,_,_,_]",
+          "explanation": "Your function should return k = 5, with the first five elements being 0, 1, 2, 3, and 4."
+        }
+      ],
+      "hints": [
+        "Use a slow pointer to track position for unique elements",
+        "Use a fast pointer to scan through the array",
+        "Only move slow pointer when a new unique element is found"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "two-pointers"],
+      "starterCode": {
+        "javascript": "function removeDuplicates(nums) {\n  // Write your code here\n  \n}",
+        "python": "def remove_duplicates(nums):\n    # Write your code here\n    pass",
+        "java": "public int removeDuplicates(int[] nums) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q10",
+      "title": "Trapping Rain Water",
+      "category": "two-pointers",
+      "difficulty": "hard",
+      "companies": ["Amazon", "Google", "Facebook", "Microsoft", "Goldman Sachs", "Apple"],
+      "introduction": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.",
+      "problemStatement": "Calculate the total amount of rainwater that can be trapped between the bars.\n\nConstraints:\n- n == height.length\n- 1 <= n <= 2 * 10^4\n- 0 <= height[i] <= 10^5",
+      "examples": [
+        {
+          "input": "height = [0,1,0,2,1,0,1,3,2,1,2,1]",
+          "output": "6",
+          "explanation": "The elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water are being trapped."
+        },
+        {
+          "input": "height = [4,2,0,3,2,5]",
+          "output": "9",
+          "explanation": "9 units of rain water are trapped between the bars."
+        }
+      ],
+      "hints": [
+        "Water at any position depends on the minimum of max heights on both sides",
+        "Use two pointers from both ends",
+        "Track leftMax and rightMax as you move pointers inward"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "two-pointers", "dynamic-programming", "stack"],
+      "starterCode": {
+        "javascript": "function trap(height) {\n  // Write your code here\n  \n}",
+        "python": "def trap(height):\n    # Write your code here\n    pass",
+        "java": "public int trap(int[] height) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q11",
+      "title": "Valid Palindrome",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": ["Facebook", "Amazon", "Microsoft", "Apple"],
+      "introduction": "A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.",
+      "problemStatement": "Given a string s, return true if it is a palindrome, or false otherwise.\n\nConstraints:\n- 1 <= s.length <= 2 * 10^5\n- s consists only of printable ASCII characters",
+      "examples": [
+        {
+          "input": "s = \"A man, a plan, a canal: Panama\"",
+          "output": "true",
+          "explanation": "\"amanaplanacanalpanama\" is a palindrome."
+        },
+        {
+          "input": "s = \"race a car\"",
+          "output": "false",
+          "explanation": "\"raceacar\" is not a palindrome."
+        },
+        {
+          "input": "s = \" \"",
+          "output": "true",
+          "explanation": "After removing non-alphanumeric characters, s is an empty string. An empty string is a palindrome."
+        }
+      ],
+      "hints": [
+        "Use two pointers: one at start, one at end",
+        "Skip non-alphanumeric characters",
+        "Compare characters case-insensitively"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["string", "two-pointers"],
+      "starterCode": {
+        "javascript": "function isPalindrome(s) {\n  // Write your code here\n  \n}",
+        "python": "def is_palindrome(s):\n    # Write your code here\n    pass",
+        "java": "public boolean isPalindrome(String s) {\n    // Write your code here\n    return false;\n}"
+      }
+    },
+    {
+      "id": "q12",
+      "title": "Move Zeroes",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": ["Facebook", "Amazon", "Apple", "Microsoft"],
+      "introduction": "Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements. Note that you must do this in-place without making a copy of the array.",
+      "problemStatement": "Move all zeros to the end of the array while maintaining relative order of non-zero elements.\n\nConstraints:\n- 1 <= nums.length <= 10^4\n- -2^31 <= nums[i] <= 2^31 - 1",
+      "examples": [
+        {
+          "input": "nums = [0,1,0,3,12]",
+          "output": "[1,3,12,0,0]",
+          "explanation": "All zeros are moved to the end while maintaining order of non-zero elements."
+        },
+        {
+          "input": "nums = [0]",
+          "output": "[0]",
+          "explanation": "Single zero stays in place."
+        }
+      ],
+      "hints": [
+        "Use a slow pointer to track position for non-zero elements",
+        "Use a fast pointer to find non-zero elements",
+        "Swap elements when fast pointer finds non-zero"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "two-pointers"],
+      "starterCode": {
+        "javascript": "function moveZeroes(nums) {\n  // Write your code here\n  \n}",
+        "python": "def move_zeroes(nums):\n    # Write your code here\n    pass",
+        "java": "public void moveZeroes(int[] nums) {\n    // Write your code here\n}"
+      }
+    },
+    {
+      "id": "q13",
+      "title": "Sort Colors",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Microsoft", "Facebook", "Adobe"],
+      "introduction": "Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue. We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.",
+      "problemStatement": "Sort the array containing only 0s, 1s, and 2s in-place without using the library's sort function.\n\nConstraints:\n- n == nums.length\n- 1 <= n <= 300\n- nums[i] is either 0, 1, or 2",
+      "examples": [
+        {
+          "input": "nums = [2,0,2,1,1,0]",
+          "output": "[0,0,1,1,2,2]",
+          "explanation": "Array is sorted with 0s first, then 1s, then 2s."
+        },
+        {
+          "input": "nums = [2,0,1]",
+          "output": "[0,1,2]",
+          "explanation": "Array is sorted in ascending order."
+        }
+      ],
+      "hints": [
+        "This is the Dutch National Flag problem",
+        "Use three pointers: low, mid, and high",
+        "Swap elements based on value at mid pointer"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "two-pointers", "sorting"],
+      "starterCode": {
+        "javascript": "function sortColors(nums) {\n  // Write your code here\n  \n}",
+        "python": "def sort_colors(nums):\n    # Write your code here\n    pass",
+        "java": "public void sortColors(int[] nums) {\n    // Write your code here\n}"
+      }
+    },
+    {
+      "id": "q14",
+      "title": "3Sum Closest",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Facebook", "Google", "Apple"],
+      "introduction": "Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers.",
+      "problemStatement": "Find three integers whose sum is closest to the target and return that sum.\n\nConstraints:\n- 3 <= nums.length <= 500\n- -1000 <= nums[i] <= 1000\n- -10^4 <= target <= 10^4",
+      "examples": [
+        {
+          "input": "nums = [-1,2,1,-4], target = 1",
+          "output": "2",
+          "explanation": "The sum that is closest to the target is 2. (-1 + 2 + 1 = 2)."
+        },
+        {
+          "input": "nums = [0,0,0], target = 1",
+          "output": "0",
+          "explanation": "The sum that is closest to the target is 0. (0 + 0 + 0 = 0)."
+        }
+      ],
+      "hints": [
+        "Sort the array first",
+        "Fix one element and use two pointers for remaining two",
+        "Track the closest sum and update when a closer sum is found"
+      ],
+      "timeComplexity": "O(n²)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "two-pointers", "sorting"],
+      "starterCode": {
+        "javascript": "function threeSumClosest(nums, target) {\n  // Write your code here\n  \n}",
+        "python": "def three_sum_closest(nums, target):\n    # Write your code here\n    pass",
+        "java": "public int threeSumClosest(int[] nums, int target) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q15",
+      "title": "Merge Sorted Array",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": ["Facebook", "Amazon", "Microsoft", "Google", "Apple"],
+      "introduction": "You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively. Merge nums2 into nums1 as one sorted array.",
+      "problemStatement": "Merge nums2 into nums1 in-place. nums1 has enough space (size m + n) to hold additional elements from nums2.\n\nConstraints:\n- nums1.length == m + n\n- nums2.length == n\n- 0 <= m, n <= 200\n- 1 <= m + n <= 200\n- -10^9 <= nums1[i], nums2[j] <= 10^9",
+      "examples": [
+        {
+          "input": "nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3",
+          "output": "[1,2,2,3,5,6]",
+          "explanation": "The arrays we are merging are [1,2,3] and [2,5,6]. The result is [1,2,2,3,5,6]."
+        },
+        {
+          "input": "nums1 = [1], m = 1, nums2 = [], n = 0",
+          "output": "[1]",
+          "explanation": "The arrays we are merging are [1] and []. The result is [1]."
+        }
+      ],
+      "hints": [
+        "Start from the end of both arrays",
+        "Compare elements and place larger one at the end of nums1",
+        "Work backwards to avoid overwriting elements"
+      ],
+      "timeComplexity": "O(m + n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "two-pointers", "sorting"],
+      "starterCode": {
+        "javascript": "function merge(nums1, m, nums2, n) {\n  // Write your code here\n  \n}",
+        "python": "def merge(nums1, m, nums2, n):\n    # Write your code here\n    pass",
+        "java": "public void merge(int[] nums1, int m, int[] nums2, int n) {\n    // Write your code here\n}"
+      }
+    },
+    {
+      "id": "q16",
+      "title": "Squares of a Sorted Array",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": ["Facebook", "Amazon", "Google", "Apple"],
+      "introduction": "Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.",
+      "problemStatement": "Return an array of squares of each number in sorted order.\n\nConstraints:\n- 1 <= nums.length <= 10^4\n- -10^4 <= nums[i] <= 10^4\n- nums is sorted in non-decreasing order",
+      "examples": [
+        {
+          "input": "nums = [-4,-1,0,3,10]",
+          "output": "[0,1,9,16,100]",
+          "explanation": "After squaring, the array becomes [16,1,0,9,100]. After sorting, it becomes [0,1,9,16,100]."
+        },
+        {
+          "input": "nums = [-7,-3,2,3,11]",
+          "output": "[4,9,9,49,121]",
+          "explanation": "After squaring and sorting, the result is [4,9,9,49,121]."
+        }
+      ],
+      "hints": [
+        "The largest squares will be at either end of the array",
+        "Use two pointers at both ends",
+        "Fill result array from the end to the beginning"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)",
+      "tags": ["array", "two-pointers", "sorting"],
+      "starterCode": {
+        "javascript": "function sortedSquares(nums) {\n  // Write your code here\n  \n}",
+        "python": "def sorted_squares(nums):\n    # Write your code here\n    pass",
+        "java": "public int[] sortedSquares(int[] nums) {\n    // Write your code here\n    return new int[0];\n}"
+      }
+    },
+    {
+      "id": "q17",
+      "title": "4Sum",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Apple", "Goldman Sachs"],
+      "introduction": "Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that a, b, c, and d are distinct indices and nums[a] + nums[b] + nums[c] + nums[d] == target.",
+      "problemStatement": "Find all unique quadruplets that sum up to the target.\n\nConstraints:\n- 1 <= nums.length <= 200\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9",
+      "examples": [
+        {
+          "input": "nums = [1,0,-1,0,-2,2], target = 0",
+          "output": "[[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]",
+          "explanation": "All unique quadruplets that sum to 0."
+        },
+        {
+          "input": "nums = [2,2,2,2,2], target = 8",
+          "output": "[[2,2,2,2]]",
+          "explanation": "Only one unique quadruplet sums to 8."
+        }
+      ],
+      "hints": [
+        "Sort the array first",
+        "Fix two elements and use two pointers for remaining two",
+        "Skip duplicates at each level to avoid duplicate quadruplets"
+      ],
+      "timeComplexity": "O(n³)",
+      "spaceComplexity": "O(1) excluding output",
+      "tags": ["array", "two-pointers", "sorting"],
+      "starterCode": {
+        "javascript": "function fourSum(nums, target) {\n  // Write your code here\n  \n}",
+        "python": "def four_sum(nums, target):\n    # Write your code here\n    pass",
+        "java": "public List<List<Integer>> fourSum(int[] nums, int target) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+      }
+    },
+    {
+      "id": "q18",
+      "title": "Reverse String",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": ["Amazon", "Microsoft", "Apple"],
+      "introduction": "Write a function that reverses a string. The input string is given as an array of characters s. You must do this by modifying the input array in-place with O(1) extra memory.",
+      "problemStatement": "Reverse the string in-place.\n\nConstraints:\n- 1 <= s.length <= 10^5\n- s[i] is a printable ASCII character",
+      "examples": [
+        {
+          "input": "s = [\"h\",\"e\",\"l\",\"l\",\"o\"]",
+          "output": "[\"o\",\"l\",\"l\",\"e\",\"h\"]",
+          "explanation": "The string is reversed in-place."
+        },
+        {
+          "input": "s = [\"H\",\"a\",\"n\",\"n\",\"a\",\"h\"]",
+          "output": "[\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"]",
+          "explanation": "The string is reversed in-place."
+        }
+      ],
+      "hints": [
+        "Use two pointers: one at start, one at end",
+        "Swap characters at both pointers",
+        "Move pointers towards center"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["string", "two-pointers"],
+      "starterCode": {
+        "javascript": "function reverseString(s) {\n  // Write your code here\n  \n}",
+        "python": "def reverse_string(s):\n    # Write your code here\n    pass",
+        "java": "public void reverseString(char[] s) {\n    // Write your code here\n}"
+      }
+    },
+     {
+      "id": "q19",
+      "title": "Two Sum II - Input Array Is Sorted",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Google", "Facebook", "Bloomberg"],
+      "introduction": "Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Return the indices of the two numbers, index1 and index2, added by one.",
+      "problemStatement": "Find two numbers in a sorted array that add up to the target. Return their 1-indexed positions.\n\nConstraints:\n- 2 <= numbers.length <= 3 * 10^4\n- -1000 <= numbers[i] <= 1000\n- numbers is sorted in non-decreasing order\n- -1000 <= target <= 1000\n- Only one valid answer exists",
+      "examples": [
+        {
+          "input": "numbers = [2,7,11,15], target = 9",
+          "output": "[1,2]",
+          "explanation": "The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2]."
+        },
+        {
+          "input": "numbers = [2,3,4], target = 6",
+          "output": "[1,3]",
+          "explanation": "The sum of 2 and 4 is 6. Therefore index1 = 1, index2 = 3. We return [1, 3]."
+        },
+        {
+          "input": "numbers = [-1,0], target = -1",
+          "output": "[1,2]",
+          "explanation": "The sum of -1 and 0 is -1. Therefore index1 = 1, index2 = 2. We return [1, 2]."
+        }
+      ],
+      "hints": [
+        "Use two pointers: one at start, one at end",
+        "If sum is too large, move right pointer left",
+        "If sum is too small, move left pointer right"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "two-pointers", "binary-search"],
+      "starterCode": {
+        "javascript": "function twoSum(numbers, target) {\n  // Write your code here\n  \n}",
+        "python": "def two_sum(numbers, target):\n    # Write your code here\n    pass",
+        "java": "public int[] twoSum(int[] numbers, int target) {\n    // Write your code here\n    return new int[0];\n}"
+      }
+    },
+    {
+      "id": "q20",
+      "title": "Reverse Vowels of a String",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": ["Google", "Amazon", "Apple"],
+      "introduction": "Given a string s, reverse only all the vowels in the string and return it. The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.",
+      "problemStatement": "Reverse only the vowels in the given string.\n\nConstraints:\n- 1 <= s.length <= 3 * 10^5\n- s consist of printable ASCII characters",
+      "examples": [
+        {
+          "input": "s = \"hello\"",
+          "output": "\"holle\"",
+          "explanation": "The vowels are 'e' and 'o'. After reversing, they become 'o' and 'e'."
+        },
+        {
+          "input": "s = \"leetcode\"",
+          "output": "\"leotcede\"",
+          "explanation": "The vowels are 'e', 'e', 'o', 'e'. After reversing, they become 'e', 'o', 'e', 'e'."
+        }
+      ],
+      "hints": [
+        "Use two pointers from both ends",
+        "Skip non-vowel characters",
+        "Swap when both pointers point to vowels"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)",
+      "tags": ["string", "two-pointers"],
+      "starterCode": {
+        "javascript": "function reverseVowels(s) {\n  // Write your code here\n  \n}",
+        "python": "def reverse_vowels(s):\n    # Write your code here\n    pass",
+        "java": "public String reverseVowels(String s) {\n    // Write your code here\n    return \"\";\n}"
+      }
+    },
+    {
+      "id": "q21",
+      "title": "Is Subsequence",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": ["Google", "Facebook", "Pinterest"],
+      "introduction": "Given two strings s and t, return true if s is a subsequence of t, or false otherwise. A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters.",
+      "problemStatement": "Determine if string s is a subsequence of string t.\n\nConstraints:\n- 0 <= s.length <= 100\n- 0 <= t.length <= 10^4\n- s and t consist only of lowercase English letters",
+      "examples": [
+        {
+          "input": "s = \"abc\", t = \"ahbgdc\"",
+          "output": "true",
+          "explanation": "'a', 'b', 'c' appear in t in the same order."
+        },
+        {
+          "input": "s = \"axc\", t = \"ahbgdc\"",
+          "output": "false",
+          "explanation": "'x' does not appear in t."
+        }
+      ],
+      "hints": [
+        "Use two pointers, one for each string",
+        "Move pointer in s only when characters match",
+        "Always move pointer in t"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["string", "two-pointers", "dynamic-programming"],
+      "starterCode": {
+        "javascript": "function isSubsequence(s, t) {\n  // Write your code here\n  \n}",
+        "python": "def is_subsequence(s, t):\n    # Write your code here\n    pass",
+        "java": "public boolean isSubsequence(String s, String t) {\n    // Write your code here\n    return false;\n}"
+      }
+    },
+    {
+      "id": "q22",
+      "title": "String Compression",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Facebook", "Amazon", "Microsoft", "Apple", "Goldman Sachs"],
+      "introduction": "Given an array of characters chars, compress it using the following algorithm: Begin with an empty string s. For each group of consecutive repeating characters in chars, append the character followed by the group's length if the length is greater than 1.",
+      "problemStatement": "Compress the character array in-place and return the new length.\n\nConstraints:\n- 1 <= chars.length <= 2000\n- chars[i] is a lowercase English letter, uppercase English letter, digit, or symbol",
+      "examples": [
+        {
+          "input": "chars = [\"a\",\"a\",\"b\",\"b\",\"c\",\"c\",\"c\"]",
+          "output": "6, chars = [\"a\",\"2\",\"b\",\"2\",\"c\",\"3\"]",
+          "explanation": "The groups are \"aa\", \"bb\", and \"ccc\". This compresses to \"a2b2c3\"."
+        },
+        {
+          "input": "chars = [\"a\"]",
+          "output": "1, chars = [\"a\"]",
+          "explanation": "The only group is \"a\", which remains uncompressed since it appears only once."
+        },
+        {
+          "input": "chars = [\"a\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\"]",
+          "output": "4, chars = [\"a\",\"b\",\"1\",\"2\"]",
+          "explanation": "The groups are \"a\" and \"bbbbbbbbbbbb\". This compresses to \"ab12\"."
+        }
+      ],
+      "hints": [
+        "Use read and write pointers",
+        "Count consecutive characters with read pointer",
+        "Write character and count with write pointer"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["string", "two-pointers"],
+      "starterCode": {
+        "javascript": "function compress(chars) {\n  // Write your code here\n  \n}",
+        "python": "def compress(chars):\n    # Write your code here\n    pass",
+        "java": "public int compress(char[] chars) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q23",
+      "title": "Boats to Save People",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Google", "Amazon", "Microsoft"],
+      "introduction": "You are given an array people where people[i] is the weight of the ith person, and an infinite number of boats where each boat can carry a maximum weight of limit. Each boat carries at most two people at the same time, provided the sum of the weight of those people is at most limit.",
+      "problemStatement": "Return the minimum number of boats to carry every given person.\n\nConstraints:\n- 1 <= people.length <= 5 * 10^4\n- 1 <= people[i] <= limit <= 3 * 10^4",
+      "examples": [
+        {
+          "input": "people = [1,2], limit = 3",
+          "output": "1",
+          "explanation": "1 boat can carry both people (1+2 <= 3)."
+        },
+        {
+          "input": "people = [3,2,2,1], limit = 3",
+          "output": "3",
+          "explanation": "3 boats: (1,2), (2), (3)."
+        },
+        {
+          "input": "people = [3,5,3,4], limit = 5",
+          "output": "4",
+          "explanation": "4 boats: (3), (3), (4), (5)."
+        }
+      ],
+      "hints": [
+        "Sort the array first",
+        "Try to pair the lightest with the heaviest person",
+        "Use two pointers from both ends"
+      ],
+      "timeComplexity": "O(n log n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "two-pointers", "sorting", "greedy"],
+      "starterCode": {
+        "javascript": "function numRescueBoats(people, limit) {\n  // Write your code here\n  \n}",
+        "python": "def num_rescue_boats(people, limit):\n    # Write your code here\n    pass",
+        "java": "public int numRescueBoats(int[] people, int limit) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q24",
+      "title": "Long Pressed Name",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": ["Google", "Amazon"],
+      "introduction": "Your friend is typing his name into a keyboard. Sometimes, when typing a character c, the key might get long pressed, and the character will be typed 1 or more times. You examine the typed characters of the keyboard. Return True if it is possible that it was your friends name, with some characters (possibly none) being long pressed.",
+      "problemStatement": "Determine if typed string could be a long-pressed version of name.\n\nConstraints:\n- 1 <= name.length, typed.length <= 1000\n- name and typed consist of only lowercase English letters",
+      "examples": [
+        {
+          "input": "name = \"alex\", typed = \"aaleex\"",
+          "output": "true",
+          "explanation": "'a' and 'e' in 'alex' were long pressed."
+        },
+        {
+          "input": "name = \"saeed\", typed = \"ssaaedd\"",
+          "output": "false",
+          "explanation": "'e' must have been pressed twice, but it was not in the typed output."
+        },
+        {
+          "input": "name = \"leelee\", typed = \"lleeelee\"",
+          "output": "true",
+          "explanation": "Characters were long pressed appropriately."
+        }
+      ],
+      "hints": [
+        "Use two pointers, one for each string",
+        "Characters must match in order",
+        "Extra characters in typed must match previous character"
+      ],
+      "timeComplexity": "O(n + m)",
+      "spaceComplexity": "O(1)",
+      "tags": ["string", "two-pointers"],
+      "starterCode": {
+        "javascript": "function isLongPressedName(name, typed) {\n  // Write your code here\n  \n}",
+        "python": "def is_long_pressed_name(name, typed):\n    # Write your code here\n    pass",
+        "java": "public boolean isLongPressedName(String name, String typed) {\n    // Write your code here\n    return false;\n}"
+      }
+    },
+    {
+      "id": "q25",
+      "title": "Rotate Array",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Microsoft", "Facebook"],
+      "introduction": "Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.",
+      "problemStatement": "Rotate the array to the right by k steps in-place.\n\nConstraints:\n- 1 <= nums.length <= 10^5\n- -2^31 <= nums[i] <= 2^31 - 1\n- 0 <= k <= 10^5",
+      "examples": [
+        {
+          "input": "nums = [1,2,3,4,5,6,7], k = 3",
+          "output": "[5,6,7,1,2,3,4]",
+          "explanation": "Rotate right by 1: [7,1,2,3,4,5,6], by 2: [6,7,1,2,3,4,5], by 3: [5,6,7,1,2,3,4]"
+        },
+        {
+          "input": "nums = [-1,-100,3,99], k = 2",
+          "output": "[3,99,-1,-100]",
+          "explanation": "Rotate right by 2 steps."
+        }
+      ],
+      "hints": [
+        "Reverse the entire array first",
+        "Reverse the first k elements",
+        "Reverse the remaining n-k elements"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "two-pointers", "math"],
+      "starterCode": {
+        "javascript": "function rotate(nums, k) {\n  // Write your code here\n  \n}",
+        "python": "def rotate(nums, k):\n    # Write your code here\n    pass",
+        "java": "public void rotate(int[] nums, int k) {\n    // Write your code here\n}"
+      }
+    },
+    {
+      "id": "q26",
+      "title": "Shortest Unsorted Continuous Subarray",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Facebook", "Google"],
+      "introduction": "Given an integer array nums, you need to find one continuous subarray such that if you only sort this subarray in non-decreasing order, then the whole array will be sorted in non-decreasing order.",
+      "problemStatement": "Return the shortest such subarray and output its length.\n\nConstraints:\n- 1 <= nums.length <= 10^4\n- -10^5 <= nums[i] <= 10^5",
+      "examples": [
+        {
+          "input": "nums = [2,6,4,8,10,9,15]",
+          "output": "5",
+          "explanation": "You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted."
+        },
+        {
+          "input": "nums = [1,2,3,4]",
+          "output": "0",
+          "explanation": "The array is already sorted."
+        },
+        {
+          "input": "nums = [1]",
+          "output": "0",
+          "explanation": "Single element array is always sorted."
+        }
+      ],
+      "hints": [
+        "Find the rightmost element smaller than some element on its left",
+        "Find the leftmost element larger than some element on its right",
+        "The subarray between these positions needs sorting"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "two-pointers", "sorting"],
+      "starterCode": {
+        "javascript": "function findUnsortedSubarray(nums) {\n  // Write your code here\n  \n}",
+        "python": "def find_unsorted_subarray(nums):\n    # Write your code here\n    pass",
+        "java": "public int findUnsortedSubarray(int[] nums) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q27",
+      "title": "Compare Version Numbers",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Microsoft", "Apple"],
+      "introduction": "Given two version numbers, version1 and version2, compare them. Version numbers consist of one or more revisions joined by a dot '.'. Each revision consists of digits and may contain leading zeros.",
+      "problemStatement": "Compare two version strings. Return -1 if version1 < version2, 1 if version1 > version2, otherwise return 0.\n\nConstraints:\n- 1 <= version1.length, version2.length <= 500\n- version1 and version2 only contain digits and '.'",
+      "examples": [
+        {
+          "input": "version1 = \"1.01\", version2 = \"1.001\"",
+          "output": "0",
+          "explanation": "Ignoring leading zeroes, both \"01\" and \"001\" represent the same integer \"1\"."
+        },
+        {
+          "input": "version1 = \"1.0\", version2 = \"1.0.0\"",
+          "output": "0",
+          "explanation": "version1 does not specify revision 2, which means it is treated as \"0\"."
+        },
+        {
+          "input": "version1 = \"0.1\", version2 = \"1.1\"",
+          "output": "-1",
+          "explanation": "version1's revision 0 is \"0\", while version2's revision 0 is \"1\". 0 < 1, so version1 < version2."
+        }
+      ],
+      "hints": [
+        "Use two pointers to traverse both version strings",
+        "Extract integer values between dots",
+        "Treat missing revisions as 0"
+      ],
+      "timeComplexity": "O(max(n, m))",
+      "spaceComplexity": "O(1)",
+      "tags": ["string", "two-pointers"],
+      "starterCode": {
+        "javascript": "function compareVersion(version1, version2) {\n  // Write your code here\n  \n}",
+        "python": "def compare_version(version1, version2):\n    # Write your code here\n    pass",
+        "java": "public int compareVersion(String version1, String version2) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q28",
+      "title": "Subarray Product Less Than K",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Google", "Facebook"],
+      "introduction": "Given an array of integers nums and an integer k, return the number of contiguous subarrays where the product of all the elements in the subarray is strictly less than k.",
+      "problemStatement": "Count subarrays with product less than k.\n\nConstraints:\n- 1 <= nums.length <= 3 * 10^4\n- 1 <= nums[i] <= 1000\n- 0 <= k <= 10^6",
+      "examples": [
+        {
+          "input": "nums = [10,5,2,6], k = 100",
+          "output": "8",
+          "explanation": "The 8 subarrays with product less than 100 are: [10], [5], [2], [6], [10,5], [5,2], [2,6], [5,2,6]."
+        },
+        {
+          "input": "nums = [1,2,3], k = 0",
+          "output": "0",
+          "explanation": "No subarray has product less than 0."
+        }
+      ],
+      "hints": [
+        "Use sliding window with two pointers",
+        "Expand right pointer and multiply product",
+        "Shrink from left when product >= k"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "two-pointers", "sliding-window"],
+      "starterCode": {
+        "javascript": "function numSubarrayProductLessThanK(nums, k) {\n  // Write your code here\n  \n}",
+        "python": "def num_subarray_product_less_than_k(nums, k):\n    # Write your code here\n    pass",
+        "java": "public int numSubarrayProductLessThanK(int[] nums, int k) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q29",
+      "title": "Next Permutation",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Google", "Amazon", "Facebook", "Microsoft", "Apple"],
+      "introduction": "A permutation of an array of integers is an arrangement of its members into a sequence or linear order. The next permutation of an array of integers is the next lexicographically greater permutation of its integer.",
+      "problemStatement": "Rearrange numbers into the lexicographically next greater permutation. If no such arrangement exists, rearrange into the lowest possible order (sorted in ascending order).\n\nConstraints:\n- 1 <= nums.length <= 100\n- 0 <= nums[i] <= 100",
+      "examples": [
+        {
+          "input": "nums = [1,2,3]",
+          "output": "[1,3,2]",
+          "explanation": "The next permutation of [1,2,3] is [1,3,2]."
+        },
+        {
+          "input": "nums = [3,2,1]",
+          "output": "[1,2,3]",
+          "explanation": "No next permutation exists, so return the smallest permutation."
+        },
+        {
+          "input": "nums = [1,1,5]",
+          "output": "[1,5,1]",
+          "explanation": "The next permutation of [1,1,5] is [1,5,1]."
+        }
+      ],
+      "hints": [
+        "Find the first decreasing element from the right",
+        "Swap it with the smallest element larger than it on its right",
+        "Reverse the suffix after the swap position"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "two-pointers"],
+      "starterCode": {
+        "javascript": "function nextPermutation(nums) {\n  // Write your code here\n  \n}",
+        "python": "def next_permutation(nums):\n    # Write your code here\n    pass",
+        "java": "public void nextPermutation(int[] nums) {\n    // Write your code here\n}"
+      }
+    },
+    {
+      "id": "q30",
+      "title": "Remove Element",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": ["Facebook", "Amazon", "Google"],
+      "introduction": "Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.",
+      "problemStatement": "Remove all occurrences of val in-place and return the count of remaining elements.\n\nConstraints:\n- 0 <= nums.length <= 100\n- 0 <= nums[i] <= 50\n- 0 <= val <= 100",
+      "examples": [
+        {
+          "input": "nums = [3,2,2,3], val = 3",
+          "output": "2, nums = [2,2,_,_]",
+          "explanation": "Your function should return k = 2, with the first two elements of nums being 2."
+        },
+        {
+          "input": "nums = [0,1,2,2,3,0,4,2], val = 2",
+          "output": "5, nums = [0,1,4,0,3,_,_,_]",
+          "explanation": "Your function should return k = 5, with the first five elements containing 0, 0, 1, 3, and 4."
+        }
+      ],
+      "hints": [
+        "Use two pointers: one for iterating, one for placing valid elements",
+        "Swap element to end if it equals val",
+        "Alternatively, overwrite val elements with non-val elements"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "two-pointers"],
+      "starterCode": {
+        "javascript": "function removeElement(nums, val) {\n  // Write your code here\n  \n}",
+        "python": "def remove_element(nums, val):\n    # Write your code here\n    pass",
+        "java": "public int removeElement(int[] nums, int val) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q31",
+      "title": "Valid Palindrome II",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": ["Facebook", "Amazon", "Microsoft"],
+      "introduction": "Given a string s, return true if the s can be palindrome after deleting at most one character from it.",
+      "problemStatement": "Determine if string can become a palindrome by removing at most one character.\n\nConstraints:\n- 1 <= s.length <= 10^5\n- s consists of lowercase English letters",
+      "examples": [
+        {
+          "input": "s = \"aba\"",
+          "output": "true",
+          "explanation": "Already a palindrome."
+        },
+        {
+          "input": "s = \"abca\"",
+          "output": "true",
+          "explanation": "You could delete the character 'c' to get \"aba\"."
+        },
+        {
+          "input": "s = \"abc\"",
+          "output": "false",
+          "explanation": "Cannot make it a palindrome by removing one character."
+        }
+      ],
+      "hints": [
+        "Use two pointers from both ends",
+        "When characters don't match, try skipping left or right character",
+        "Check if remaining substring is a palindrome"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["string", "two-pointers", "greedy"],
+      "starterCode": {
+        "javascript": "function validPalindrome(s) {\n  // Write your code here\n  \n}",
+        "python": "def valid_palindrome(s):\n    # Write your code here\n    pass",
+        "java": "public boolean validPalindrome(String s) {\n    // Write your code here\n    return false;\n}"
+      }
+    },
+    {
+      "id": "q32",
+      "title": "Partition Labels",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Google", "Facebook"],
+      "introduction": "You are given a string s. We want to partition the string into as many parts as possible so that each letter appears in at most one part. Return a list of integers representing the size of these parts.",
+      "problemStatement": "Partition string so each letter appears in at most one part. Return list of partition sizes.\n\nConstraints:\n- 1 <= s.length <= 500\n- s consists of lowercase English letters",
+      "examples": [
+        {
+          "input": "s = \"ababcbacadefegdehijhklij\"",
+          "output": "[9,7,8]",
+          "explanation": "The partition is \"ababcbaca\", \"defegde\", \"hijhklij\". Each letter appears in at most one part."
+        },
+        {
+          "input": "s = \"eccbbbbdec\"",
+          "output": "[10]",
+          "explanation": "The entire string forms one partition."
+        }
+      ],
+      "hints": [
+        "Find the last occurrence of each character first",
+        "Use two pointers to track current partition boundaries",
+        "Extend partition end when encountering a character that appears later"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["string", "two-pointers", "greedy", "hash-table"],
+      "starterCode": {
+        "javascript": "function partitionLabels(s) {\n  // Write your code here\n  \n}",
+        "python": "def partition_labels(s):\n    # Write your code here\n    pass",
+        "java": "public List<Integer> partitionLabels(String s) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+      }
+    },
+    {
+      "id": "q33",
+      "title": "Minimum Window Substring",
+      "category": "two-pointers",
+      "difficulty": "hard",
+      "companies": ["Facebook", "Amazon", "Google", "Microsoft", "Apple", "Uber"],
+      "introduction": "Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string.",
+      "problemStatement": "Find the minimum window in s which contains all characters of t.\n\nConstraints:\n- m == s.length\n- n == t.length\n- 1 <= m, n <= 10^5\n- s and t consist of uppercase and lowercase English letters",
+      "examples": [
+        {
+          "input": "s = \"ADOBECODEBANC\", t = \"ABC\"",
+          "output": "\"BANC\"",
+          "explanation": "The minimum window substring \"BANC\" includes 'A', 'B', and 'C' from string t."
+        },
+        {
+          "input": "s = \"a\", t = \"a\"",
+          "output": "\"a\"",
+          "explanation": "The entire string s is the minimum window."
+        },
+        {
+          "input": "s = \"a\", t = \"aa\"",
+          "output": "\"\"",
+          "explanation": "Both 'a's from t must be included in the window. Since s has only one 'a', return empty string."
+        }
+      ],
+      "hints": [
+        "Use sliding window with two pointers",
+        "Expand right pointer to include all characters of t",
+        "Shrink from left to find minimum window"
+      ],
+      "timeComplexity": "O(m + n)",
+      "spaceComplexity": "O(m + n)",
+      "tags": ["string", "two-pointers", "sliding-window", "hash-table"],
+      "starterCode": {
+        "javascript": "function minWindow(s, t) {\n  // Write your code here\n  \n}",
+        "python": "def min_window(s, t):\n    # Write your code here\n    pass",
+        "java": "public String minWindow(String s, String t) {\n    // Write your code here\n    return \"\";\n}"
+      }
+    },
+    {
+      "id": "q34",
+      "title": "Intersection of Two Arrays II",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": ["Facebook", "Amazon", "Google", "Apple"],
+      "introduction": "Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.",
+      "problemStatement": "Find the intersection of two arrays, including duplicates.\n\nConstraints:\n- 1 <= nums1.length, nums2.length <= 1000\n- 0 <= nums1[i], nums2[i] <= 1000",
+      "examples": [
+        {
+          "input": "nums1 = [1,2,2,1], nums2 = [2,2]",
+          "output": "[2,2]",
+          "explanation": "2 appears twice in both arrays."
+        },
+        {
+          "input": "nums1 = [4,9,5], nums2 = [9,4,9,8,4]",
+          "output": "[4,9]",
+          "explanation": "4 and 9 appear in both arrays. Order doesn't matter."
+        }
+      ],
+      "hints": [
+        "Sort both arrays first",
+        "Use two pointers to find common elements",
+        "Move pointer with smaller value forward"
+      ],
+      "timeComplexity": "O(n log n + m log m)",
+      "spaceComplexity": "O(min(n, m))",
+      "tags": ["array", "two-pointers", "hash-table", "sorting"],
+      "starterCode": {
+        "javascript": "function intersect(nums1, nums2) {\n  // Write your code here\n  \n}",
+        "python": "def intersect(nums1, nums2):\n    # Write your code here\n    pass",
+        "java": "public int[] intersect(int[] nums1, int[] nums2) {\n    // Write your code here\n    return new int[0];\n}"
+      }
+    },
+    {
+      "id": "q35",
+      "title": "Reverse Words in a String",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Facebook", "Amazon", "Microsoft", "Apple", "Bloomberg"],
+      "introduction": "Given an input string s, reverse the order of the words. A word is defined as a sequence of non-space characters. The words in s will be separated by at least one space. Return a string of the words in reverse order concatenated by a single space.",
+      "problemStatement": "Reverse the order of words in the string. Remove leading/trailing spaces and reduce multiple spaces between words to a single space.\n\nConstraints:\n- 1 <= s.length <= 10^4\n- s contains English letters (upper-case and lower-case), digits, and spaces ' '\n- There is at least one word in s",
+      "examples": [
+        {
+          "input": "s = \"the sky is blue\"",
+          "output": "\"blue is sky the\"",
+          "explanation": "Words are reversed in order."
+        },
+        {
+          "input": "s = \"  hello world  \"",
+          "output": "\"world hello\"",
+          "explanation": "Leading/trailing spaces removed, words reversed."
+        },
+        {
+          "input": "s = \"a good   example\"",
+          "output": "\"example good a\"",
+          "explanation": "Multiple spaces reduced to single space, words reversed."
+        }
+      ],
+      "hints": [
+        "Reverse the entire string first",
+        "Then reverse each individual word",
+        "Use two pointers to identify word boundaries"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)",
+      "tags": ["string", "two-pointers"],
+      "starterCode": {
+        "javascript": "function reverseWords(s) {\n  // Write your code here\n  \n}",
+        "python": "def reverse_words(s):\n    # Write your code here\n    pass",
+        "java": "public String reverseWords(String s) {\n    // Write your code here\n    return \"\";\n}"
+      }
+    },
+    {
+      "id": "q36",
+      "title": "Product of Array Except Self",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Apple", "Uber"],
+      "introduction": "Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer. You must write an algorithm that runs in O(n) time and without using the division operation.",
+      "problemStatement": "Return an array where each element is the product of all other elements.\n\nConstraints:\n- 2 <= nums.length <= 10^5\n- -30 <= nums[i] <= 30\n- The product of any prefix or suffix of nums fits in a 32-bit integer",
+      "examples": [
+        {
+          "input": "nums = [1,2,3,4]",
+          "output": "[24,12,8,6]",
+          "explanation": "answer[0] = 2*3*4 = 24, answer[1] = 1*3*4 = 12, answer[2] = 1*2*4 = 8, answer[3] = 1*2*3 = 6"
+        },
+        {
+          "input": "nums = [-1,1,0,-3,3]",
+          "output": "[0,0,9,0,0]",
+          "explanation": "Products calculated excluding each element."
+        }
+      ],
+      "hints": [
+        "Calculate prefix products from left to right",
+        "Calculate suffix products from right to left",
+        "Multiply prefix and suffix for each position"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1) excluding output array",
+      "tags": ["array", "two-pointers", "prefix-sum"],
+      "starterCode": {
+        "javascript": "function productExceptSelf(nums) {\n  // Write your code here\n  \n}",
+        "python": "def product_except_self(nums):\n    # Write your code here\n    pass",
+        "java": "public int[] productExceptSelf(int[] nums) {\n    // Write your code here\n    return new int[0];\n}"
+      }
+    },
+       {"id": "q37",
+      "title": "Maximum Average Subarray I",
+      "category": "sliding-window",
+      "difficulty": "easy",
+      "companies": ["Amazon", "Google", "Facebook"],
+      "introduction": "You are given an integer array nums consisting of n elements, and an integer k. Find a contiguous subarray whose length is equal to k that has the maximum average value and return this value.",
+      "problemStatement": "Find the contiguous subarray of length k with the maximum average.\n\nConstraints:\n- n == nums.length\n- 1 <= k <= n <= 10^5\n- -10^4 <= nums[i] <= 10^4",
+      "examples": [
+        {
+          "input": "nums = [1,12,-5,-6,50,3], k = 4",
+          "output": "12.75000",
+          "explanation": "Maximum average is (12 - 5 - 6 + 50) / 4 = 51 / 4 = 12.75"
+        },
+        {
+          "input": "nums = [5], k = 1",
+          "output": "5.00000",
+          "explanation": "Only one element, so the average is 5."
+        }
+      ],
+      "hints": [
+        "Use a fixed-size sliding window of size k",
+        "Calculate sum of first k elements",
+        "Slide window by adding next element and removing first element"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "sliding-window"],
+      "starterCode": {
+        "javascript": "function findMaxAverage(nums, k) {\n  // Write your code here\n  \n}",
+        "python": "def find_max_average(nums, k):\n    # Write your code here\n    pass",
+        "java": "public double findMaxAverage(int[] nums, int k) {\n    // Write your code here\n    return 0.0;\n}"
+      }
+    },
+    {
+      "id": "q38",
+      "title": "Minimum Size Subarray Sum",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Goldman Sachs"],
+      "introduction": "Given an array of positive integers nums and a positive integer target, return the minimal length of a subarray whose sum is greater than or equal to target. If there is no such subarray, return 0 instead.",
+      "problemStatement": "Find the minimal length subarray with sum >= target.\n\nConstraints:\n- 1 <= target <= 10^9\n- 1 <= nums.length <= 10^5\n- 1 <= nums[i] <= 10^4",
+      "examples": [
+        {
+          "input": "target = 7, nums = [2,3,1,2,4,3]",
+          "output": "2",
+          "explanation": "The subarray [4,3] has the minimal length under the problem constraint."
+        },
+        {
+          "input": "target = 4, nums = [1,4,4]",
+          "output": "1",
+          "explanation": "The subarray [4] has sum >= 4 with minimal length."
+        },
+        {
+          "input": "target = 11, nums = [1,1,1,1,1,1,1,1]",
+          "output": "0",
+          "explanation": "No subarray has sum >= 11."
+        }
+      ],
+      "hints": [
+        "Use a variable-size sliding window",
+        "Expand window by adding elements to reach target",
+        "Shrink window from left while sum >= target"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "sliding-window", "binary-search", "prefix-sum"],
+      "starterCode": {
+        "javascript": "function minSubArrayLen(target, nums) {\n  // Write your code here\n  \n}",
+        "python": "def min_sub_array_len(target, nums):\n    # Write your code here\n    pass",
+        "java": "public int minSubArrayLen(int target, int[] nums) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q39",
+      "title": "Longest Repeating Character Replacement",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Google", "Amazon", "Facebook", "Microsoft"],
+      "introduction": "You are given a string s and an integer k. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most k times. Return the length of the longest substring containing the same letter you can get after performing the above operations.",
+      "problemStatement": "Find the longest substring with same characters after at most k replacements.\n\nConstraints:\n- 1 <= s.length <= 10^5\n- s consists of only uppercase English letters\n- 0 <= k <= s.length",
+      "examples": [
+        {
+          "input": "s = \"ABAB\", k = 2",
+          "output": "4",
+          "explanation": "Replace the two 'A's with two 'B's or vice versa."
+        },
+        {
+          "input": "s = \"AABABBA\", k = 1",
+          "output": "4",
+          "explanation": "Replace the one 'A' in the middle with 'B' and form \"AABBBBA\". The substring \"BBBB\" has the longest repeating letters, which is 4."
+        }
+      ],
+      "hints": [
+        "Use sliding window with character frequency count",
+        "Track the count of the most frequent character in window",
+        "Window is valid if (window_size - max_freq) <= k"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(26) = O(1)",
+      "tags": ["string", "sliding-window", "hash-table"],
+      "starterCode": {
+        "javascript": "function characterReplacement(s, k) {\n  // Write your code here\n  \n}",
+        "python": "def character_replacement(s, k):\n    # Write your code here\n    pass",
+        "java": "public int characterReplacement(String s, int k) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q40",
+      "title": "Permutation in String",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Microsoft", "Amazon", "Facebook", "Google"],
+      "introduction": "Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise. In other words, return true if one of s1's permutations is the substring of s2.",
+      "problemStatement": "Check if s2 contains any permutation of s1 as a substring.\n\nConstraints:\n- 1 <= s1.length, s2.length <= 10^4\n- s1 and s2 consist of lowercase English letters",
+      "examples": [
+        {
+          "input": "s1 = \"ab\", s2 = \"eidbaooo\"",
+          "output": "true",
+          "explanation": "s2 contains one permutation of s1 (\"ba\")."
+        },
+        {
+          "input": "s1 = \"ab\", s2 = \"eidboaoo\"",
+          "output": "false",
+          "explanation": "s2 does not contain any permutation of s1."
+        }
+      ],
+      "hints": [
+        "Use a fixed-size sliding window of length s1",
+        "Compare character frequencies in window with s1",
+        "Use array of size 26 for frequency counting"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["string", "sliding-window", "hash-table"],
+      "starterCode": {
+        "javascript": "function checkInclusion(s1, s2) {\n  // Write your code here\n  \n}",
+        "python": "def check_inclusion(s1, s2):\n    # Write your code here\n    pass",
+        "java": "public boolean checkInclusion(String s1, String s2) {\n    // Write your code here\n    return false;\n}"
+      }
+    },
+    {
+      "id": "q41",
+      "title": "Find All Anagrams in a String",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Apple"],
+      "introduction": "Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.",
+      "problemStatement": "Find all starting indices of anagrams of p in s.\n\nConstraints:\n- 1 <= s.length, p.length <= 3 * 10^4\n- s and p consist of lowercase English letters",
+      "examples": [
+        {
+          "input": "s = \"cbaebabacd\", p = \"abc\"",
+          "output": "[0,6]",
+          "explanation": "The substring starting at index 0 is \"cba\", which is an anagram of \"abc\". The substring starting at index 6 is \"bac\", which is an anagram of \"abc\"."
+        },
+        {
+          "input": "s = \"abab\", p = \"ab\"",
+          "output": "[0,1,2]",
+          "explanation": "The substrings \"ab\", \"ba\", \"ab\" starting at indices 0, 1, 2 are all anagrams of \"ab\"."
+        }
+      ],
+      "hints": [
+        "Use a fixed-size sliding window of length p",
+        "Compare character frequencies using arrays",
+        "Slide window and update frequencies incrementally"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["string", "sliding-window", "hash-table"],
+      "starterCode": {
+        "javascript": "function findAnagrams(s, p) {\n  // Write your code here\n  \n}",
+        "python": "def find_anagrams(s, p):\n    # Write your code here\n    pass",
+        "java": "public List<Integer> findAnagrams(String s, String p) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+      }
+    },
+    {
+      "id": "q42",
+      "title": "Sliding Window Maximum",
+      "category": "sliding-window",
+      "difficulty": "hard",
+      "companies": ["Amazon", "Google", "Facebook", "Microsoft", "Uber", "Citadel"],
+      "introduction": "You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position. Return the max sliding window.",
+      "problemStatement": "Return the maximum element in each sliding window of size k.\n\nConstraints:\n- 1 <= nums.length <= 10^5\n- -10^4 <= nums[i] <= 10^4\n- 1 <= k <= nums.length",
+      "examples": [
+        {
+          "input": "nums = [1,3,-1,-3,5,3,6,7], k = 3",
+          "output": "[3,3,5,5,6,7]",
+          "explanation": "Window position -> Max: [1,3,-1] -> 3, [3,-1,-3] -> 3, [-1,-3,5] -> 5, [-3,5,3] -> 5, [5,3,6] -> 6, [3,6,7] -> 7"
+        },
+        {
+          "input": "nums = [1], k = 1",
+          "output": "[1]",
+          "explanation": "Only one element in the window."
+        }
+      ],
+      "hints": [
+        "Use a deque to store indices of useful elements",
+        "Keep deque in decreasing order of values",
+        "Remove elements outside the current window"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(k)",
+      "tags": ["array", "sliding-window", "deque", "monotonic-queue"],
+      "starterCode": {
+        "javascript": "function maxSlidingWindow(nums, k) {\n  // Write your code here\n  \n}",
+        "python": "def max_sliding_window(nums, k):\n    # Write your code here\n    pass",
+        "java": "public int[] maxSlidingWindow(int[] nums, int k) {\n    // Write your code here\n    return new int[0];\n}"
+      }
+    },
+    {
+      "id": "q43",
+      "title": "Fruit Into Baskets",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Google", "Amazon", "Microsoft"],
+      "introduction": "You are visiting a farm that has a single row of fruit trees arranged from left to right. You will be given an integer array fruits where fruits[i] is the type of fruit the ith tree produces. You have two baskets, and each basket can only hold a single type of fruit. Return the maximum number of fruits you can pick.",
+      "problemStatement": "Find the longest subarray containing at most 2 distinct fruit types.\n\nConstraints:\n- 1 <= fruits.length <= 10^5\n- 0 <= fruits[i] < fruits.length",
+      "examples": [
+        {
+          "input": "fruits = [1,2,1]",
+          "output": "3",
+          "explanation": "We can pick from all 3 trees."
+        },
+        {
+          "input": "fruits = [0,1,2,2]",
+          "output": "3",
+          "explanation": "We can pick from trees [1,2,2]. If we started at tree 0, we would only pick [0,1]."
+        },
+        {
+          "input": "fruits = [1,2,3,2,2]",
+          "output": "4",
+          "explanation": "We can pick from trees [2,3,2,2]. If we started at tree 0, we would only pick [1,2]."
+        }
+      ],
+      "hints": [
+        "This is longest subarray with at most 2 distinct elements",
+        "Use sliding window with a hash map",
+        "Shrink window when more than 2 types exist"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "sliding-window", "hash-table"],
+      "starterCode": {
+        "javascript": "function totalFruit(fruits) {\n  // Write your code here\n  \n}",
+        "python": "def total_fruit(fruits):\n    # Write your code here\n    pass",
+        "java": "public int totalFruit(int[] fruits) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q44",
+      "title": "Max Consecutive Ones III",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Facebook", "Amazon", "Google", "Microsoft"],
+      "introduction": "Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the array if you can flip at most k 0's.",
+      "problemStatement": "Find the longest subarray of 1s after flipping at most k zeros.\n\nConstraints:\n- 1 <= nums.length <= 10^5\n- nums[i] is either 0 or 1\n- 0 <= k <= nums.length",
+      "examples": [
+        {
+          "input": "nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2",
+          "output": "6",
+          "explanation": "Flip nums[5] and nums[10] to get the longest consecutive 1s: [1,1,1,0,0,1,1,1,1,1,1]"
+        },
+        {
+          "input": "nums = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], k = 3",
+          "output": "10",
+          "explanation": "Flip 3 zeros to get 10 consecutive 1s."
+        }
+      ],
+      "hints": [
+        "Use sliding window approach",
+        "Track the count of zeros in current window",
+        "Shrink window when zeros count exceeds k"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "sliding-window", "binary-search", "prefix-sum"],
+      "starterCode": {
+        "javascript": "function longestOnes(nums, k) {\n  // Write your code here\n  \n}",
+        "python": "def longest_ones(nums, k):\n    # Write your code here\n    pass",
+        "java": "public int longestOnes(int[] nums, int k) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q45",
+      "title": "Longest Substring with At Most K Distinct Characters",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Google", "Amazon", "Facebook", "Uber"],
+      "introduction": "Given a string s and an integer k, return the length of the longest substring of s that contains at most k distinct characters.",
+      "problemStatement": "Find the longest substring with at most k distinct characters.\n\nConstraints:\n- 1 <= s.length <= 5 * 10^4\n- 0 <= k <= 50\n- s consists of lowercase English letters",
+      "examples": [
+        {
+          "input": "s = \"eceba\", k = 2",
+          "output": "3",
+          "explanation": "The substring is \"ece\" with length 3."
+        },
+        {
+          "input": "s = \"aa\", k = 1",
+          "output": "2",
+          "explanation": "The substring is \"aa\" with length 2."
+        },
+        {
+          "input": "s = \"a\", k = 0",
+          "output": "0",
+          "explanation": "Cannot have a substring with 0 distinct characters that contains any letters."
+        }
+      ],
+      "hints": [
+        "Use sliding window with a hash map for character counts",
+        "Expand window and add characters to map",
+        "Shrink window when distinct characters exceed k"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(k)",
+      "tags": ["string", "sliding-window", "hash-table"],
+      "starterCode": {
+        "javascript": "function lengthOfLongestSubstringKDistinct(s, k) {\n  // Write your code here\n  \n}",
+        "python": "def length_of_longest_substring_k_distinct(s, k):\n    # Write your code here\n    pass",
+        "java": "public int lengthOfLongestSubstringKDistinct(String s, int k) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q46",
+      "title": "Minimum Window Substring",
+      "category": "sliding-window",
+      "difficulty": "hard",
+      "companies": ["Facebook", "Amazon", "Google", "Microsoft", "Apple", "Uber", "LinkedIn"],
+      "introduction": "Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string.",
+      "problemStatement": "Find the minimum window in s which contains all characters of t.\n\nConstraints:\n- m == s.length\n- n == t.length\n- 1 <= m, n <= 10^5\n- s and t consist of uppercase and lowercase English letters",
+      "examples": [
+        {
+          "input": "s = \"ADOBECODEBANC\", t = \"ABC\"",
+          "output": "\"BANC\"",
+          "explanation": "The minimum window substring \"BANC\" includes 'A', 'B', and 'C' from string t."
+        },
+        {
+          "input": "s = \"a\", t = \"a\"",
+          "output": "\"a\"",
+          "explanation": "The entire string s is the minimum window."
+        },
+        {
+          "input": "s = \"a\", t = \"aa\"",
+          "output": "\"\"",
+          "explanation": "Both 'a's from t must be included. Since s has only one 'a', return empty string."
+        }
+      ],
+      "hints": [
+        "Use two hash maps: one for t, one for current window",
+        "Track how many characters are satisfied",
+        "Shrink window when all characters are found"
+      ],
+      "timeComplexity": "O(m + n)",
+      "spaceComplexity": "O(m + n)",
+      "tags": ["string", "sliding-window", "hash-table"],
+      "starterCode": {
+        "javascript": "function minWindow(s, t) {\n  // Write your code here\n  \n}",
+        "python": "def min_window(s, t):\n    # Write your code here\n    pass",
+        "java": "public String minWindow(String s, String t) {\n    // Write your code here\n    return \"\";\n}"
+      }
+    },
+    {
+      "id": "q47",
+      "title": "Grumpy Bookstore Owner",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Google"],
+      "introduction": "There is a bookstore owner that has a store open for n minutes. Every minute, some number of customers enter the store. You are given an integer array customers where customers[i] is the number of customers at minute i. The owner is grumpy for some minutes indicated by a binary array grumpy. When grumpy[i] is 1, the owner is grumpy during minute i. The owner can use a secret technique to not be grumpy for k consecutive minutes, but can only use it once.",
+      "problemStatement": "Find the maximum number of satisfied customers.\n\nConstraints:\n- n == customers.length == grumpy.length\n- 1 <= n <= 2 * 10^4\n- 0 <= customers[i] <= 1000\n- grumpy[i] is either 0 or 1\n- 1 <= k <= n",
+      "examples": [
+        {
+          "input": "customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], k = 3",
+          "output": "16",
+          "explanation": "Use the technique from minute 3 to 5. Maximum satisfied = 1 + 1 + 2 + 1 + 1 + 7 + 5 - 2 = 16."
+        },
+        {
+          "input": "customers = [1], grumpy = [0], k = 1",
+          "output": "1",
+          "explanation": "Owner is not grumpy, so all customers are satisfied."
+        }
+      ],
+      "hints": [
+        "First calculate base satisfaction (when owner is not grumpy)",
+        "Use sliding window to find the best k minutes to suppress grumpiness",
+        "Track additional customers saved by suppressing grumpiness"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "sliding-window"],
+      "starterCode": {
+        "javascript": "function maxSatisfied(customers, grumpy, k) {\n  // Write your code here\n  \n}",
+        "python": "def max_satisfied(customers, grumpy, k):\n    # Write your code here\n    pass",
+        "java": "public int maxSatisfied(int[] customers, int[] grumpy, int k) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q48",
+      "title": "Contains Duplicate II",
+      "category": "sliding-window",
+      "difficulty": "easy",
+      "companies": ["Amazon", "Google", "Facebook"],
+      "introduction": "Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.",
+      "problemStatement": "Check if array contains duplicate within k distance.\n\nConstraints:\n- 1 <= nums.length <= 10^5\n- -10^9 <= nums[i] <= 10^9\n- 0 <= k <= 10^5",
+      "examples": [
+        {
+          "input": "nums = [1,2,3,1], k = 3",
+          "output": "true",
+          "explanation": "nums[0] == nums[3] and abs(0-3) = 3 <= 3."
+        },
+        {
+          "input": "nums = [1,0,1,1], k = 1",
+          "output": "true",
+          "explanation": "nums[2] == nums[3] and abs(2-3) = 1 <= 1."
+        },
+        {
+          "input": "nums = [1,2,3,1,2,3], k = 2",
+          "output": "false",
+          "explanation": "No duplicate exists within distance 2."
+        }
+      ],
+      "hints": [
+        "Use a sliding window with a set",
+        "Maintain a set of elements in the last k positions",
+        "Check if new element exists in set before adding"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(min(n, k))",
+      "tags": ["array", "sliding-window", "hash-table"],
+      "starterCode": {
+        "javascript": "function containsNearbyDuplicate(nums, k) {\n  // Write your code here\n  \n}",
+        "python": "def contains_nearby_duplicate(nums, k):\n    # Write your code here\n    pass",
+        "java": "public boolean containsNearbyDuplicate(int[] nums, int k) {\n    // Write your code here\n    return false;\n}"
+      }
+    },
+    {
+      "id": "q49",
+      "title": "Repeated DNA Sequences",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["LinkedIn", "Amazon", "Google"],
+      "introduction": "The DNA sequence is composed of a series of nucleotides abbreviated as 'A', 'C', 'G', and 'T'. Given a string s that represents a DNA sequence, return all the 10-letter-long sequences (substrings) that occur more than once in a DNA molecule. You may return the answer in any order.",
+      "problemStatement": "Find all 10-letter sequences that appear more than once.\n\nConstraints:\n- 1 <= s.length <= 10^5\n- s[i] is either 'A', 'C', 'G', or 'T'",
+      "examples": [
+        {
+          "input": "s = \"AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT\"",
+          "output": "[\"AAAAACCCCC\",\"CCCCCAAAAA\"]",
+          "explanation": "Both \"AAAAACCCCC\" and \"CCCCCAAAAA\" appear more than once."
+        },
+        {
+          "input": "s = \"AAAAAAAAAAAAA\"",
+          "output": "[\"AAAAAAAAAA\"]",
+          "explanation": "\"AAAAAAAAAA\" appears twice."
+        }
+      ],
+      "hints": [
+        "Use a fixed-size sliding window of length 10",
+        "Use a hash set to track seen sequences",
+        "Use another set to track repeated sequences"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)",
+      "tags": ["string", "sliding-window", "hash-table", "bit-manipulation"],
+      "starterCode": {
+        "javascript": "function findRepeatedDnaSequences(s) {\n  // Write your code here\n  \n}",
+        "python": "def find_repeated_dna_sequences(s):\n    # Write your code here\n    pass",
+        "java": "public List<String> findRepeatedDnaSequences(String s) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+      }
+    },
+    {
+      "id": "q50",
+      "title": "Subarrays with K Different Integers",
+      "category": "sliding-window",
+      "difficulty": "hard",
+      "companies": ["Amazon", "Google", "Uber"],
+      "introduction": "Given an integer array nums and an integer k, return the number of good subarrays of nums. A good array is an array where the number of different integers in that array is exactly k.",
+      "problemStatement": "Count subarrays with exactly k distinct integers.\n\nConstraints:\n- 1 <= nums.length <= 2 * 10^4\n- 1 <= nums[i], k <= nums.length",
+      "examples": [
+        {
+          "input": "nums = [1,2,1,2,3], k = 2",
+          "output": "7",
+          "explanation": "Subarrays with exactly 2 distinct integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,1,2]."
+        },
+        {
+          "input": "nums = [1,2,1,3,4], k = 3",
+          "output": "3",
+          "explanation": "Subarrays with exactly 3 distinct integers: [1,2,1,3], [2,1,3], [1,3,4]."
+        }
+      ],
+      "hints": [
+        "exactly(k) = atMost(k) - atMost(k-1)",
+        "Use sliding window to count subarrays with at most k distinct",
+        "Apply the formula to get exactly k"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(k)",
+      "tags": ["array", "sliding-window", "hash-table", "counting"],
+      "starterCode": {
+        "javascript": "function subarraysWithKDistinct(nums, k) {\n  // Write your code here\n  \n}",
+        "python": "def subarrays_with_k_distinct(nums, k):\n    # Write your code here\n    pass",
+        "java": "public int subarraysWithKDistinct(int[] nums, int k) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q51",
+      "title": "Maximum Points You Can Obtain from Cards",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Google", "Amazon", "Adobe"],
+      "introduction": "There are several cards arranged in a row, and each card has an associated number of points. The points are given in the integer array cardPoints. In one step, you can take one card from the beginning or from the end of the row. You have to take exactly k cards. Your score is the sum of the points of the cards you have taken.",
+      "problemStatement": "Find the maximum score obtainable by taking k cards from either end.\n\nConstraints:\n- 1 <= cardPoints.length <= 10^5\n- 1 <= cardPoints[i] <= 10^4\n- 1 <= k <= cardPoints.length",
+      "examples": [
+        {
+          "input": "cardPoints = [1,2,3,4,5,6,1], k = 3",
+          "output": "12",
+          "explanation": "Take the last 3 cards: 1 + 6 + 5 = 12."
+        },
+        {
+          "input": "cardPoints = [2,2,2], k = 2",
+          "output": "4",
+          "explanation": "Take any 2 cards: 2 + 2 = 4."
+        },
+        {
+          "input": "cardPoints = [9,7,7,9,7,7,9], k = 7",
+          "output": "55",
+          "explanation": "Take all cards for maximum sum."
+        }
+      ],
+      "hints": [
+        "Find minimum sum subarray of size n-k in the middle",
+        "Answer is total sum minus this minimum subarray",
+        "Use sliding window to find minimum subarray sum"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "sliding-window", "prefix-sum"],
+      "starterCode": {
+        "javascript": "function maxScore(cardPoints, k) {\n  // Write your code here\n  \n}",
+        "python": "def max_score(card_points, k):\n    # Write your code here\n    pass",
+        "java": "public int maxScore(int[] cardPoints, int k) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q52",
+      "title": "Binary Subarrays With Sum",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Google", "Facebook"],
+      "introduction": "Given a binary array nums and an integer goal, return the number of non-empty subarrays with a sum goal.",
+      "problemStatement": "Count subarrays with sum equal to goal.\n\nConstraints:\n- 1 <= nums.length <= 3 * 10^4\n- nums[i] is either 0 or 1\n- 0 <= goal <= nums.length",
+      "examples": [
+        {
+          "input": "nums = [1,0,1,0,1], goal = 2",
+          "output": "4",
+          "explanation": "The 4 subarrays are: [1,0,1], [1,0,1,0], [0,1,0,1], [1,0,1]."
+        },
+        {
+          "input": "nums = [0,0,0,0,0], goal = 0",
+          "output": "15",
+          "explanation": "All subarrays of zeros have sum 0."
+        }
+      ],
+      "hints": [
+        "Use atMost(goal) - atMost(goal-1) technique",
+        "Or use prefix sum with hash map",
+        "Count subarrays ending at each position"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "sliding-window", "hash-table", "prefix-sum"],
+      "starterCode": {
+        "javascript": "function numSubarraysWithSum(nums, goal) {\n  // Write your code here\n  \n}",
+        "python": "def num_subarrays_with_sum(nums, goal):\n    # Write your code here\n    pass",
+        "java": "public int numSubarraysWithSum(int[] nums, int goal) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q53",
+      "title": "Count Number of Nice Subarrays",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Microsoft"],
+      "introduction": "Given an array of integers nums and an integer k. A continuous subarray is called nice if there are k odd numbers on it. Return the number of nice sub-arrays.",
+      "problemStatement": "Count subarrays with exactly k odd numbers.\n\nConstraints:\n- 1 <= nums.length <= 50000\n- 1 <= nums[i] <= 10^5\n- 1 <= k <= nums.length",
+      "examples": [
+        {
+          "input": "nums = [1,1,2,1,1], k = 3",
+          "output": "2",
+          "explanation": "The subarrays with 3 odd numbers are [1,1,2,1] and [1,2,1,1]."
+        },
+        {
+          "input": "nums = [2,4,6], k = 1",
+          "output": "0",
+          "explanation": "There are no odd numbers in the array."
+        },
+        {
+          "input": "nums = [2,2,2,1,2,2,1,2,2,2], k = 2",
+          "output": "16",
+          "explanation": "Count all subarrays with exactly 2 odd numbers."
+        }
+      ],
+      "hints": [
+        "Convert problem: treat odd as 1, even as 0",
+        "Use atMost(k) - atMost(k-1) technique",
+        "Or use prefix sum approach"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "sliding-window", "hash-table", "math"],
+      "starterCode": {
+        "javascript": "function numberOfSubarrays(nums, k) {\n  // Write your code here\n  \n}",
+        "python": "def number_of_subarrays(nums, k):\n    # Write your code here\n    pass",
+        "java": "public int numberOfSubarrays(int[] nums, int k) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q54",
+      "title": "Get Equal Substrings Within Budget",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Google", "Amazon"],
+      "introduction": "You are given two strings s and t of the same length and an integer maxCost. You want to change s to t. Changing the ith character of s to ith character of t costs |s[i] - t[i]|. Return the maximum length of a substring of s that can be changed to be the same as the corresponding substring of t with a cost less than or equal to maxCost.",
+      "problemStatement": "Find the longest substring of s that can be changed to match t within the cost budget.\n\nConstraints:\n- 1 <= s.length <= 10^5\n- t.length == s.length\n- 0 <= maxCost <= 10^6\n- s and t consist of only lowercase English letters",
+      "examples": [
+        {
+          "input": "s = \"abcd\", t = \"bcdf\", maxCost = 3",
+          "output": "3",
+          "explanation": "\"abc\" can change to \"bcd\" with cost 1+1+1 = 3."
+        },
+        {
+          "input": "s = \"abcd\", t = \"cdef\", maxCost = 3",
+          "output": "1",
+          "explanation": "Each character requires cost 2 to change, so max length is 1."
+        },
+        {
+          "input": "s = \"abcd\", t = \"acde\", maxCost = 0",
+          "output": "1",
+          "explanation": "Only matching characters 'a' can be included."
+        }
+      ],
+      "hints": [
+        "Create an array of costs for each position",
+        "Use sliding window to find longest subarray with sum <= maxCost",
+        "Shrink window when cost exceeds budget"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["string", "sliding-window", "binary-search", "prefix-sum"],
+      "starterCode": {
+        "javascript": "function equalSubstring(s, t, maxCost) {\n  // Write your code here\n  \n}",
+        "python": "def equal_substring(s, t, max_cost):\n    # Write your code here\n    pass",
+        "java": "public int equalSubstring(String s, String t, int maxCost) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q55",
+      "title": "Longest Subarray of 1's After Deleting One Element",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Google", "Microsoft"],
+      "introduction": "Given a binary array nums, you should delete one element from it. Return the size of the longest non-empty subarray containing only 1's in the resulting array. Return 0 if there is no such subarray.",
+      "problemStatement": "Find the longest subarray of 1s after deleting exactly one element.\n\nConstraints:\n- 1 <= nums.length <= 10^5\n- nums[i] is either 0 or 1",
+      "examples": [
+        {
+          "input": "nums = [1,1,0,1]",
+          "output": "3",
+          "explanation": "After deleting the 0, we get [1,1,1] of length 3."
+        },
+        {
+          "input": "nums = [0,1,1,1,0,1,1,0,1]",
+          "output": "5",
+          "explanation": "After deleting the 0 at index 4, we get [0,1,1,1,1,1,0,1]."
+        },
+        {
+          "input": "nums = [1,1,1]",
+          "output": "2",
+          "explanation": "You must delete one element, leaving [1,1]."
+        }
+      ],
+      "hints": [
+        "Similar to Max Consecutive Ones III with k=1",
+        "Use sliding window with at most one 0",
+        "Result is window size - 1 (since we must delete one)"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "sliding-window", "dynamic-programming"],
+      "starterCode": {
+        "javascript": "function longestSubarray(nums) {\n  // Write your code here\n  \n}",
+        "python": "def longest_subarray(nums):\n    # Write your code here\n    pass",
+        "java": "public int longestSubarray(int[] nums) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q56",
+      "title": "Substring with Concatenation of All Words",
+      "category": "sliding-window",
+      "difficulty": "hard",
+      "companies": ["Amazon", "Google", "Microsoft", "Facebook"],
+      "introduction": "You are given a string s and an array of strings words. All the strings of words are of the same length. A concatenated substring in s is a substring that contains all the strings of any permutation of words concatenated.",
+      "problemStatement": "Find all starting indices of substrings that are concatenations of all words.\n\nConstraints:\n- 1 <= s.length <= 10^4\n- 1 <= words.length <= 5000\n- 1 <= words[i].length <= 30\n- s and words[i] consist of lowercase English letters",
+      "examples": [
+        {
+          "input": "s = \"barfoothefoobarman\", words = [\"foo\",\"bar\"]",
+          "output": "[0,9]",
+          "explanation": "Substrings starting at 0 and 9 are \"barfoo\" and \"foobar\"."
+        },
+        {
+          "input": "s = \"wordgoodgoodgoodbestword\", words = [\"word\",\"good\",\"best\",\"word\"]",
+          "output": "[]",
+          "explanation": "No valid substring exists."
+        },
+        {
+          "input": "s = \"barfoofoobarthefoobarman\", words = [\"bar\",\"foo\",\"the\"]",
+          "output": "[6,9,12]",
+          "explanation": "Substrings at indices 6, 9, 12 are valid concatenations."
+        }
+      ],
+      "hints": [
+        "Use a sliding window of size (word_count * word_length)",
+        "Use hash maps to count words",
+        "Check each possible starting position modulo word_length"
+      ],
+      "timeComplexity": "O(n * k) where k is word length",
+      "spaceComplexity": "O(m * k) where m is number of words",
+      "tags": ["string", "sliding-window", "hash-table"],
+      "starterCode": {
+        "javascript": "function findSubstring(s, words) {\n  // Write your code here\n  \n}",
+        "python": "def find_substring(s, words):\n    # Write your code here\n    pass",
+        "java": "public List<Integer> findSubstring(String s, String[] words) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+      }
+    },
+    {
+      "id": "q57",
+      "title": "Maximum Number of Vowels in a Substring of Given Length",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Google"],
+      "introduction": "Given a string s and an integer k, return the maximum number of vowel letters in any substring of s with length k. Vowel letters in English are 'a', 'e', 'i', 'o', and 'u'.",
+      "problemStatement": "Find the maximum number of vowels in any substring of length k.\n\nConstraints:\n- 1 <= s.length <= 10^5\n- s consists of lowercase English letters\n- 1 <= k <= s.length",
+      "examples": [
+        {
+          "input": "s = \"abciiidef\", k = 3",
+          "output": "3",
+          "explanation": "The substring \"iii\" contains 3 vowels."
+        },
+        {
+          "input": "s = \"aeiou\", k = 2",
+          "output": "2",
+          "explanation": "Any substring of length 2 contains 2 vowels."
+        },
+        {
+          "input": "s = \"leetcode\", k = 3",
+          "output": "2",
+          "explanation": "\"lee\", \"eet\" and \"ode\" each contain 2 vowels."
+        }
+      ],
+      "hints": [
+        "Use a fixed-size sliding window of size k",
+        "Count vowels in initial window",
+        "Update count as window slides"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["string", "sliding-window"],
+      "starterCode": {
+        "javascript": "function maxVowels(s, k) {\n  // Write your code here\n  \n}",
+        "python": "def max_vowels(s, k):\n    # Write your code here\n    pass",
+        "java": "public int maxVowels(String s, int k) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q58",
+      "title": "Longest Turbulent Subarray",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Google"],
+      "introduction": "Given an integer array arr, return the length of a maximum size turbulent subarray of arr. A subarray is turbulent if the comparison sign flips between each adjacent pair of elements in the subarray.",
+      "problemStatement": "Find the longest turbulent subarray (alternating greater/less than comparisons).\n\nConstraints:\n- 1 <= arr.length <= 4 * 10^4\n- 0 <= arr[i] <= 10^9",
+      "examples": [
+        {
+          "input": "arr = [9,4,2,10,7,8,8,1,9]",
+          "output": "5",
+          "explanation": "arr[1] > arr[2] < arr[3] > arr[4] < arr[5] forms a turbulent subarray of length 5."
+        },
+        {
+          "input": "arr = [4,8,12,16]",
+          "output": "2",
+          "explanation": "Only adjacent pairs can form turbulent subarrays."
+        },
+        {
+          "input": "arr = [100]",
+          "output": "1",
+          "explanation": "Single element array."
+        }
+      ],
+      "hints": [
+        "Use sliding window with comparison state tracking",
+        "Track if last comparison was > or <",
+        "Reset window when comparison pattern breaks"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "sliding-window", "dynamic-programming"],
+      "starterCode": {
+        "javascript": "function maxTurbulenceSize(arr) {\n  // Write your code here\n  \n}",
+        "python": "def max_turbulence_size(arr):\n    # Write your code here\n    pass",
+        "java": "public int maxTurbulenceSize(int[] arr) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q59",
+      "title": "Number of Substrings Containing All Three Characters",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Google", "Facebook"],
+      "introduction": "Given a string s consisting only of characters a, b and c. Return the number of substrings containing at least one occurrence of all these characters a, b and c.",
+      "problemStatement": "Count substrings containing at least one of each: 'a', 'b', and 'c'.\n\nConstraints:\n- 3 <= s.length <= 5 * 10^4\n- s only consists of a, b or c characters",
+      "examples": [
+        {
+          "input": "s = \"abcabc\"",
+          "output": "10",
+          "explanation": "Substrings containing a, b, c are: \"abc\", \"abca\", \"abcab\", \"abcabc\", \"bca\", \"bcab\", \"bcabc\", \"cab\", \"cabc\", \"abc\"."
+        },
+        {
+          "input": "s = \"aaacb\"",
+          "output": "3",
+          "explanation": "Substrings are \"aaacb\", \"aacb\", \"acb\"."
+        },
+        {
+          "input": "s = \"abc\"",
+          "output": "1",
+          "explanation": "Only \"abc\" contains all three characters."
+        }
+      ],
+      "hints": [
+        "For each position, find the smallest valid window ending there",
+        "All longer substrings from that window will also be valid",
+        "Use sliding window and count contributions"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["string", "sliding-window", "hash-table"],
+      "starterCode": {
+        "javascript": "function numberOfSubstrings(s) {\n  // Write your code here\n  \n}",
+        "python": "def number_of_substrings(s):\n    # Write your code here\n    pass",
+        "java": "public int numberOfSubstrings(String s) {\n    // Write your code here\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "q60",
+      "title": "Minimum Operations to Reduce X to Zero",
+      "category": "sliding-window",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Google", "Microsoft"],
+      "introduction": "You are given an integer array nums and an integer x. In one operation, you can either remove the leftmost or the rightmost element from the array nums and subtract its value from x. Return the minimum number of operations to reduce x to exactly 0, or -1 if not possible.",
+      "problemStatement": "Find minimum elements to remove from ends to make sum equal to x.\n\nConstraints:\n- 1 <= nums.length <= 10^5\n- 1 <= nums[i] <= 10^4\n- 1 <= x <= 10^9",
+      "examples": [
+        {
+          "input": "nums = [1,1,4,2,3], x = 5",
+          "output": "2",
+          "explanation": "Remove 2 and 3 from the right to get sum 5."
+        },
+        {
+          "input": "nums = [5,6,7,8,9], x = 4",
+          "output": "-1",
+          "explanation": "Cannot achieve sum 4 from any combination of ends."
+        },
+        {
+          "input": "nums = [3,2,20,1,1,3], x = 10",
+          "output": "5",
+          "explanation": "Remove 3,2 from left and 1,1,3 from right."
+        }
+      ],
+      "hints": [
+        "Reframe: find longest middle subarray with sum = total - x",
+        "Use sliding window to find this middle subarray",
+        "Answer is n - length of this subarray"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": ["array", "sliding-window", "hash-table", "binary-search", "prefix-sum"],
+      "starterCode": {
+        "javascript": "function minOperations(nums, x) {\n  // Write your code here\n  \n}",
+        "python": "def min_operations(nums, x):\n    # Write your code here\n    pass",
+        "java": "public int minOperations(int[] nums, int x) {\n    // Write your code here\n    return -1;\n}"
+      }
+    }
+  ]
+}
