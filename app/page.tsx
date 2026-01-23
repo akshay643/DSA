@@ -40,7 +40,6 @@ export default function Home() {
     setProgress((prev) => ({
       ...prev,
       [questionId]: {
-        questionId,
         completed: false,
         attempts: 0,
         lastAttempted: new Date().toISOString(),
