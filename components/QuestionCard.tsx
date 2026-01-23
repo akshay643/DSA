@@ -265,8 +265,215 @@ export default function QuestionCard({
         );
         
         setOutput(results.join('\n'));
-      } else {
-        setOutput('⚠️ Test execution currently only available for JavaScript.\n\nYou can still run your code manually with the Run Code button.');
+      } else if (language === 'python') {
+        setOutput('Loading Python environment and running tests...\n\n');
+        const pyodide = await loadPyodide();
+        
+        if (!pyodide) {
+          setOutput('Failed to load Python environment. Please refresh and try again.');
+          return;
+        }
+
+        let results: string[] = [];
+        let allPassed = true;
+        let totalTime = 0;
+        
+        // Extract function name from code
+        const functionMatch = code.match(/def\s+(\w+)\s*\(/);
+        const functionName = functionMatch ? functionMatch[1] : null;
+        
+        if (!functionName) {
+          setOutput('❌ Could not find function definition in your code.\nMake sure your code contains a function definition like: def function_name(...)');
+          setIsRunning(false);
+          return;
+        }
+        
+        for (let i = 0; i < question.testCases.length; i++) {
+          const testCase = question.testCases[i];
+          
+          try {
+            const startTime = performance.now();
+            
+            // Build test code
+            const inputValues = Object.values(testCase.input);
+            const inputArgs = inputValues.map(v => JSON.stringify(v)).join(', ');
+            const testCode = `${code}\n\nimport json\nresult = ${functionName}(${inputArgs})\nprint(json.dumps(result))`;
+            
+            // Capture output
+            const outputs: string[] = [];
+            pyodide.setStdout({ 
+              batched: (text: string) => {
+                outputs.push(text);
+              }
+            });
+            
+            await pyodide.runPythonAsync(testCode);
+            const endTime = performance.now();
+            const executionTime = (endTime - startTime).toFixed(3);
+            totalTime += parseFloat(executionTime);
+            
+            // Parse result
+            const output = outputs.join('').trim();
+            const result = output ? JSON.parse(output) : null;
+            
+            // Compare result
+            const expected = JSON.stringify(testCase.output);
+            const actual = JSON.stringify(result);
+            const passed = expected === actual;
+            
+            if (!passed) allPassed = false;
+            
+            results.push(
+              `Test ${i + 1}: ${passed ? '✅ PASSED' : '❌ FAILED'}\n` +
+              `Input: ${JSON.stringify(testCase.input)}\n` +
+              `Expected: ${expected}\n` +
+              `Got: ${actual}\n` +
+              `Time: ${executionTime}ms\n`
+            );
+          } catch (error: any) {
+            allPassed = false;
+            results.push(
+              `Test ${i + 1}: ❌ ERROR\n` +
+              `Input: ${JSON.stringify(testCase.input)}\n` +
+              `Error: ${error.message}\n`
+            );
+          }
+        }
+        
+        const avgTime = (totalTime / question.testCases.length).toFixed(3);
+        
+        results.unshift(
+          `📊 Test Results: ${allPassed ? '✅ All Passed' : '❌ Some Failed'}\n` +
+          `Tests: ${question.testCases.length}\n` +
+          `Avg Time: ${avgTime}ms\n` +
+          `Total Time: ${totalTime.toFixed(3)}ms\n\n` +
+          `Expected Complexity:\n` +
+          `⏱️  Time: ${question.timeComplexity}\n` +
+          `💾 Space: ${question.spaceComplexity}\n\n` +
+          `━━━━━━━━━━━━━━━━━━━━━━━━\n\n`
+        );
+        
+        setOutput(results.join('\n'));
+      } else if (language === 'java') {
+        setOutput('Running Java tests (this may take a moment)...\n\n');
+        
+        let results: string[] = [];
+        let allPassed = true;
+        let totalTime = 0;
+        
+        // Extract method name from code
+        const methodMatch = code.match(/public\s+\w+\s+(\w+)\s*\(/);
+        const methodName = methodMatch ? methodMatch[1] : null;
+        
+        if (!methodName) {
+          setOutput('❌ Could not find public method definition in your code.\nMake sure your code contains a method like: public ReturnType methodName(...)');
+          setIsRunning(false);
+          return;
+        }
+        
+        for (let i = 0; i < question.testCases.length; i++) {
+          const testCase = question.testCases[i];
+          
+          try {
+            const startTime = performance.now();
+            
+            // Build test code
+            const inputValues = Object.values(testCase.input);
+            const javaInputs = inputValues.map(v => {
+              if (Array.isArray(v)) {
+                return `new int[]{${v.join(',')}}`;
+              } else if (typeof v === 'string') {
+                return `"${v}"`;
+              }
+              return v;
+            }).join(', ');
+            
+            const testCode = `
+import java.util.*;
+import com.google.gson.Gson;
+
+public class Solution {
+    ${code}
+    
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        Object result = sol.${methodName}(${javaInputs});
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(result));
+    }
+}`;
+            
+            // Use Piston API for Java execution
+            const response = await fetch('https://emkc.org/api/v2/piston/execute', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                language: 'java',
+                version: '15.0.2',
+                files: [{
+                  content: testCode
+                }]
+              })
+            });
+            
+            const apiResult = await response.json();
+            const endTime = performance.now();
+            const executionTime = (endTime - startTime).toFixed(3);
+            totalTime += parseFloat(executionTime);
+            
+            if (apiResult.run && !apiResult.run.stderr) {
+              const output = (apiResult.run.output || apiResult.run.stdout || '').trim();
+              const result = output ? JSON.parse(output) : null;
+              
+              // Compare result
+              const expected = JSON.stringify(testCase.output);
+              const actual = JSON.stringify(result);
+              const passed = expected === actual;
+              
+              if (!passed) allPassed = false;
+              
+              results.push(
+                `Test ${i + 1}: ${passed ? '✅ PASSED' : '❌ FAILED'}\n` +
+                `Input: ${JSON.stringify(testCase.input)}\n` +
+                `Expected: ${expected}\n` +
+                `Got: ${actual}\n` +
+                `Time: ${executionTime}ms\n`
+              );
+            } else {
+              allPassed = false;
+              const error = apiResult.run?.stderr || apiResult.message || 'Unknown error';
+              results.push(
+                `Test ${i + 1}: ❌ ERROR\n` +
+                `Input: ${JSON.stringify(testCase.input)}\n` +
+                `Error: ${error}\n`
+              );
+            }
+          } catch (error: any) {
+            allPassed = false;
+            results.push(
+              `Test ${i + 1}: ❌ ERROR\n` +
+              `Input: ${JSON.stringify(testCase.input)}\n` +
+              `Error: ${error.message}\n`
+            );
+          }
+        }
+        
+        const avgTime = (totalTime / question.testCases.length).toFixed(3);
+        
+        results.unshift(
+          `📊 Test Results: ${allPassed ? '✅ All Passed' : '❌ Some Failed'}\n` +
+          `Tests: ${question.testCases.length}\n` +
+          `Avg Time: ${avgTime}ms (includes network latency)\n` +
+          `Total Time: ${totalTime.toFixed(3)}ms\n\n` +
+          `Expected Complexity:\n` +
+          `⏱️  Time: ${question.timeComplexity}\n` +
+          `💾 Space: ${question.spaceComplexity}\n\n` +
+          `━━━━━━━━━━━━━━━━━━━━━━━━\n\n`
+        );
+        
+        setOutput(results.join('\n'));
       }
     } catch (error: any) {
       setOutput(`Test Error: ${error.message}`);
