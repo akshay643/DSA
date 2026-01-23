@@ -326,8 +326,8 @@ export default function Home() {
             allQuestions={questions}
           />
 
-          <div className="flex-1 overflow-y-auto p-6">
-            <div className="max-w-6xl mx-auto space-y-6">
+          <div className="flex-1 overflow-y-auto p-6 pb-12">
+            <div className="max-w-6xl mx-auto space-y-6 pb-8">
               {/* Hero Stats Section */}
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 rounded-xl p-8 border border-blue-200 dark:border-gray-700 shadow-lg">
                 <div className="text-center mb-6">
@@ -522,7 +522,7 @@ export default function Home() {
                         isExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
                       }`}
                     >
-                      <div className="px-6 pb-4 pt-2 space-y-2 border-t border-gray-700 bg-gradient-to-b from-gray-900/80 to-black/90">
+                      <div className="px-6 pb-6 pt-2 space-y-2 border-t border-gray-700 bg-gradient-to-b from-gray-900/80 to-black/90">
                         {categoryQuestions.map((question) => {
                           const isCompleted = completedQuestions.has(question.id);
                           return (

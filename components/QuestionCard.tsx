@@ -219,10 +219,99 @@ export default function QuestionCard({
           const testCase = question.testCases[i];
           
           try {
-            // Prepare the function
             const startTime = performance.now();
-            const func = eval(`(${code.trim()})`);
-            const result = func(...Object.values(testCase.input));
+            
+            // Extract function - support both function declarations and arrow functions
+            let functionCode = code;
+            let func;
+            
+            // Try to find and extract the main function
+            const functionMatch = code.match(/function\s+(\w+)\s*\(/);
+            const arrowMatch = code.match(/(?:const|let|var)\s+(\w+)\s*=/);
+            
+            if (functionMatch) {
+              // Regular function declaration
+              const functionName = functionMatch[1];
+              let braceCount = 0;
+              let functionStart = code.indexOf('function');
+              let inFunction = false;
+              
+              for (let i = functionStart; i < code.length; i++) {
+                if (code[i] === '{') {
+                  braceCount++;
+                  inFunction = true;
+                } else if (code[i] === '}') {
+                  braceCount--;
+                  if (inFunction && braceCount === 0) {
+                    functionCode = code.substring(functionStart, i + 1);
+                    break;
+                  }
+                }
+              }
+              
+              const wrappedCode = `(function() { ${functionCode}; return ${functionName}; })()`;
+              func = eval(wrappedCode);
+            } else if (arrowMatch) {
+              // Arrow function or const assignment
+              const lines = code.split('\n');
+              const funcLines = [];
+              let started = false;
+              let braceCount = 0;
+              
+              for (const line of lines) {
+                const trimmed = line.trim();
+                
+                // Skip comments and empty lines before function
+                if (!started && (trimmed === '' || trimmed.startsWith('//'))) {
+                  continue;
+                }
+                
+                // Start capturing when we find const/let/var
+                if (!started && (trimmed.startsWith('const ') || trimmed.startsWith('let ') || trimmed.startsWith('var '))) {
+                  started = true;
+                  funcLines.push(line);
+                  
+                  // Count braces in this line
+                  for (const char of line) {
+                    if (char === '{') braceCount++;
+                    if (char === '}') braceCount--;
+                  }
+                  
+                  // If it's a one-liner arrow function, we're done
+                  if (line.includes('=>') && braceCount === 0) {
+                    break;
+                  }
+                  continue;
+                }
+                
+                if (started) {
+                  funcLines.push(line);
+                  
+                  // Count braces
+                  for (const char of line) {
+                    if (char === '{') braceCount++;
+                    if (char === '}') braceCount--;
+                  }
+                  
+                  // If braces are balanced, we're done
+                  if (braceCount === 0) {
+                    break;
+                  }
+                }
+              }
+              
+              functionCode = funcLines.join('\n');
+              const funcName = arrowMatch[1];
+              eval(functionCode);
+              func = eval(funcName);
+            } else {
+              // Fallback: try wrapping as expression
+              func = eval(`(${code.trim()})`);
+            }
+            
+            // Pass inputs in the correct order from the input object
+            const inputArgs = Object.values(testCase.input);
+            const result = func(...inputArgs);
             const endTime = performance.now();
             const executionTime = (endTime - startTime).toFixed(3);
             totalTime += parseFloat(executionTime);
@@ -288,16 +377,72 @@ export default function QuestionCard({
           return;
         }
         
+        // Extract only the function definition (ignore test code, comments after function)
+        let functionCode = code;
+        const lines = code.split('\n');
+        let functionLines: string[] = [];
+        let inFunction = false;
+        let functionIndent = 0;
+        
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i];
+          const trimmed = line.trim();
+          
+          // Start of function
+          if (trimmed.startsWith('def ') && trimmed.includes(functionName)) {
+            inFunction = true;
+            functionIndent = line.length - line.trimStart().length;
+            functionLines.push(line);
+            continue;
+          }
+          
+          if (inFunction) {
+            // Empty lines or comments within function
+            if (trimmed === '' || trimmed.startsWith('#')) {
+              functionLines.push(line);
+              continue;
+            }
+            
+            // Check if we're still inside the function (indentation level)
+            const currentIndent = line.length - line.trimStart().length;
+            if (currentIndent > functionIndent || trimmed === '') {
+              functionLines.push(line);
+            } else {
+              // We've exited the function
+              break;
+            }
+          }
+        }
+        
+        functionCode = functionLines.join('\n');
+        
         for (let i = 0; i < question.testCases.length; i++) {
           const testCase = question.testCases[i];
           
           try {
             const startTime = performance.now();
             
-            // Build test code
+            // Build test code - convert inputs to Python format
             const inputValues = Object.values(testCase.input);
-            const inputArgs = inputValues.map(v => JSON.stringify(v)).join(', ');
-            const testCode = `${code}\n\nimport json\nresult = ${functionName}(${inputArgs})\nprint(json.dumps(result))`;
+            const inputArgs = inputValues.map(v => {
+              if (Array.isArray(v)) {
+                // Handle arrays - convert to Python list notation
+                return JSON.stringify(v);
+              } else if (typeof v === 'string') {
+                // Handle strings - use proper Python string notation
+                return JSON.stringify(v);
+              } else if (typeof v === 'number') {
+                return v.toString();
+              } else if (typeof v === 'boolean') {
+                return v ? 'True' : 'False';
+              } else if (v === null) {
+                return 'None';
+              } else {
+                // Handle objects/dicts
+                return JSON.stringify(v).replace(/true/g, 'True').replace(/false/g, 'False').replace(/null/g, 'None');
+              }
+            }).join(', ');
+            const testCode = `${functionCode}\n\nimport json\nresult = ${functionName}(${inputArgs})\nprint(json.dumps(result))`;
             
             // Capture output
             const outputs: string[] = [];
@@ -377,13 +522,22 @@ export default function QuestionCard({
           try {
             const startTime = performance.now();
             
-            // Build test code
+            // Build test code - convert inputs to Java format
             const inputValues = Object.values(testCase.input);
             const javaInputs = inputValues.map(v => {
               if (Array.isArray(v)) {
-                return `new int[]{${v.join(',')}}`;
+                // Check if it's an array of strings or numbers
+                if (v.length > 0 && typeof v[0] === 'string') {
+                  return `new String[]{${v.map(s => `"${s}"`).join(',')}}`;
+                } else {
+                  return `new int[]{${v.join(',')}}`;
+                }
               } else if (typeof v === 'string') {
                 return `"${v}"`;
+              } else if (typeof v === 'boolean') {
+                return v ? 'true' : 'false';
+              } else if (v === null) {
+                return 'null';
               }
               return v;
             }).join(', ');
