@@ -40,6 +40,8 @@ export default function QuestionCard({
   const [showNotes, setShowNotes] = useState(true);
   const [outputHeight, setOutputHeight] = useState(200);
   const [notesHeight, setNotesHeight] = useState(128);
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const executionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -95,38 +97,75 @@ export default function QuestionCard({
     setIsRunning(true);
     setOutput('');
     
+    // Create abort controller for cancellation
+    abortControllerRef.current = new AbortController();
+    
+    // Set timeout (10 seconds for code execution)
+    const codeTimeout = setTimeout(() => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+        setOutput(prev => prev + '\n\n⏱️ Execution timed out (5 seconds). Your code may have an infinite loop.\n\nTips:\n- Check for infinite loops\n- Optimize your algorithm');
+        setIsRunning(false);
+      }
+    }, 5000);
+    
     const code = savedCode || question.starterCode[language];
     
     try {
       if (language === 'javascript') {
-        // Capture console.log output
-        const logs: string[] = [];
-        const originalLog = console.log;
-        const originalError = console.error;
+        // Use Web Worker to run code in separate thread (prevents page freeze)
+        const workerPromise = new Promise((resolve, reject) => {
+          const worker = new Worker('/run-worker.js');
+          let completed = false;
+          
+          const timeout = setTimeout(() => {
+            if (!completed) {
+              completed = true;
+              worker.terminate();
+              reject(new Error('Execution timed out (10 seconds)'));
+            }
+          }, 10000);
+          
+          worker.onmessage = (e) => {
+            if (!completed) {
+              completed = true;
+              clearTimeout(timeout);
+              worker.terminate();
+              resolve(e.data);
+            }
+          };
+          
+          worker.onerror = (error) => {
+            if (!completed) {
+              completed = true;
+              clearTimeout(timeout);
+              worker.terminate();
+              reject(error);
+            }
+          };
+          
+          // Check for abort
+          if (abortControllerRef.current?.signal.aborted) {
+            completed = true;
+            clearTimeout(timeout);
+            worker.terminate();
+            reject(new Error('Execution cancelled'));
+            return;
+          }
+          
+          // Send code to worker
+          worker.postMessage({ code });
+        });
         
-        console.log = (...args: any[]) => {
-          logs.push(args.map(arg => 
-            typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
-          ).join(' '));
-        };
+        const result = await workerPromise;
         
-        console.error = (...args: any[]) => {
-          logs.push('Error: ' + args.map(arg => String(arg)).join(' '));
-        };
-        
-        // Execute the code
-        const result = eval(code);
-        
-        // Restore console
-        console.log = originalLog;
-        console.error = originalError;
-        
-        // Show output
-        let outputText = logs.join('\n');
-        if (result !== undefined && logs.length === 0) {
-          outputText = String(result);
+        if (result.success) {
+          setOutput(result.output);
+        } else {
+          setOutput(`Error: ${result.error}`);
         }
-        setOutput(outputText || 'Code executed successfully (no output)');
+        
+        clearTimeout(codeTimeout);
       } else if (language === 'python') {
         setOutput('Loading Python environment...');
         const pyodide = await loadPyodide();
@@ -166,12 +205,13 @@ export default function QuestionCard({
 }`;
         }
         
-        // Use Piston API for Java execution (free, no auth required)
+        // Use Piston API for Java execution with timeout
         const response = await fetch('https://emkc.org/api/v2/piston/execute', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
+          signal: abortControllerRef.current?.signal,
           body: JSON.stringify({
             language: 'java',
             version: '15.0.2',
@@ -190,10 +230,18 @@ export default function QuestionCard({
         } else {
           setOutput('Execution failed. Please check your code syntax.');
         }
+        
+        clearTimeout(codeTimeout);
       }
     } catch (error: any) {
-      setOutput(`Error: ${error.message}`);
+      if (error.name === 'AbortError') {
+        setOutput(prev => prev + '\n\n⚠️ Code execution was cancelled.');
+      } else {
+        setOutput(`Error: ${error.message}`);
+      }
     } finally {
+      clearTimeout(codeTimeout);
+      abortControllerRef.current = null;
       setIsRunning(false);
     }
   };
@@ -207,6 +255,18 @@ export default function QuestionCard({
     setIsRunning(true);
     setOutput('Running tests...\n\n');
     
+    // Create abort controller for cancellation
+    abortControllerRef.current = new AbortController();
+    
+    // Set overall timeout (30 seconds max for all tests)
+    const overallTimeout = setTimeout(() => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+        setOutput(prev => prev + '\n\n⏱️ Execution timed out (30 seconds). Your code may have an infinite loop or be too slow.\n\nTips:\n- Check for infinite loops\n- Optimize your algorithm\n- Review the time complexity requirements');
+        setIsRunning(false);
+      }
+    }, 30000);
+    
     const code = savedCode || question.starterCode[language];
     
     try {
@@ -214,123 +274,109 @@ export default function QuestionCard({
         let results: string[] = [];
         let allPassed = true;
         let totalTime = 0;
+        const MAX_TEST_TIME = 5000; // 5 seconds per test case
+        
+        // Use Web Worker to run tests in separate thread (prevents page freeze)
+        const workerPromises: Promise<any>[] = [];
         
         for (let i = 0; i < question.testCases.length; i++) {
           const testCase = question.testCases[i];
           
-          try {
-            const startTime = performance.now();
+          const workerPromise = new Promise((resolve, reject) => {
+            const worker = new Worker('/test-worker.js');
+            let timeoutId: NodeJS.Timeout;
+            let completed = false;
             
-            // Extract function - support both function declarations and arrow functions
-            let functionCode = code;
-            let func;
-            
-            // Try to find and extract the main function
-            const functionMatch = code.match(/function\s+(\w+)\s*\(/);
-            const arrowMatch = code.match(/(?:const|let|var)\s+(\w+)\s*=/);
-            
-            if (functionMatch) {
-              // Regular function declaration
-              const functionName = functionMatch[1];
-              let braceCount = 0;
-              let functionStart = code.indexOf('function');
-              let inFunction = false;
-              
-              for (let i = functionStart; i < code.length; i++) {
-                if (code[i] === '{') {
-                  braceCount++;
-                  inFunction = true;
-                } else if (code[i] === '}') {
-                  braceCount--;
-                  if (inFunction && braceCount === 0) {
-                    functionCode = code.substring(functionStart, i + 1);
-                    break;
-                  }
-                }
+            // Set timeout for this test
+            timeoutId = setTimeout(() => {
+              if (!completed) {
+                completed = true;
+                worker.terminate();
+                reject(new Error('Test case timed out (5 seconds limit)'));
               }
-              
-              const wrappedCode = `(function() { ${functionCode}; return ${functionName}; })()`;
-              func = eval(wrappedCode);
-            } else if (arrowMatch) {
-              // Arrow function or const assignment
-              const lines = code.split('\n');
-              const funcLines = [];
-              let started = false;
-              let braceCount = 0;
-              
-              for (const line of lines) {
-                const trimmed = line.trim();
-                
-                // Skip comments and empty lines before function
-                if (!started && (trimmed === '' || trimmed.startsWith('//'))) {
-                  continue;
-                }
-                
-                // Start capturing when we find const/let/var
-                if (!started && (trimmed.startsWith('const ') || trimmed.startsWith('let ') || trimmed.startsWith('var '))) {
-                  started = true;
-                  funcLines.push(line);
-                  
-                  // Count braces in this line
-                  for (const char of line) {
-                    if (char === '{') braceCount++;
-                    if (char === '}') braceCount--;
-                  }
-                  
-                  // If it's a one-liner arrow function, we're done
-                  if (line.includes('=>') && braceCount === 0) {
-                    break;
-                  }
-                  continue;
-                }
-                
-                if (started) {
-                  funcLines.push(line);
-                  
-                  // Count braces
-                  for (const char of line) {
-                    if (char === '{') braceCount++;
-                    if (char === '}') braceCount--;
-                  }
-                  
-                  // If braces are balanced, we're done
-                  if (braceCount === 0) {
-                    break;
-                  }
-                }
+            }, MAX_TEST_TIME);
+            
+            worker.onmessage = (e) => {
+              if (!completed) {
+                completed = true;
+                clearTimeout(timeoutId);
+                worker.terminate();
+                resolve(e.data);
               }
-              
-              functionCode = funcLines.join('\n');
-              const funcName = arrowMatch[1];
-              eval(functionCode);
-              func = eval(funcName);
-            } else {
-              // Fallback: try wrapping as expression
-              func = eval(`(${code.trim()})`);
+            };
+            
+            worker.onerror = (error) => {
+              if (!completed) {
+                completed = true;
+                clearTimeout(timeoutId);
+                worker.terminate();
+                reject(error);
+              }
+            };
+            
+            // Check for abort
+            if (abortControllerRef.current?.signal.aborted) {
+              completed = true;
+              clearTimeout(timeoutId);
+              worker.terminate();
+              reject(new Error('Execution cancelled'));
+              return;
             }
             
-            // Pass inputs in the correct order from the input object
-            const inputArgs = Object.values(testCase.input);
-            const result = func(...inputArgs);
-            const endTime = performance.now();
-            const executionTime = (endTime - startTime).toFixed(3);
-            totalTime += parseFloat(executionTime);
-            
-            // Compare result
-            const expected = JSON.stringify(testCase.output);
-            const actual = JSON.stringify(result);
-            const passed = expected === actual;
-            
-            if (!passed) allPassed = false;
-            
-            results.push(
-              `Test ${i + 1}: ${passed ? '✅ PASSED' : '❌ FAILED'}\n` +
-              `Input: ${JSON.stringify(testCase.input)}\n` +
-              `Expected: ${expected}\n` +
-              `Got: ${actual}\n` +
-              `Time: ${executionTime}ms\n`
-            );
+            // Send test to worker
+            worker.postMessage({
+              code,
+              testCase,
+              testIndex: i
+            });
+          });
+          
+          workerPromises.push(workerPromise);
+        }
+        
+        // Wait for all tests to complete
+        const workerResults = await Promise.allSettled(workerPromises);
+        
+        // Process results
+        for (let i = 0; i < workerResults.length; i++) {
+          const result = workerResults[i];
+          const testCase = question.testCases[i];
+          
+          try {
+            if (result.status === 'fulfilled' && result.value.success) {
+              const data = result.value;
+              totalTime += parseFloat(data.executionTime);
+              
+              const expected = JSON.stringify(data.expected);
+              const actual = JSON.stringify(data.result);
+              const passed = expected === actual;
+              
+              if (!passed) allPassed = false;
+              
+              results.push(
+                `Test ${i + 1}: ${passed ? '✅ PASSED' : '❌ FAILED'}\n` +
+                `Input: ${JSON.stringify(data.input)}\n` +
+                `Expected: ${expected}\n` +
+                `Got: ${actual}\n` +
+                `Time: ${data.executionTime}ms\n`
+              );
+            } else if (result.status === 'fulfilled' && !result.value.success) {
+              allPassed = false;
+              results.push(
+                `Test ${i + 1}: ❌ ERROR\n` +
+                `Input: ${JSON.stringify(result.value.input)}\n` +
+                `Error: ${result.value.error}\n`
+              );
+            } else if (result.status === 'rejected') {
+              allPassed = false;
+              results.push(
+                `Test ${i + 1}: ❌ ERROR\n` +
+                `Input: ${JSON.stringify(testCase.input)}\n` +
+                `Error: ${result.reason?.message || 'Unknown error'}\n`
+              );
+            }
           } catch (error: any) {
+            // This catch is just for safety
             allPassed = false;
             results.push(
               `Test ${i + 1}: ❌ ERROR\n` +
@@ -356,6 +402,12 @@ export default function QuestionCard({
         setOutput(results.join('\n'));
       } else if (language === 'python') {
         setOutput('Loading Python environment and running tests...\n\n');
+        
+        // Check for abort
+        if (abortControllerRef.current?.signal.aborted) {
+          return;
+        }
+        
         const pyodide = await loadPyodide();
         
         if (!pyodide) {
@@ -418,6 +470,11 @@ export default function QuestionCard({
         
         for (let i = 0; i < question.testCases.length; i++) {
           const testCase = question.testCases[i];
+          
+          // Check if execution was aborted
+          if (abortControllerRef.current?.signal.aborted) {
+            break;
+          }
           
           try {
             const startTime = performance.now();
@@ -557,12 +614,13 @@ public class Solution {
     }
 }`;
             
-            // Use Piston API for Java execution
+            // Use Piston API for Java execution with timeout
             const response = await fetch('https://emkc.org/api/v2/piston/execute', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
               },
+              signal: abortControllerRef.current?.signal,
               body: JSON.stringify({
                 language: 'java',
                 version: '15.0.2',
@@ -630,8 +688,14 @@ public class Solution {
         setOutput(results.join('\n'));
       }
     } catch (error: any) {
-      setOutput(`Test Error: ${error.message}`);
+      if (error.name === 'AbortError') {
+        setOutput(prev => prev + '\n\n⚠️ Test execution was cancelled.');
+      } else {
+        setOutput(`Test Error: ${error.message}`);
+      }
     } finally {
+      clearTimeout(overallTimeout);
+      abortControllerRef.current = null;
       setIsRunning(false);
     }
   };
@@ -666,23 +730,42 @@ public class Solution {
         </div>
 
         <div className="flex items-center gap-2">
-          <button
-            onClick={runTests}
-            disabled={isRunning || !question.testCases}
-            className="flex items-center gap-2 px-4 py-1.5 rounded text-sm font-medium bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
-            title="Run all test cases and check complexity"
-          >
-            <Check className="w-4 h-4" />
-            {isRunning ? 'Testing...' : 'Run Tests'}
-          </button>
-          <button
-            onClick={runCode}
-            disabled={isRunning}
-            className="flex items-center gap-2 px-4 py-1.5 rounded text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <Play className="w-4 h-4" />
-            {isRunning ? 'Running...' : 'Run Code'}
-          </button>
+          {isRunning ? (
+            <button
+              onClick={() => {
+                if (abortControllerRef.current) {
+                  abortControllerRef.current.abort();
+                  setIsRunning(false);
+                  setOutput(prev => prev + '\n\n⚠️ Test execution cancelled by user.');
+                }
+              }}
+              className="flex items-center gap-2 px-4 py-1.5 rounded text-sm font-medium bg-red-600 hover:bg-red-700 text-white shadow-lg animate-pulse"
+              title="Cancel test execution"
+            >
+              <StopCircle className="w-4 h-4" />
+              Cancel
+            </button>
+          ) : (
+            <>
+              <button
+                onClick={runTests}
+                disabled={isRunning || !question.testCases}
+                className="flex items-center gap-2 px-4 py-1.5 rounded text-sm font-medium bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                title="Run all test cases and check complexity"
+              >
+                <Check className="w-4 h-4" />
+                Run Tests
+              </button>
+              <button
+                onClick={runCode}
+                disabled={isRunning}
+                className="flex items-center gap-2 px-4 py-1.5 rounded text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <Play className="w-4 h-4" />
+                Run Code
+              </button>
+            </>
+          )}
           <button
             onClick={onToggleComplete}
             className={`flex items-center gap-2 px-3 py-1.5 rounded text-sm font-medium ${
