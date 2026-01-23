@@ -37,9 +37,8 @@ export default function Home() {
   };
 
   const updateProgress = (questionId: string, updates: Partial<QuestionProgress>) => {
-    setProgress((prev) => ({
-      ...prev,
-      [questionId]: {
+    setProgress((prev) => {
+      const existingProgress = prev[questionId] || {
         completed: false,
         attempts: 0,
         lastAttempted: new Date().toISOString(),
@@ -50,10 +49,16 @@ export default function Home() {
           java: '',
         },
         timeSpent: 0,
-        ...prev[questionId],
-        ...updates,
-      },
-    }));
+      };
+      
+      return {
+        ...prev,
+        [questionId]: {
+          ...existingProgress,
+          ...updates,
+        },
+      };
+    });
   };
 
   const handleCodeChange = (questionId: string, code: string) => {
