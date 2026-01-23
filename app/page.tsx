@@ -387,23 +387,23 @@ export default function Home() {
               </div>
 
               {/* Tab Navigation */}
-              <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 p-1 rounded-lg w-fit">
+              <div className="flex items-center gap-2 bg-gradient-to-r from-gray-900 to-gray-800 dark:from-black dark:to-gray-900 p-1 rounded-xl w-fit shadow-xl border border-gray-700">
                 <button
                   onClick={() => setActiveTab('all')}
-                  className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
+                  className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                     activeTab === 'all'
-                      ? 'bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 shadow-sm'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/50 scale-105'
+                      : 'text-gray-400 hover:text-white hover:bg-gray-800'
                   }`}
                 >
                   All Questions ({questions.length})
                 </button>
                 <button
                   onClick={() => setActiveTab('top')}
-                  className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
+                  className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                     activeTab === 'top'
-                      ? 'bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 shadow-sm'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+                      ? 'bg-gradient-to-r from-orange-600 to-pink-600 text-white shadow-lg shadow-orange-500/50 scale-105'
+                      : 'text-gray-400 hover:text-white hover:bg-gray-800'
                   }`}
                 >
                   🔥 Top Interview ({questions.filter((q: any) => q.topInterview === true).length})
@@ -421,26 +421,39 @@ export default function Home() {
                 return (
                   <div
                     key={category.id}
-                    className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                    className={`relative rounded-xl overflow-hidden shadow-lg transition-all duration-500 ${
+                      isExpanded
+                        ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-black dark:from-black dark:via-gray-900 dark:to-gray-800 shadow-2xl shadow-blue-500/20 border-2 border-blue-500/30'
+                        : 'bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-900 dark:to-black hover:shadow-xl border border-gray-700 hover:border-gray-600'
+                    }`}
                   >
+                    {/* Bookmark Indicator */}
+                    {isExpanded && (
+                      <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 animate-pulse" />
+                    )}
+                    
                     {/* Accordion Header */}
                     <button
                       onClick={() => toggleCategory(category.id)}
-                      className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                      className={`w-full px-6 py-4 flex items-center justify-between transition-all duration-300 ${
+                        isExpanded ? 'bg-gradient-to-r from-blue-900/20 to-purple-900/20' : 'hover:bg-gray-800/50'
+                      }`}
                     >
                       <div className="flex items-center gap-4 flex-1 text-left">
                         <div className="flex-shrink-0">
                           {isExpanded ? (
-                            <ChevronUp className="w-6 h-6 text-gray-500" />
+                            <ChevronUp className="w-6 h-6 text-blue-400 animate-bounce" />
                           ) : (
-                            <ChevronDown className="w-6 h-6 text-gray-500" />
+                            <ChevronDown className="w-6 h-6 text-gray-400 group-hover:text-blue-400 transition-colors" />
                           )}
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
+                          <h3 className={`text-xl font-bold mb-1 transition-colors ${
+                            isExpanded ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400' : 'text-white'
+                          }`}>
                             {category.name}
                           </h3>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                          <p className="text-sm text-gray-400">
                             {category.description}
                           </p>
                         </div>
@@ -467,26 +480,26 @@ export default function Home() {
 
                     {/* Accordion Content */}
                     <div
-                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
                         isExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
                       }`}
                     >
-                      <div className="px-6 pb-4 pt-2 space-y-2 border-t border-gray-200 dark:border-gray-700">
+                      <div className="px-6 pb-4 pt-2 space-y-2 border-t border-gray-700 bg-gradient-to-b from-gray-900/80 to-black/90">
                         {categoryQuestions.map((question) => {
                           const isCompleted = completedQuestions.has(question.id);
                           return (
                             <div
                               key={question.id}
                               onClick={() => handleQuestionSelect(question.id)}
-                              className="flex items-center gap-3 p-3 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-600 group"
+                              className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all border border-transparent group hover:bg-gradient-to-r hover:from-blue-900/30 hover:to-purple-900/30 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 hover:scale-[1.02]"
                             >
                               {isCompleted ? (
-                                <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
+                                <Check className="w-5 h-5 text-green-400 flex-shrink-0 drop-shadow-[0_0_8px_rgba(34,197,94,0.5)]" />
                               ) : (
-                                <Circle className="w-5 h-5 text-gray-400 flex-shrink-0 group-hover:text-gray-500" />
+                                <Circle className="w-5 h-5 text-gray-500 flex-shrink-0 group-hover:text-blue-400 transition-colors" />
                               )}
                               <div className="flex-1 min-w-0">
-                                <h4 className="font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                <h4 className="font-medium text-white transition-all duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400">
                                   {question.title}
                                 </h4>
                                 <div className="flex items-center gap-2 mt-1">
