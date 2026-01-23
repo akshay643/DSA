@@ -157,12 +157,12 @@ export default function QuestionCard({
           worker.postMessage({ code });
         });
         
-        const result = await workerPromise;
+        const result = await workerPromise as { success: boolean; output?: string; error?: string };
         
         if (result.success) {
-          setOutput(result.output);
+          setOutput(result.output || '');
         } else {
-          setOutput(`Error: ${result.error}`);
+          setOutput(`Error: ${result.error || 'Unknown error'}`);
         }
         
         clearTimeout(codeTimeout);
@@ -343,8 +343,8 @@ export default function QuestionCard({
           const testCase = question.testCases[i];
           
           try {
-            if (result.status === 'fulfilled' && result.value.success) {
-              const data = result.value;
+            if (result.status === 'fulfilled' && (result.value as any).success) {
+              const data = result.value as any;
               totalTime += parseFloat(data.executionTime);
               
               const expected = JSON.stringify(data.expected);
@@ -360,12 +360,13 @@ export default function QuestionCard({
                 `Got: ${actual}\n` +
                 `Time: ${data.executionTime}ms\n`
               );
-            } else if (result.status === 'fulfilled' && !result.value.success) {
+            } else if (result.status === 'fulfilled' && !(result.value as any).success) {
               allPassed = false;
+              const value = result.value as any;
               results.push(
                 `Test ${i + 1}: ❌ ERROR\n` +
-                `Input: ${JSON.stringify(result.value.input)}\n` +
-                `Error: ${result.value.error}\n`
+                `Input: ${JSON.stringify(value.input)}\n` +
+                `Error: ${value.error}\n`
               );
             } else if (result.status === 'rejected') {
               allPassed = false;
