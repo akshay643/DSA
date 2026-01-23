@@ -198,6 +198,83 @@ export default function QuestionCard({
     }
   };
 
+  const runTests = async () => {
+    if (!question.testCases || question.testCases.length === 0) {
+      setOutput('⚠️ No test cases available for this problem.');
+      return;
+    }
+
+    setIsRunning(true);
+    setOutput('Running tests...\n\n');
+    
+    const code = savedCode || question.starterCode[language];
+    
+    try {
+      if (language === 'javascript') {
+        let results: string[] = [];
+        let allPassed = true;
+        let totalTime = 0;
+        
+        for (let i = 0; i < question.testCases.length; i++) {
+          const testCase = question.testCases[i];
+          
+          try {
+            // Prepare the function
+            const startTime = performance.now();
+            const func = eval(`(${code.trim()})`);
+            const result = func(...Object.values(testCase.input));
+            const endTime = performance.now();
+            const executionTime = (endTime - startTime).toFixed(3);
+            totalTime += parseFloat(executionTime);
+            
+            // Compare result
+            const expected = JSON.stringify(testCase.output);
+            const actual = JSON.stringify(result);
+            const passed = expected === actual;
+            
+            if (!passed) allPassed = false;
+            
+            results.push(
+              `Test ${i + 1}: ${passed ? '✅ PASSED' : '❌ FAILED'}\n` +
+              `Input: ${JSON.stringify(testCase.input)}\n` +
+              `Expected: ${expected}\n` +
+              `Got: ${actual}\n` +
+              `Time: ${executionTime}ms\n`
+            );
+          } catch (error: any) {
+            allPassed = false;
+            results.push(
+              `Test ${i + 1}: ❌ ERROR\n` +
+              `Input: ${JSON.stringify(testCase.input)}\n` +
+              `Error: ${error.message}\n`
+            );
+          }
+        }
+        
+        const avgTime = (totalTime / question.testCases.length).toFixed(3);
+        
+        results.unshift(
+          `📊 Test Results: ${allPassed ? '✅ All Passed' : '❌ Some Failed'}\n` +
+          `Tests: ${question.testCases.length}\n` +
+          `Avg Time: ${avgTime}ms\n` +
+          `Total Time: ${totalTime.toFixed(3)}ms\n\n` +
+          `Expected Complexity:\n` +
+          `⏱️  Time: ${question.timeComplexity}\n` +
+          `💾 Space: ${question.spaceComplexity}\n\n` +
+          `━━━━━━━━━━━━━━━━━━━━━━━━\n\n`
+        );
+        
+        setOutput(results.join('\n'));
+      } else {
+        setOutput('⚠️ Test execution currently only available for JavaScript.\n\nYou can still run your code manually with the Run Code button.');
+      }
+    } catch (error: any) {
+      setOutput(`Test Error: ${error.message}`);
+    } finally {
+      setIsRunning(false);
+    }
+  };
+
   return (
     <div className="h-full flex flex-col bg-gray-900">
       {/* Editor Header */}
@@ -228,6 +305,15 @@ export default function QuestionCard({
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            onClick={runTests}
+            disabled={isRunning || !question.testCases}
+            className="flex items-center gap-2 px-4 py-1.5 rounded text-sm font-medium bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+            title="Run all test cases and check complexity"
+          >
+            <Check className="w-4 h-4" />
+            {isRunning ? 'Testing...' : 'Run Tests'}
+          </button>
           <button
             onClick={runCode}
             disabled={isRunning}

@@ -16,6 +16,14 @@ export interface Question {
   timeComplexity: string;
   spaceComplexity: string;
   tags: string[];
+  testCases?: {
+    input: any;
+    output: any;
+  }[];
+  links?: {
+    leetcode?: string;
+    gfg?: string;
+  };
   starterCode: {
     javascript: string;
     python: string;
