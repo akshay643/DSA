@@ -1,0 +1,48 @@
+{
+  "category": {
+    "id": "tries",
+    "name": "Tries",
+    "description": "Trie data structure and related algorithms"
+  },
+  "questions": [{
+    "id": "trie-1",
+    "title": "Implement Trie (Prefix Tree)",
+    "category": "trie",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Facebook", "Microsoft", "Twitter"],
+    "introduction": "A Trie is a tree data structure used for efficient retrieval of keys in a dataset of strings. It's particularly useful for prefix-based searches. Each node represents a character, and paths from root represent words.",
+    "problemStatement": "A trie (pronounced as \"try\") or prefix tree is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.\n\nImplement the Trie class:\n- Trie() Initializes the trie object.\n- void insert(String word) Inserts the string word into the trie.\n- boolean search(String word) Returns true if the string word is in the trie (i.e., was inserted before), and false otherwise.\n- boolean startsWith(String prefix) Returns true if there is a previously inserted string word that has the prefix prefix, and false otherwise.\n\nConstraints:\n- 1 <= word.length, prefix.length <= 2000\n- word and prefix consist only of lowercase English letters.\n- At most 3 × 10⁴ calls will be made to insert, search, and startsWith.",
+    "examples": [
+      {
+        "input": "[\"Trie\", \"insert\", \"search\", \"search\", \"startsWith\", \"insert\", \"search\"]\n[[], [\"apple\"], [\"apple\"], [\"app\"], [\"app\"], [\"app\"], [\"app\"]]",
+        "output": "[null, null, true, false, true, null, true]",
+        "explanation": "Insert 'apple', search returns true. 'app' not found but exists as prefix. After inserting 'app', search returns true."
+      }
+    ],
+    "hints": [
+      "Each node has 26 children (for each letter)",
+      "Use a boolean flag to mark end of word",
+      "Insert: create nodes as needed, mark end",
+      "Search: traverse and check end flag",
+      "StartsWith: just traverse without checking end"
+    ],
+    "timeComplexity": "O(m) for each operation where m is word/prefix length",
+    "spaceComplexity": "O(n × m) where n is number of words",
+    "tags": ["trie", "design", "string", "hash-table"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/implement-trie-prefix-tree/",
+      "gfg": "https://www.geeksforgeeks.org/trie-insert-and-search/"
+    },
+    "testCases": [
+      {
+        "input": {"operations": ["Trie","insert","search","search","startsWith","insert","search"], "values": [[],["apple"],["apple"],["app"],["app"],["app"],["app"]]},
+        "output": [null,null,true,false,true,null,true]
+      }
+    ],
+    "starterCode": {
+      "javascript": "class Trie {\n  constructor() {\n    // Initialize your data structure here\n  }\n  \n  insert(word) {\n    // Write your code here\n  }\n  \n  search(word) {\n    // Write your code here\n  }\n  \n  startsWith(prefix) {\n    // Write your code here\n  }\n}",
+      "python": "class Trie:\n    def __init__(self):\n        # Initialize your data structure here\n        pass\n    \n    def insert(self, word):\n        # Write your code here\n        pass\n    \n    def search(self, word):\n        # Write your code here\n        pass\n    \n    def starts_with(self, prefix):\n        # Write your code here\n        pass",
+      "java": "class Trie {\n    public Trie() {\n        // Initialize your data structure here\n    }\n    \n    public void insert(String word) {\n        // Write your code here\n    }\n    \n    public boolean search(String word) {\n        // Write your code here\n        return false;\n    }\n    \n    public boolean startsWith(String prefix) {\n        // Write your code here\n        return false;\n    }\n}"
+    }
+  }]
+}

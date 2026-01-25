@@ -5,7 +5,7 @@
     "description": "Problems requiring optimal substructure and memoization"
   },
   "questions": [
-    {
+  {
       "id": "dynamic-programming-1",
       "title": "Climbing Stairs",
       "category": "dynamic-programming",
@@ -76,6 +76,953 @@
         "python": "def climb_stairs(n):\n    # Write your code here\n    # Example: n = 3\n    # Expected output: 3\n    pass\n\n# Test cases\nprint('Test 1:', climb_stairs(2))  # 2\nprint('Test 2:', climb_stairs(3))  # 3\nprint('Test 3:', climb_stairs(5))  # 8",
         "java": "public int climbStairs(int n) {\n    // Write your code here\n    // Example: n = 3\n    // Expected output: 3\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.climbStairs(2)); // 2\n    System.out.println(sol.climbStairs(3)); // 3\n}"
       }
+  },
+  {
+    "id": "dynamic-programming-2",
+    "title": "House Robber",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Microsoft", "Apple", "LinkedIn", "Cisco"],
+    "introduction": "The House Robber problem is a classic dynamic programming question that involves making optimal choices under constraints. You're a robber planning to rob houses along a street, but you cannot rob two adjacent houses as it will trigger an alarm. The goal is to maximize the total amount of money you can rob.",
+    "problemStatement": "You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. All houses are arranged in a line, and the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected - if two adjacent houses are broken into on the same night, the police will be alerted.\n\nGiven an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.\n\nConstraints:\n- 1 <= nums.length <= 100\n- 0 <= nums[i] <= 400",
+    "examples": [
+      {
+        "input": "nums = [1, 2, 3, 1]",
+        "output": "4",
+        "explanation": "Rob house 1 (money = 1) and then rob house 3 (money = 3). Total amount = 1 + 3 = 4."
+      },
+      {
+        "input": "nums = [2, 7, 9, 3, 1]",
+        "output": "12",
+        "explanation": "Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1). Total amount = 2 + 9 + 1 = 12."
+      },
+      {
+        "input": "nums = [2, 1, 1, 2]",
+        "output": "4",
+        "explanation": "Rob house 1 (money = 2) and house 4 (money = 2). Total = 4."
+      }
+    ],
+    "hints": [
+      "Think about the decision at each house: rob it or skip it",
+      "If you rob house i, you cannot rob house i-1",
+      "Define dp[i] as the maximum money you can rob from houses 0 to i",
+      "Recurrence relation: dp[i] = max(dp[i-1], dp[i-2] + nums[i])",
+      "You can optimize space to O(1) by keeping track of only the last two values"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(1) with optimization, O(n) without",
+    "tags": ["dynamic-programming", "array", "memoization"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/house-robber/",
+      "gfg": "https://www.geeksforgeeks.org/find-maximum-possible-stolen-value-houses/"
+    },
+    "testCases": [
+      {
+        "input": {"nums": [1, 2, 3, 1]},
+        "output": 4
+      },
+      {
+        "input": {"nums": [2, 7, 9, 3, 1]},
+        "output": 12
+      },
+      {
+        "input": {"nums": [2, 1, 1, 2]},
+        "output": 4
+      },
+      {
+        "input": {"nums": [1]},
+        "output": 1
+      },
+      {
+        "input": {"nums": [1, 2]},
+        "output": 2
+      }
+    ],
+    "starterCode": {
+      "javascript": "function rob(nums) {\n  // Write your code here\n  // Example: nums = [1, 2, 3, 1]\n  // Expected output: 4\n  \n}\n\n// Test cases\nconsole.log('Test 1:', rob([1, 2, 3, 1])); // 4\nconsole.log('Test 2:', rob([2, 7, 9, 3, 1])); // 12\nconsole.log('Test 3:', rob([2, 1, 1, 2])); // 4",
+      "python": "def rob(nums):\n    # Write your code here\n    # Example: nums = [1, 2, 3, 1]\n    # Expected output: 4\n    pass\n\n# Test cases\nprint('Test 1:', rob([1, 2, 3, 1])) # 4\nprint('Test 2:', rob([2, 7, 9, 3, 1])) # 12\nprint('Test 3:', rob([2, 1, 1, 2])) # 4",
+      "java": "public int rob(int[] nums) {\n    // Write your code here\n    // Example: nums = [1, 2, 3, 1]\n    // Expected output: 4\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(\"Test 1: \" + sol.rob(new int[]{1, 2, 3, 1})); // 4\n    System.out.println(\"Test 2: \" + sol.rob(new int[]{2, 7, 9, 3, 1})); // 12\n}"
     }
+  },
+  {
+    "id": "dynamic-programming-3",
+    "title": "Coin Change",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Microsoft", "Apple", "Goldman Sachs", "Bloomberg"],
+    "introduction": "The Coin Change problem is a classic dynamic programming problem that demonstrates the unbounded knapsack pattern. Given a set of coin denominations and a target amount, you need to find the minimum number of coins needed to make up that amount. This problem teaches the concept of building optimal solutions from smaller subproblems.",
+    "problemStatement": "You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.\n\nReturn the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.\n\nYou may assume that you have an infinite number of each kind of coin.\n\nConstraints:\n- 1 <= coins.length <= 12\n- 1 <= coins[i] <= 2³¹ - 1\n- 0 <= amount <= 10⁴",
+    "examples": [
+      {
+        "input": "coins = [1, 2, 5], amount = 11",
+        "output": "3",
+        "explanation": "11 = 5 + 5 + 1, so we need 3 coins."
+      },
+      {
+        "input": "coins = [2], amount = 3",
+        "output": "-1",
+        "explanation": "We cannot make amount 3 using only coins of denomination 2."
+      },
+      {
+        "input": "coins = [1], amount = 0",
+        "output": "0",
+        "explanation": "No coins needed for amount 0."
+      }
+    ],
+    "hints": [
+      "Think of this as finding the shortest path in an implicit graph",
+      "Define dp[i] as the minimum coins needed to make amount i",
+      "For each amount, try all coin denominations",
+      "Recurrence: dp[amount] = min(dp[amount], dp[amount - coin] + 1)",
+      "Initialize dp array with a value greater than the maximum possible coins"
+    ],
+    "timeComplexity": "O(amount × n) where n is number of coin denominations",
+    "spaceComplexity": "O(amount)",
+    "tags": ["dynamic-programming", "array", "bfs", "memoization"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/coin-change/",
+      "gfg": "https://www.geeksforgeeks.org/find-minimum-number-of-coins-that-make-a-change/"
+    },
+    "testCases": [
+      {
+        "input": {"coins": [1, 2, 5], "amount": 11},
+        "output": 3
+      },
+      {
+        "input": {"coins": [2], "amount": 3},
+        "output": -1
+      },
+      {
+        "input": {"coins": [1], "amount": 0},
+        "output": 0
+      },
+      {
+        "input": {"coins": [1, 2, 5], "amount": 100},
+        "output": 20
+      },
+      {
+        "input": {"coins": [186, 419, 83, 408], "amount": 6249},
+        "output": 20
+      }
+    ],
+    "starterCode": {
+      "javascript": "function coinChange(coins, amount) {\n  // Write your code here\n  // Example: coins = [1, 2, 5], amount = 11\n  // Expected output: 3\n  \n}\n\n// Test cases\nconsole.log('Test 1:', coinChange([1, 2, 5], 11)); // 3\nconsole.log('Test 2:', coinChange([2], 3)); // -1\nconsole.log('Test 3:', coinChange([1], 0)); // 0",
+      "python": "def coin_change(coins, amount):\n    # Write your code here\n    # Example: coins = [1, 2, 5], amount = 11\n    # Expected output: 3\n    pass\n\n# Test cases\nprint('Test 1:', coin_change([1, 2, 5], 11)) # 3\nprint('Test 2:', coin_change([2], 3)) # -1\nprint('Test 3:', coin_change([1], 0)) # 0",
+      "java": "public int coinChange(int[] coins, int amount) {\n    // Write your code here\n    // Example: coins = [1, 2, 5], amount = 11\n    // Expected output: 3\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(\"Test 1: \" + sol.coinChange(new int[]{1, 2, 5}, 11)); // 3\n}"
+    }
+  },
+  {
+    "id": "dynamic-programming-4",
+    "title": "Longest Increasing Subsequence",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Microsoft", "Facebook", "Apple", "Adobe", "Uber"],
+    "introduction": "The Longest Increasing Subsequence (LIS) problem is a classic dynamic programming problem. A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of remaining elements. The goal is to find the length of the longest subsequence where all elements are in strictly increasing order.",
+    "problemStatement": "Given an integer array nums, return the length of the longest strictly increasing subsequence.\n\nA subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the order of the remaining elements.\n\nConstraints:\n- 1 <= nums.length <= 2500\n- -10⁴ <= nums[i] <= 10⁴",
+    "examples": [
+      {
+        "input": "nums = [10, 9, 2, 5, 3, 7, 101, 18]",
+        "output": "4",
+        "explanation": "The longest increasing subsequence is [2, 3, 7, 101] or [2, 5, 7, 101] or [2, 3, 7, 18], therefore the length is 4."
+      },
+      {
+        "input": "nums = [0, 1, 0, 3, 2, 3]",
+        "output": "4",
+        "explanation": "The longest increasing subsequence is [0, 1, 2, 3]."
+      },
+      {
+        "input": "nums = [7, 7, 7, 7, 7, 7, 7]",
+        "output": "1",
+        "explanation": "All elements are the same, so LIS length is 1."
+      }
+    ],
+    "hints": [
+      "Define dp[i] as the length of LIS ending at index i",
+      "For each element, check all previous elements",
+      "If nums[i] > nums[j], then dp[i] = max(dp[i], dp[j] + 1)",
+      "The answer is the maximum value in dp array",
+      "Can be optimized to O(n log n) using binary search with patience sorting"
+    ],
+    "timeComplexity": "O(n²) for DP, O(n log n) with binary search optimization",
+    "spaceComplexity": "O(n)",
+    "tags": ["dynamic-programming", "array", "binary-search"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/longest-increasing-subsequence/",
+      "gfg": "https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/"
+    },
+    "testCases": [
+      {
+        "input": {"nums": [10, 9, 2, 5, 3, 7, 101, 18]},
+        "output": 4
+      },
+      {
+        "input": {"nums": [0, 1, 0, 3, 2, 3]},
+        "output": 4
+      },
+      {
+        "input": {"nums": [7, 7, 7, 7, 7, 7, 7]},
+        "output": 1
+      },
+      {
+        "input": {"nums": [1, 3, 6, 7, 9, 4, 10, 5, 6]},
+        "output": 6
+      }
+    ],
+    "starterCode": {
+      "javascript": "function lengthOfLIS(nums) {\n  // Write your code here\n  // Example: nums = [10, 9, 2, 5, 3, 7, 101, 18]\n  // Expected output: 4\n  \n}\n\n// Test cases\nconsole.log('Test 1:', lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18])); // 4\nconsole.log('Test 2:', lengthOfLIS([0, 1, 0, 3, 2, 3])); // 4\nconsole.log('Test 3:', lengthOfLIS([7, 7, 7, 7, 7, 7, 7])); // 1",
+      "python": "def length_of_lis(nums):\n    # Write your code here\n    # Example: nums = [10, 9, 2, 5, 3, 7, 101, 18]\n    # Expected output: 4\n    pass\n\n# Test cases\nprint('Test 1:', length_of_lis([10, 9, 2, 5, 3, 7, 101, 18])) # 4\nprint('Test 2:', length_of_lis([0, 1, 0, 3, 2, 3])) # 4\nprint('Test 3:', length_of_lis([7, 7, 7, 7, 7, 7, 7])) # 1",
+      "java": "public int lengthOfLIS(int[] nums) {\n    // Write your code here\n    // Example: nums = [10, 9, 2, 5, 3, 7, 101, 18]\n    // Expected output: 4\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "dynamic-programming-5",
+    "title": "Longest Common Subsequence",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Microsoft", "Facebook", "Apple", "Bloomberg", "Uber"],
+    "introduction": "The Longest Common Subsequence (LCS) problem is a classic dynamic programming problem used in diff utilities, bioinformatics, and version control systems. Given two strings, find the length of their longest common subsequence - the longest sequence of characters that appears in both strings in the same relative order (not necessarily contiguous).",
+    "problemStatement": "Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.\n\nA subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.\n\nA common subsequence of two strings is a subsequence that is common to both strings.\n\nConstraints:\n- 1 <= text1.length, text2.length <= 1000\n- text1 and text2 consist of only lowercase English characters",
+    "examples": [
+      {
+        "input": "text1 = \"abcde\", text2 = \"ace\"",
+        "output": "3",
+        "explanation": "The longest common subsequence is \"ace\" and its length is 3."
+      },
+      {
+        "input": "text1 = \"abc\", text2 = \"abc\"",
+        "output": "3",
+        "explanation": "The longest common subsequence is \"abc\" and its length is 3."
+      },
+      {
+        "input": "text1 = \"abc\", text2 = \"def\"",
+        "output": "0",
+        "explanation": "There is no such common subsequence, so the result is 0."
+      }
+    ],
+    "hints": [
+      "Create a 2D DP table where dp[i][j] represents LCS of text1[0..i-1] and text2[0..j-1]",
+      "If characters match: dp[i][j] = dp[i-1][j-1] + 1",
+      "If characters don't match: dp[i][j] = max(dp[i-1][j], dp[i][j-1])",
+      "Build the table bottom-up",
+      "Can optimize space to O(min(m,n)) using two rows"
+    ],
+    "timeComplexity": "O(m × n) where m and n are lengths of the two strings",
+    "spaceComplexity": "O(m × n), can be optimized to O(min(m, n))",
+    "tags": ["dynamic-programming", "string"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/longest-common-subsequence/",
+      "gfg": "https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/"
+    },
+    "testCases": [
+      {
+        "input": {"text1": "abcde", "text2": "ace"},
+        "output": 3
+      },
+      {
+        "input": {"text1": "abc", "text2": "abc"},
+        "output": 3
+      },
+      {
+        "input": {"text1": "abc", "text2": "def"},
+        "output": 0
+      },
+      {
+        "input": {"text1": "oxcpqrsvwf", "text2": "shmtulqrypy"},
+        "output": 2
+      }
+    ],
+    "starterCode": {
+      "javascript": "function longestCommonSubsequence(text1, text2) {\n  // Write your code here\n  // Example: text1 = \"abcde\", text2 = \"ace\"\n  // Expected output: 3\n  \n}\n\n// Test cases\nconsole.log('Test 1:', longestCommonSubsequence('abcde', 'ace')); // 3\nconsole.log('Test 2:', longestCommonSubsequence('abc', 'abc')); // 3\nconsole.log('Test 3:', longestCommonSubsequence('abc', 'def')); // 0",
+      "python": "def longest_common_subsequence(text1, text2):\n    # Write your code here\n    # Example: text1 = \"abcde\", text2 = \"ace\"\n    # Expected output: 3\n    pass\n\n# Test cases\nprint('Test 1:', longest_common_subsequence('abcde', 'ace')) # 3\nprint('Test 2:', longest_common_subsequence('abc', 'abc')) # 3\nprint('Test 3:', longest_common_subsequence('abc', 'def')) # 0",
+      "java": "public int longestCommonSubsequence(String text1, String text2) {\n    // Write your code here\n    // Example: text1 = \"abcde\", text2 = \"ace\"\n    // Expected output: 3\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "dynamic-programming-6",
+    "title": "0/1 Knapsack Problem",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Microsoft", "Goldman Sachs", "Adobe", "Flipkart"],
+    "introduction": "The 0/1 Knapsack problem is one of the most famous problems in computer science. Given a set of items, each with a weight and a value, determine which items to include in a knapsack so that the total weight is less than or equal to a given limit and the total value is maximized. Each item can either be taken (1) or not taken (0).",
+    "problemStatement": "You are given weights and values of N items, and a knapsack with capacity W. You need to put items in the knapsack such that the total value is maximum and total weight doesn't exceed W.\n\nEach item can only be selected once (0/1 property).\n\nReturn the maximum value you can achieve.\n\nConstraints:\n- 1 <= N <= 1000\n- 1 <= W <= 1000\n- 1 <= weights[i], values[i] <= 1000",
+    "examples": [
+      {
+        "input": "W = 50, weights = [10, 20, 30], values = [60, 100, 120]",
+        "output": "220",
+        "explanation": "Select items with weights 20 and 30. Total weight = 50, Total value = 100 + 120 = 220."
+      },
+      {
+        "input": "W = 10, weights = [5, 4, 6, 3], values = [10, 40, 30, 50]",
+        "output": "90",
+        "explanation": "Select items with weights 4 and 3. Total weight = 7, Total value = 40 + 50 = 90."
+      }
+    ],
+    "hints": [
+      "Define dp[i][w] as maximum value using first i items with capacity w",
+      "For each item, you have two choices: take it or leave it",
+      "If weight[i] > w, you can't take item i: dp[i][w] = dp[i-1][w]",
+      "Otherwise: dp[i][w] = max(dp[i-1][w], dp[i-1][w-weight[i]] + value[i])",
+      "Space can be optimized to O(W) using 1D array"
+    ],
+    "timeComplexity": "O(N × W)",
+    "spaceComplexity": "O(N × W), can be optimized to O(W)",
+    "tags": ["dynamic-programming", "array"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/ones-and-zeroes/",
+      "gfg": "https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/"
+    },
+    "testCases": [
+      {
+        "input": {"W": 50, "weights": [10, 20, 30], "values": [60, 100, 120]},
+        "output": 220
+      },
+      {
+        "input": {"W": 10, "weights": [5, 4, 6, 3], "values": [10, 40, 30, 50]},
+        "output": 90
+      },
+      {
+        "input": {"W": 4, "weights": [4, 5, 1], "values": [1, 2, 3]},
+        "output": 3
+      }
+    ],
+    "starterCode": {
+      "javascript": "function knapsack(W, weights, values) {\n  // Write your code here\n  // Example: W = 50, weights = [10, 20, 30], values = [60, 100, 120]\n  // Expected output: 220\n  \n}\n\n// Test cases\nconsole.log('Test 1:', knapsack(50, [10, 20, 30], [60, 100, 120])); // 220\nconsole.log('Test 2:', knapsack(10, [5, 4, 6, 3], [10, 40, 30, 50])); // 90",
+      "python": "def knapsack(W, weights, values):\n    # Write your code here\n    # Example: W = 50, weights = [10, 20, 30], values = [60, 100, 120]\n    # Expected output: 220\n    pass\n\n# Test cases\nprint('Test 1:', knapsack(50, [10, 20, 30], [60, 100, 120])) # 220\nprint('Test 2:', knapsack(10, [5, 4, 6, 3], [10, 40, 30, 50])) # 90",
+      "java": "public int knapsack(int W, int[] weights, int[] values) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "dynamic-programming-7",
+    "title": "Edit Distance",
+    "category": "dynamic-programming",
+    "difficulty": "hard",
+    "companies": ["Amazon", "Google", "Microsoft", "Facebook", "Apple", "Goldman Sachs"],
+    "introduction": "Edit Distance (also known as Levenshtein Distance) measures the minimum number of single-character edits required to transform one string into another. This problem has applications in spell checking, DNA sequence alignment, and natural language processing.",
+    "problemStatement": "Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2.\n\nYou have the following three operations permitted on a word:\n- Insert a character\n- Delete a character\n- Replace a character\n\nConstraints:\n- 0 <= word1.length, word2.length <= 500\n- word1 and word2 consist of lowercase English letters",
+    "examples": [
+      {
+        "input": "word1 = \"horse\", word2 = \"ros\"",
+        "output": "3",
+        "explanation": "horse -> rorse (replace 'h' with 'r') -> rose (remove 'r') -> ros (remove 'e')"
+      },
+      {
+        "input": "word1 = \"intention\", word2 = \"execution\"",
+        "output": "5",
+        "explanation": "intention -> inention (remove 't') -> enention (replace 'i' with 'e') -> exention (replace 'n' with 'x') -> exection (replace 'n' with 'c') -> execution (insert 'u')"
+      }
+    ],
+    "hints": [
+      "Use 2D DP where dp[i][j] represents edit distance for word1[0..i-1] and word2[0..j-1]",
+      "If characters match: dp[i][j] = dp[i-1][j-1]",
+      "If they don't match: dp[i][j] = 1 + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])",
+      "dp[i-1][j] represents delete, dp[i][j-1] represents insert, dp[i-1][j-1] represents replace",
+      "Base cases: dp[i][0] = i (delete all), dp[0][j] = j (insert all)"
+    ],
+    "timeComplexity": "O(m × n)",
+    "spaceComplexity": "O(m × n), can be optimized to O(min(m, n))",
+    "tags": ["dynamic-programming", "string"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/edit-distance/",
+      "gfg": "https://www.geeksforgeeks.org/edit-distance-dp-5/"
+    },
+    "testCases": [
+      {
+        "input": {"word1": "horse", "word2": "ros"},
+        "output": 3
+      },
+      {
+        "input": {"word1": "intention", "word2": "execution"},
+        "output": 5
+      },
+      {
+        "input": {"word1": "", "word2": "a"},
+        "output": 1
+      },
+      {
+        "input": {"word1": "abc", "word2": "abc"},
+        "output": 0
+      }
+    ],
+    "starterCode": {
+      "javascript": "function minDistance(word1, word2) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', minDistance('horse', 'ros')); // 3\nconsole.log('Test 2:', minDistance('intention', 'execution')); // 5",
+      "python": "def min_distance(word1, word2):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', min_distance('horse', 'ros')) # 3\nprint('Test 2:', min_distance('intention', 'execution')) # 5",
+      "java": "public int minDistance(String word1, String word2) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "dynamic-programming-8",
+    "title": "Maximum Subarray (Kadane's Algorithm)",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Microsoft", "Facebook", "Apple", "LinkedIn", "Bloomberg"],
+    "introduction": "The Maximum Subarray problem, solved elegantly by Kadane's Algorithm, asks for the contiguous subarray with the largest sum. This is a fundamental dynamic programming problem that demonstrates how to optimize from O(n²) to O(n) time complexity.",
+    "problemStatement": "Given an integer array nums, find the subarray with the largest sum, and return its sum.\n\nA subarray is a contiguous non-empty sequence of elements within an array.\n\nConstraints:\n- 1 <= nums.length <= 10⁵\n- -10⁴ <= nums[i] <= 10⁴",
+    "examples": [
+      {
+        "input": "nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]",
+        "output": "6",
+        "explanation": "The subarray [4, -1, 2, 1] has the largest sum = 6."
+      },
+      {
+        "input": "nums = [1]",
+        "output": "1",
+        "explanation": "The subarray [1] has the largest sum = 1."
+      },
+      {
+        "input": "nums = [5, 4, -1, 7, 8]",
+        "output": "23",
+        "explanation": "The subarray [5, 4, -1, 7, 8] has the largest sum = 23."
+      }
+    ],
+    "hints": [
+      "Think about whether to extend the current subarray or start a new one",
+      "At each position, currentMax = max(nums[i], currentMax + nums[i])",
+      "Keep track of the global maximum seen so far",
+      "If currentMax becomes negative, it's better to start fresh",
+      "This is Kadane's algorithm"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(1)",
+    "tags": ["dynamic-programming", "array", "divide-and-conquer"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/maximum-subarray/",
+      "gfg": "https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/"
+    },
+    "testCases": [
+      {
+        "input": {"nums": [-2, 1, -3, 4, -1, 2, 1, -5, 4]},
+        "output": 6
+      },
+      {
+        "input": {"nums": [1]},
+        "output": 1
+      },
+      {
+        "input": {"nums": [5, 4, -1, 7, 8]},
+        "output": 23
+      },
+      {
+        "input": {"nums": [-1]},
+        "output": -1
+      }
+    ],
+    "starterCode": {
+      "javascript": "function maxSubArray(nums) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // 6\nconsole.log('Test 2:', maxSubArray([5, 4, -1, 7, 8])); // 23",
+      "python": "def max_sub_array(nums):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', max_sub_array([-2, 1, -3, 4, -1, 2, 1, -5, 4])) # 6\nprint('Test 2:', max_sub_array([5, 4, -1, 7, 8])) # 23",
+      "java": "public int maxSubArray(int[] nums) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "dynamic-programming-9",
+    "title": "Word Break",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Facebook", "Microsoft", "Apple", "Bloomberg", "Uber"],
+    "introduction": "The Word Break problem asks whether a string can be segmented into space-separated words from a dictionary. This problem has applications in natural language processing and can be solved using dynamic programming or recursion with memoization.",
+    "problemStatement": "Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.\n\nNote that the same word in the dictionary may be reused multiple times in the segmentation.\n\nConstraints:\n- 1 <= s.length <= 300\n- 1 <= wordDict.length <= 1000\n- 1 <= wordDict[i].length <= 20\n- s and wordDict[i] consist of only lowercase English letters\n- All the strings of wordDict are unique",
+    "examples": [
+      {
+        "input": "s = \"leetcode\", wordDict = [\"leet\", \"code\"]",
+        "output": "true",
+        "explanation": "Return true because \"leetcode\" can be segmented as \"leet code\"."
+      },
+      {
+        "input": "s = \"applepenapple\", wordDict = [\"apple\", \"pen\"]",
+        "output": "true",
+        "explanation": "Return true because \"applepenapple\" can be segmented as \"apple pen apple\". Note that you are allowed to reuse dictionary words."
+      },
+      {
+        "input": "s = \"catsandog\", wordDict = [\"cats\", \"dog\", \"sand\", \"and\", \"cat\"]",
+        "output": "false",
+        "explanation": "Cannot segment the string into valid dictionary words."
+      }
+    ],
+    "hints": [
+      "Use dp[i] to represent whether s[0..i-1] can be segmented",
+      "For each position i, check all possible previous positions j",
+      "dp[i] = true if dp[j] is true AND s[j..i-1] is in dictionary",
+      "Convert wordDict to a Set for O(1) lookup",
+      "Base case: dp[0] = true (empty string)"
+    ],
+    "timeComplexity": "O(n³) or O(n² × m) where m is max word length",
+    "spaceComplexity": "O(n + k) where k is total characters in dictionary",
+    "tags": ["dynamic-programming", "string", "hash-table", "trie"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/word-break/",
+      "gfg": "https://www.geeksforgeeks.org/word-break-problem-dp-32/"
+    },
+    "testCases": [
+      {
+        "input": {"s": "leetcode", "wordDict": ["leet", "code"]},
+        "output": true
+      },
+      {
+        "input": {"s": "applepenapple", "wordDict": ["apple", "pen"]},
+        "output": true
+      },
+      {
+        "input": {"s": "catsandog", "wordDict": ["cats", "dog", "sand", "and", "cat"]},
+        "output": false
+      }
+    ],
+    "starterCode": {
+      "javascript": "function wordBreak(s, wordDict) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', wordBreak('leetcode', ['leet', 'code'])); // true\nconsole.log('Test 2:', wordBreak('applepenapple', ['apple', 'pen'])); // true\nconsole.log('Test 3:', wordBreak('catsandog', ['cats', 'dog', 'sand', 'and', 'cat'])); // false",
+      "python": "def word_break(s, word_dict):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', word_break('leetcode', ['leet', 'code'])) # True\nprint('Test 2:', word_break('applepenapple', ['apple', 'pen'])) # True\nprint('Test 3:', word_break('catsandog', ['cats', 'dog', 'sand', 'and', 'cat'])) # False",
+      "java": "public boolean wordBreak(String s, List<String> wordDict) {\n    // Write your code here\n    return false;\n}"
+    }
+  },
+  {
+    "id": "dynamic-programming-10",
+    "title": "Unique Paths",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Microsoft", "Facebook", "Bloomberg"],
+    "introduction": "The Unique Paths problem is a classic grid-based dynamic programming problem. A robot is located at the top-left corner of an m x n grid and can only move right or down. The task is to count how many unique paths exist from the top-left to the bottom-right corner.",
+    "problemStatement": "There is a robot on an m x n grid. The robot is initially located at the top-left corner (i.e., grid[0][0]). The robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.\n\nGiven the two integers m and n, return the number of possible unique paths that the robot can take to reach the bottom-right corner.\n\nConstraints:\n- 1 <= m, n <= 100",
+    "examples": [
+      {
+        "input": "m = 3, n = 7",
+        "output": "28",
+        "explanation": "There are 28 unique paths from top-left to bottom-right."
+      },
+      {
+        "input": "m = 3, n = 2",
+        "output": "3",
+        "explanation": "From the top-left corner, there are a total of 3 ways: Right -> Down -> Down, Down -> Down -> Right, Down -> Right -> Down"
+      }
+    ],
+    "hints": [
+      "dp[i][j] represents the number of ways to reach cell (i, j)",
+      "Each cell can be reached from the cell above or from the left",
+      "dp[i][j] = dp[i-1][j] + dp[i][j-1]",
+      "First row and first column have only 1 way to reach each cell",
+      "Can be solved using combinatorics: C(m+n-2, m-1)"
+    ],
+    "timeComplexity": "O(m × n)",
+    "spaceComplexity": "O(n) with space optimization",
+    "tags": ["dynamic-programming", "math", "combinatorics"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/unique-paths/",
+      "gfg": "https://www.geeksforgeeks.org/count-possible-paths-top-left-bottom-right-nxm-matrix/"
+    },
+    "testCases": [
+      {
+        "input": {"m": 3, "n": 7},
+        "output": 28
+      },
+      {
+        "input": {"m": 3, "n": 2},
+        "output": 3
+      },
+      {
+        "input": {"m": 1, "n": 1},
+        "output": 1
+      },
+      {
+        "input": {"m": 7, "n": 3},
+        "output": 28
+      }
+    ],
+    "starterCode": {
+      "javascript": "function uniquePaths(m, n) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', uniquePaths(3, 7)); // 28\nconsole.log('Test 2:', uniquePaths(3, 2)); // 3",
+      "python": "def unique_paths(m, n):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', unique_paths(3, 7)) # 28\nprint('Test 2:', unique_paths(3, 2)) # 3",
+      "java": "public int uniquePaths(int m, int n) {\n    // Write your code here\n    return 0;\n}"
+    }
+  }
+  ,
+ {
+    "id": "dynamic-programming-11",
+    "title": "Decode Ways",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Facebook", "Amazon", "Google", "Microsoft", "Uber", "Goldman Sachs"],
+    "introduction": "A message containing letters from A-Z can be encoded into numbers using a mapping where 'A' = 1, 'B' = 2, ..., 'Z' = 26. Given a string of digits, determine the total number of ways to decode it. This problem demonstrates counting problems with overlapping subproblems.",
+    "problemStatement": "A message containing letters from A-Z can be encoded into numbers using the following mapping:\n\n'A' -> \"1\"\n'B' -> \"2\"\n...\n'Z' -> \"26\"\n\nTo decode an encoded message, all the digits must be grouped then mapped back into letters using the reverse of the mapping above (there may be multiple ways).\n\nGiven a string s containing only digits, return the number of ways to decode it.\n\nConstraints:\n- 1 <= s.length <= 100\n- s contains only digits and may contain leading zero(s)",
+    "examples": [
+      {
+        "input": "s = \"12\"",
+        "output": "2",
+        "explanation": "\"12\" could be decoded as \"AB\" (1 2) or \"L\" (12)."
+      },
+      {
+        "input": "s = \"226\"",
+        "output": "3",
+        "explanation": "\"226\" could be decoded as \"BZ\" (2 26), \"VF\" (22 6), or \"BBF\" (2 2 6)."
+      },
+      {
+        "input": "s = \"06\"",
+        "output": "0",
+        "explanation": "\"06\" cannot be mapped to any letter since leading zeros are invalid."
+      }
+    ],
+    "hints": [
+      "Use dp[i] to represent number of ways to decode s[0..i-1]",
+      "Single digit: if s[i-1] != '0', dp[i] += dp[i-1]",
+      "Two digits: if 10 <= s[i-2..i-1] <= 26, dp[i] += dp[i-2]",
+      "Handle leading zeros carefully - they make decoding invalid",
+      "Base case: dp[0] = 1 (empty string has one way to decode)"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(n), can be optimized to O(1)",
+    "tags": ["dynamic-programming", "string"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/decode-ways/",
+      "gfg": "https://www.geeksforgeeks.org/count-possible-decodings-given-digit-sequence/"
+    },
+    "testCases": [
+      {
+        "input": {"s": "12"},
+        "output": 2
+      },
+      {
+        "input": {"s": "226"},
+        "output": 3
+      },
+      {
+        "input": {"s": "06"},
+        "output": 0
+      },
+      {
+        "input": {"s": "11106"},
+        "output": 2
+      }
+    ],
+    "starterCode": {
+      "javascript": "function numDecodings(s) {\n  // Write your code here\n  // Example: s = \"12\"\n  // Expected output: 2\n  \n}\n\n// Test cases\nconsole.log('Test 1:', numDecodings('12')); // 2\nconsole.log('Test 2:', numDecodings('226')); // 3\nconsole.log('Test 3:', numDecodings('06')); // 0",
+      "python": "def num_decodings(s):\n    # Write your code here\n    # Example: s = \"12\"\n    # Expected output: 2\n    pass\n\n# Test cases\nprint('Test 1:', num_decodings('12')) # 2\nprint('Test 2:', num_decodings('226')) # 3\nprint('Test 3:', num_decodings('06')) # 0",
+      "java": "public int numDecodings(String s) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "dynamic-programming-12",
+    "title": "House Robber II",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Microsoft", "Adobe", "Apple"],
+    "introduction": "This is an extension of House Robber where houses are arranged in a circle. Since the first and last houses are adjacent, you cannot rob both. The solution involves running the original House Robber algorithm twice: once excluding the first house and once excluding the last house.",
+    "problemStatement": "You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. All houses at this place are arranged in a circle. That means the first house is the neighbor of the last one. Meanwhile, adjacent houses have a security system connected, and it will automatically contact the police if two adjacent houses were broken into on the same night.\n\nGiven an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.\n\nConstraints:\n- 1 <= nums.length <= 100\n- 0 <= nums[i] <= 1000",
+    "examples": [
+      {
+        "input": "nums = [2, 3, 2]",
+        "output": "3",
+        "explanation": "You cannot rob house 1 (money = 2) and then rob house 3 (money = 2), because they are adjacent houses. Maximum is robbing house 2 (money = 3)."
+      },
+      {
+        "input": "nums = [1, 2, 3, 1]",
+        "output": "4",
+        "explanation": "Rob house 1 (money = 1) and then rob house 3 (money = 3). Total = 1 + 3 = 4."
+      },
+      {
+        "input": "nums = [1, 2, 3]",
+        "output": "3",
+        "explanation": "Rob house 2 (money = 3)."
+      }
+    ],
+    "hints": [
+      "Since houses form a circle, first and last houses are adjacent",
+      "If you rob the first house, you cannot rob the last house",
+      "Run House Robber on nums[0..n-2] and nums[1..n-1]",
+      "Return the maximum of the two results",
+      "Handle edge case when there's only one house"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(1)",
+    "tags": ["dynamic-programming", "array"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/house-robber-ii/",
+      "gfg": "https://www.geeksforgeeks.org/house-robber-ii/"
+    },
+    "testCases": [
+      {
+        "input": {"nums": [2, 3, 2]},
+        "output": 3
+      },
+      {
+        "input": {"nums": [1, 2, 3, 1]},
+        "output": 4
+      },
+      {
+        "input": {"nums": [1, 2, 3]},
+        "output": 3
+      },
+      {
+        "input": {"nums": [1]},
+        "output": 1
+      }
+    ],
+    "starterCode": {
+      "javascript": "function rob(nums) {\n  // Write your code here\n  // Houses are in a circle!\n  \n}\n\n// Test cases\nconsole.log('Test 1:', rob([2, 3, 2])); // 3\nconsole.log('Test 2:', rob([1, 2, 3, 1])); // 4",
+      "python": "def rob(nums):\n    # Write your code here\n    # Houses are in a circle!\n    pass\n\n# Test cases\nprint('Test 1:', rob([2, 3, 2])) # 3\nprint('Test 2:', rob([1, 2, 3, 1])) # 4",
+      "java": "public int rob(int[] nums) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "dynamic-programming-13",
+    "title": "Partition Equal Subset Sum",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Apple"],
+    "introduction": "This problem asks if an array can be partitioned into two subsets with equal sum. It's a variation of the 0/1 Knapsack problem where the target is half the total sum. This is also known as the subset sum problem.",
+    "problemStatement": "Given an integer array nums, return true if you can partition the array into two subsets such that the sum of the elements in both subsets is equal or false otherwise.\n\nConstraints:\n- 1 <= nums.length <= 200\n- 1 <= nums[i] <= 100",
+    "examples": [
+      {
+        "input": "nums = [1, 5, 11, 5]",
+        "output": "true",
+        "explanation": "The array can be partitioned as [1, 5, 5] and [11]."
+      },
+      {
+        "input": "nums = [1, 2, 3, 5]",
+        "output": "false",
+        "explanation": "The array cannot be partitioned into equal sum subsets."
+      }
+    ],
+    "hints": [
+      "If total sum is odd, partitioning is impossible",
+      "Problem reduces to: can we find a subset with sum = totalSum/2?",
+      "Use 0/1 Knapsack DP: dp[i][j] = can we achieve sum j using first i elements?",
+      "Optimize space to 1D: dp[j] = can we achieve sum j?",
+      "Process in reverse order to avoid using same element twice"
+    ],
+    "timeComplexity": "O(n × sum)",
+    "spaceComplexity": "O(sum)",
+    "tags": ["dynamic-programming", "array"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/partition-equal-subset-sum/",
+      "gfg": "https://www.geeksforgeeks.org/partition-problem-dp-18/"
+    },
+    "testCases": [
+      {
+        "input": {"nums": [1, 5, 11, 5]},
+        "output": true
+      },
+      {
+        "input": {"nums": [1, 2, 3, 5]},
+        "output": false
+      },
+      {
+        "input": {"nums": [1, 2, 5]},
+        "output": false
+      },
+      {
+        "input": {"nums": [2, 2, 1, 1]},
+        "output": true
+      }
+    ],
+    "starterCode": {
+      "javascript": "function canPartition(nums) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', canPartition([1, 5, 11, 5])); // true\nconsole.log('Test 2:', canPartition([1, 2, 3, 5])); // false",
+      "python": "def can_partition(nums):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', can_partition([1, 5, 11, 5])) # True\nprint('Test 2:', can_partition([1, 2, 3, 5])) # False",
+      "java": "public boolean canPartition(int[] nums) {\n    // Write your code here\n    return false;\n}"
+    }
+  },
+  {
+    "id": "dynamic-programming-14",
+    "title": "Best Time to Buy and Sell Stock with Cooldown",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Facebook", "Goldman Sachs", "Citadel"],
+    "introduction": "This is an extension of the stock trading problem with a cooldown period. After selling a stock, you cannot buy on the next day. This requires modeling multiple states: holding stock, not holding (can buy), and in cooldown.",
+    "problemStatement": "You are given an array prices where prices[i] is the price of a given stock on the ith day.\n\nFind the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times) with the following restrictions:\n\n- After you sell your stock, you cannot buy stock on the next day (i.e., cooldown one day).\n\nNote: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).\n\nConstraints:\n- 1 <= prices.length <= 5000\n- 0 <= prices[i] <= 1000",
+    "examples": [
+      {
+        "input": "prices = [1, 2, 3, 0, 2]",
+        "output": "3",
+        "explanation": "Buy on day 0, sell on day 2 (profit = 2), cooldown on day 3, buy on day 3, sell on day 4 (profit = 2). Total = 3."
+      },
+      {
+        "input": "prices = [1]",
+        "output": "0",
+        "explanation": "No transaction possible."
+      }
+    ],
+    "hints": [
+      "Define states: hold (have stock), sold (just sold, in cooldown), rest (can buy)",
+      "hold[i] = max(hold[i-1], rest[i-1] - prices[i])",
+      "sold[i] = hold[i-1] + prices[i]",
+      "rest[i] = max(rest[i-1], sold[i-1])",
+      "Answer is max(sold[n-1], rest[n-1])"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(1)",
+    "tags": ["dynamic-programming", "array"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
+      "gfg": "https://www.geeksforgeeks.org/maximum-profit-after-buying-and-selling-stocks-with-cooldown/"
+    },
+    "testCases": [
+      {
+        "input": {"prices": [1, 2, 3, 0, 2]},
+        "output": 3
+      },
+      {
+        "input": {"prices": [1]},
+        "output": 0
+      },
+      {
+        "input": {"prices": [1, 2, 4]},
+        "output": 3
+      }
+    ],
+    "starterCode": {
+      "javascript": "function maxProfit(prices) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', maxProfit([1, 2, 3, 0, 2])); // 3",
+      "python": "def max_profit(prices):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', max_profit([1, 2, 3, 0, 2])) # 3",
+      "java": "public int maxProfit(int[] prices) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "dynamic-programming-15",
+    "title": "Minimum Path Sum",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Microsoft", "Goldman Sachs", "Facebook"],
+    "introduction": "Given a grid with non-negative numbers, find a path from top-left to bottom-right which minimizes the sum of all numbers along the path. You can only move right or down at any point in time.",
+    "problemStatement": "Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.\n\nNote: You can only move either down or right at any point in time.\n\nConstraints:\n- m == grid.length\n- n == grid[i].length\n- 1 <= m, n <= 200\n- 0 <= grid[i][j] <= 100",
+    "examples": [
+      {
+        "input": "grid = [[1,3,1],[1,5,1],[4,2,1]]",
+        "output": "7",
+        "explanation": "Path 1→3→1→1→1 minimizes the sum to 7."
+      },
+      {
+        "input": "grid = [[1,2,3],[4,5,6]]",
+        "output": "12",
+        "explanation": "Path 1→2→3→6 = 12."
+      }
+    ],
+    "hints": [
+      "dp[i][j] = minimum sum to reach cell (i, j)",
+      "dp[i][j] = grid[i][j] + min(dp[i-1][j], dp[i][j-1])",
+      "First row and column have only one way to reach",
+      "Can modify grid in-place for O(1) extra space",
+      "Or use 1D array rolling technique"
+    ],
+    "timeComplexity": "O(m × n)",
+    "spaceComplexity": "O(1) if modifying in-place, O(n) with 1D array",
+    "tags": ["dynamic-programming", "matrix", "array"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/minimum-path-sum/",
+      "gfg": "https://www.geeksforgeeks.org/minimum-cost-path-left-right-bottom-moves-allowed/"
+    },
+    "testCases": [
+      {
+        "input": {"grid": [[1,3,1],[1,5,1],[4,2,1]]},
+        "output": 7
+      },
+      {
+        "input": {"grid": [[1,2,3],[4,5,6]]},
+        "output": 12
+      }
+    ],
+    "starterCode": {
+      "javascript": "function minPathSum(grid) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', minPathSum([[1,3,1],[1,5,1],[4,2,1]])); // 7",
+      "python": "def min_path_sum(grid):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', min_path_sum([[1,3,1],[1,5,1],[4,2,1]])) # 7",
+      "java": "public int minPathSum(int[][] grid) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "dynamic-programming-16",
+    "title": "Longest Palindromic Subsequence",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Amazon", "LinkedIn", "Microsoft", "Google", "Facebook"],
+    "introduction": "Find the longest palindromic subsequence in a string. Unlike substring, elements don't need to be contiguous. This problem can be solved by finding the LCS of the string with its reverse.",
+    "problemStatement": "Given a string s, find the longest palindromic subsequence's length in s.\n\nA subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.\n\nConstraints:\n- 1 <= s.length <= 1000\n- s consists only of lowercase English letters",
+    "examples": [
+      {
+        "input": "s = \"bbbab\"",
+        "output": "4",
+        "explanation": "One possible longest palindromic subsequence is \"bbbb\"."
+      },
+      {
+        "input": "s = \"cbbd\"",
+        "output": "2",
+        "explanation": "One possible longest palindromic subsequence is \"bb\"."
+      }
+    ],
+    "hints": [
+      "dp[i][j] = length of longest palindromic subsequence in s[i..j]",
+      "If s[i] == s[j]: dp[i][j] = dp[i+1][j-1] + 2",
+      "Else: dp[i][j] = max(dp[i+1][j], dp[i][j-1])",
+      "Base case: dp[i][i] = 1 (single character)",
+      "Alternative: LCS of s and reverse(s)"
+    ],
+    "timeComplexity": "O(n²)",
+    "spaceComplexity": "O(n²), can be optimized to O(n)",
+    "tags": ["dynamic-programming", "string"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/longest-palindromic-subsequence/",
+      "gfg": "https://www.geeksforgeeks.org/longest-palindromic-subsequence-dp-12/"
+    },
+    "testCases": [
+      {
+        "input": {"s": "bbbab"},
+        "output": 4
+      },
+      {
+        "input": {"s": "cbbd"},
+        "output": 2
+      },
+      {
+        "input": {"s": "a"},
+        "output": 1
+      }
+    ],
+    "starterCode": {
+      "javascript": "function longestPalindromeSubseq(s) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', longestPalindromeSubseq('bbbab')); // 4\nconsole.log('Test 2:', longestPalindromeSubseq('cbbd')); // 2",
+      "python": "def longest_palindrome_subseq(s):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', longest_palindrome_subseq('bbbab')) # 4",
+      "java": "public int longestPalindromeSubseq(String s) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "dynamic-programming-17",
+    "title": "Target Sum",
+    "category": "dynamic-programming",
+    "difficulty": "medium",
+    "companies": ["Facebook", "Amazon", "Google", "Microsoft"],
+    "introduction": "Given an array and a target, find the number of ways to assign + or - to each element such that the sum equals the target. This can be transformed into a subset sum problem for efficient solving.",
+    "problemStatement": "You are given an integer array nums and an integer target.\n\nYou want to build an expression out of nums by adding one of the symbols '+' and '-' before each integer in nums and then concatenate all the integers.\n\nReturn the number of different expressions that you can build, which evaluates to target.\n\nConstraints:\n- 1 <= nums.length <= 20\n- 0 <= nums[i] <= 1000\n- 0 <= sum(nums[i]) <= 1000\n- -1000 <= target <= 1000",
+    "examples": [
+      {
+        "input": "nums = [1, 1, 1, 1, 1], target = 3",
+        "output": "5",
+        "explanation": "There are 5 ways to assign symbols to make the sum equal 3: -1+1+1+1+1, +1-1+1+1+1, +1+1-1+1+1, +1+1+1-1+1, +1+1+1+1-1"
+      },
+      {
+        "input": "nums = [1], target = 1",
+        "output": "1",
+        "explanation": "+1 = 1"
+      }
+    ],
+    "hints": [
+      "Let P = sum of positive subset, N = sum of negative subset",
+      "P - N = target and P + N = sum",
+      "So P = (target + sum) / 2",
+      "Problem becomes: count subsets with sum = P",
+      "Use subset sum DP"
+    ],
+    "timeComplexity": "O(n × sum)",
+    "spaceComplexity": "O(sum)",
+    "tags": ["dynamic-programming", "array", "backtracking"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/target-sum/",
+      "gfg": "https://www.geeksforgeeks.org/number-of-ways-to-achieve-a-given-sum-by-adding-or-subtracting-elements/"
+    },
+    "testCases": [
+      {
+        "input": {"nums": [1, 1, 1, 1, 1], "target": 3},
+        "output": 5
+      },
+      {
+        "input": {"nums": [1], "target": 1},
+        "output": 1
+      }
+    ],
+    "starterCode": {
+      "javascript": "function findTargetSumWays(nums, target) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', findTargetSumWays([1, 1, 1, 1, 1], 3)); // 5",
+      "python": "def find_target_sum_ways(nums, target):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', find_target_sum_ways([1, 1, 1, 1, 1], 3)) # 5",
+      "java": "public int findTargetSumWays(int[] nums, int target) {\n    // Write your code here\n    return 0;\n}"
+    }
+  }
+  
+ 
   ]
 }

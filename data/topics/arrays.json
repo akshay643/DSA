@@ -4,5 +4,351 @@
     "name": "Arrays",
     "description": "Array manipulation and operations"
   },
-  "questions": []
+  "questions": [
+  {
+    "id": "arrays-1",
+    "title": "Pascal's Triangle - Generate N Rows",
+    "category": "arrays",
+    "difficulty": "hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Apple",
+      "Bloomberg",
+      "Adobe",
+      "Uber"
+    ],
+    "introduction": "Pascal's Triangle is a triangular array where each number is the sum of the two numbers directly above it. The triangle starts with 1 at the top, and each row represents the binomial coefficients. This problem requires generating the first N rows of Pascal's Triangle efficiently.",
+    "problemStatement": "Given an integer numRows, return the first numRows of Pascal's Triangle.\n\nIn Pascal's Triangle:\n- The first row contains only 1\n- Each subsequent row starts and ends with 1\n- Every other element is the sum of the two elements directly above it\n\nConstraints:\n- 1 <= numRows <= 30",
+    "examples": [
+      {
+        "input": "numRows = 5",
+        "output": "[[1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1]]",
+        "explanation": "Row 0: [1]\nRow 1: [1,1]\nRow 2: [1,2,1] (2 = 1+1)\nRow 3: [1,3,3,1] (3 = 1+2, 3 = 2+1)\nRow 4: [1,4,6,4,1] (4 = 1+3, 6 = 3+3, 4 = 3+1)"
+      },
+      {
+        "input": "numRows = 1",
+        "output": "[[1]]",
+        "explanation": "Only the first row which contains a single element 1."
+      },
+      {
+        "input": "numRows = 3",
+        "output": "[[1], [1,1], [1,2,1]]",
+        "explanation": "First three rows of Pascal's Triangle."
+      }
+    ],
+    "hints": [
+      "Start by initializing each row with 1s",
+      "For each row i, iterate from index 1 to i-1 to fill middle elements",
+      "Element at position j = previous_row[j-1] + previous_row[j]",
+      "Each row has exactly (row_index + 1) elements",
+      "Consider using the mathematical formula: C(n,r) = n! / (r! * (n-r)!)"
+    ],
+    "timeComplexity": "O(numRows²)",
+    "spaceComplexity": "O(numRows²)",
+    "tags": [
+      "array",
+      "dynamic-programming",
+      "math",
+      "combinatorics"
+    ],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/pascals-triangle/",
+      "gfg": "https://www.geeksforgeeks.org/pascal-triangle/"
+    },
+    "testCases": [
+      {
+        "input": {
+          "numRows": 5
+        },
+        "output": [[1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1]]
+      },
+      {
+        "input": {
+          "numRows": 1
+        },
+        "output": [[1]]
+      },
+      {
+        "input": {
+          "numRows": 3
+        },
+        "output": [[1], [1,1], [1,2,1]]
+      },
+      {
+        "input": {
+          "numRows": 6
+        },
+        "output": [[1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1], [1,5,10,10,5,1]]
+      },
+      {
+        "input": {
+          "numRows": 10
+        },
+        "output": [[1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1], [1,5,10,10,5,1], [1,6,15,20,15,6,1], [1,7,21,35,35,21,7,1], [1,8,28,56,70,56,28,8,1], [1,9,36,84,126,126,84,36,9,1]]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function generatePascalsTriangle(numRows) {\n  // Write your code here\n  // Example: numRows = 5\n  // Expected output: [[1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1]]\n  \n}\n\n// Test cases\nconsole.log('Test 1:', JSON.stringify(generatePascalsTriangle(5)));\n// [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]\nconsole.log('Test 2:', JSON.stringify(generatePascalsTriangle(1)));\n// [[1]]\nconsole.log('Test 3:', JSON.stringify(generatePascalsTriangle(3)));\n// [[1],[1,1],[1,2,1]]",
+      "python": "def generate_pascals_triangle(num_rows):\n    # Write your code here\n    # Example: num_rows = 5\n    # Expected output: [[1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1]]\n    pass\n\n# Test cases\nprint('Test 1:', generate_pascals_triangle(5))\n# [[1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1]]\nprint('Test 2:', generate_pascals_triangle(1))\n# [[1]]\nprint('Test 3:', generate_pascals_triangle(3))\n# [[1], [1,1], [1,2,1]]",
+      "java": "public List<List<Integer>> generatePascalsTriangle(int numRows) {\n    // Write your code here\n    // Example: numRows = 5\n    // Expected output: [[1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1]]\n    return new ArrayList<>();\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(\"Test 1: \" + sol.generatePascalsTriangle(5));\n    System.out.println(\"Test 2: \" + sol.generatePascalsTriangle(1));\n    System.out.println(\"Test 3: \" + sol.generatePascalsTriangle(3));\n}"
+    }
+  },
+  {
+    "id": "arrays-2",
+    "title": "Pascal's Triangle II - Return Kth Row",
+    "category": "arrays",
+
+    "difficulty": "hard",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft",
+      "Goldman Sachs",
+      "Facebook",
+      "Apple"
+    ],
+    "introduction": "Given an index k, return the kth row of Pascal's Triangle. The challenge is to optimize space complexity to O(k) instead of O(k²) by generating only the required row without storing the entire triangle. This requires understanding the relationship between consecutive elements in a row.",
+    "problemStatement": "Given an integer rowIndex, return the rowIndex-th (0-indexed) row of Pascal's Triangle.\n\nOptimize your algorithm to use only O(rowIndex) extra space.\n\nConstraints:\n- 0 <= rowIndex <= 33\n- The answer is guaranteed to fit in a 32-bit integer",
+    "examples": [
+      {
+        "input": "rowIndex = 3",
+        "output": "[1, 3, 3, 1]",
+        "explanation": "The 3rd row (0-indexed) of Pascal's Triangle is [1, 3, 3, 1].\nRow 0: [1]\nRow 1: [1, 1]\nRow 2: [1, 2, 1]\nRow 3: [1, 3, 3, 1] ← This row"
+      },
+      {
+        "input": "rowIndex = 0",
+        "output": "[1]",
+        "explanation": "The 0th row contains only a single element 1."
+      },
+      {
+        "input": "rowIndex = 1",
+        "output": "[1, 1]",
+        "explanation": "The 1st row contains two 1s."
+      },
+      {
+        "input": "rowIndex = 4",
+        "output": "[1, 4, 6, 4, 1]",
+        "explanation": "The 4th row represents binomial coefficients C(4,0), C(4,1), C(4,2), C(4,3), C(4,4)."
+      }
+    ],
+    "hints": [
+      "You can update the row in-place by iterating from right to left",
+      "Start with [1] and keep adding elements based on previous values",
+      "Use the formula: C(n,k) = C(n,k-1) * (n-k+1) / k",
+      "Each element can be computed from the previous element in the same row",
+      "The row is symmetric, so you only need to compute half and mirror it"
+    ],
+    "timeComplexity": "O(rowIndex)",
+    "spaceComplexity": "O(rowIndex)",
+    "tags": [
+      "array",
+      "dynamic-programming",
+      "math",
+      "combinatorics",
+      "space-optimization"
+    ],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/pascals-triangle-ii/",
+      "gfg": "https://www.geeksforgeeks.org/find-the-nth-row-in-pascals-triangle/"
+    },
+    "testCases": [
+      {
+        "input": {
+          "rowIndex": 3
+        },
+        "output": [1, 3, 3, 1]
+      },
+      {
+        "input": {
+          "rowIndex": 0
+        },
+        "output": [1]
+      },
+      {
+        "input": {
+          "rowIndex": 1
+        },
+        "output": [1, 1]
+      },
+      {
+        "input": {
+          "rowIndex": 4
+        },
+        "output": [1, 4, 6, 4, 1]
+      },
+      {
+        "input": {
+          "rowIndex": 5
+        },
+        "output": [1, 5, 10, 10, 5, 1]
+      },
+      {
+        "input": {
+          "rowIndex": 10
+        },
+        "output": [1, 10, 45, 120, 210, 252, 210, 120, 45, 10, 1]
+      },
+      {
+        "input": {
+          "rowIndex": 15
+        },
+        "output": [1, 15, 105, 455, 1365, 3003, 5005, 6435, 6435, 5005, 3003, 1365, 455, 105, 15, 1]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function getRow(rowIndex) {\n  // Write your code here\n  // Example: rowIndex = 3\n  // Expected output: [1, 3, 3, 1]\n  // Challenge: Use only O(rowIndex) extra space\n  \n}\n\n// Test cases\nconsole.log('Test 1:', getRow(3)); // [1, 3, 3, 1]\nconsole.log('Test 2:', getRow(0)); // [1]\nconsole.log('Test 3:', getRow(4)); // [1, 4, 6, 4, 1]\nconsole.log('Test 4:', getRow(5)); // [1, 5, 10, 10, 5, 1]",
+      "python": "def get_row(row_index):\n    # Write your code here\n    # Example: row_index = 3\n    # Expected output: [1, 3, 3, 1]\n    # Challenge: Use only O(row_index) extra space\n    pass\n\n# Test cases\nprint('Test 1:', get_row(3))  # [1, 3, 3, 1]\nprint('Test 2:', get_row(0))  # [1]\nprint('Test 3:', get_row(4))  # [1, 4, 6, 4, 1]\nprint('Test 4:', get_row(5))  # [1, 5, 10, 10, 5, 1]",
+      "java": "public List<Integer> getRow(int rowIndex) {\n    // Write your code here\n    // Example: rowIndex = 3\n    // Expected output: [1, 3, 3, 1]\n    // Challenge: Use only O(rowIndex) extra space\n    return new ArrayList<>();\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(\"Test 1: \" + sol.getRow(3)); // [1, 3, 3, 1]\n    System.out.println(\"Test 2: \" + sol.getRow(0)); // [1]\n    System.out.println(\"Test 3: \" + sol.getRow(4)); // [1, 4, 6, 4, 1]\n}"
+    }
+  },
+  {
+    "id": "array-pascal-3",
+    "title": "Pascal's Triangle III - Find Element at Row R and Column C",
+    "category": "array",
+    "difficulty": "hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Flipkart",
+      "Samsung",
+      "Infosys",
+      "TCS"
+    ],
+    "introduction": "Given row number R and column number C, find the element at that position in Pascal's Triangle without generating the entire triangle. This requires understanding the mathematical relationship between Pascal's Triangle elements and binomial coefficients. The element at row R and column C is simply C(R, C) = R! / (C! * (R-C)!).",
+    "problemStatement": "Given two integers row (R) and column (C), find the element at that position in Pascal's Triangle.\n\nNote:\n- Rows and columns are 0-indexed\n- The element at row R and column C is the binomial coefficient C(R, C)\n- You must compute this WITHOUT generating the entire triangle\n- Handle large values efficiently to avoid integer overflow\n\nConstraints:\n- 0 <= C <= R <= 30\n- The answer is guaranteed to fit in a 32-bit integer",
+    "examples": [
+      {
+        "input": "row = 4, column = 2",
+        "output": "6",
+        "explanation": "Pascal's Triangle row 4 is [1, 4, 6, 4, 1]. The element at column 2 is 6.\nThis equals C(4,2) = 4! / (2! * 2!) = 24 / 4 = 6"
+      },
+      {
+        "input": "row = 5, column = 3",
+        "output": "10",
+        "explanation": "Pascal's Triangle row 5 is [1, 5, 10, 10, 5, 1]. The element at column 3 is 10.\nThis equals C(5,3) = 5! / (3! * 2!) = 120 / 12 = 10"
+      },
+      {
+        "input": "row = 0, column = 0",
+        "output": "1",
+        "explanation": "The first element of Pascal's Triangle is always 1. C(0,0) = 1"
+      },
+      {
+        "input": "row = 10, column = 5",
+        "output": "252",
+        "explanation": "C(10,5) = 10! / (5! * 5!) = 3628800 / 14400 = 252"
+      },
+      {
+        "input": "row = 6, column = 0",
+        "output": "1",
+        "explanation": "First element of any row is always 1. C(6,0) = 1"
+      },
+      {
+        "input": "row = 6, column = 6",
+        "output": "1",
+        "explanation": "Last element of any row is always 1. C(6,6) = 1"
+      }
+    ],
+    "hints": [
+      "The element at (R, C) is the binomial coefficient C(R, C)",
+      "Use the formula: C(n, r) = n! / (r! * (n-r)!)",
+      "Optimize using: C(n, r) = C(n, r-1) * (n-r+1) / r",
+      "To avoid overflow, multiply and divide alternately",
+      "C(n, r) = C(n, n-r), so use the smaller of r and n-r",
+      "The answer is always symmetric: element at (R, C) = element at (R, R-C)"
+    ],
+    "timeComplexity": "O(min(C, R-C))",
+    "spaceComplexity": "O(1)",
+    "tags": [
+      "array",
+      "math",
+      "combinatorics",
+      "binomial-coefficient",
+      "optimization"
+    ],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/pascals-triangle/",
+      "gfg": "https://www.geeksforgeeks.org/pascal-triangle/"
+    },
+    "testCases": [
+      {
+        "input": {
+          "row": 4,
+          "column": 2
+        },
+        "output": 6
+      },
+      {
+        "input": {
+          "row": 5,
+          "column": 3
+        },
+        "output": 10
+      },
+      {
+        "input": {
+          "row": 0,
+          "column": 0
+        },
+        "output": 1
+      },
+      {
+        "input": {
+          "row": 10,
+          "column": 5
+        },
+        "output": 252
+      },
+      {
+        "input": {
+          "row": 6,
+          "column": 0
+        },
+        "output": 1
+      },
+      {
+        "input": {
+          "row": 6,
+          "column": 6
+        },
+        "output": 1
+      },
+      {
+        "input": {
+          "row": 15,
+          "column": 7
+        },
+        "output": 6435
+      },
+      {
+        "input": {
+          "row": 20,
+          "column": 10
+        },
+        "output": 184756
+      },
+      {
+        "input": {
+          "row": 30,
+          "column": 15
+        },
+        "output": 155117520
+      },
+      {
+        "input": {
+          "row": 1,
+          "column": 1
+        },
+        "output": 1
+      }
+    ],
+    "starterCode": {
+      "javascript": "function getPascalElement(row, column) {\n  // Write your code here\n  // Example: row = 4, column = 2\n  // Expected output: 6\n  // Calculate C(row, column) without generating entire triangle\n  \n}\n\n// Test cases\nconsole.log('Test 1:', getPascalElement(4, 2)); // 6\nconsole.log('Test 2:', getPascalElement(5, 3)); // 10\nconsole.log('Test 3:', getPascalElement(0, 0)); // 1\nconsole.log('Test 4:', getPascalElement(10, 5)); // 252\nconsole.log('Test 5:', getPascalElement(20, 10)); // 184756",
+      "python": "def get_pascal_element(row, column):\n    # Write your code here\n    # Example: row = 4, column = 2\n    # Expected output: 6\n    # Calculate C(row, column) without generating entire triangle\n    pass\n\n# Test cases\nprint('Test 1:', get_pascal_element(4, 2))   # 6\nprint('Test 2:', get_pascal_element(5, 3))   # 10\nprint('Test 3:', get_pascal_element(0, 0))   # 1\nprint('Test 4:', get_pascal_element(10, 5))  # 252\nprint('Test 5:', get_pascal_element(20, 10)) # 184756",
+      "java": "public int getPascalElement(int row, int column) {\n    // Write your code here\n    // Example: row = 4, column = 2\n    // Expected output: 6\n    // Calculate C(row, column) without generating entire triangle\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(\"Test 1: \" + sol.getPascalElement(4, 2));   // 6\n    System.out.println(\"Test 2: \" + sol.getPascalElement(5, 3));   // 10\n    System.out.println(\"Test 3: \" + sol.getPascalElement(0, 0));   // 1\n    System.out.println(\"Test 4: \" + sol.getPascalElement(10, 5));  // 252\n    System.out.println(\"Test 5: \" + sol.getPascalElement(20, 10)); // 184756\n}"
+    }
+  }
+  ]
 }

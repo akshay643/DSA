@@ -4,5 +4,648 @@
     "name": "Trees",
     "description": "Binary trees, BST, and tree traversals"
   },
-  "questions": []
+  "questions": [{
+    "id": "trees-1",
+    "title": "Invert Binary Tree",
+    "category": "trees",
+    "difficulty": "easy",
+    "companies": ["Google", "Amazon", "Facebook", "Microsoft", "Apple"],
+    "introduction": "Inverting a binary tree (also known as mirroring) is a classic tree problem. Given the root of a binary tree, swap every left child with its corresponding right child. This creates a mirror image of the original tree.",
+    "problemStatement": "Given the root of a binary tree, invert the tree, and return its root.\n\nInverting a binary tree means swapping every left node in the tree for its corresponding right node.\n\nConstraints:\n- The number of nodes in the tree is in the range [0, 100]\n- -100 <= Node.val <= 100",
+    "examples": [
+      {
+        "input": "root = [4,2,7,1,3,6,9]",
+        "output": "[4,7,2,9,6,3,1]",
+        "explanation": "The tree is inverted - all left and right children are swapped at each level."
+      },
+      {
+        "input": "root = [2,1,3]",
+        "output": "[2,3,1]",
+        "explanation": "Simple tree where left (1) and right (3) children are swapped."
+      },
+      {
+        "input": "root = []",
+        "output": "[]",
+        "explanation": "Empty tree remains empty."
+      }
+    ],
+    "hints": [
+      "Use recursion to invert subtrees first",
+      "At each node, swap its left and right children",
+      "Base case: if node is null, return null",
+      "Can also be solved iteratively using BFS or DFS",
+      "Time complexity is O(n) as we visit each node once"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(h) where h is tree height, O(n) worst case",
+    "tags": ["tree", "binary-tree", "dfs", "bfs", "recursion"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/invert-binary-tree/",
+      "gfg": "https://www.geeksforgeeks.org/write-an-efficient-c-function-to-convert-a-tree-into-its-mirror-tree/"
+    },
+    "testCases": [
+      {
+        "input": {"root": [4,2,7,1,3,6,9]},
+        "output": [4,7,2,9,6,3,1]
+      },
+      {
+        "input": {"root": [2,1,3]},
+        "output": [2,3,1]
+      },
+      {
+        "input": {"root": []},
+        "output": []
+      }
+    ],
+    "starterCode": {
+      "javascript": "function invertTree(root) {\n  // Write your code here\n  // TreeNode structure: { val: number, left: TreeNode, right: TreeNode }\n  \n}",
+      "python": "def invert_tree(root):\n    # Write your code here\n    # TreeNode has val, left, right\n    pass",
+      "java": "public TreeNode invertTree(TreeNode root) {\n    // Write your code here\n    return null;\n}"
+    }
+  },
+  {
+    "id": "trees-2",
+    "title": "Maximum Depth of Binary Tree",
+    "category": "trees",
+    "difficulty": "easy",
+    "companies": ["Amazon", "Google", "Facebook", "Microsoft", "Apple", "LinkedIn"],
+    "introduction": "Finding the maximum depth (or height) of a binary tree is a fundamental tree problem. The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.",
+    "problemStatement": "Given the root of a binary tree, return its maximum depth.\n\nA binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.\n\nConstraints:\n- The number of nodes in the tree is in the range [0, 10⁴]\n- -100 <= Node.val <= 100",
+    "examples": [
+      {
+        "input": "root = [3,9,20,null,null,15,7]",
+        "output": "3",
+        "explanation": "The longest path is 3 -> 20 -> 15 (or 3 -> 20 -> 7), which has 3 nodes."
+      },
+      {
+        "input": "root = [1,null,2]",
+        "output": "2",
+        "explanation": "The tree has depth 2 (nodes 1 and 2)."
+      }
+    ],
+    "hints": [
+      "Use recursion: depth = 1 + max(left_depth, right_depth)",
+      "Base case: null node has depth 0",
+      "Can also use BFS level-order traversal",
+      "Count levels in BFS approach",
+      "DFS approach is often more intuitive"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(h) where h is height, O(n) worst case",
+    "tags": ["tree", "binary-tree", "dfs", "bfs", "recursion"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+      "gfg": "https://www.geeksforgeeks.org/find-the-maximum-depth-or-height-of-a-tree/"
+    },
+    "testCases": [
+      {
+        "input": {"root": [3,9,20,null,null,15,7]},
+        "output": 3
+      },
+      {
+        "input": {"root": [1,null,2]},
+        "output": 2
+      },
+      {
+        "input": {"root": []},
+        "output": 0
+      }
+    ],
+    "starterCode": {
+      "javascript": "function maxDepth(root) {\n  // Write your code here\n  \n}\n\n// Test cases - using array representation\nconsole.log('Test 1:', maxDepth(buildTree([3,9,20,null,null,15,7]))); // 3",
+      "python": "def max_depth(root):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', max_depth(build_tree([3,9,20,None,None,15,7]))) # 3",
+      "java": "public int maxDepth(TreeNode root) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "trees-3",
+    "title": "Validate Binary Search Tree",
+    "category": "trees",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Facebook", "Microsoft", "Google", "Apple", "Bloomberg"],
+    "introduction": "Validating a Binary Search Tree (BST) requires checking that for every node, all values in its left subtree are less than the node's value, and all values in its right subtree are greater. A common mistake is only checking immediate children.",
+    "problemStatement": "Given the root of a binary tree, determine if it is a valid binary search tree (BST).\n\nA valid BST is defined as follows:\n- The left subtree of a node contains only nodes with keys less than the node's key\n- The right subtree of a node contains only nodes with keys greater than the node's key\n- Both the left and right subtrees must also be binary search trees\n\nConstraints:\n- The number of nodes in the tree is in the range [1, 10⁴]\n- -2³¹ <= Node.val <= 2³¹ - 1",
+    "examples": [
+      {
+        "input": "root = [2,1,3]",
+        "output": "true",
+        "explanation": "1 < 2 < 3, so this is a valid BST."
+      },
+      {
+        "input": "root = [5,1,4,null,null,3,6]",
+        "output": "false",
+        "explanation": "The root's value is 5 but the right child is 4, which violates BST property."
+      }
+    ],
+    "hints": [
+      "Pass down valid range (min, max) for each subtree",
+      "Left child must be in range (min, current)",
+      "Right child must be in range (current, max)",
+      "Inorder traversal of BST gives sorted array",
+      "Handle integer overflow with null or long values"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(h) for recursion stack",
+    "tags": ["tree", "binary-search-tree", "dfs", "recursion"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/validate-binary-search-tree/",
+      "gfg": "https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/"
+    },
+    "testCases": [
+      {
+        "input": {"root": [2,1,3]},
+        "output": true
+      },
+      {
+        "input": {"root": [5,1,4,null,null,3,6]},
+        "output": false
+      },
+      {
+        "input": {"root": [5,4,6,null,null,3,7]},
+        "output": false
+      }
+    ],
+    "starterCode": {
+      "javascript": "function isValidBST(root) {\n  // Write your code here\n  \n}",
+      "python": "def is_valid_bst(root):\n    # Write your code here\n    pass",
+      "java": "public boolean isValidBST(TreeNode root) {\n    // Write your code here\n    return false;\n}"
+    }
+  },
+  {
+    "id": "trees-4",
+    "title": "Lowest Common Ancestor of a Binary Tree",
+    "category": "trees",
+    "difficulty": "medium",
+    "companies": ["Facebook", "Amazon", "Google", "Microsoft", "LinkedIn", "Apple"],
+    "introduction": "The Lowest Common Ancestor (LCA) is the deepest node that has both p and q as descendants. A node can be a descendant of itself. This is a frequently asked interview question with applications in version control and family tree analysis.",
+    "problemStatement": "Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.\n\nThe lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).\n\nConstraints:\n- The number of nodes in the tree is in the range [2, 10⁵]\n- -10⁹ <= Node.val <= 10⁹\n- All Node.val are unique\n- p != q\n- p and q will exist in the tree",
+    "examples": [
+      {
+        "input": "root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1",
+        "output": "3",
+        "explanation": "The LCA of nodes 5 and 1 is 3."
+      },
+      {
+        "input": "root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4",
+        "output": "5",
+        "explanation": "The LCA of nodes 5 and 4 is 5, since a node can be an ancestor of itself."
+      }
+    ],
+    "hints": [
+      "Use recursion to search for p and q",
+      "If current node is p or q, return it",
+      "Search both left and right subtrees",
+      "If both return non-null, current node is LCA",
+      "If only one returns non-null, propagate that result up"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(h) for recursion stack",
+    "tags": ["tree", "binary-tree", "dfs", "recursion"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
+      "gfg": "https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/"
+    },
+    "testCases": [
+      {
+        "input": {"root": [3,5,1,6,2,0,8,null,null,7,4], "p": 5, "q": 1},
+        "output": 3
+      },
+      {
+        "input": {"root": [3,5,1,6,2,0,8,null,null,7,4], "p": 5, "q": 4},
+        "output": 5
+      }
+    ],
+    "starterCode": {
+      "javascript": "function lowestCommonAncestor(root, p, q) {\n  // Write your code here\n  \n}",
+      "python": "def lowest_common_ancestor(root, p, q):\n    # Write your code here\n    pass",
+      "java": "public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {\n    // Write your code here\n    return null;\n}"
+    }
+  },
+  {
+    "id": "trees-5",
+    "title": "Binary Tree Level Order Traversal",
+    "category": "trees",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Facebook", "Microsoft", "Google", "Bloomberg", "Apple"],
+    "introduction": "Level order traversal visits nodes of a binary tree level by level, from left to right. This is essentially BFS on a tree. It's useful for problems that require processing nodes by their depth or finding shortest paths in trees.",
+    "problemStatement": "Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).\n\nConstraints:\n- The number of nodes in the tree is in the range [0, 2000]\n- -1000 <= Node.val <= 1000",
+    "examples": [
+      {
+        "input": "root = [3,9,20,null,null,15,7]",
+        "output": "[[3],[9,20],[15,7]]",
+        "explanation": "Level 0: [3], Level 1: [9, 20], Level 2: [15, 7]"
+      },
+      {
+        "input": "root = [1]",
+        "output": "[[1]]",
+        "explanation": "Single node at level 0."
+      },
+      {
+        "input": "root = []",
+        "output": "[]",
+        "explanation": "Empty tree."
+      }
+    ],
+    "hints": [
+      "Use BFS with a queue",
+      "Process nodes level by level",
+      "Track the size of queue at each level start",
+      "Add all nodes of current level to result list",
+      "Can also use DFS with level parameter"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(n) for the queue",
+    "tags": ["tree", "binary-tree", "bfs"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+      "gfg": "https://www.geeksforgeeks.org/level-order-tree-traversal/"
+    },
+    "testCases": [
+      {
+        "input": {"root": [3,9,20,null,null,15,7]},
+        "output": [[3],[9,20],[15,7]]
+      },
+      {
+        "input": {"root": [1]},
+        "output": [[1]]
+      },
+      {
+        "input": {"root": []},
+        "output": []
+      }
+    ],
+    "starterCode": {
+      "javascript": "function levelOrder(root) {\n  // Write your code here\n  \n}",
+      "python": "def level_order(root):\n    # Write your code here\n    pass",
+      "java": "public List<List<Integer>> levelOrder(TreeNode root) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+    }
+  },
+  {
+    "id": "trees-6",
+    "title": "Serialize and Deserialize Binary Tree",
+    "category": "trees",
+    "difficulty": "hard",
+    "companies": ["Facebook", "Amazon", "Google", "Microsoft", "LinkedIn", "Uber"],
+    "introduction": "Serialization is converting a data structure to a string, and deserialization is reconstructing it from the string. This problem tests your understanding of tree traversal and string manipulation.",
+    "problemStatement": "Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.\n\nConstraints:\n- The number of nodes in the tree is in the range [0, 10⁴]\n- -1000 <= Node.val <= 1000",
+    "examples": [
+      {
+        "input": "root = [1,2,3,null,null,4,5]",
+        "output": "[1,2,3,null,null,4,5]",
+        "explanation": "The tree is serialized and then deserialized back to the same structure."
+      },
+      {
+        "input": "root = []",
+        "output": "[]",
+        "explanation": "Empty tree."
+      }
+    ],
+    "hints": [
+      "Use preorder traversal for serialization",
+      "Mark null nodes with a special character like 'N' or '#'",
+      "Use a delimiter between values",
+      "For deserialization, process values in same order",
+      "Use queue or index to track position during deserialization"
+    ],
+    "timeComplexity": "O(n) for both serialize and deserialize",
+    "spaceComplexity": "O(n)",
+    "tags": ["tree", "binary-tree", "dfs", "bfs", "design", "string"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
+      "gfg": "https://www.geeksforgeeks.org/serialize-deserialize-binary-tree/"
+    },
+    "testCases": [
+      {
+        "input": {"root": [1,2,3,null,null,4,5]},
+        "output": [1,2,3,null,null,4,5]
+      },
+      {
+        "input": {"root": []},
+        "output": []
+      }
+    ],
+    "starterCode": {
+      "javascript": "function serialize(root) {\n  // Write your code here\n  \n}\n\nfunction deserialize(data) {\n  // Write your code here\n  \n}",
+      "python": "def serialize(root):\n    # Write your code here\n    pass\n\ndef deserialize(data):\n    # Write your code here\n    pass",
+      "java": "public String serialize(TreeNode root) {\n    // Write your code here\n    return \"\";\n}\n\npublic TreeNode deserialize(String data) {\n    // Write your code here\n    return null;\n}"
+    }
+  },
+{
+    "id": "trees-7",
+    "title": "Diameter of Binary Tree",
+    "category": "trees",
+    "difficulty": "easy",
+    "companies": ["Facebook", "Amazon", "Google", "Microsoft", "Apple"],
+    "introduction": "The diameter (or width) of a tree is the length of the longest path between any two nodes. This path may or may not pass through the root. For each node, the diameter passing through it equals left_height + right_height.",
+    "problemStatement": "Given the root of a binary tree, return the length of the diameter of the tree.\n\nThe diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.\n\nThe length of a path between two nodes is represented by the number of edges between them.\n\nConstraints:\n- The number of nodes in the tree is in the range [1, 10⁴]\n- -100 <= Node.val <= 100",
+    "examples": [
+      {
+        "input": "root = [1,2,3,4,5]",
+        "output": "3",
+        "explanation": "The longest path is [4,2,1,3] or [5,2,1,3], which has length 3."
+      },
+      {
+        "input": "root = [1,2]",
+        "output": "1",
+        "explanation": "The path is [2,1] with length 1."
+      }
+    ],
+    "hints": [
+      "For each node, calculate left and right heights",
+      "Diameter through this node = left_height + right_height",
+      "Track maximum diameter seen",
+      "Return height for parent's calculation",
+      "Use post-order traversal"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(h) where h is tree height",
+    "tags": ["tree", "binary-tree", "dfs", "recursion"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/diameter-of-binary-tree/",
+      "gfg": "https://www.geeksforgeeks.org/diameter-of-a-binary-tree/"
+    },
+    "testCases": [
+      {
+        "input": {"root": [1,2,3,4,5]},
+        "output": 3
+      },
+      {
+        "input": {"root": [1,2]},
+        "output": 1
+      }
+    ],
+    "starterCode": {
+      "javascript": "function diameterOfBinaryTree(root) {\n  // Write your code here\n  \n}",
+      "python": "def diameter_of_binary_tree(root):\n    # Write your code here\n    pass",
+      "java": "public int diameterOfBinaryTree(TreeNode root) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "trees-8",
+    "title": "Balanced Binary Tree",
+    "category": "trees",
+    "difficulty": "easy",
+    "companies": ["Amazon", "Google", "Facebook", "Bloomberg"],
+    "introduction": "A height-balanced binary tree is a tree where the heights of the left and right subtrees of every node differ by at most 1. This check needs to be performed for all nodes, not just the root.",
+    "problemStatement": "Given a binary tree, determine if it is height-balanced.\n\nA height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.\n\nConstraints:\n- The number of nodes in the tree is in the range [0, 5000]\n- -10⁴ <= Node.val <= 10⁴",
+    "examples": [
+      {
+        "input": "root = [3,9,20,null,null,15,7]",
+        "output": "true",
+        "explanation": "The tree is balanced."
+      },
+      {
+        "input": "root = [1,2,2,3,3,null,null,4,4]",
+        "output": "false",
+        "explanation": "The left subtree has height 3, right has height 1."
+      },
+      {
+        "input": "root = []",
+        "output": "true",
+        "explanation": "Empty tree is balanced."
+      }
+    ],
+    "hints": [
+      "Combine height calculation with balance check",
+      "If unbalanced, return -1 as a signal",
+      "Check: |left_height - right_height| <= 1",
+      "Post-order traversal works well",
+      "O(n) solution: check balance while computing height"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(h)",
+    "tags": ["tree", "binary-tree", "dfs", "recursion"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/balanced-binary-tree/",
+      "gfg": "https://www.geeksforgeeks.org/how-to-determine-if-a-binary-tree-is-balanced/"
+    },
+    "testCases": [
+      {
+        "input": {"root": [3,9,20,null,null,15,7]},
+        "output": true
+      },
+      {
+        "input": {"root": [1,2,2,3,3,null,null,4,4]},
+        "output": false
+      },
+      {
+        "input": {"root": []},
+        "output": true
+      }
+    ],
+    "starterCode": {
+      "javascript": "function isBalanced(root) {\n  // Write your code here\n  \n}",
+      "python": "def is_balanced(root):\n    # Write your code here\n    pass",
+      "java": "public boolean isBalanced(TreeNode root) {\n    // Write your code here\n    return false;\n}"
+    }
+  },
+  {
+    "id": "trees-9",
+    "title": "Binary Tree Right Side View",
+    "category": "trees",
+    "difficulty": "medium",
+    "companies": ["Facebook", "Amazon", "Google", "Microsoft", "Bloomberg"],
+    "introduction": "Given a binary tree, return the values of nodes you can see when looking at the tree from the right side. This means returning the rightmost node at each level.",
+    "problemStatement": "Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.\n\nConstraints:\n- The number of nodes in the tree is in the range [0, 100]\n- -100 <= Node.val <= 100",
+    "examples": [
+      {
+        "input": "root = [1,2,3,null,5,null,4]",
+        "output": "[1,3,4]",
+        "explanation": "Looking from the right, you see nodes 1, 3, and 4."
+      },
+      {
+        "input": "root = [1,null,3]",
+        "output": "[1,3]",
+        "explanation": "The tree only has a right child."
+      },
+      {
+        "input": "root = []",
+        "output": "[]",
+        "explanation": "Empty tree."
+      }
+    ],
+    "hints": [
+      "Use level-order traversal (BFS)",
+      "Take the last element of each level",
+      "Alternative: DFS with right child first",
+      "In DFS, if depth == result.length, add node (first of each depth)",
+      "Visit right child before left child"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(n)",
+    "tags": ["tree", "binary-tree", "bfs", "dfs"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/binary-tree-right-side-view/",
+      "gfg": "https://www.geeksforgeeks.org/print-right-view-binary-tree-2/"
+    },
+    "testCases": [
+      {
+        "input": {"root": [1,2,3,null,5,null,4]},
+        "output": [1,3,4]
+      },
+      {
+        "input": {"root": [1,null,3]},
+        "output": [1,3]
+      },
+      {
+        "input": {"root": []},
+        "output": []
+      }
+    ],
+    "starterCode": {
+      "javascript": "function rightSideView(root) {\n  // Write your code here\n  \n}",
+      "python": "def right_side_view(root):\n    # Write your code here\n    pass",
+      "java": "public List<Integer> rightSideView(TreeNode root) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+    }
+  },
+  {
+    "id": "trees-10",
+    "title": "Construct Binary Tree from Preorder and Inorder Traversal",
+    "category": "trees",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Bloomberg"],
+    "introduction": "Given preorder and inorder traversal arrays, reconstruct the binary tree. The key insight is that the first element of preorder is always the root, and its position in inorder divides left and right subtrees.",
+    "problemStatement": "Given two integer arrays preorder and inorder where preorder is the preorder traversal of a binary tree and inorder is the inorder traversal of the same tree, construct and return the binary tree.\n\nConstraints:\n- 1 <= preorder.length <= 3000\n- inorder.length == preorder.length\n- -3000 <= preorder[i], inorder[i] <= 3000\n- preorder and inorder consist of unique values\n- Each value of inorder also appears in preorder\n- preorder is guaranteed to be the preorder traversal of the tree\n- inorder is guaranteed to be the inorder traversal of the tree",
+    "examples": [
+      {
+        "input": "preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]",
+        "output": "[3,9,20,null,null,15,7]",
+        "explanation": "Root is 3 (first in preorder). In inorder, 9 is left of 3, [15,20,7] is right of 3."
+      },
+      {
+        "input": "preorder = [-1], inorder = [-1]",
+        "output": "[-1]",
+        "explanation": "Single node tree."
+      }
+    ],
+    "hints": [
+      "First element of preorder is root",
+      "Find root's position in inorder to divide left/right subtrees",
+      "Use HashMap for O(1) lookup of root position",
+      "Recursively build left subtree, then right subtree",
+      "Track indices carefully using start/end pointers"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(n)",
+    "tags": ["tree", "binary-tree", "divide-and-conquer", "hash-table"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+      "gfg": "https://www.geeksforgeeks.org/construct-tree-from-given-inorder-and-preorder-traversal/"
+    },
+    "testCases": [
+      {
+        "input": {"preorder": [3,9,20,15,7], "inorder": [9,3,15,20,7]},
+        "output": [3,9,20,null,null,15,7]
+      },
+      {
+        "input": {"preorder": [-1], "inorder": [-1]},
+        "output": [-1]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function buildTree(preorder, inorder) {\n  // Write your code here\n  \n}",
+      "python": "def build_tree(preorder, inorder):\n    # Write your code here\n    pass",
+      "java": "public TreeNode buildTree(int[] preorder, int[] inorder) {\n    // Write your code here\n    return null;\n}"
+    }
+  },
+  {
+    "id": "trees-11",
+    "title": "Kth Smallest Element in a BST",
+    "category": "trees",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Bloomberg"],
+    "introduction": "Given a BST, find the kth smallest element. Since inorder traversal of BST gives sorted order, we can do inorder traversal and return the kth element.",
+    "problemStatement": "Given the root of a binary search tree, and an integer k, return the kth smallest value (1-indexed) of all the values of the nodes in the tree.\n\nConstraints:\n- The number of nodes in the tree is n\n- 1 <= k <= n <= 10⁴\n- 0 <= Node.val <= 10⁴",
+    "examples": [
+      {
+        "input": "root = [3,1,4,null,2], k = 1",
+        "output": "1",
+        "explanation": "Inorder traversal gives [1,2,3,4]. 1st smallest is 1."
+      },
+      {
+        "input": "root = [5,3,6,2,4,null,null,1], k = 3",
+        "output": "3",
+        "explanation": "Inorder traversal gives [1,2,3,4,5,6]. 3rd smallest is 3."
+      }
+    ],
+    "hints": [
+      "Inorder traversal of BST gives sorted order",
+      "Can use iterative inorder with stack",
+      "Count nodes visited, return when count == k",
+      "No need to traverse entire tree",
+      "Follow-up: augment tree with subtree sizes for O(h) queries"
+    ],
+    "timeComplexity": "O(H + k) where H is height",
+    "spaceComplexity": "O(H)",
+    "tags": ["tree", "binary-search-tree", "dfs"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+      "gfg": "https://www.geeksforgeeks.org/find-k-th-smallest-element-in-bst-order-statistics-in-bst/"
+    },
+    "testCases": [
+      {
+        "input": {"root": [3,1,4,null,2], "k": 1},
+        "output": 1
+      },
+      {
+        "input": {"root": [5,3,6,2,4,null,null,1], "k": 3},
+        "output": 3
+      }
+    ],
+    "starterCode": {
+      "javascript": "function kthSmallest(root, k) {\n  // Write your code here\n  \n}",
+      "python": "def kth_smallest(root, k):\n    # Write your code here\n    pass",
+      "java": "public int kthSmallest(TreeNode root, int k) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "trees-12",
+    "title": "Binary Tree Maximum Path Sum",
+    "category": "trees",
+    "difficulty": "hard",
+    "companies": ["Facebook", "Amazon", "Google", "Microsoft", "DoorDash"],
+    "introduction": "Find the maximum path sum in a binary tree. A path can start and end at any node, and each node can only be used once. The path doesn't need to pass through the root.",
+    "problemStatement": "A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. Note that the path does not need to pass through the root.\n\nThe path sum of a path is the sum of the node's values in the path.\n\nGiven the root of a binary tree, return the maximum path sum of any non-empty path.\n\nConstraints:\n- The number of nodes in the tree is in the range [1, 3 × 10⁴]\n- -1000 <= Node.val <= 1000",
+    "examples": [
+      {
+        "input": "root = [1,2,3]",
+        "output": "6",
+        "explanation": "Path 2 → 1 → 3 has sum 6."
+      },
+      {
+        "input": "root = [-10,9,20,null,null,15,7]",
+        "output": "42",
+        "explanation": "Path 15 → 20 → 7 has sum 42."
+      }
+    ],
+    "hints": [
+      "For each node, calculate max path sum passing through it",
+      "Max at node = node.val + max(0, left) + max(0, right)",
+      "But return to parent: node.val + max(0, max(left, right))",
+      "Track global maximum during traversal",
+      "Use 0 instead of negative gains"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(h)",
+    "tags": ["tree", "binary-tree", "dfs", "dynamic-programming"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+      "gfg": "https://www.geeksforgeeks.org/find-maximum-path-sum-in-a-binary-tree/"
+    },
+    "testCases": [
+      {
+        "input": {"root": [1,2,3]},
+        "output": 6
+      },
+      {
+        "input": {"root": [-10,9,20,null,null,15,7]},
+        "output": 42
+      }
+    ],
+    "starterCode": {
+      "javascript": "function maxPathSum(root) {\n  // Write your code here\n  \n}",
+      "python": "def max_path_sum(root):\n    # Write your code here\n    pass",
+      "java": "public int maxPathSum(TreeNode root) {\n    // Write your code here\n    return 0;\n}"
+    }
+  }]
 }

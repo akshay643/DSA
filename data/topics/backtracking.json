@@ -1,0 +1,337 @@
+{
+  "category": {
+    "id": "backtracking",
+    "name": "Backtracking",
+    "description": "Problems solved using backtracking technique - exploring all possibilities and backtracking when needed"
+  },
+  "questions": [
+     {
+    "id": "backtracking-1",
+    "title": "Subsets",
+    "category": "backtracking",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Bloomberg"],
+    "introduction": "Given an array of unique integers, return all possible subsets (the power set). This is a classic backtracking problem that demonstrates the include/exclude pattern.",
+    "problemStatement": "Given an integer array nums of unique elements, return all possible subsets (the power set).\n\nThe solution set must not contain duplicate subsets. Return the solution in any order.\n\nConstraints:\n- 1 <= nums.length <= 10\n- -10 <= nums[i] <= 10\n- All the numbers of nums are unique",
+    "examples": [
+      {
+        "input": "nums = [1,2,3]",
+        "output": "[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]",
+        "explanation": "All 2^3 = 8 subsets."
+      },
+      {
+        "input": "nums = [0]",
+        "output": "[[],[0]]",
+        "explanation": "Two subsets: empty and [0]."
+      }
+    ],
+    "hints": [
+      "For each element, we have two choices: include or exclude",
+      "Use backtracking to explore both choices",
+      "Alternative: iterative approach starting with [[]]",
+      "For each num, add it to all existing subsets",
+      "Total subsets = 2^n"
+    ],
+    "timeComplexity": "O(n × 2ⁿ)",
+    "spaceComplexity": "O(n) for recursion depth",
+    "tags": ["backtracking", "array", "bit-manipulation"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/subsets/",
+      "gfg": "https://www.geeksforgeeks.org/power-set/"
+    },
+    "testCases": [
+      {
+        "input": {"nums": [1, 2, 3]},
+        "output": [[], [1], [2], [1,2], [3], [1,3], [2,3], [1,2,3]]
+      },
+      {
+        "input": {"nums": [0]},
+        "output": [[], [0]]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function subsets(nums) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', subsets([1, 2, 3]));",
+      "python": "def subsets(nums):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', subsets([1, 2, 3]))",
+      "java": "public List<List<Integer>> subsets(int[] nums) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+    }
+  },
+  {
+    "id": "backtracking-2",
+    "title": "Permutations",
+    "category": "backtracking",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "LinkedIn"],
+    "introduction": "Given an array of distinct integers, return all possible permutations. Unlike subsets, permutations use all elements and order matters.",
+    "problemStatement": "Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.\n\nConstraints:\n- 1 <= nums.length <= 6\n- -10 <= nums[i] <= 10\n- All the integers of nums are unique",
+    "examples": [
+      {
+        "input": "nums = [1,2,3]",
+        "output": "[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]",
+        "explanation": "All 3! = 6 permutations."
+      },
+      {
+        "input": "nums = [0,1]",
+        "output": "[[0,1],[1,0]]",
+        "explanation": "All 2! = 2 permutations."
+      },
+      {
+        "input": "nums = [1]",
+        "output": "[[1]]",
+        "explanation": "Only one permutation."
+      }
+    ],
+    "hints": [
+      "Use backtracking to try each element at each position",
+      "Track which elements are used with a visited array",
+      "Or swap elements to generate permutations in-place",
+      "Base case: when current permutation has n elements",
+      "Total permutations = n!"
+    ],
+    "timeComplexity": "O(n × n!)",
+    "spaceComplexity": "O(n) for recursion and tracking",
+    "tags": ["backtracking", "array"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/permutations/",
+      "gfg": "https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/"
+    },
+    "testCases": [
+      {
+        "input": {"nums": [1, 2, 3]},
+        "output": [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+      },
+      {
+        "input": {"nums": [0, 1]},
+        "output": [[0,1],[1,0]]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function permute(nums) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', permute([1, 2, 3]));",
+      "python": "def permute(nums):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', permute([1, 2, 3]))",
+      "java": "public List<List<Integer>> permute(int[] nums) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+    }
+  },
+  {
+    "id": "backtracking-3",
+    "title": "Combination Sum",
+    "category": "backtracking",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Airbnb"],
+    "introduction": "Given an array of distinct integers and a target, return all unique combinations that sum to the target. Elements can be used unlimited times. This is a variant of the subset problem with a sum constraint.",
+    "problemStatement": "Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.\n\nThe same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.\n\nConstraints:\n- 1 <= candidates.length <= 30\n- 2 <= candidates[i] <= 40\n- All elements of candidates are distinct\n- 1 <= target <= 40",
+    "examples": [
+      {
+        "input": "candidates = [2,3,6,7], target = 7",
+        "output": "[[2,2,3],[7]]",
+        "explanation": "2 + 2 + 3 = 7 and 7 = 7."
+      },
+      {
+        "input": "candidates = [2,3,5], target = 8",
+        "output": "[[2,2,2,2],[2,3,3],[3,5]]",
+        "explanation": "Multiple ways to reach 8."
+      },
+      {
+        "input": "candidates = [2], target = 1",
+        "output": "[]",
+        "explanation": "No combination sums to 1."
+      }
+    ],
+    "hints": [
+      "Use backtracking with remaining target",
+      "Allow same element to be used again (don't increment start index)",
+      "Prune when target becomes negative",
+      "Sort to enable early termination",
+      "Start from current index to avoid duplicate combinations"
+    ],
+    "timeComplexity": "O(n^(target/min))",
+    "spaceComplexity": "O(target/min) for recursion depth",
+    "tags": ["backtracking", "array"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/combination-sum/",
+      "gfg": "https://www.geeksforgeeks.org/combinational-sum/"
+    },
+    "testCases": [
+      {
+        "input": {"candidates": [2,3,6,7], "target": 7},
+        "output": [[2,2,3],[7]]
+      },
+      {
+        "input": {"candidates": [2,3,5], "target": 8},
+        "output": [[2,2,2,2],[2,3,3],[3,5]]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function combinationSum(candidates, target) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', combinationSum([2,3,6,7], 7)); // [[2,2,3],[7]]",
+      "python": "def combination_sum(candidates, target):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', combination_sum([2,3,6,7], 7)) # [[2,2,3],[7]]",
+      "java": "public List<List<Integer>> combinationSum(int[] candidates, int target) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+    }
+  },
+  {
+    "id": "backtracking-4",
+    "title": "Letter Combinations of a Phone Number",
+    "category": "backtracking",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Uber"],
+    "introduction": "Given a string containing digits from 2-9, return all possible letter combinations that the number could represent. This is like old phone keypads where each digit maps to multiple letters.",
+    "problemStatement": "Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.\n\nA mapping of digits to letters (just like on the telephone buttons) is given below:\n2 → abc, 3 → def, 4 → ghi, 5 → jkl, 6 → mno, 7 → pqrs, 8 → tuv, 9 → wxyz\n\nNote that 1 does not map to any letters.\n\nConstraints:\n- 0 <= digits.length <= 4\n- digits[i] is a digit in the range ['2', '9']",
+    "examples": [
+      {
+        "input": "digits = \"23\"",
+        "output": "[\"ad\",\"ae\",\"af\",\"bd\",\"be\",\"bf\",\"cd\",\"ce\",\"cf\"]",
+        "explanation": "2 → abc, 3 → def. All combinations of one letter from each."
+      },
+      {
+        "input": "digits = \"\"",
+        "output": "[]",
+        "explanation": "Empty input gives empty output."
+      },
+      {
+        "input": "digits = \"2\"",
+        "output": "[\"a\",\"b\",\"c\"]",
+        "explanation": "Just the letters for digit 2."
+      }
+    ],
+    "hints": [
+      "Create a mapping of digit to letters",
+      "Use backtracking to try each letter for each digit",
+      "Build combination character by character",
+      "When combination length equals input length, add to result",
+      "Can also use BFS/iterative approach"
+    ],
+    "timeComplexity": "O(4ⁿ × n) where n is length of digits",
+    "spaceComplexity": "O(n) for recursion depth",
+    "tags": ["backtracking", "string", "hash-table"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/",
+      "gfg": "https://www.geeksforgeeks.org/iterative-letter-combinations-of-a-phone-number/"
+    },
+    "testCases": [
+      {
+        "input": {"digits": "23"},
+        "output": ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+      },
+      {
+        "input": {"digits": ""},
+        "output": []
+      },
+      {
+        "input": {"digits": "2"},
+        "output": ["a","b","c"]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function letterCombinations(digits) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', letterCombinations('23'));",
+      "python": "def letter_combinations(digits):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', letter_combinations('23'))",
+      "java": "public List<String> letterCombinations(String digits) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+    }
+  },
+  {
+    "id": "backtracking-5",
+    "title": "N-Queens",
+    "category": "backtracking",
+    "difficulty": "hard",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Bloomberg"],
+    "introduction": "Place n queens on an n×n chessboard such that no two queens attack each other. Queens can attack horizontally, vertically, and diagonally. This is the classic backtracking problem.",
+    "problemStatement": "The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.\n\nGiven an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.\n\nEach solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.\n\nConstraints:\n- 1 <= n <= 9",
+    "examples": [
+      {
+        "input": "n = 4",
+        "output": "[[\".Q..\",\"...Q\",\"Q...\",\"..Q.\"],[\"..Q.\",\"Q...\",\"...Q\",\".Q..\"]]",
+        "explanation": "There are two distinct solutions to the 4-queens puzzle."
+      },
+      {
+        "input": "n = 1",
+        "output": "[[\"Q\"]]",
+        "explanation": "Only one way to place one queen."
+      }
+    ],
+    "hints": [
+      "Place queens row by row",
+      "Track columns, diagonals, and anti-diagonals",
+      "For position (r, c): diagonal = r - c, anti-diagonal = r + c",
+      "Use sets or arrays to track attacked positions",
+      "Backtrack when no valid position in current row"
+    ],
+    "timeComplexity": "O(n!)",
+    "spaceComplexity": "O(n²) for the board",
+    "tags": ["backtracking", "array"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/n-queens/",
+      "gfg": "https://www.geeksforgeeks.org/n-queen-problem-backtracking-3/"
+    },
+    "testCases": [
+      {
+        "input": {"n": 4},
+        "output": [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
+      },
+      {
+        "input": {"n": 1},
+        "output": [["Q"]]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function solveNQueens(n) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', solveNQueens(4));",
+      "python": "def solve_n_queens(n):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', solve_n_queens(4))",
+      "java": "public List<List<String>> solveNQueens(int n) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+    }
+  },
+  {
+    "id": "backtracking-6",
+    "title": "Word Search",
+    "category": "backtracking",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Bloomberg", "Apple"],
+    "introduction": "Given a 2D grid of characters and a word, find if the word exists in the grid. The word can be constructed from adjacent cells (horizontally or vertically). Each cell can only be used once.",
+    "problemStatement": "Given an m x n grid of characters board and a string word, return true if word exists in the grid.\n\nThe word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.\n\nConstraints:\n- m == board.length\n- n = board[i].length\n- 1 <= m, n <= 6\n- 1 <= word.length <= 15\n- board and word consists of only lowercase and uppercase English letters",
+    "examples": [
+      {
+        "input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCCED\"",
+        "output": "true",
+        "explanation": "The word ABCCED can be found in the grid."
+      },
+      {
+        "input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"SEE\"",
+        "output": "true",
+        "explanation": "The word SEE can be found."
+      },
+      {
+        "input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCB\"",
+        "output": "false",
+        "explanation": "Cannot revisit the same cell."
+      }
+    ],
+    "hints": [
+      "Start DFS from each cell that matches first character",
+      "Mark cell as visited during DFS (e.g., change to '#')",
+      "Restore cell after backtracking",
+      "Check bounds and character match at each step",
+      "Prune early if remaining word can't be found"
+    ],
+    "timeComplexity": "O(m × n × 4^L) where L is word length",
+    "spaceComplexity": "O(L) for recursion depth",
+    "tags": ["backtracking", "matrix", "dfs"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/word-search/",
+      "gfg": "https://www.geeksforgeeks.org/search-a-word-in-a-2d-grid-of-characters/"
+    },
+    "testCases": [
+      {
+        "input": {"board": [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], "word": "ABCCED"},
+        "output": true
+      },
+      {
+        "input": {"board": [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], "word": "SEE"},
+        "output": true
+      },
+      {
+        "input": {"board": [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], "word": "ABCB"},
+        "output": false
+      }
+    ],
+    "starterCode": {
+      "javascript": "function exist(board, word) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', exist([['A','B','C','E'],['S','F','C','S'],['A','D','E','E']], 'ABCCED')); // true",
+      "python": "def exist(board, word):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', exist([['A','B','C','E'],['S','F','C','S'],['A','D','E','E']], 'ABCCED')) # True",
+      "java": "public boolean exist(char[][] board, String word) {\n    // Write your code here\n    return false;\n}"
+    }
+  }
+  ]
+}

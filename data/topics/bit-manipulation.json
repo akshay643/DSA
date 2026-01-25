@@ -1,0 +1,166 @@
+{
+  "category": {
+    "id": "bit-manipulation",
+    "name": "Bit Manipulation",
+    "description": "Problems involving bitwise operations and manipulation of binary representations"
+  },
+  "questions": [{
+    "id": "bit-manipulation-1",
+    "title": "Single Number",
+    "category": "bit-manipulation",
+    "difficulty": "easy",
+    "companies": ["Amazon", "Google", "Facebook", "Microsoft", "Apple"],
+    "introduction": "Given an array where every element appears twice except for one, find that single element. XOR operation is perfect for this: a XOR a = 0 and a XOR 0 = a.",
+    "problemStatement": "Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.\n\nYou must implement a solution with a linear runtime complexity and use only constant extra space.\n\nConstraints:\n- 1 <= nums.length <= 3 × 10⁴\n- -3 × 10⁴ <= nums[i] <= 3 × 10⁴\n- Each element in the array appears twice except for one element which appears only once.",
+    "examples": [
+      {
+        "input": "nums = [2,2,1]",
+        "output": "1",
+        "explanation": "1 appears once, 2 appears twice."
+      },
+      {
+        "input": "nums = [4,1,2,1,2]",
+        "output": "4",
+        "explanation": "4 appears once, 1 and 2 appear twice."
+      },
+      {
+        "input": "nums = [1]",
+        "output": "1",
+        "explanation": "Only one element."
+      }
+    ],
+    "hints": [
+      "XOR of a number with itself is 0",
+      "XOR of a number with 0 is the number itself",
+      "XOR is commutative and associative",
+      "XOR all numbers together",
+      "Pairs cancel out, leaving the single number"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(1)",
+    "tags": ["bit-manipulation", "array"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/single-number/",
+      "gfg": "https://www.geeksforgeeks.org/find-element-appears-array-every-element-appears-twice/"
+    },
+    "testCases": [
+      {
+        "input": {"nums": [2, 2, 1]},
+        "output": 1
+      },
+      {
+        "input": {"nums": [4, 1, 2, 1, 2]},
+        "output": 4
+      },
+      {
+        "input": {"nums": [1]},
+        "output": 1
+      }
+    ],
+    "starterCode": {
+      "javascript": "function singleNumber(nums) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', singleNumber([2, 2, 1])); // 1\nconsole.log('Test 2:', singleNumber([4, 1, 2, 1, 2])); // 4",
+      "python": "def single_number(nums):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', single_number([2, 2, 1])) # 1\nprint('Test 2:', single_number([4, 1, 2, 1, 2])) # 4",
+      "java": "public int singleNumber(int[] nums) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "bit-manipulation-2",
+    "title": "Counting Bits",
+    "category": "bit-manipulation",
+    "difficulty": "easy",
+    "companies": ["Amazon", "Google", "Apple", "Microsoft"],
+    "introduction": "Given an integer n, return an array where ans[i] is the number of 1's in the binary representation of i. The key insight is that the count for i equals count for i/2 plus the last bit.",
+    "problemStatement": "Given an integer n, return an array ans of length n + 1 such that for each i (0 <= i <= n), ans[i] is the number of 1's in the binary representation of i.\n\nConstraints:\n- 0 <= n <= 10⁵",
+    "examples": [
+      {
+        "input": "n = 2",
+        "output": "[0,1,1]",
+        "explanation": "0 → 0, 1 → 1, 2 → 10 (one 1)."
+      },
+      {
+        "input": "n = 5",
+        "output": "[0,1,1,2,1,2]",
+        "explanation": "0,1,1,2,1,2 ones in 0,1,2,3,4,5 respectively."
+      }
+    ],
+    "hints": [
+      "DP relation: dp[i] = dp[i >> 1] + (i & 1)",
+      "i >> 1 removes last bit, i & 1 gets last bit",
+      "Or: dp[i] = dp[i & (i-1)] + 1 (turns off rightmost 1-bit)",
+      "Build answer iteratively from 0 to n",
+      "O(n) time, O(1) extra space (output doesn't count)"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(1) extra space",
+    "tags": ["bit-manipulation", "dynamic-programming"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/counting-bits/",
+      "gfg": "https://www.geeksforgeeks.org/count-set-bits-in-an-integer/"
+    },
+    "testCases": [
+      {
+        "input": {"n": 2},
+        "output": [0, 1, 1]
+      },
+      {
+        "input": {"n": 5},
+        "output": [0, 1, 1, 2, 1, 2]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function countBits(n) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', countBits(2)); // [0, 1, 1]\nconsole.log('Test 2:', countBits(5)); // [0, 1, 1, 2, 1, 2]",
+      "python": "def count_bits(n):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', count_bits(2)) # [0, 1, 1]\nprint('Test 2:', count_bits(5)) # [0, 1, 1, 2, 1, 2]",
+      "java": "public int[] countBits(int n) {\n    // Write your code here\n    return new int[0];\n}"
+    }
+  },
+  {
+    "id": "bit-manipulation-3",
+    "title": "Reverse Bits",
+    "category": "bit-manipulation",
+    "difficulty": "easy",
+    "companies": ["Amazon", "Apple", "Microsoft", "Airbnb"],
+    "introduction": "Reverse the bits of a 32-bit unsigned integer. Process bit by bit, shifting the result left and adding the rightmost bit of input.",
+    "problemStatement": "Reverse bits of a given 32 bits unsigned integer.\n\nNote:\n- In some languages, there is no unsigned integer type. The input will be given as a signed integer type. This should not affect your implementation, as the integer's internal binary representation is the same.\n- In Java, the compiler represents the signed integers using 2's complement notation.\n\nConstraints:\n- The input must be a binary string of length 32",
+    "examples": [
+      {
+        "input": "n = 00000010100101000001111010011100",
+        "output": "964176192 (00111001011110000010100101000000)",
+        "explanation": "The input represents 43261596, reversed is 964176192."
+      },
+      {
+        "input": "n = 11111111111111111111111111111101",
+        "output": "3221225471 (10111111111111111111111111111111)",
+        "explanation": "The input represents 4294967293, reversed is 3221225471."
+      }
+    ],
+    "hints": [
+      "Process one bit at a time, 32 iterations",
+      "result = (result << 1) | (n & 1)",
+      "n = n >> 1 (or n >>> 1 for unsigned)",
+      "Can optimize with divide and conquer approach",
+      "Swap halves, then quarters, etc."
+    ],
+    "timeComplexity": "O(1) - constant 32 iterations",
+    "spaceComplexity": "O(1)",
+    "tags": ["bit-manipulation", "divide-and-conquer"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/reverse-bits/",
+      "gfg": "https://www.geeksforgeeks.org/reverse-bits-of-a-positive-integer-number-in-python/"
+    },
+    "testCases": [
+      {
+        "input": {"n": 43261596},
+        "output": 964176192
+      },
+      {
+        "input": {"n": 4294967293},
+        "output": 3221225471
+      }
+    ],
+    "starterCode": {
+      "javascript": "function reverseBits(n) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', reverseBits(43261596)); // 964176192",
+      "python": "def reverse_bits(n):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', reverse_bits(43261596)) # 964176192",
+      "java": "public int reverseBits(int n) {\n    // Write your code here\n    return 0;\n}"
+    }
+  }]
+}

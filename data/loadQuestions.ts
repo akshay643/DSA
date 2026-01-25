@@ -10,7 +10,10 @@ import arrays from './topics/arrays.json';
 import strings from './topics/strings.json';
 import linkedLists from './topics/linked-lists.json';
 import stackQueue from './topics/stack-queue.json';
-
+import backtracking from './topics/backtracking.json';
+import bitmanipulation from './topics/bit-manipulation.json';
+import heap from './topics/heap.json';
+import tries from './topics/tries.json';
 const topicFiles = [
   twoPointers,
   slidingWindow,
@@ -21,7 +24,11 @@ const topicFiles = [
   arrays,
   strings,
   linkedLists,
-  stackQueue
+  stackQueue,
+  backtracking,
+  bitmanipulation,
+  heap,
+  tries
 ];
 
 // Merge all topics into single structure

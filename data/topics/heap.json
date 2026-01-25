@@ -1,0 +1,205 @@
+{
+  "category": {
+    "id": "hep",
+    "name": "Heap",
+    "description": "Problems solved using heap technique - exploring all possibilities and heap when needed"
+  },
+  "questions": [
+    {
+    "id": "heap-1",
+    "title": "Kth Largest Element in an Array",
+    "category": "heap",
+    "difficulty": "medium",
+    "companies": ["Facebook", "Amazon", "Google", "Microsoft", "Apple", "LinkedIn"],
+    "introduction": "Find the kth largest element in an unsorted array. This can be solved using sorting, heap, or quickselect algorithm. Using a min-heap of size k is an efficient approach.",
+    "problemStatement": "Given an integer array nums and an integer k, return the kth largest element in the array.\n\nNote that it is the kth largest element in the sorted order, not the kth distinct element.\n\nCan you solve it without sorting?\n\nConstraints:\n- 1 <= k <= nums.length <= 10⁵\n- -10⁴ <= nums[i] <= 10⁴",
+    "examples": [
+      {
+        "input": "nums = [3,2,1,5,6,4], k = 2",
+        "output": "5",
+        "explanation": "Sorted: [1,2,3,4,5,6]. 2nd largest is 5."
+      },
+      {
+        "input": "nums = [3,2,3,1,2,4,5,5,6], k = 4",
+        "output": "4",
+        "explanation": "Sorted: [1,2,2,3,3,4,5,5,6]. 4th largest is 4."
+      }
+    ],
+    "hints": [
+      "Sort and return nums[n-k]: O(n log n)",
+      "Min-heap of size k: O(n log k)",
+      "Max-heap: pop k-1 times, then peek: O(n + k log n)",
+      "Quickselect: O(n) average, O(n²) worst case",
+      "For heap, keep k largest elements, top is kth largest"
+    ],
+    "timeComplexity": "O(n log k) with heap, O(n) average with quickselect",
+    "spaceComplexity": "O(k) with heap, O(1) with quickselect",
+    "tags": ["heap", "array", "divide-and-conquer", "sorting", "quickselect"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+      "gfg": "https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array/"
+    },
+    "testCases": [
+      {
+        "input": {"nums": [3,2,1,5,6,4], "k": 2},
+        "output": 5
+      },
+      {
+        "input": {"nums": [3,2,3,1,2,4,5,5,6], "k": 4},
+        "output": 4
+      }
+    ],
+    "starterCode": {
+      "javascript": "function findKthLargest(nums, k) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', findKthLargest([3,2,1,5,6,4], 2)); // 5",
+      "python": "def find_kth_largest(nums, k):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', find_kth_largest([3,2,1,5,6,4], 2)) # 5",
+      "java": "public int findKthLargest(int[] nums, int k) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "heap-2",
+    "title": "Top K Frequent Elements",
+    "category": "heap",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Apple", "Bloomberg"],
+    "introduction": "Given an array, return the k most frequent elements. This combines frequency counting with selection of top k elements. Can be solved with heap, bucket sort, or quickselect.",
+    "problemStatement": "Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.\n\nConstraints:\n- 1 <= nums.length <= 10⁵\n- -10⁴ <= nums[i] <= 10⁴\n- k is in the range [1, the number of unique elements in the array]\n- It is guaranteed that the answer is unique",
+    "examples": [
+      {
+        "input": "nums = [1,1,1,2,2,3], k = 2",
+        "output": "[1, 2]",
+        "explanation": "1 appears 3 times, 2 appears 2 times. These are the 2 most frequent."
+      },
+      {
+        "input": "nums = [1], k = 1",
+        "output": "[1]",
+        "explanation": "Only one element."
+      }
+    ],
+    "hints": [
+      "First count frequencies using HashMap",
+      "Use min-heap of size k to track top k frequent",
+      "Alternative: bucket sort with frequency as index",
+      "Bucket[i] contains elements with frequency i",
+      "O(n) possible with bucket sort"
+    ],
+    "timeComplexity": "O(n log k) with heap, O(n) with bucket sort",
+    "spaceComplexity": "O(n)",
+    "tags": ["heap", "hash-table", "sorting", "bucket-sort"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/top-k-frequent-elements/",
+      "gfg": "https://www.geeksforgeeks.org/find-k-numbers-occurrences-given-array/"
+    },
+    "testCases": [
+      {
+        "input": {"nums": [1,1,1,2,2,3], "k": 2},
+        "output": [1, 2]
+      },
+      {
+        "input": {"nums": [1], "k": 1},
+        "output": [1]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function topKFrequent(nums, k) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', topKFrequent([1,1,1,2,2,3], 2)); // [1, 2]",
+      "python": "def top_k_frequent(nums, k):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', top_k_frequent([1,1,1,2,2,3], 2)) # [1, 2]",
+      "java": "public int[] topKFrequent(int[] nums, int k) {\n    // Write your code here\n    return new int[0];\n}"
+    }
+  },
+  {
+    "id": "heap-3",
+    "title": "Find Median from Data Stream",
+    "category": "heap",
+    "difficulty": "hard",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Apple", "Netflix"],
+    "introduction": "Design a data structure that supports adding integers and finding the median. Using two heaps (max-heap for lower half, min-heap for upper half) allows O(log n) insertion and O(1) median finding.",
+    "problemStatement": "The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value, and the median is the mean of the two middle values.\n\nImplement the MedianFinder class:\n- MedianFinder() initializes the MedianFinder object.\n- void addNum(int num) adds the integer num from the data stream to the data structure.\n- double findMedian() returns the median of all elements so far.\n\nConstraints:\n- -10⁵ <= num <= 10⁵\n- There will be at least one element in the data structure before calling findMedian.\n- At most 5 × 10⁴ calls will be made to addNum and findMedian.",
+    "examples": [
+      {
+        "input": "[\"MedianFinder\", \"addNum\", \"addNum\", \"findMedian\", \"addNum\", \"findMedian\"]\n[[], [1], [2], [], [3], []]",
+        "output": "[null, null, null, 1.5, null, 2.0]",
+        "explanation": "After adding 1 and 2, median is 1.5. After adding 3, median is 2.0."
+      }
+    ],
+    "hints": [
+      "Use two heaps: max-heap for lower half, min-heap for upper half",
+      "Balance heaps so size differs by at most 1",
+      "Max-heap top <= Min-heap top always",
+      "If sizes equal, median = average of both tops",
+      "If sizes differ, median = top of larger heap"
+    ],
+    "timeComplexity": "O(log n) for addNum, O(1) for findMedian",
+    "spaceComplexity": "O(n)",
+    "tags": ["heap", "design", "two-pointers", "data-stream"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/find-median-from-data-stream/",
+      "gfg": "https://www.geeksforgeeks.org/median-of-stream-of-integers-running-integers/"
+    },
+    "testCases": [
+      {
+        "input": {"operations": ["MedianFinder","addNum","addNum","findMedian","addNum","findMedian"], "values": [[],[1],[2],[],[3],[]]},
+        "output": [null,null,null,1.5,null,2.0]
+      }
+    ],
+    "starterCode": {
+      "javascript": "class MedianFinder {\n  constructor() {\n    // Initialize your data structure here\n  }\n  \n  addNum(num) {\n    // Write your code here\n  }\n  \n  findMedian() {\n    // Write your code here\n  }\n}",
+      "python": "class MedianFinder:\n    def __init__(self):\n        # Initialize your data structure here\n        pass\n    \n    def add_num(self, num):\n        # Write your code here\n        pass\n    \n    def find_median(self):\n        # Write your code here\n        pass",
+      "java": "class MedianFinder {\n    public MedianFinder() {\n        // Initialize your data structure here\n    }\n    \n    public void addNum(int num) {\n        // Write your code here\n    }\n    \n    public double findMedian() {\n        // Write your code here\n        return 0.0;\n    }\n}"
+    }
+  },
+  {
+    "id": "heap-4",
+    "title": "Task Scheduler",
+    "category": "heap",
+    "difficulty": "medium",
+    "companies": ["Facebook", "Amazon", "Google", "Microsoft", "Uber"],
+    "introduction": "Given tasks and a cooldown period, find the minimum time to execute all tasks. Same tasks must have at least n intervals between them. Greedy approach: schedule most frequent tasks first.",
+    "problemStatement": "Given a characters array tasks, representing the tasks a CPU needs to do, where each letter represents a different task. Tasks could be done in any order. Each task is done in one unit of time. For each unit of time, the CPU could complete either one task or just be idle.\n\nHowever, there is a non-negative integer n that represents the cooldown period between two same tasks (the same letter in the array), that is that there must be at least n units of time between any two same tasks.\n\nReturn the least number of units of times that the CPU will take to finish all the given tasks.\n\nConstraints:\n- 1 <= task.length <= 10⁴\n- tasks[i] is upper-case English letter\n- The integer n is in the range [0, 100]",
+    "examples": [
+      {
+        "input": "tasks = [\"A\",\"A\",\"A\",\"B\",\"B\",\"B\"], n = 2",
+        "output": "8",
+        "explanation": "A → B → idle → A → B → idle → A → B."
+      },
+      {
+        "input": "tasks = [\"A\",\"A\",\"A\",\"B\",\"B\",\"B\"], n = 0",
+        "output": "6",
+        "explanation": "No cooldown needed, just execute all tasks."
+      },
+      {
+        "input": "tasks = [\"A\",\"A\",\"A\",\"A\",\"A\",\"A\",\"B\",\"C\",\"D\",\"E\",\"F\",\"G\"], n = 2",
+        "output": "16",
+        "explanation": "A → B → C → A → D → E → A → F → G → A → idle → idle → A → idle → idle → A."
+      }
+    ],
+    "hints": [
+      "Count frequency of each task",
+      "Most frequent task determines minimum time",
+      "Formula: (maxFreq - 1) * (n + 1) + countOfMaxFreq",
+      "But answer can't be less than total tasks",
+      "Use max-heap to simulate or formula for O(1)"
+    ],
+    "timeComplexity": "O(n) with formula, O(n log 26) with simulation",
+    "spaceComplexity": "O(1) - only 26 possible tasks",
+    "tags": ["heap", "greedy", "hash-table", "sorting"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/task-scheduler/",
+      "gfg": "https://www.geeksforgeeks.org/task-scheduler-leetcode/"
+    },
+    "testCases": [
+      {
+        "input": {"tasks": ["A","A","A","B","B","B"], "n": 2},
+        "output": 8
+      },
+      {
+        "input": {"tasks": ["A","A","A","B","B","B"], "n": 0},
+        "output": 6
+      }
+    ],
+    "starterCode": {
+      "javascript": "function leastInterval(tasks, n) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', leastInterval(['A','A','A','B','B','B'], 2)); // 8",
+      "python": "def least_interval(tasks, n):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', least_interval(['A','A','A','B','B','B'], 2)) # 8",
+      "java": "public int leastInterval(char[] tasks, int n) {\n    // Write your code here\n    return 0;\n}"
+    }
+  }
+  ]
+}

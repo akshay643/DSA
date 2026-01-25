@@ -4,5 +4,227 @@
     "name": "Strings",
     "description": "String manipulation problems"
   },
-  "questions": []
+  "questions": [
+     {
+    "id": "strings-1",
+    "title": "Longest Palindromic Substring",
+    "category": "strings",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Microsoft", "Facebook", "Google", "Apple", "Adobe"],
+    "introduction": "Finding the longest palindromic substring is a classic string problem with multiple approaches: brute force, dynamic programming, and the elegant expand-around-center technique. A palindrome reads the same forwards and backwards.",
+    "problemStatement": "Given a string s, return the longest palindromic substring in s.\n\nConstraints:\n- 1 <= s.length <= 1000\n- s consist of only digits and English letters",
+    "examples": [
+      {
+        "input": "s = \"babad\"",
+        "output": "\"bab\"",
+        "explanation": "\"bab\" is a palindromic substring. \"aba\" is also a valid answer."
+      },
+      {
+        "input": "s = \"cbbd\"",
+        "output": "\"bb\"",
+        "explanation": "\"bb\" is the longest palindromic substring."
+      }
+    ],
+    "hints": [
+      "Expand around center technique works well",
+      "Consider both odd-length and even-length palindromes",
+      "For each position, expand outward while characters match",
+      "Track the longest palindrome found",
+      "Dynamic programming: dp[i][j] = true if s[i..j] is palindrome"
+    ],
+    "timeComplexity": "O(n²) for expand around center, O(n) for Manacher's algorithm",
+    "spaceComplexity": "O(1) for expand around center, O(n²) for DP",
+    "tags": ["string", "dynamic-programming"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/longest-palindromic-substring/",
+      "gfg": "https://www.geeksforgeeks.org/longest-palindrome-substring-set-1/"
+    },
+    "testCases": [
+      {
+        "input": {"s": "babad"},
+        "output": "bab"
+      },
+      {
+        "input": {"s": "cbbd"},
+        "output": "bb"
+      },
+      {
+        "input": {"s": "a"},
+        "output": "a"
+      }
+    ],
+    "starterCode": {
+      "javascript": "function longestPalindrome(s) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', longestPalindrome('babad')); // 'bab' or 'aba'\nconsole.log('Test 2:', longestPalindrome('cbbd')); // 'bb'",
+      "python": "def longest_palindrome(s):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', longest_palindrome('babad')) # 'bab' or 'aba'\nprint('Test 2:', longest_palindrome('cbbd')) # 'bb'",
+      "java": "public String longestPalindrome(String s) {\n    // Write your code here\n    return \"\";\n}"
+    }
+  },
+  {
+    "id": "strings-2",
+    "title": "Group Anagrams",
+    "category": "strings",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Bloomberg", "Apple"],
+    "introduction": "Grouping anagrams requires finding a way to identify strings that are anagrams of each other. Two strings are anagrams if they contain the same characters with the same frequencies. The key insight is finding a canonical representation for each group.",
+    "problemStatement": "Given an array of strings strs, group the anagrams together. You can return the answer in any order.\n\nAn Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.\n\nConstraints:\n- 1 <= strs.length <= 10⁴\n- 0 <= strs[i].length <= 100\n- strs[i] consists of lowercase English letters",
+    "examples": [
+      {
+        "input": "strs = [\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]",
+        "output": "[[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]",
+        "explanation": "Anagrams are grouped together."
+      },
+      {
+        "input": "strs = [\"\"]",
+        "output": "[[\"\"]]",
+        "explanation": "Single empty string."
+      },
+      {
+        "input": "strs = [\"a\"]",
+        "output": "[[\"a\"]]",
+        "explanation": "Single character."
+      }
+    ],
+    "hints": [
+      "Use sorted string as key for hash map",
+      "Alternatively, use character count as key",
+      "Character count key: \"a2b1c1\" for \"abac\"",
+      "All anagrams will have the same key",
+      "Group strings by their key in hash map"
+    ],
+    "timeComplexity": "O(n × k log k) where k is max string length, or O(n × k) with counting",
+    "spaceComplexity": "O(n × k)",
+    "tags": ["string", "hash-table", "sorting"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/group-anagrams/",
+      "gfg": "https://www.geeksforgeeks.org/given-a-sequence-of-words-print-all-anagrams-together/"
+    },
+    "testCases": [
+      {
+        "input": {"strs": ["eat","tea","tan","ate","nat","bat"]},
+        "output": [["bat"],["nat","tan"],["ate","eat","tea"]]
+      },
+      {
+        "input": {"strs": [""]},
+        "output": [[""]]
+      },
+      {
+        "input": {"strs": ["a"]},
+        "output": [["a"]]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function groupAnagrams(strs) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', groupAnagrams(['eat','tea','tan','ate','nat','bat']));",
+      "python": "def group_anagrams(strs):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', group_anagrams(['eat','tea','tan','ate','nat','bat']))",
+      "java": "public List<List<String>> groupAnagrams(String[] strs) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+    }
+  },
+  {
+    "id": "strings-3",
+    "title": "Valid Anagram",
+    "category": "strings",
+    "difficulty": "easy",
+    "companies": ["Amazon", "Google", "Facebook", "Microsoft", "Apple"],
+    "introduction": "Checking if two strings are anagrams is a fundamental string problem. Two strings are anagrams if they contain the same characters with the same frequencies. This problem introduces character counting and hash map techniques.",
+    "problemStatement": "Given two strings s and t, return true if t is an anagram of s, and false otherwise.\n\nAn Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.\n\nConstraints:\n- 1 <= s.length, t.length <= 5 × 10⁴\n- s and t consist of lowercase English letters",
+    "examples": [
+      {
+        "input": "s = \"anagram\", t = \"nagaram\"",
+        "output": "true",
+        "explanation": "Both strings contain the same characters: a(3), n(1), g(1), r(1), m(1)."
+      },
+      {
+        "input": "s = \"rat\", t = \"car\"",
+        "output": "false",
+        "explanation": "Different characters: 'rat' has 't', 'car' has 'c'."
+      }
+    ],
+    "hints": [
+      "If lengths are different, they can't be anagrams",
+      "Count character frequencies in both strings",
+      "Use an array of size 26 for lowercase letters",
+      "Alternatively, sort both strings and compare",
+      "For follow-up with Unicode, use a hash map"
+    ],
+    "timeComplexity": "O(n) with counting, O(n log n) with sorting",
+    "spaceComplexity": "O(1) with counting (fixed 26 chars), O(n) with sorting",
+    "tags": ["string", "hash-table", "sorting"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/valid-anagram/",
+      "gfg": "https://www.geeksforgeeks.org/check-whether-two-strings-are-anagram-of-each-other/"
+    },
+    "testCases": [
+      {
+        "input": {"s": "anagram", "t": "nagaram"},
+        "output": true
+      },
+      {
+        "input": {"s": "rat", "t": "car"},
+        "output": false
+      },
+      {
+        "input": {"s": "a", "t": "a"},
+        "output": true
+      }
+    ],
+    "starterCode": {
+      "javascript": "function isAnagram(s, t) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', isAnagram('anagram', 'nagaram')); // true\nconsole.log('Test 2:', isAnagram('rat', 'car')); // false",
+      "python": "def is_anagram(s, t):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', is_anagram('anagram', 'nagaram')) # True\nprint('Test 2:', is_anagram('rat', 'car')) # False",
+      "java": "public boolean isAnagram(String s, String t) {\n    // Write your code here\n    return false;\n}"
+    }
+  },
+  {
+    "id": "strings-4",
+    "title": "Encode and Decode Strings",
+    "category": "strings",
+    "difficulty": "medium",
+    "companies": ["Google", "Facebook", "Amazon", "Microsoft", "Twitter"],
+    "introduction": "Design an algorithm to encode a list of strings to a single string and decode it back to the original list. This problem requires handling edge cases like empty strings and strings containing special characters.",
+    "problemStatement": "Design an algorithm to encode a list of strings to a single string. The encoded string is then decoded back to the original list of strings.\n\nImplement encode and decode methods.\n\nConstraints:\n- 0 <= strs.length < 100\n- 0 <= strs[i].length < 200\n- strs[i] contains any possible characters out of 256 valid ASCII characters",
+    "examples": [
+      {
+        "input": "strs = [\"Hello\",\"World\"]",
+        "output": "[\"Hello\",\"World\"]",
+        "explanation": "Encode to a single string, then decode back to original list."
+      },
+      {
+        "input": "strs = [\"\"]",
+        "output": "[\"\"]",
+        "explanation": "Handle empty string correctly."
+      }
+    ],
+    "hints": [
+      "Use length prefix encoding: \"5#Hello5#World\"",
+      "Store length of each string followed by delimiter",
+      "This handles any character including the delimiter itself",
+      "Alternative: use escaping for special characters",
+      "Chunked transfer encoding is another approach"
+    ],
+    "timeComplexity": "O(n) where n is total characters",
+    "spaceComplexity": "O(n)",
+    "tags": ["string", "design"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/encode-and-decode-strings/",
+      "gfg": "https://www.geeksforgeeks.org/design-algorithm-encode-decode-list-strings/"
+    },
+    "testCases": [
+      {
+        "input": {"strs": ["Hello","World"]},
+        "output": ["Hello","World"]
+      },
+      {
+        "input": {"strs": [""]},
+        "output": [""]
+      },
+      {
+        "input": {"strs": []},
+        "output": []
+      }
+    ],
+    "starterCode": {
+      "javascript": "function encode(strs) {\n  // Write your code here\n  \n}\n\nfunction decode(s) {\n  // Write your code here\n  \n}\n\n// Test cases\nlet encoded = encode(['Hello', 'World']);\nconsole.log('Encoded:', encoded);\nconsole.log('Decoded:', decode(encoded)); // ['Hello', 'World']",
+      "python": "def encode(strs):\n    # Write your code here\n    pass\n\ndef decode(s):\n    # Write your code here\n    pass\n\n# Test cases\nencoded = encode(['Hello', 'World'])\nprint('Encoded:', encoded)\nprint('Decoded:', decode(encoded)) # ['Hello', 'World']",
+      "java": "public String encode(List<String> strs) {\n    // Write your code here\n    return \"\";\n}\n\npublic List<String> decode(String s) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+    }
+  }
+  ]
 }

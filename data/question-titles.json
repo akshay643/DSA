@@ -1,0 +1,1089 @@
+{
+  "totalQuestions": 92,
+  "topics": [
+    {
+      "topicId": "two-pointers",
+      "topicName": "Two Pointers",
+      "description": "Problems that use two pointer technique to solve efficiently",
+      "questionCount": 31,
+      "questions": [
+        {
+          "id": "two-pointers-1",
+          "title": "Two Sum",
+          "difficulty": "easy",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Facebook",
+            "Microsoft"
+          ]
+        },
+        {
+          "id": "two-pointers-2",
+          "title": "Container With Most Water",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Facebook",
+            "Bloomberg"
+          ]
+        },
+        {
+          "id": "two-pointers-3",
+          "title": "Three Sum",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Facebook",
+            "Google",
+            "Microsoft",
+            "Apple",
+            "Bloomberg"
+          ]
+        },
+        {
+          "id": "two-pointers-4",
+          "title": "Remove Duplicates from Sorted Array",
+          "difficulty": "easy",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Microsoft",
+            "Google"
+          ]
+        },
+        {
+          "id": "two-pointers-5",
+          "title": "Trapping Rain Water",
+          "difficulty": "hard",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Facebook",
+            "Microsoft",
+            "Goldman Sachs",
+            "Apple"
+          ]
+        },
+        {
+          "id": "two-pointers-6",
+          "title": "Valid Palindrome",
+          "difficulty": "easy",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Microsoft",
+            "Apple"
+          ]
+        },
+        {
+          "id": "two-pointers-7",
+          "title": "Move Zeroes",
+          "difficulty": "easy",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Apple",
+            "Microsoft"
+          ]
+        },
+        {
+          "id": "two-pointers-8",
+          "title": "Sort Colors",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Microsoft",
+            "Facebook",
+            "Adobe"
+          ]
+        },
+        {
+          "id": "two-pointers-9",
+          "title": "3Sum Closest",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Facebook",
+            "Google",
+            "Apple"
+          ]
+        },
+        {
+          "id": "two-pointers-10",
+          "title": "Merge Sorted Array",
+          "difficulty": "easy",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Microsoft",
+            "Google",
+            "Apple"
+          ]
+        },
+        {
+          "id": "two-pointers-11",
+          "title": "Squares of a Sorted Array",
+          "difficulty": "easy",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Google",
+            "Apple"
+          ]
+        },
+        {
+          "id": "two-pointers-12",
+          "title": "4Sum",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Apple",
+            "Goldman Sachs"
+          ]
+        },
+        {
+          "id": "two-pointers-13",
+          "title": "Reverse String",
+          "difficulty": "easy",
+          "companies": [
+            "Amazon",
+            "Microsoft",
+            "Apple"
+          ]
+        },
+        {
+          "id": "two-pointers-14",
+          "title": "Two Sum II - Input Array Is Sorted",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Facebook",
+            "Bloomberg"
+          ]
+        },
+        {
+          "id": "two-pointers-15",
+          "title": "Reverse Vowels of a String",
+          "difficulty": "easy",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Apple"
+          ]
+        },
+        {
+          "id": "two-pointers-16",
+          "title": "Is Subsequence",
+          "difficulty": "easy",
+          "companies": [
+            "Google",
+            "Facebook",
+            "Pinterest"
+          ]
+        },
+        {
+          "id": "two-pointers-17",
+          "title": "String Compression",
+          "difficulty": "medium",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Microsoft",
+            "Apple",
+            "Goldman Sachs"
+          ]
+        },
+        {
+          "id": "two-pointers-18",
+          "title": "Boats to Save People",
+          "difficulty": "medium",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Microsoft"
+          ]
+        },
+        {
+          "id": "two-pointers-19",
+          "title": "Long Pressed Name",
+          "difficulty": "easy",
+          "companies": [
+            "Google",
+            "Amazon"
+          ]
+        },
+        {
+          "id": "two-pointers-20",
+          "title": "Rotate Array",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Microsoft",
+            "Facebook"
+          ]
+        },
+        {
+          "id": "two-pointers-21",
+          "title": "Shortest Unsorted Continuous Subarray",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Facebook",
+            "Google"
+          ]
+        },
+        {
+          "id": "two-pointers-22",
+          "title": "Compare Version Numbers",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Microsoft",
+            "Apple"
+          ]
+        },
+        {
+          "id": "two-pointers-23",
+          "title": "Subarray Product Less Than K",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Facebook"
+          ]
+        },
+        {
+          "id": "two-pointers-24",
+          "title": "Next Permutation",
+          "difficulty": "medium",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Facebook",
+            "Microsoft",
+            "Apple"
+          ]
+        },
+        {
+          "id": "two-pointers-25",
+          "title": "Remove Element",
+          "difficulty": "easy",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Google"
+          ]
+        },
+        {
+          "id": "two-pointers-26",
+          "title": "Valid Palindrome II",
+          "difficulty": "easy",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Microsoft"
+          ]
+        },
+        {
+          "id": "two-pointers-27",
+          "title": "Partition Labels",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Facebook"
+          ]
+        },
+        {
+          "id": "two-pointers-28",
+          "title": "Minimum Window Substring",
+          "difficulty": "hard",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Google",
+            "Microsoft",
+            "Apple",
+            "Uber"
+          ]
+        },
+        {
+          "id": "two-pointers-29",
+          "title": "Intersection of Two Arrays II",
+          "difficulty": "easy",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Google",
+            "Apple"
+          ]
+        },
+        {
+          "id": "two-pointers-30",
+          "title": "Reverse Words in a String",
+          "difficulty": "medium",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Microsoft",
+            "Apple",
+            "Bloomberg"
+          ]
+        },
+        {
+          "id": "two-pointers-31",
+          "title": "Product of Array Except Self",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Facebook",
+            "Google",
+            "Microsoft",
+            "Apple",
+            "Uber"
+          ]
+        }
+      ]
+    },
+    {
+      "topicId": "sliding-window",
+      "topicName": "Sliding Window",
+      "description": "Problems involving maintaining a window of elements",
+      "questionCount": 26,
+      "questions": [
+        {
+          "id": "sliding-window-1",
+          "title": "Longest Substring Without Repeating Characters",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Facebook",
+            "Microsoft",
+            "Apple"
+          ]
+        },
+        {
+          "id": "sliding-window-2",
+          "title": "Maximum Average Subarray I",
+          "difficulty": "easy",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Facebook"
+          ]
+        },
+        {
+          "id": "sliding-window-3",
+          "title": "Minimum Size Subarray Sum",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Facebook",
+            "Google",
+            "Microsoft",
+            "Goldman Sachs"
+          ]
+        },
+        {
+          "id": "sliding-window-4",
+          "title": "Longest Repeating Character Replacement",
+          "difficulty": "medium",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Facebook",
+            "Microsoft"
+          ]
+        },
+        {
+          "id": "sliding-window-5",
+          "title": "Permutation in String",
+          "difficulty": "medium",
+          "companies": [
+            "Microsoft",
+            "Amazon",
+            "Facebook",
+            "Google"
+          ]
+        },
+        {
+          "id": "sliding-window-6",
+          "title": "Find All Anagrams in a String",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Facebook",
+            "Google",
+            "Microsoft",
+            "Apple"
+          ]
+        },
+        {
+          "id": "sliding-window-7",
+          "title": "Sliding Window Maximum",
+          "difficulty": "hard",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Facebook",
+            "Microsoft",
+            "Uber",
+            "Citadel"
+          ]
+        },
+        {
+          "id": "sliding-window-8",
+          "title": "Fruit Into Baskets",
+          "difficulty": "medium",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Microsoft"
+          ]
+        },
+        {
+          "id": "sliding-window-9",
+          "title": "Max Consecutive Ones III",
+          "difficulty": "medium",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Google",
+            "Microsoft"
+          ]
+        },
+        {
+          "id": "sliding-window-10",
+          "title": "Longest Substring with At Most K Distinct Characters",
+          "difficulty": "medium",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Facebook",
+            "Uber"
+          ]
+        },
+        {
+          "id": "sliding-window-11",
+          "title": "Minimum Window Substring",
+          "difficulty": "hard",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Google",
+            "Microsoft",
+            "Apple",
+            "Uber",
+            "LinkedIn"
+          ]
+        },
+        {
+          "id": "sliding-window-12",
+          "title": "Grumpy Bookstore Owner",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Google"
+          ]
+        },
+        {
+          "id": "sliding-window-13",
+          "title": "Contains Duplicate II",
+          "difficulty": "easy",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Facebook"
+          ]
+        },
+        {
+          "id": "sliding-window-14",
+          "title": "Repeated DNA Sequences",
+          "difficulty": "medium",
+          "companies": [
+            "LinkedIn",
+            "Amazon",
+            "Google"
+          ]
+        },
+        {
+          "id": "sliding-window-15",
+          "title": "Subarrays with K Different Integers",
+          "difficulty": "hard",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Uber"
+          ]
+        },
+        {
+          "id": "sliding-window-16",
+          "title": "Maximum Points You Can Obtain from Cards",
+          "difficulty": "medium",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Adobe"
+          ]
+        },
+        {
+          "id": "sliding-window-17",
+          "title": "Binary Subarrays With Sum",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Facebook"
+          ]
+        },
+        {
+          "id": "sliding-window-18",
+          "title": "Count Number of Nice Subarrays",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Microsoft"
+          ]
+        },
+        {
+          "id": "sliding-window-19",
+          "title": "Get Equal Substrings Within Budget",
+          "difficulty": "medium",
+          "companies": [
+            "Google",
+            "Amazon"
+          ]
+        },
+        {
+          "id": "sliding-window-20",
+          "title": "Longest Subarray of 1's After Deleting One Element",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Microsoft"
+          ]
+        },
+        {
+          "id": "sliding-window-21",
+          "title": "Substring with Concatenation of All Words",
+          "difficulty": "hard",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Microsoft",
+            "Facebook"
+          ]
+        },
+        {
+          "id": "sliding-window-22",
+          "title": "Maximum Number of Vowels in a Substring of Given Length",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Google"
+          ]
+        },
+        {
+          "id": "sliding-window-23",
+          "title": "Longest Turbulent Subarray",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Google"
+          ]
+        },
+        {
+          "id": "sliding-window-24",
+          "title": "Number of Substrings Containing All Three Characters",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Facebook"
+          ]
+        },
+        {
+          "id": "sliding-window-25",
+          "title": "Minimum Operations to Reduce X to Zero",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Microsoft"
+          ]
+        },
+        {
+          "id": "sliding-window-26",
+          "title": "Longest Subarray with Given Sum K",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Microsoft",
+            "Google",
+            "Facebook",
+            "Adobe",
+            "Walmart"
+          ]
+        }
+      ]
+    },
+    {
+      "topicId": "binary-search",
+      "topicName": "Binary Search",
+      "description": "Problems using binary search technique",
+      "questionCount": 31,
+      "questions": [
+        {
+          "id": "binary-search-1",
+          "title": "Binary Search",
+          "difficulty": "easy",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Microsoft",
+            "Facebook"
+          ]
+        },
+        {
+          "id": "binary-search-2",
+          "title": "Binary Search",
+          "difficulty": "easy",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Microsoft",
+            "Facebook"
+          ]
+        },
+        {
+          "id": "binary-search-3",
+          "title": "Search Insert Position",
+          "difficulty": "easy",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Apple",
+            "Bloomberg"
+          ]
+        },
+        {
+          "id": "binary-search-4",
+          "title": "Search in Rotated Sorted Array",
+          "difficulty": "medium",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Google",
+            "Microsoft",
+            "Apple",
+            "Bloomberg",
+            "Uber"
+          ]
+        },
+        {
+          "id": "binary-search-5",
+          "title": "Find Minimum in Rotated Sorted Array",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Facebook",
+            "Microsoft",
+            "Goldman Sachs"
+          ]
+        },
+        {
+          "id": "binary-search-6",
+          "title": "Find First and Last Position of Element in Sorted Array",
+          "difficulty": "medium",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Google",
+            "Microsoft",
+            "LinkedIn",
+            "Bloomberg"
+          ]
+        },
+        {
+          "id": "binary-search-7",
+          "title": "Find Peak Element",
+          "difficulty": "medium",
+          "companies": [
+            "Facebook",
+            "Google",
+            "Amazon",
+            "Microsoft",
+            "Apple"
+          ]
+        },
+        {
+          "id": "binary-search-8",
+          "title": "Search a 2D Matrix",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Microsoft",
+            "Facebook",
+            "Apple",
+            "Bloomberg"
+          ]
+        },
+        {
+          "id": "binary-search-9",
+          "title": "Search a 2D Matrix II",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Microsoft",
+            "Facebook",
+            "Apple",
+            "Google"
+          ]
+        },
+        {
+          "id": "binary-search-10",
+          "title": "Koko Eating Bananas",
+          "difficulty": "medium",
+          "companies": [
+            "Google",
+            "Facebook",
+            "Amazon",
+            "Airbnb"
+          ]
+        },
+        {
+          "id": "binary-search-11",
+          "title": "Capacity To Ship Packages Within D Days",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Facebook"
+          ]
+        },
+        {
+          "id": "binary-search-12",
+          "title": "Median of Two Sorted Arrays",
+          "difficulty": "hard",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Facebook",
+            "Microsoft",
+            "Apple",
+            "Goldman Sachs",
+            "Adobe"
+          ]
+        },
+        {
+          "id": "binary-search-13",
+          "title": "Split Array Largest Sum",
+          "difficulty": "hard",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Facebook",
+            "Pinterest"
+          ]
+        },
+        {
+          "id": "binary-search-14",
+          "title": "Sqrt(x)",
+          "difficulty": "easy",
+          "companies": [
+            "Amazon",
+            "Apple",
+            "Microsoft",
+            "Bloomberg",
+            "Facebook"
+          ]
+        },
+        {
+          "id": "binary-search-15",
+          "title": "Valid Perfect Square",
+          "difficulty": "easy",
+          "companies": [
+            "Amazon",
+            "Microsoft",
+            "LinkedIn"
+          ]
+        },
+        {
+          "id": "binary-search-16",
+          "title": "Find Smallest Letter Greater Than Target",
+          "difficulty": "easy",
+          "companies": [
+            "LinkedIn",
+            "Google"
+          ]
+        },
+        {
+          "id": "binary-search-17",
+          "title": "Time Based Key-Value Store",
+          "difficulty": "medium",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Netflix",
+            "Lyft",
+            "Apple"
+          ]
+        },
+        {
+          "id": "binary-search-18",
+          "title": "Find K Closest Elements",
+          "difficulty": "medium",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Google",
+            "LinkedIn"
+          ]
+        },
+        {
+          "id": "binary-search-19",
+          "title": "Single Element in a Sorted Array",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Microsoft",
+            "Facebook"
+          ]
+        },
+        {
+          "id": "binary-search-20",
+          "title": "Search in Rotated Sorted Array II",
+          "difficulty": "medium",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Microsoft",
+            "LinkedIn"
+          ]
+        },
+        {
+          "id": "binary-search-21",
+          "title": "Find Minimum in Rotated Sorted Array II",
+          "difficulty": "hard",
+          "companies": [
+            "Amazon",
+            "Facebook",
+            "Microsoft"
+          ]
+        },
+        {
+          "id": "binary-search-22",
+          "title": "Pow(x, n)",
+          "difficulty": "medium",
+          "companies": [
+            "Facebook",
+            "Amazon",
+            "Google",
+            "Microsoft",
+            "LinkedIn",
+            "Bloomberg"
+          ]
+        },
+        {
+          "id": "binary-search-23",
+          "title": "Find the Duplicate Number",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Facebook",
+            "Microsoft",
+            "Bloomberg"
+          ]
+        },
+        {
+          "id": "binary-search-24",
+          "title": "H-Index II",
+          "difficulty": "medium",
+          "companies": [
+            "Facebook",
+            "Google"
+          ]
+        },
+        {
+          "id": "binary-search-25",
+          "title": "Magnetic Force Between Two Balls",
+          "difficulty": "medium",
+          "companies": [
+            "Google",
+            "Amazon"
+          ]
+        },
+        {
+          "id": "binary-search-26",
+          "title": "Minimize Max Distance to Gas Station",
+          "difficulty": "hard",
+          "companies": [
+            "Google"
+          ]
+        },
+        {
+          "id": "binary-search-27",
+          "title": "Random Pick with Weight",
+          "difficulty": "medium",
+          "companies": [
+            "Facebook",
+            "Google",
+            "Uber",
+            "Yelp",
+            "Twitter"
+          ]
+        },
+        {
+          "id": "binary-search-28",
+          "title": "Count of Smaller Numbers After Self",
+          "difficulty": "hard",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Microsoft",
+            "Apple"
+          ]
+        },
+        {
+          "id": "binary-search-29",
+          "title": "Kth Smallest Element in a Sorted Matrix",
+          "difficulty": "medium",
+          "companies": [
+            "Amazon",
+            "Facebook",
+            "Google",
+            "Apple"
+          ]
+        },
+        {
+          "id": "binary-search-30",
+          "title": "Aggressive Cows / Allocate Books",
+          "difficulty": "hard",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Microsoft"
+          ]
+        },
+        {
+          "id": "binary-search-31",
+          "title": "Peak Index in a Mountain Array",
+          "difficulty": "medium",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Bloomberg"
+          ]
+        }
+      ]
+    },
+    {
+      "topicId": "dynamic-programming",
+      "topicName": "Dynamic Programming",
+      "description": "Problems requiring optimal substructure and memoization",
+      "questionCount": 1,
+      "questions": [
+        {
+          "id": "dynamic-programming-1",
+          "title": "Climbing Stairs",
+          "difficulty": "easy",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Adobe"
+          ]
+        }
+      ]
+    },
+    {
+      "topicId": "graphs",
+      "topicName": "Graphs",
+      "description": "Graph traversal and algorithms",
+      "questionCount": 0,
+      "questions": []
+    },
+    {
+      "topicId": "trees",
+      "topicName": "Trees",
+      "description": "Binary trees, BST, and tree traversals",
+      "questionCount": 0,
+      "questions": []
+    },
+    {
+      "topicId": "arrays",
+      "topicName": "Arrays",
+      "description": "Array manipulation and operations",
+      "questionCount": 3,
+      "questions": [
+        {
+          "id": "arrays-1",
+          "title": "Pascal's Triangle - Generate N Rows",
+          "difficulty": "hard",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Microsoft",
+            "Apple",
+            "Bloomberg",
+            "Adobe",
+            "Uber"
+          ]
+        },
+        {
+          "id": "arrays-2",
+          "title": "Pascal's Triangle II - Return Kth Row",
+          "difficulty": "hard",
+          "companies": [
+            "Amazon",
+            "Google",
+            "Microsoft",
+            "Goldman Sachs",
+            "Facebook",
+            "Apple"
+          ]
+        },
+        {
+          "id": "array-pascal-3",
+          "title": "Pascal's Triangle III - Find Element at Row R and Column C",
+          "difficulty": "hard",
+          "companies": [
+            "Google",
+            "Amazon",
+            "Microsoft",
+            "Flipkart",
+            "Samsung",
+            "Infosys",
+            "TCS"
+          ]
+        }
+      ]
+    },
+    {
+      "topicId": "strings",
+      "topicName": "Strings",
+      "description": "String manipulation problems",
+      "questionCount": 0,
+      "questions": []
+    },
+    {
+      "topicId": "linked-lists",
+      "topicName": "Linked Lists",
+      "description": "Linked list operations and manipulations",
+      "questionCount": 0,
+      "questions": []
+    },
+    {
+      "topicId": "stack-queue",
+      "topicName": "Stack & Queue",
+      "description": "Stack and queue based problems",
+      "questionCount": 0,
+      "questions": []
+    }
+  ]
+}

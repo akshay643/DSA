@@ -4,5 +4,340 @@
     "name": "Stack & Queue",
     "description": "Stack and queue based problems"
   },
-  "questions": []
+  "questions": [
+    {
+    "id": "stack-queue-1",
+    "title": "Valid Parentheses",
+    "category": "stack-queue",
+    "difficulty": "easy",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Bloomberg", "Apple"],
+    "introduction": "Valid Parentheses is the classic stack problem. Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. An input string is valid if brackets are closed in the correct order.",
+    "problemStatement": "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.\n\nAn input string is valid if:\n1. Open brackets must be closed by the same type of brackets.\n2. Open brackets must be closed in the correct order.\n3. Every close bracket has a corresponding open bracket of the same type.\n\nConstraints:\n- 1 <= s.length <= 10⁴\n- s consists of parentheses only '()[]{}'",
+    "examples": [
+      {
+        "input": "s = \"()\"",
+        "output": "true",
+        "explanation": "Simple matching parentheses."
+      },
+      {
+        "input": "s = \"()[]{}\"",
+        "output": "true",
+        "explanation": "All brackets are properly matched."
+      },
+      {
+        "input": "s = \"(]\"",
+        "output": "false",
+        "explanation": "Opening '(' doesn't match closing ']'."
+      }
+    ],
+    "hints": [
+      "Use a stack to track opening brackets",
+      "When you see an opening bracket, push it",
+      "When you see a closing bracket, check if stack top matches",
+      "If match, pop; if not match or stack empty, return false",
+      "At end, stack should be empty for valid string"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(n)",
+    "tags": ["stack", "string"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/valid-parentheses/",
+      "gfg": "https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/"
+    },
+    "testCases": [
+      {
+        "input": {"s": "()"},
+        "output": true
+      },
+      {
+        "input": {"s": "()[]{}"},
+        "output": true
+      },
+      {
+        "input": {"s": "(]"},
+        "output": false
+      },
+      {
+        "input": {"s": "([)]"},
+        "output": false
+      },
+      {
+        "input": {"s": "{[]}"},
+        "output": true
+      }
+    ],
+    "starterCode": {
+      "javascript": "function isValid(s) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', isValid('()')); // true\nconsole.log('Test 2:', isValid('()[]{}')); // true\nconsole.log('Test 3:', isValid('(]')); // false",
+      "python": "def is_valid(s):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', is_valid('()')) # True\nprint('Test 2:', is_valid('()[]{}')); # True\nprint('Test 3:', is_valid('(]')) # False",
+      "java": "public boolean isValid(String s) {\n    // Write your code here\n    return false;\n}"
+    }
+  },
+  {
+    "id": "stack-queue-2",
+    "title": "Min Stack",
+    "category": "stack-queue",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Microsoft", "Bloomberg", "Facebook", "Apple"],
+    "introduction": "Design a stack that supports push, pop, top, and retrieving the minimum element in constant time. This problem teaches how to augment a data structure to support additional operations efficiently.",
+    "problemStatement": "Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.\n\nImplement the MinStack class:\n- MinStack() initializes the stack object\n- void push(int val) pushes the element val onto the stack\n- void pop() removes the element on the top of the stack\n- int top() gets the top element of the stack\n- int getMin() retrieves the minimum element in the stack\n\nYou must implement a solution with O(1) time complexity for each function.\n\nConstraints:\n- -2³¹ <= val <= 2³¹ - 1\n- Methods pop, top and getMin will always be called on non-empty stacks\n- At most 3 × 10⁴ calls will be made to push, pop, top, and getMin",
+    "examples": [
+      {
+        "input": "[\"MinStack\",\"push\",\"push\",\"push\",\"getMin\",\"pop\",\"top\",\"getMin\"]\n[[],[-2],[0],[-3],[],[],[],[]]",
+        "output": "[null,null,null,null,-3,null,0,-2]",
+        "explanation": "MinStack minStack = new MinStack();\nminStack.push(-2);\nminStack.push(0);\nminStack.push(-3);\nminStack.getMin(); // return -3\nminStack.pop();\nminStack.top();    // return 0\nminStack.getMin(); // return -2"
+      }
+    ],
+    "hints": [
+      "Use an auxiliary stack to track minimum values",
+      "When pushing, also push to min stack if value <= current min",
+      "When popping, also pop from min stack if value equals current min",
+      "Alternative: store pairs of (value, minSoFar) in single stack",
+      "getMin just returns top of min stack"
+    ],
+    "timeComplexity": "O(1) for all operations",
+    "spaceComplexity": "O(n)",
+    "tags": ["stack", "design"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/min-stack/",
+      "gfg": "https://www.geeksforgeeks.org/design-a-stack-that-supports-getmin-in-o1-time-and-o1-extra-space/"
+    },
+    "testCases": [
+      {
+        "input": {"operations": ["MinStack","push","push","push","getMin","pop","top","getMin"], "values": [[],[-2],[0],[-3],[],[],[],[]]},
+        "output": [null,null,null,null,-3,null,0,-2]
+      }
+    ],
+    "starterCode": {
+      "javascript": "class MinStack {\n  constructor() {\n    // Initialize your data structure here\n  }\n  \n  push(val) {\n    // Write your code here\n  }\n  \n  pop() {\n    // Write your code here\n  }\n  \n  top() {\n    // Write your code here\n  }\n  \n  getMin() {\n    // Write your code here\n  }\n}",
+      "python": "class MinStack:\n    def __init__(self):\n        # Initialize your data structure here\n        pass\n    \n    def push(self, val):\n        # Write your code here\n        pass\n    \n    def pop(self):\n        # Write your code here\n        pass\n    \n    def top(self):\n        # Write your code here\n        pass\n    \n    def get_min(self):\n        # Write your code here\n        pass",
+      "java": "class MinStack {\n    public MinStack() {\n        // Initialize your data structure here\n    }\n    \n    public void push(int val) {\n        // Write your code here\n    }\n    \n    public void pop() {\n        // Write your code here\n    }\n    \n    public int top() {\n        // Write your code here\n        return 0;\n    }\n    \n    public int getMin() {\n        // Write your code here\n        return 0;\n    }\n}"
+    }
+  },
+  {
+    "id": "stack-queue-3",
+    "title": "Implement Queue using Stacks",
+    "category": "stack-queue",
+    "difficulty": "easy",
+    "companies": ["Amazon", "Microsoft", "Google", "Apple", "Bloomberg"],
+    "introduction": "Implementing a queue using two stacks is a classic problem that demonstrates how one data structure can be used to implement another. The key insight is that reversing a stack gives FIFO order.",
+    "problemStatement": "Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (push, peek, pop, and empty).\n\nImplement the MyQueue class:\n- void push(int x) Pushes element x to the back of the queue\n- int pop() Removes the element from the front of the queue and returns it\n- int peek() Returns the element at the front of the queue\n- boolean empty() Returns true if the queue is empty, false otherwise\n\nNotes:\n- You must use only standard operations of a stack (push to top, peek/pop from top, size, and is empty)\n- Depending on your language, the stack may not be supported natively\n\nConstraints:\n- 1 <= x <= 9\n- At most 100 calls will be made to push, pop, peek, and empty\n- All the calls to pop and peek are valid",
+    "examples": [
+      {
+        "input": "[\"MyQueue\", \"push\", \"push\", \"peek\", \"pop\", \"empty\"]\n[[], [1], [2], [], [], []]",
+        "output": "[null, null, null, 1, 1, false]",
+        "explanation": "MyQueue myQueue = new MyQueue();\nmyQueue.push(1); // queue is: [1]\nmyQueue.push(2); // queue is: [1, 2]\nmyQueue.peek(); // return 1\nmyQueue.pop(); // return 1, queue is [2]\nmyQueue.empty(); // return false"
+      }
+    ],
+    "hints": [
+      "Use two stacks: one for input, one for output",
+      "Push always goes to input stack",
+      "For pop/peek, if output stack is empty, transfer all from input",
+      "This amortizes the cost of operations",
+      "Each element is moved at most twice"
+    ],
+    "timeComplexity": "O(1) amortized for all operations",
+    "spaceComplexity": "O(n)",
+    "tags": ["stack", "queue", "design"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/implement-queue-using-stacks/",
+      "gfg": "https://www.geeksforgeeks.org/queue-using-stacks/"
+    },
+    "testCases": [
+      {
+        "input": {"operations": ["MyQueue","push","push","peek","pop","empty"], "values": [[],[1],[2],[],[],[]]},
+        "output": [null,null,null,1,1,false]
+      }
+    ],
+    "starterCode": {
+      "javascript": "class MyQueue {\n  constructor() {\n    // Initialize your data structure here\n  }\n  \n  push(x) {\n    // Write your code here\n  }\n  \n  pop() {\n    // Write your code here\n  }\n  \n  peek() {\n    // Write your code here\n  }\n  \n  empty() {\n    // Write your code here\n  }\n}",
+      "python": "class MyQueue:\n    def __init__(self):\n        # Initialize your data structure here\n        pass\n    \n    def push(self, x):\n        # Write your code here\n        pass\n    \n    def pop(self):\n        # Write your code here\n        pass\n    \n    def peek(self):\n        # Write your code here\n        pass\n    \n    def empty(self):\n        # Write your code here\n        pass",
+      "java": "class MyQueue {\n    public MyQueue() {\n        // Initialize your data structure here\n    }\n    \n    public void push(int x) {\n        // Write your code here\n    }\n    \n    public int pop() {\n        // Write your code here\n        return 0;\n    }\n    \n    public int peek() {\n        // Write your code here\n        return 0;\n    }\n    \n    public boolean empty() {\n        // Write your code here\n        return true;\n    }\n}"
+    }
+  },
+  {
+    "id": "stack-queue-4",
+    "title": "Daily Temperatures",
+    "category": "stack-queue",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Apple", "Bloomberg"],
+    "introduction": "Daily Temperatures is a classic monotonic stack problem. Given an array of temperatures, find how many days you have to wait for a warmer temperature. This pattern is useful for finding the next greater/smaller element.",
+    "problemStatement": "Given an array of integers temperatures represents the daily temperatures, return an array answer such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature. If there is no future day for which this is possible, keep answer[i] == 0 instead.\n\nConstraints:\n- 1 <= temperatures.length <= 10⁵\n- 30 <= temperatures[i] <= 100",
+    "examples": [
+      {
+        "input": "temperatures = [73,74,75,71,69,72,76,73]",
+        "output": "[1,1,4,2,1,1,0,0]",
+        "explanation": "For day 0 (73°), next warmer is day 1 (74°), so wait 1 day. For day 2 (75°), next warmer is day 6 (76°), so wait 4 days."
+      },
+      {
+        "input": "temperatures = [30,40,50,60]",
+        "output": "[1,1,1,0]",
+        "explanation": "Each day's next warmer temperature is the next day, except the last day."
+      },
+      {
+        "input": "temperatures = [30,60,90]",
+        "output": "[1,1,0]",
+        "explanation": "Each day except last has next day as warmer."
+      }
+    ],
+    "hints": [
+      "Use a monotonic decreasing stack",
+      "Stack stores indices of days with pending answers",
+      "When you find a warmer day, pop and calculate distance",
+      "Process from right to left or left to right",
+      "Time complexity should be O(n)"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(n)",
+    "tags": ["stack", "array", "monotonic-stack"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/daily-temperatures/",
+      "gfg": "https://www.geeksforgeeks.org/number-of-days-until-the-next-warmer-temperature/"
+    },
+    "testCases": [
+      {
+        "input": {"temperatures": [73,74,75,71,69,72,76,73]},
+        "output": [1,1,4,2,1,1,0,0]
+      },
+      {
+        "input": {"temperatures": [30,40,50,60]},
+        "output": [1,1,1,0]
+      },
+      {
+        "input": {"temperatures": [30,60,90]},
+        "output": [1,1,0]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function dailyTemperatures(temperatures) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', dailyTemperatures([73,74,75,71,69,72,76,73])); // [1,1,4,2,1,1,0,0]",
+      "python": "def daily_temperatures(temperatures):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', daily_temperatures([73,74,75,71,69,72,76,73])) # [1,1,4,2,1,1,0,0]",
+      "java": "public int[] dailyTemperatures(int[] temperatures) {\n    // Write your code here\n    return new int[0];\n}"
+    }
+  },
+  {
+    "id": "stack-queue-5",
+    "title": "Largest Rectangle in Histogram",
+    "category": "stack-queue",
+    "difficulty": "hard",
+    "companies": ["Amazon", "Google", "Facebook", "Microsoft", "Bloomberg", "Adobe"],
+    "introduction": "Finding the largest rectangle in a histogram is a classic monotonic stack problem. Given an array of bar heights, find the largest rectangular area possible. This problem is also a building block for the maximal rectangle in a matrix problem.",
+    "problemStatement": "Given an array of integers heights representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.\n\nConstraints:\n- 1 <= heights.length <= 10⁵\n- 0 <= heights[i] <= 10⁴",
+    "examples": [
+      {
+        "input": "heights = [2,1,5,6,2,3]",
+        "output": "10",
+        "explanation": "The largest rectangle has area = 10 units (height 5 × width 2, formed by bars at indices 2 and 3)."
+      },
+      {
+        "input": "heights = [2,4]",
+        "output": "4",
+        "explanation": "The largest rectangle is formed by the bar of height 4."
+      }
+    ],
+    "hints": [
+      "For each bar, find how far left and right it can extend",
+      "Use monotonic increasing stack to find previous smaller element",
+      "Use another pass to find next smaller element",
+      "Area for bar i = height[i] × (right[i] - left[i] - 1)",
+      "Can be done in single pass with careful handling"
+    ],
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(n)",
+    "tags": ["stack", "array", "monotonic-stack"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+      "gfg": "https://www.geeksforgeeks.org/largest-rectangle-under-histogram/"
+    },
+    "testCases": [
+      {
+        "input": {"heights": [2,1,5,6,2,3]},
+        "output": 10
+      },
+      {
+        "input": {"heights": [2,4]},
+        "output": 4
+      },
+      {
+        "input": {"heights": [1]},
+        "output": 1
+      }
+    ],
+    "starterCode": {
+      "javascript": "function largestRectangleArea(heights) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', largestRectangleArea([2,1,5,6,2,3])); // 10",
+      "python": "def largest_rectangle_area(heights):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', largest_rectangle_area([2,1,5,6,2,3])) # 10",
+      "java": "public int largestRectangleArea(int[] heights) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+    {
+      "id": "stack-queue-6",
+      "title": "Valid Parentheses",
+      "category": "stack-queue",
+      "difficulty": "easy",
+      "companies": [
+        "Amazon",
+        "Google",
+        "Facebook",
+        "Microsoft"
+      ],
+      "introduction": "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+      "problemStatement": "An input string is valid if:\n1. Open brackets must be closed by the same type of brackets.\n2. Open brackets must be closed in the correct order.\n3. Every close bracket has a corresponding open bracket of the same type.\n\nConstraints:\n- 1 <= s.length <= 10^4\n- s consists of parentheses only '()[]{}',",
+      "examples": [
+        {
+          "input": "s = \"()[]{}\"",
+          "output": "true",
+          "explanation": "All brackets are properly closed."
+        },
+        {
+          "input": "s = \"([)]\"",
+          "output": "false",
+          "explanation": "Brackets are not closed in correct order."
+        }
+      ],
+      "hints": [
+        "Use a stack data structure",
+        "Push opening brackets onto stack",
+        "For closing brackets, check if they match stack top"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)",
+      "tags": [
+        "string",
+        "stack"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/valid-parentheses/",
+        "gfg": "https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "s": "()"
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "s": "()[]{}"
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "s": "(]"
+          },
+          "output": false
+        },
+        {
+          "input": {
+            "s": "([)]"
+          },
+          "output": false
+        }
+      ],
+      "starterCode": {
+        "javascript": "function isValid(s) {\n  // Write your code here\n  // Example: s = '()'\n  // Expected output: true\n  \n}\n\n// Test cases\nconsole.log('Test 1:', isValid('()')); // true\nconsole.log('Test 2:', isValid('()[]{}')); // true\nconsole.log('Test 3:', isValid('(]')); // false",
+        "python": "def is_valid(s):\n    # Write your code here\n    # Example: s = '()'\n    # Expected output: true\n    pass\n\n# Test cases\nprint('Test 1:', is_valid('()'))  # True\nprint('Test 2:', is_valid('()[]{}'))  # True\nprint('Test 3:', is_valid('(]'))  # False",
+        "java": "public boolean isValid(String s) {\n    // Write your code here\n    // Example: s = \"()\"\n    // Expected output: true\n    return false;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.isValid(\"()\")); // true\n    System.out.println(sol.isValid(\"()[]{}\")); // true\n}"
+      }
+    }
+  ]
 }

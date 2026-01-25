@@ -4,5 +4,602 @@
     "name": "Graphs",
     "description": "Graph traversal and algorithms"
   },
-  "questions": []
+  "questions": [{
+    "id": "graphs-1",
+    "title": "Number of Islands",
+    "category": "graphs",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Microsoft", "Facebook", "Apple", "Bloomberg", "Uber"],
+    "introduction": "Number of Islands is a classic graph traversal problem. Given a 2D grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically.",
+    "problemStatement": "Given an m x n 2D binary grid which represents a map of '1's (land) and '0's (water), return the number of islands.\n\nAn island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.\n\nConstraints:\n- m == grid.length\n- n == grid[i].length\n- 1 <= m, n <= 300\n- grid[i][j] is '0' or '1'",
+    "examples": [
+      {
+        "input": "grid = [[\"1\",\"1\",\"1\",\"1\",\"0\"],[\"1\",\"1\",\"0\",\"1\",\"0\"],[\"1\",\"1\",\"0\",\"0\",\"0\"],[\"0\",\"0\",\"0\",\"0\",\"0\"]]",
+        "output": "1",
+        "explanation": "There is only one island formed by the connected 1s in the top-left."
+      },
+      {
+        "input": "grid = [[\"1\",\"1\",\"0\",\"0\",\"0\"],[\"1\",\"1\",\"0\",\"0\",\"0\"],[\"0\",\"0\",\"1\",\"0\",\"0\"],[\"0\",\"0\",\"0\",\"1\",\"1\"]]",
+        "output": "3",
+        "explanation": "There are three separate islands."
+      }
+    ],
+    "hints": [
+      "Use DFS or BFS to explore connected components",
+      "When you find a '1', start a traversal to mark all connected land",
+      "Mark visited cells as '0' to avoid revisiting",
+      "Count the number of times you start a new traversal",
+      "Can also use Union-Find data structure"
+    ],
+    "timeComplexity": "O(m × n)",
+    "spaceComplexity": "O(m × n) for recursion stack in worst case",
+    "tags": ["graph", "dfs", "bfs", "union-find", "matrix"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/number-of-islands/",
+      "gfg": "https://www.geeksforgeeks.org/find-number-of-islands/"
+    },
+    "testCases": [
+      {
+        "input": {"grid": [["1","1","1","1","0"],["1","1","0","1","0"],["1","1","0","0","0"],["0","0","0","0","0"]]},
+        "output": 1
+      },
+      {
+        "input": {"grid": [["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]]},
+        "output": 3
+      }
+    ],
+    "starterCode": {
+      "javascript": "function numIslands(grid) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', numIslands([['1','1','1','1','0'],['1','1','0','1','0'],['1','1','0','0','0'],['0','0','0','0','0']])); // 1",
+      "python": "def num_islands(grid):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', num_islands([['1','1','1','1','0'],['1','1','0','1','0'],['1','1','0','0','0'],['0','0','0','0','0']])) # 1",
+      "java": "public int numIslands(char[][] grid) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "graphs-2",
+    "title": "Clone Graph",
+    "category": "graphs",
+    "difficulty": "medium",
+    "companies": ["Facebook", "Amazon", "Google", "Microsoft", "Bloomberg", "Uber"],
+    "introduction": "Clone Graph is a classic graph problem that tests your understanding of graph traversal and handling cycles. Given a reference to a node in a connected undirected graph, return a deep copy (clone) of the graph. Each node contains a value and a list of its neighbors.",
+    "problemStatement": "Given a reference of a node in a connected undirected graph, return a deep copy (clone) of the graph.\n\nEach node in the graph contains a value (int) and a list (List[Node]) of its neighbors.\n\nThe graph is represented in the test case using an adjacency list.\n\nConstraints:\n- The number of nodes in the graph is in the range [0, 100]\n- 1 <= Node.val <= 100\n- Node.val is unique for each node\n- There are no repeated edges and no self-loops\n- The Graph is connected and all nodes can be visited starting from the given node",
+    "examples": [
+      {
+        "input": "adjList = [[2,4],[1,3],[2,4],[1,3]]",
+        "output": "[[2,4],[1,3],[2,4],[1,3]]",
+        "explanation": "Node 1's neighbors are 2 and 4. Node 2's neighbors are 1 and 3. The clone has the same structure."
+      },
+      {
+        "input": "adjList = [[]]",
+        "output": "[[]]",
+        "explanation": "The graph contains a single node with val = 1 and an empty neighbor list."
+      }
+    ],
+    "hints": [
+      "Use a HashMap to map original nodes to their clones",
+      "Use BFS or DFS to traverse the graph",
+      "When visiting a node, first create its clone if not exists",
+      "Then clone all its neighbors recursively",
+      "The map helps avoid infinite loops in cyclic graphs"
+    ],
+    "timeComplexity": "O(V + E) where V is vertices and E is edges",
+    "spaceComplexity": "O(V) for the hash map",
+    "tags": ["graph", "dfs", "bfs", "hash-table"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/clone-graph/",
+      "gfg": "https://www.geeksforgeeks.org/clone-an-undirected-graph/"
+    },
+    "testCases": [
+      {
+        "input": {"adjList": [[2,4],[1,3],[2,4],[1,3]]},
+        "output": [[2,4],[1,3],[2,4],[1,3]]
+      },
+      {
+        "input": {"adjList": [[]]},
+        "output": [[]]
+      },
+      {
+        "input": {"adjList": []},
+        "output": []
+      }
+    ],
+    "starterCode": {
+      "javascript": "function cloneGraph(node) {\n  // Write your code here\n  // Node structure: { val: number, neighbors: Node[] }\n  \n}",
+      "python": "def clone_graph(node):\n    # Write your code here\n    # Node class has val and neighbors\n    pass",
+      "java": "public Node cloneGraph(Node node) {\n    // Write your code here\n    return null;\n}"
+    }
+  },
+  {
+    "id": "graphs-3",
+    "title": "Course Schedule",
+    "category": "graphs",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Facebook", "Microsoft", "Apple", "Uber", "DoorDash"],
+    "introduction": "Course Schedule is a classic problem that models real-world dependency scenarios. Given courses and their prerequisites, determine if it's possible to finish all courses. This problem is essentially detecting whether a directed graph has a cycle (topological sort feasibility).",
+    "problemStatement": "There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.\n\nReturn true if you can finish all courses. Otherwise, return false.\n\nConstraints:\n- 1 <= numCourses <= 2000\n- 0 <= prerequisites.length <= 5000\n- prerequisites[i].length == 2\n- 0 <= ai, bi < numCourses\n- All the pairs prerequisites[i] are unique",
+    "examples": [
+      {
+        "input": "numCourses = 2, prerequisites = [[1, 0]]",
+        "output": "true",
+        "explanation": "There are 2 courses. To take course 1, you should have finished course 0. So it is possible."
+      },
+      {
+        "input": "numCourses = 2, prerequisites = [[1, 0], [0, 1]]",
+        "output": "false",
+        "explanation": "To take course 1 you need course 0, and to take course 0 you need course 1. This creates a cycle, so it is impossible."
+      }
+    ],
+    "hints": [
+      "Build an adjacency list from prerequisites",
+      "This is a cycle detection problem in a directed graph",
+      "Use DFS with three states: unvisited, visiting, visited",
+      "Alternatively, use Kahn's algorithm (BFS with in-degree)",
+      "If you can process all nodes, there's no cycle"
+    ],
+    "timeComplexity": "O(V + E) where V is courses and E is prerequisites",
+    "spaceComplexity": "O(V + E)",
+    "tags": ["graph", "dfs", "bfs", "topological-sort"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/course-schedule/",
+      "gfg": "https://www.geeksforgeeks.org/detect-cycle-in-a-graph/"
+    },
+    "testCases": [
+      {
+        "input": {"numCourses": 2, "prerequisites": [[1, 0]]},
+        "output": true
+      },
+      {
+        "input": {"numCourses": 2, "prerequisites": [[1, 0], [0, 1]]},
+        "output": false
+      },
+      {
+        "input": {"numCourses": 5, "prerequisites": [[1,4],[2,4],[3,1],[3,2]]},
+        "output": true
+      }
+    ],
+    "starterCode": {
+      "javascript": "function canFinish(numCourses, prerequisites) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', canFinish(2, [[1, 0]])); // true\nconsole.log('Test 2:', canFinish(2, [[1, 0], [0, 1]])); // false",
+      "python": "def can_finish(num_courses, prerequisites):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', can_finish(2, [[1, 0]])) # True\nprint('Test 2:', can_finish(2, [[1, 0], [0, 1]])) # False",
+      "java": "public boolean canFinish(int numCourses, int[][] prerequisites) {\n    // Write your code here\n    return false;\n}"
+    }
+  },
+  {
+    "id": "graphs-4",
+    "title": "Graph Valid Tree",
+    "category": "graphs",
+    "difficulty": "medium",
+    "companies": ["Google", "Amazon", "Facebook", "LinkedIn", "Microsoft"],
+    "introduction": "Given n nodes labeled from 0 to n-1 and a list of undirected edges, determine if these edges make up a valid tree. A valid tree has n-1 edges and is fully connected with no cycles.",
+    "problemStatement": "You have a graph of n nodes labeled from 0 to n - 1. You are given an integer n and a list of edges where edges[i] = [ai, bi] indicates that there is an undirected edge between nodes ai and bi in the graph.\n\nReturn true if the edges of the given graph make up a valid tree, and false otherwise.\n\nConstraints:\n- 1 <= n <= 2000\n- 0 <= edges.length <= 5000\n- edges[i].length == 2\n- 0 <= ai, bi < n\n- ai != bi\n- There are no self-loops or repeated edges",
+    "examples": [
+      {
+        "input": "n = 5, edges = [[0,1],[0,2],[0,3],[1,4]]",
+        "output": "true",
+        "explanation": "The graph forms a valid tree with 5 nodes and 4 edges."
+      },
+      {
+        "input": "n = 5, edges = [[0,1],[1,2],[2,3],[1,3],[1,4]]",
+        "output": "false",
+        "explanation": "The graph has a cycle (1-2-3-1), so it's not a valid tree."
+      }
+    ],
+    "hints": [
+      "A valid tree with n nodes must have exactly n-1 edges",
+      "The graph must be fully connected",
+      "Use Union-Find or DFS to check for cycles and connectivity",
+      "If edges != n-1, return false immediately",
+      "Check if all nodes are reachable from any starting node"
+    ],
+    "timeComplexity": "O(n + e) where e is number of edges",
+    "spaceComplexity": "O(n)",
+    "tags": ["graph", "union-find", "dfs", "bfs"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/graph-valid-tree/",
+      "gfg": "https://www.geeksforgeeks.org/check-given-graph-tree/"
+    },
+    "testCases": [
+      {
+        "input": {"n": 5, "edges": [[0,1],[0,2],[0,3],[1,4]]},
+        "output": true
+      },
+      {
+        "input": {"n": 5, "edges": [[0,1],[1,2],[2,3],[1,3],[1,4]]},
+        "output": false
+      },
+      {
+        "input": {"n": 1, "edges": []},
+        "output": true
+      }
+    ],
+    "starterCode": {
+      "javascript": "function validTree(n, edges) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', validTree(5, [[0,1],[0,2],[0,3],[1,4]])); // true\nconsole.log('Test 2:', validTree(5, [[0,1],[1,2],[2,3],[1,3],[1,4]])); // false",
+      "python": "def valid_tree(n, edges):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', valid_tree(5, [[0,1],[0,2],[0,3],[1,4]])) # True",
+      "java": "public boolean validTree(int n, int[][] edges) {\n    // Write your code here\n    return false;\n}"
+    }
+  },
+  {
+    "id": "graphs-5",
+    "title": "Rotting Oranges",
+    "category": "graphs",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Microsoft", "Google", "Facebook", "Oracle"],
+    "introduction": "Rotting Oranges is a classic BFS problem that simulates the spread of something over time. In a grid, rotten oranges spread to adjacent fresh oranges every minute. Determine the minimum time to rot all oranges or return -1 if impossible.",
+    "problemStatement": "You are given an m x n grid where each cell can have one of three values:\n- 0 representing an empty cell\n- 1 representing a fresh orange\n- 2 representing a rotten orange\n\nEvery minute, any fresh orange that is 4-directionally adjacent to a rotten orange becomes rotten.\n\nReturn the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return -1.\n\nConstraints:\n- m == grid.length\n- n == grid[i].length\n- 1 <= m, n <= 10\n- grid[i][j] is 0, 1, or 2",
+    "examples": [
+      {
+        "input": "grid = [[2,1,1],[1,1,0],[0,1,1]]",
+        "output": "4",
+        "explanation": "It takes 4 minutes for all oranges to become rotten."
+      },
+      {
+        "input": "grid = [[2,1,1],[0,1,1],[1,0,1]]",
+        "output": "-1",
+        "explanation": "The orange in the bottom left corner (row 2, column 0) is never rotten."
+      },
+      {
+        "input": "grid = [[0,2]]",
+        "output": "0",
+        "explanation": "There are no fresh oranges, so 0 minutes needed."
+      }
+    ],
+    "hints": [
+      "Use multi-source BFS starting from all rotten oranges",
+      "Add all initial rotten oranges to queue first",
+      "Process level by level, each level is one minute",
+      "Count fresh oranges initially, decrement as they rot",
+      "If fresh count is 0 at end, return minutes, else -1"
+    ],
+    "timeComplexity": "O(m × n)",
+    "spaceComplexity": "O(m × n)",
+    "tags": ["graph", "bfs", "matrix"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/rotting-oranges/",
+      "gfg": "https://www.geeksforgeeks.org/minimum-time-required-so-that-all-oranges-become-rotten/"
+    },
+    "testCases": [
+      {
+        "input": {"grid": [[2,1,1],[1,1,0],[0,1,1]]},
+        "output": 4
+      },
+      {
+        "input": {"grid": [[2,1,1],[0,1,1],[1,0,1]]},
+        "output": -1
+      },
+      {
+        "input": {"grid": [[0,2]]},
+        "output": 0
+      }
+    ],
+    "starterCode": {
+      "javascript": "function orangesRotting(grid) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', orangesRotting([[2,1,1],[1,1,0],[0,1,1]])); // 4\nconsole.log('Test 2:', orangesRotting([[2,1,1],[0,1,1],[1,0,1]])); // -1",
+      "python": "def oranges_rotting(grid):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', oranges_rotting([[2,1,1],[1,1,0],[0,1,1]])) # 4",
+      "java": "public int orangesRotting(int[][] grid) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+  {
+    "id": "graphs-6",
+    "title": "Word Ladder",
+    "category": "graphs",
+    "difficulty": "hard",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Lyft", "Snapchat"],
+    "introduction": "Word Ladder is a classic BFS problem where you transform one word into another by changing one letter at a time. Each intermediate word must exist in a given word list. Find the shortest transformation sequence length.",
+    "problemStatement": "A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that:\n\n- Every adjacent pair of words differs by a single letter\n- Every si for 1 <= i <= k is in wordList (note that beginWord does not need to be in wordList)\n- sk == endWord\n\nGiven two words, beginWord and endWord, and a dictionary wordList, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.\n\nConstraints:\n- 1 <= beginWord.length <= 10\n- endWord.length == beginWord.length\n- 1 <= wordList.length <= 5000\n- wordList[i].length == beginWord.length\n- beginWord, endWord, and wordList[i] consist of lowercase English letters\n- beginWord != endWord\n- All the words in wordList are unique",
+    "examples": [
+      {
+        "input": "beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\",\"cog\"]",
+        "output": "5",
+        "explanation": "One shortest transformation sequence is \"hit\" -> \"hot\" -> \"dot\" -> \"dog\" -> \"cog\", which is 5 words long."
+      },
+      {
+        "input": "beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\"]",
+        "output": "0",
+        "explanation": "The endWord \"cog\" is not in wordList, therefore there is no valid transformation sequence."
+      }
+    ],
+    "hints": [
+      "Use BFS to find shortest path",
+      "Each word is a node, words differing by one letter are connected",
+      "Use a set for O(1) word lookup",
+      "For each word, try all possible single-letter changes",
+      "Bidirectional BFS can optimize for faster search"
+    ],
+    "timeComplexity": "O(M² × N) where M is word length and N is number of words",
+    "spaceComplexity": "O(M × N)",
+    "tags": ["graph", "bfs", "hash-table", "string"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/word-ladder/",
+      "gfg": "https://www.geeksforgeeks.org/word-ladder-length-of-shortest-chain-to-reach-a-target-word/"
+    },
+    "testCases": [
+      {
+        "input": {"beginWord": "hit", "endWord": "cog", "wordList": ["hot","dot","dog","lot","log","cog"]},
+        "output": 5
+      },
+      {
+        "input": {"beginWord": "hit", "endWord": "cog", "wordList": ["hot","dot","dog","lot","log"]},
+        "output": 0
+      }
+    ],
+    "starterCode": {
+      "javascript": "function ladderLength(beginWord, endWord, wordList) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', ladderLength('hit', 'cog', ['hot','dot','dog','lot','log','cog'])); // 5",
+      "python": "def ladder_length(begin_word, end_word, word_list):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', ladder_length('hit', 'cog', ['hot','dot','dog','lot','log','cog'])) # 5",
+      "java": "public int ladderLength(String beginWord, String endWord, List<String> wordList) {\n    // Write your code here\n    return 0;\n}"
+    }
+  },
+{
+    "id": "graphs-7",
+    "title": "Pacific Atlantic Water Flow",
+    "category": "graphs",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Facebook", "Microsoft"],
+    "introduction": "Given a matrix representing heights, find all cells from which water can flow to both Pacific and Atlantic oceans. Water flows from higher or equal cells to lower cells. This is solved by running DFS/BFS from ocean borders.",
+    "problemStatement": "There is an m x n rectangular island that borders both the Pacific Ocean and Atlantic Ocean. The Pacific Ocean touches the island's left and top edges, and the Atlantic Ocean touches the island's right and bottom edges.\n\nThe island is partitioned into a grid of square cells. You are given an m x n integer matrix heights where heights[r][c] represents the height above sea level of the cell at coordinate (r, c).\n\nWater can flow from a cell to adjacent cells (north, east, south, west) if the adjacent cell's height is less than or equal to the current cell's height. Water can flow from any cell adjacent to an ocean into the ocean.\n\nReturn a 2D list of grid coordinates result where result[i] = [ri, ci] denotes that rain water can flow from cell (ri, ci) to both the Pacific and Atlantic oceans.\n\nConstraints:\n- m == heights.length\n- n == heights[r].length\n- 1 <= m, n <= 200\n- 0 <= heights[r][c] <= 10⁵",
+    "examples": [
+      {
+        "input": "heights = [[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]]",
+        "output": "[[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]",
+        "explanation": "These cells can reach both oceans."
+      },
+      {
+        "input": "heights = [[1]]",
+        "output": "[[0,0]]",
+        "explanation": "Single cell can reach both oceans."
+      }
+    ],
+    "hints": [
+      "Instead of checking each cell, start from ocean borders",
+      "Do DFS/BFS from Pacific border (top + left edges)",
+      "Do DFS/BFS from Atlantic border (bottom + right edges)",
+      "Water flows uphill in reverse (find cells that can reach ocean)",
+      "Answer is intersection of cells reachable from both"
+    ],
+    "timeComplexity": "O(m × n)",
+    "spaceComplexity": "O(m × n)",
+    "tags": ["graph", "dfs", "bfs", "matrix"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/pacific-atlantic-water-flow/",
+      "gfg": "https://www.geeksforgeeks.org/pacific-atlantic-water-flow/"
+    },
+    "testCases": [
+      {
+        "input": {"heights": [[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]]},
+        "output": [[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]
+      },
+      {
+        "input": {"heights": [[1]]},
+        "output": [[0,0]]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function pacificAtlantic(heights) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', pacificAtlantic([[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]]));",
+      "python": "def pacific_atlantic(heights):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', pacific_atlantic([[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]]))",
+      "java": "public List<List<Integer>> pacificAtlantic(int[][] heights) {\n    // Write your code here\n    return new ArrayList<>();\n}"
+    }
+  },
+  {
+    "id": "graphs-8",
+    "title": "Surrounded Regions",
+    "category": "graphs",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Microsoft", "Facebook"],
+    "introduction": "Given a matrix containing 'X' and 'O', capture all regions surrounded by 'X'. A region is captured if all its 'O's are completely surrounded by 'X' in all four directions. 'O's on the border cannot be captured.",
+    "problemStatement": "Given an m x n matrix board containing 'X' and 'O', capture all regions that are 4-directionally surrounded by 'X'.\n\nA region is captured by flipping all 'O's into 'X's in that surrounded region.\n\nConstraints:\n- m == board.length\n- n == board[i].length\n- 1 <= m, n <= 200\n- board[i][j] is 'X' or 'O'",
+    "examples": [
+      {
+        "input": "board = [[\"X\",\"X\",\"X\",\"X\"],[\"X\",\"O\",\"O\",\"X\"],[\"X\",\"X\",\"O\",\"X\"],[\"X\",\"O\",\"X\",\"X\"]]",
+        "output": "[[\"X\",\"X\",\"X\",\"X\"],[\"X\",\"X\",\"X\",\"X\"],[\"X\",\"X\",\"X\",\"X\"],[\"X\",\"O\",\"X\",\"X\"]]",
+        "explanation": "The bottom 'O' is on the border, so it's not surrounded. The other 'O's are all surrounded."
+      },
+      {
+        "input": "board = [[\"X\"]]",
+        "output": "[[\"X\"]]",
+        "explanation": "No 'O's to capture."
+      }
+    ],
+    "hints": [
+      "Key insight: 'O's connected to border cannot be captured",
+      "Start DFS/BFS from all border 'O's, mark them as safe",
+      "Use a temporary marker like 'T' for safe 'O's",
+      "After marking, flip remaining 'O's to 'X'",
+      "Finally, restore 'T's back to 'O'"
+    ],
+    "timeComplexity": "O(m × n)",
+    "spaceComplexity": "O(m × n) for recursion stack",
+    "tags": ["graph", "dfs", "bfs", "matrix", "union-find"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/surrounded-regions/",
+      "gfg": "https://www.geeksforgeeks.org/given-matrix-o-x-replace-o-x-surrounded-x/"
+    },
+    "testCases": [
+      {
+        "input": {"board": [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]},
+        "output": [["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","O","X","X"]]
+      },
+      {
+        "input": {"board": [["X"]]},
+        "output": [["X"]]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function solve(board) {\n  // Modify board in-place\n  // Write your code here\n  \n}",
+      "python": "def solve(board):\n    # Modify board in-place\n    # Write your code here\n    pass",
+      "java": "public void solve(char[][] board) {\n    // Modify board in-place\n    // Write your code here\n}"
+    }
+  },
+  {
+    "id": "graphs-9",
+    "title": "Course Schedule II",
+    "category": "graphs",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Facebook", "Google", "Microsoft", "Apple", "DoorDash"],
+    "introduction": "This is an extension of Course Schedule where you need to return the ordering of courses. This is essentially finding a topological order of a directed acyclic graph (DAG).",
+    "problemStatement": "There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.\n\nReturn the ordering of courses you should take to finish all courses. If there are many valid answers, return any of them. If it is impossible to finish all courses, return an empty array.\n\nConstraints:\n- 1 <= numCourses <= 2000\n- 0 <= prerequisites.length <= numCourses * (numCourses - 1)\n- prerequisites[i].length == 2\n- 0 <= ai, bi < numCourses\n- ai != bi\n- All [ai, bi] are distinct",
+    "examples": [
+      {
+        "input": "numCourses = 2, prerequisites = [[1,0]]",
+        "output": "[0, 1]",
+        "explanation": "To take course 1, you should have finished course 0. So the correct course order is [0, 1]."
+      },
+      {
+        "input": "numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]",
+        "output": "[0, 1, 2, 3] or [0, 2, 1, 3]",
+        "explanation": "There are multiple valid orderings."
+      },
+      {
+        "input": "numCourses = 1, prerequisites = []",
+        "output": "[0]",
+        "explanation": "No prerequisites, just take course 0."
+      }
+    ],
+    "hints": [
+      "This is topological sort problem",
+      "Use Kahn's algorithm (BFS with in-degree)",
+      "Start with nodes having in-degree 0",
+      "Add to result, reduce in-degree of neighbors",
+      "If result size != numCourses, cycle exists"
+    ],
+    "timeComplexity": "O(V + E)",
+    "spaceComplexity": "O(V + E)",
+    "tags": ["graph", "dfs", "bfs", "topological-sort"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/course-schedule-ii/",
+      "gfg": "https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/"
+    },
+    "testCases": [
+      {
+        "input": {"numCourses": 2, "prerequisites": [[1, 0]]},
+        "output": [0, 1]
+      },
+      {
+        "input": {"numCourses": 4, "prerequisites": [[1,0],[2,0],[3,1],[3,2]]},
+        "output": [0, 1, 2, 3]
+      },
+      {
+        "input": {"numCourses": 1, "prerequisites": []},
+        "output": [0]
+      }
+    ],
+    "starterCode": {
+      "javascript": "function findOrder(numCourses, prerequisites) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', findOrder(2, [[1, 0]])); // [0, 1]",
+      "python": "def find_order(num_courses, prerequisites):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', find_order(2, [[1, 0]])) # [0, 1]",
+      "java": "public int[] findOrder(int numCourses, int[][] prerequisites) {\n    // Write your code here\n    return new int[0];\n}"
+    }
+  },
+  {
+    "id": "graphs-10",
+    "title": "Network Delay Time",
+    "category": "graphs",
+    "difficulty": "medium",
+    "companies": ["Google", "Amazon", "Microsoft", "Facebook"],
+    "introduction": "Given a network of n nodes and travel times between edges, find the minimum time for a signal to reach all nodes from a starting node. This is a classic single-source shortest path problem solved with Dijkstra's algorithm.",
+    "problemStatement": "You are given a network of n nodes, labeled from 1 to n. You are also given times, a list of travel times as directed edges times[i] = (ui, vi, wi), where ui is the source node, vi is the target node, and wi is the time it takes for a signal to travel from source to target.\n\nWe will send a signal from a given node k. Return the minimum time it takes for all the n nodes to receive the signal. If it is impossible for all the n nodes to receive the signal, return -1.\n\nConstraints:\n- 1 <= k <= n <= 100\n- 1 <= times.length <= 6000\n- times[i].length == 3\n- 1 <= ui, vi <= n\n- ui != vi\n- 0 <= wi <= 100\n- All the pairs (ui, vi) are unique",
+    "examples": [
+      {
+        "input": "times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2",
+        "output": "2",
+        "explanation": "Signal reaches node 1 in time 1, node 3 in time 1, and node 4 in time 2."
+      },
+      {
+        "input": "times = [[1,2,1]], n = 2, k = 1",
+        "output": "1",
+        "explanation": "Signal reaches node 2 in time 1."
+      },
+      {
+        "input": "times = [[1,2,1]], n = 2, k = 2",
+        "output": "-1",
+        "explanation": "Node 1 cannot be reached from node 2."
+      }
+    ],
+    "hints": [
+      "Use Dijkstra's algorithm for shortest path from k to all nodes",
+      "Build adjacency list with weights",
+      "Use min-heap (priority queue) for efficient minimum extraction",
+      "Track minimum time to reach each node",
+      "Answer is max of all minimum times (if all reachable)"
+    ],
+    "timeComplexity": "O(E log V) with heap-based Dijkstra",
+    "spaceComplexity": "O(V + E)",
+    "tags": ["graph", "dijkstra", "heap", "shortest-path"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/network-delay-time/",
+      "gfg": "https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/"
+    },
+    "testCases": [
+      {
+        "input": {"times": [[2,1,1],[2,3,1],[3,4,1]], "n": 4, "k": 2},
+        "output": 2
+      },
+      {
+        "input": {"times": [[1,2,1]], "n": 2, "k": 1},
+        "output": 1
+      },
+      {
+        "input": {"times": [[1,2,1]], "n": 2, "k": 2},
+        "output": -1
+      }
+    ],
+    "starterCode": {
+      "javascript": "function networkDelayTime(times, n, k) {\n  // Write your code here\n  // Use Dijkstra's algorithm\n  \n}\n\n// Test cases\nconsole.log('Test 1:', networkDelayTime([[2,1,1],[2,3,1],[3,4,1]], 4, 2)); // 2",
+      "python": "def network_delay_time(times, n, k):\n    # Write your code here\n    # Use Dijkstra's algorithm\n    pass\n\n# Test cases\nprint('Test 1:', network_delay_time([[2,1,1],[2,3,1],[3,4,1]], 4, 2)) # 2",
+      "java": "public int networkDelayTime(int[][] times, int n, int k) {\n    // Write your code here\n    return -1;\n}"
+    }
+  },
+  {
+    "id": "graphs-11",
+    "title": "Cheapest Flights Within K Stops",
+    "category": "graphs",
+    "difficulty": "medium",
+    "companies": ["Amazon", "Google", "Facebook", "Airbnb", "Uber"],
+    "introduction": "Find the cheapest price from source to destination with at most k stops. This is a shortest path problem with an additional constraint on the number of edges. Modified Dijkstra or Bellman-Ford can be used.",
+    "problemStatement": "There are n cities connected by some number of flights. You are given an array flights where flights[i] = [fromi, toi, pricei] indicates that there is a flight from city fromi to city toi with cost pricei.\n\nYou are also given three integers src, dst, and k, return the cheapest price from src to dst with at most k stops. If there is no such route, return -1.\n\nConstraints:\n- 1 <= n <= 100\n- 0 <= flights.length <= (n * (n - 1) / 2)\n- flights[i].length == 3\n- 0 <= fromi, toi < n\n- fromi != toi\n- 1 <= pricei <= 10⁴\n- There will not be any multiple flights between two cities\n- 0 <= src, dst, k < n\n- src != dst",
+    "examples": [
+      {
+        "input": "n = 4, flights = [[0,1,100],[1,2,100],[2,0,100],[1,3,600],[2,3,200]], src = 0, dst = 3, k = 1",
+        "output": "700",
+        "explanation": "Path 0 → 1 → 3 with cost 100 + 600 = 700. Path 0 → 1 → 2 → 3 has cost 400 but requires 2 stops."
+      },
+      {
+        "input": "n = 3, flights = [[0,1,100],[1,2,100],[0,2,500]], src = 0, dst = 2, k = 1",
+        "output": "200",
+        "explanation": "Path 0 → 1 → 2 with cost 200 (1 stop)."
+      },
+      {
+        "input": "n = 3, flights = [[0,1,100],[1,2,100],[0,2,500]], src = 0, dst = 2, k = 0",
+        "output": "500",
+        "explanation": "Direct flight 0 → 2 with cost 500 (0 stops)."
+      }
+    ],
+    "hints": [
+      "Modified Bellman-Ford: run k+1 iterations",
+      "Each iteration allows one more edge",
+      "BFS with state (node, stops, cost)",
+      "Use priority queue ordered by cost",
+      "Prune paths that exceed k stops"
+    ],
+    "timeComplexity": "O(k × E) for Bellman-Ford, O(E log V) for Dijkstra variant",
+    "spaceComplexity": "O(V)",
+    "tags": ["graph", "dijkstra", "bellman-ford", "bfs", "dynamic-programming"],
+    "links": {
+      "leetcode": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
+      "gfg": "https://www.geeksforgeeks.org/find-the-minimum-cost-to-reach-destination-with-at-most-k-intermediate-nodes/"
+    },
+    "testCases": [
+      {
+        "input": {"n": 4, "flights": [[0,1,100],[1,2,100],[2,0,100],[1,3,600],[2,3,200]], "src": 0, "dst": 3, "k": 1},
+        "output": 700
+      },
+      {
+        "input": {"n": 3, "flights": [[0,1,100],[1,2,100],[0,2,500]], "src": 0, "dst": 2, "k": 1},
+        "output": 200
+      },
+      {
+        "input": {"n": 3, "flights": [[0,1,100],[1,2,100],[0,2,500]], "src": 0, "dst": 2, "k": 0},
+        "output": 500
+      }
+    ],
+    "starterCode": {
+      "javascript": "function findCheapestPrice(n, flights, src, dst, k) {\n  // Write your code here\n  \n}\n\n// Test cases\nconsole.log('Test 1:', findCheapestPrice(4, [[0,1,100],[1,2,100],[2,0,100],[1,3,600],[2,3,200]], 0, 3, 1)); // 700",
+      "python": "def find_cheapest_price(n, flights, src, dst, k):\n    # Write your code here\n    pass\n\n# Test cases\nprint('Test 1:', find_cheapest_price(4, [[0,1,100],[1,2,100],[2,0,100],[1,3,600],[2,3,200]], 0, 3, 1)) # 700",
+      "java": "public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {\n    // Write your code here\n    return -1;\n}"
+    }
+  }]
 }
