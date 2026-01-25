@@ -29,13 +29,45 @@ export default function Header({ onExport, onImport, onClearData }: HeaderProps)
   return (
     <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
       <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-            DSA Practice Platform
-          </h1>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            Master data structures and algorithms
-          </p>
+        <div className="flex items-center gap-4">
+          {/* Logo */}
+          <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 shadow-lg">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              className="w-7 h-7"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 2L2 7L12 12L22 7L12 2Z"
+                fill="white"
+                opacity="0.9"
+              />
+              <path
+                d="M2 17L12 22L22 17"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M2 12L12 17L22 12"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          
+          <div>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent dark:from-purple-400 dark:to-pink-400">
+              DSA Practice Platform
+            </h1>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Master data structures and algorithms
+            </p>
+          </div>
         </div>
 
         <div className="flex items-center gap-3">
