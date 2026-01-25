@@ -1,0 +1,3104 @@
+{
+  "category": {
+    "id": "two-pointers",
+    "name": "Two Pointers",
+    "description": "Problems that use two pointer technique to solve efficiently"
+  },
+  "questions": [
+    {
+      "id": "two-pointers-1",
+      "title": "Two Sum",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "topInterview": true,
+      "companies": [
+        "Google",
+        "Amazon",
+        "Facebook",
+        "Microsoft"
+      ],
+      "introduction": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice.",
+      "problemStatement": "Write a function that takes an array of integers and a target sum, and returns the indices of two numbers that add up to the target.\n\nConstraints:\n- 2 <= nums.length <= 10^4\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9\n- Only one valid answer exists",
+      "examples": [
+        {
+          "input": "nums = [2,7,11,15], target = 9",
+          "output": "[0,1]",
+          "explanation": "Because nums[0] + nums[1] == 9, we return [0, 1]."
+        },
+        {
+          "input": "nums = [3,2,4], target = 6",
+          "output": "[1,2]",
+          "explanation": "Because nums[1] + nums[2] == 6, we return [1, 2]."
+        }
+      ],
+      "hints": [
+        "Try using a hash map to store numbers you've seen",
+        "For each number, check if target - num exists in the map"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)",
+      "tags": [
+        "array",
+        "hash-table",
+        "two-pointers"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/two-sum/",
+        "gfg": "https://www.geeksforgeeks.org/given-an-array-a-and-a-number-x-check-for-pair-in-a-with-sum-as-x/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "target": 9
+          },
+          "output": [
+            0,
+            1
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              3,
+              2,
+              4
+            ],
+            "target": 6
+          },
+          "output": [
+            1,
+            2
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              3,
+              3
+            ],
+            "target": 6
+          },
+          "output": [
+            0,
+            1
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              -1,
+              -2,
+              -3,
+              -4,
+              -5
+            ],
+            "target": -8
+          },
+          "output": [
+            2,
+            4
+          ]
+        }
+      ],
+      "starterCode": {
+        "javascript": "function twoSum(nums, target) {\n  // Write your code here\n  // Example test:\n  // nums = [2,7,11,15], target = 9\n  // Expected output: [0,1]\n  \n}\n\n// Test cases\nconsole.log('Test 1:', JSON.stringify(twoSum([2,7,11,15], 9))); // [0,1]\nconsole.log('Test 2:', JSON.stringify(twoSum([3,2,4], 6))); // [1,2]\nconsole.log('Test 3:', JSON.stringify(twoSum([3,3], 6))); // [0,1]",
+        "python": "def two_sum(nums, target):\n    # Write your code here\n    # Example test:\n    # nums = [2,7,11,15], target = 9\n    # Expected output: [0,1]\n    pass\n\n# Test cases\nprint('Test 1:', two_sum([2,7,11,15], 9))  # [0,1]\nprint('Test 2:', two_sum([3,2,4], 6))  # [1,2]\nprint('Test 3:', two_sum([3,3], 6))  # [0,1]",
+        "java": "public int[] twoSum(int[] nums, int target) {\n    // Write your code here\n    // Example test:\n    // nums = [2,7,11,15], target = 9\n    // Expected output: [0,1]\n    return new int[0];\n}\n\n// Test in main method\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(Arrays.toString(sol.twoSum(new int[]{2,7,11,15}, 9))); // [0,1]\n    System.out.println(Arrays.toString(sol.twoSum(new int[]{3,2,4}, 6))); // [1,2]\n}"
+      }
+    },
+    {
+      "id": "two-pointers-2",
+      "title": "Container With Most Water",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "topInterview": true,
+      "companies": [
+        "Amazon",
+        "Facebook",
+        "Bloomberg"
+      ],
+      "introduction": "You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]). Find two lines that together with the x-axis form a container that contains the most water.",
+      "problemStatement": "Find two lines that together with the x-axis form a container that contains the most water. Return the maximum amount of water a container can store.\n\nConstraints:\n- n == height.length\n- 2 <= n <= 10^5\n- 0 <= height[i] <= 10^4",
+      "examples": [
+        {
+          "input": "height = [1,8,6,2,5,4,8,3,7]",
+          "output": "49",
+          "explanation": "The vertical lines are at indices 1 and 8, and they form a container with max area = 49."
+        }
+      ],
+      "hints": [
+        "Start with two pointers at both ends",
+        "Move the pointer with smaller height inward",
+        "Calculate area at each step and keep track of maximum"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "two-pointers",
+        "greedy"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/container-with-most-water/",
+        "gfg": "https://www.geeksforgeeks.org/container-with-most-water/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "height": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          },
+          "output": 49
+        },
+        {
+          "input": {
+            "height": [
+              1,
+              1
+            ]
+          },
+          "output": 1
+        },
+        {
+          "input": {
+            "height": [
+              4,
+              3,
+              2,
+              1,
+              4
+            ]
+          },
+          "output": 16
+        },
+        {
+          "input": {
+            "height": [
+              1,
+              2,
+              1
+            ]
+          },
+          "output": 2
+        }
+      ],
+      "starterCode": {
+        "javascript": "function maxArea(height) {\n  // Write your code here\n  // Example: height = [1,8,6,2,5,4,8,3,7]\n  // Expected output: 49\n  \n}\n\n// Test cases\nconsole.log('Test 1:', maxArea([1,8,6,2,5,4,8,3,7])); // 49\nconsole.log('Test 2:', maxArea([1,1])); // 1\nconsole.log('Test 3:', maxArea([4,3,2,1,4])); // 16",
+        "python": "def max_area(height):\n    # Write your code here\n    # Example: height = [1,8,6,2,5,4,8,3,7]\n    # Expected output: 49\n    pass\n\n# Test cases\nprint('Test 1:', max_area([1,8,6,2,5,4,8,3,7]))  # 49\nprint('Test 2:', max_area([1,1]))  # 1\nprint('Test 3:', max_area([4,3,2,1,4]))  # 16",
+        "java": "public int maxArea(int[] height) {\n    // Write your code here\n    // Example: height = [1,8,6,2,5,4,8,3,7]\n    // Expected output: 49\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.maxArea(new int[]{1,8,6,2,5,4,8,3,7})); // 49\n    System.out.println(sol.maxArea(new int[]{1,1})); // 1\n}"
+      }
+    },
+    {
+      "id": "two-pointers-3",
+      "title": "Three Sum",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Facebook",
+        "Google",
+        "Microsoft",
+        "Apple",
+        "Bloomberg"
+      ],
+      "introduction": "Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0. Notice that the solution set must not contain duplicate triplets.",
+      "problemStatement": "Find all unique triplets in the array which gives the sum of zero.\n\nConstraints:\n- 3 <= nums.length <= 3000\n- -10^5 <= nums[i] <= 10^5",
+      "examples": [
+        {
+          "input": "nums = [-1,0,1,2,-1,-4]",
+          "output": "[[-1,-1,2],[-1,0,1]]",
+          "explanation": "nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0. nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0. nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0. The distinct triplets are [-1,0,1] and [-1,-1,2]."
+        },
+        {
+          "input": "nums = [0,1,1]",
+          "output": "[]",
+          "explanation": "The only possible triplet does not sum up to 0."
+        },
+        {
+          "input": "nums = [0,0,0]",
+          "output": "[[0,0,0]]",
+          "explanation": "The only possible triplet sums up to 0."
+        }
+      ],
+      "hints": [
+        "Sort the array first to use two pointers efficiently",
+        "Fix one element and use two pointers to find the other two",
+        "Skip duplicate elements to avoid duplicate triplets"
+      ],
+      "timeComplexity": "O(n\u00b2)",
+      "spaceComplexity": "O(1) excluding output array",
+      "tags": [
+        "array",
+        "two-pointers",
+        "sorting"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/3sum/",
+        "gfg": "https://www.geeksforgeeks.org/find-a-triplet-that-sum-to-a-given-value/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              -1,
+              0,
+              1,
+              2,
+              -1,
+              -4
+            ]
+          },
+          "output": [
+            [
+              -1,
+              -1,
+              2
+            ],
+            [
+              -1,
+              0,
+              1
+            ]
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              0,
+              1,
+              1
+            ]
+          },
+          "output": []
+        },
+        {
+          "input": {
+            "nums": [
+              0,
+              0,
+              0
+            ]
+          },
+          "output": [
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              -2,
+              0,
+              1,
+              1,
+              2
+            ]
+          },
+          "output": [
+            [
+              -2,
+              0,
+              2
+            ],
+            [
+              -2,
+              1,
+              1
+            ]
+          ]
+        }
+      ],
+      "starterCode": {
+        "javascript": "function threeSum(nums) {\n  // Write your code here\n  // Example: nums = [-1,0,1,2,-1,-4]\n  // Expected output: [[-1,-1,2],[-1,0,1]]\n  \n}\n\n// Test cases\nconsole.log('Test 1:', JSON.stringify(threeSum([-1,0,1,2,-1,-4]))); // [[-1,-1,2],[-1,0,1]]\nconsole.log('Test 2:', JSON.stringify(threeSum([0,1,1]))); // []\nconsole.log('Test 3:', JSON.stringify(threeSum([0,0,0]))); // [[0,0,0]]",
+        "python": "def three_sum(nums):\n    # Write your code here\n    # Example: nums = [-1,0,1,2,-1,-4]\n    # Expected output: [[-1,-1,2],[-1,0,1]]\n    pass\n\n# Test cases\nprint('Test 1:', three_sum([-1,0,1,2,-1,-4]))  # [[-1,-1,2],[-1,0,1]]\nprint('Test 2:', three_sum([0,1,1]))  # []\nprint('Test 3:', three_sum([0,0,0]))  # [[0,0,0]]",
+        "java": "public List<List<Integer>> threeSum(int[] nums) {\n    // Write your code here\n    // Example: nums = [-1,0,1,2,-1,-4]\n    // Expected output: [[-1,-1,2],[-1,0,1]]\n    return new ArrayList<>();\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.threeSum(new int[]{-1,0,1,2,-1,-4}));\n    System.out.println(sol.threeSum(new int[]{0,1,1}));\n}"
+      }
+    },
+    {
+      "id": "two-pointers-4",
+      "title": "Remove Duplicates from Sorted Array",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Microsoft",
+        "Google"
+      ],
+      "introduction": "Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Return the number of unique elements.",
+      "problemStatement": "Remove duplicates from a sorted array in-place and return the count of unique elements.\n\nConstraints:\n- 1 <= nums.length <= 3 * 10^4\n- -100 <= nums[i] <= 100\n- nums is sorted in non-decreasing order",
+      "examples": [
+        {
+          "input": "nums = [1,1,2]",
+          "output": "2, nums = [1,2,_]",
+          "explanation": "Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively."
+        },
+        {
+          "input": "nums = [0,0,1,1,1,2,2,3,3,4]",
+          "output": "5, nums = [0,1,2,3,4,_,_,_,_,_]",
+          "explanation": "Your function should return k = 5, with the first five elements being 0, 1, 2, 3, and 4."
+        }
+      ],
+      "hints": [
+        "Use a slow pointer to track position for unique elements",
+        "Use a fast pointer to scan through the array",
+        "Only move slow pointer when a new unique element is found"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "two-pointers"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
+        "gfg": "https://www.geeksforgeeks.org/remove-duplicates-sorted-array/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              1,
+              1,
+              2
+            ]
+          },
+          "output": 2
+        },
+        {
+          "input": {
+            "nums": [
+              0,
+              0,
+              1,
+              1,
+              1,
+              2,
+              2,
+              3,
+              3,
+              4
+            ]
+          },
+          "output": 5
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              3
+            ]
+          },
+          "output": 3
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "output": 1
+        }
+      ],
+      "starterCode": {
+        "javascript": "function removeDuplicates(nums) {\n  // Write your code here\n  // Example: nums = [1,1,2]\n  // Expected output: 2\n  \n}\n\n// Test cases\nconsole.log('Test 1:', removeDuplicates([1,1,2])); // 2\nconsole.log('Test 2:', removeDuplicates([0,0,1,1,1,2,2,3,3,4])); // 5\nconsole.log('Test 3:', removeDuplicates([1,2,3])); // 3",
+        "python": "def remove_duplicates(nums):\n    # Write your code here\n    # Example: nums = [1,1,2]\n    # Expected output: 2\n    pass\n\n# Test cases\nprint('Test 1:', remove_duplicates([1,1,2]))  # 2\nprint('Test 2:', remove_duplicates([0,0,1,1,1,2,2,3,3,4]))  # 5\nprint('Test 3:', remove_duplicates([1,2,3]))  # 3",
+        "java": "public int removeDuplicates(int[] nums) {\n    // Write your code here\n    // Example: nums = [1,1,2]\n    // Expected output: 2\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.removeDuplicates(new int[]{1,1,2})); // 2\n    System.out.println(sol.removeDuplicates(new int[]{0,0,1,1,1,2,2,3,3,4})); // 5\n}"
+      }
+    },
+    {
+      "id": "two-pointers-5",
+      "title": "Trapping Rain Water",
+      "category": "two-pointers",
+      "difficulty": "hard",
+      "companies": [
+        "Amazon",
+        "Google",
+        "Facebook",
+        "Microsoft",
+        "Goldman Sachs",
+        "Apple"
+      ],
+      "introduction": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.",
+      "problemStatement": "Calculate the total amount of rainwater that can be trapped between the bars.\n\nConstraints:\n- n == height.length\n- 1 <= n <= 2 * 10^4\n- 0 <= height[i] <= 10^5",
+      "examples": [
+        {
+          "input": "height = [0,1,0,2,1,0,1,3,2,1,2,1]",
+          "output": "6",
+          "explanation": "The elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water are being trapped."
+        },
+        {
+          "input": "height = [4,2,0,3,2,5]",
+          "output": "9",
+          "explanation": "9 units of rain water are trapped between the bars."
+        }
+      ],
+      "hints": [
+        "Water at any position depends on the minimum of max heights on both sides",
+        "Use two pointers from both ends",
+        "Track leftMax and rightMax as you move pointers inward"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "two-pointers",
+        "dynamic-programming",
+        "stack"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/trapping-rain-water/",
+        "gfg": "https://www.geeksforgeeks.org/trapping-rain-water/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "height": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ]
+          },
+          "output": 6
+        },
+        {
+          "input": {
+            "height": [
+              4,
+              2,
+              0,
+              3,
+              2,
+              5
+            ]
+          },
+          "output": 9
+        },
+        {
+          "input": {
+            "height": [
+              1,
+              0,
+              2
+            ]
+          },
+          "output": 1
+        },
+        {
+          "input": {
+            "height": [
+              3,
+              0,
+              2,
+              0,
+              4
+            ]
+          },
+          "output": 7
+        }
+      ],
+      "starterCode": {
+        "javascript": "function trap(height) {\n  // Write your code here\n  // Example: height = [0,1,0,2,1,0,1,3,2,1,2,1]\n  // Expected output: 6\n  \n}\n\n// Test cases\nconsole.log('Test 1:', trap([0,1,0,2,1,0,1,3,2,1,2,1])); // 6\nconsole.log('Test 2:', trap([4,2,0,3,2,5])); // 9\nconsole.log('Test 3:', trap([1,0,2])); // 1",
+        "python": "def trap(height):\n    # Write your code here\n    # Example: height = [0,1,0,2,1,0,1,3,2,1,2,1]\n    # Expected output: 6\n    pass\n\n# Test cases\nprint('Test 1:', trap([0,1,0,2,1,0,1,3,2,1,2,1]))  # 6\nprint('Test 2:', trap([4,2,0,3,2,5]))  # 9\nprint('Test 3:', trap([1,0,2]))  # 1",
+        "java": "public int trap(int[] height) {\n    // Write your code here\n    // Example: height = [0,1,0,2,1,0,1,3,2,1,2,1]\n    // Expected output: 6\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.trap(new int[]{0,1,0,2,1,0,1,3,2,1,2,1})); // 6\n    System.out.println(sol.trap(new int[]{4,2,0,3,2,5})); // 9\n}"
+      }
+    },
+    {
+      "id": "two-pointers-6",
+      "title": "Valid Palindrome",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Microsoft",
+        "Apple"
+      ],
+      "introduction": "A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.",
+      "problemStatement": "Given a string s, return true if it is a palindrome, or false otherwise.\n\nConstraints:\n- 1 <= s.length <= 2 * 10^5\n- s consists only of printable ASCII characters",
+      "examples": [
+        {
+          "input": "s = \"A man, a plan, a canal: Panama\"",
+          "output": "true",
+          "explanation": "\"amanaplanacanalpanama\" is a palindrome."
+        },
+        {
+          "input": "s = \"race a car\"",
+          "output": "false",
+          "explanation": "\"raceacar\" is not a palindrome."
+        },
+        {
+          "input": "s = \" \"",
+          "output": "true",
+          "explanation": "After removing non-alphanumeric characters, s is an empty string. An empty string is a palindrome."
+        }
+      ],
+      "hints": [
+        "Use two pointers: one at start, one at end",
+        "Skip non-alphanumeric characters",
+        "Compare characters case-insensitively"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "string",
+        "two-pointers"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/valid-palindrome/",
+        "gfg": "https://www.geeksforgeeks.org/c-program-check-given-string-palindrome/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "s": "A man, a plan, a canal: Panama"
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "s": "race a car"
+          },
+          "output": false
+        },
+        {
+          "input": {
+            "s": " "
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "s": "ab_a"
+          },
+          "output": true
+        }
+      ],
+      "starterCode": {
+        "javascript": "function isPalindrome(s) {\n  // Write your code here\n  // Example: s = 'A man, a plan, a canal: Panama'\n  // Expected output: true\n  \n}\n\n// Test cases\nconsole.log('Test 1:', isPalindrome('A man, a plan, a canal: Panama')); // true\nconsole.log('Test 2:', isPalindrome('race a car')); // false\nconsole.log('Test 3:', isPalindrome(' ')); // true",
+        "python": "def is_palindrome(s):\n    # Write your code here\n    # Example: s = 'A man, a plan, a canal: Panama'\n    # Expected output: True\n    pass\n\n# Test cases\nprint('Test 1:', is_palindrome('A man, a plan, a canal: Panama'))  # True\nprint('Test 2:', is_palindrome('race a car'))  # False\nprint('Test 3:', is_palindrome(' '))  # True",
+        "java": "public boolean isPalindrome(String s) {\n    // Write your code here\n    // Example: s = \"A man, a plan, a canal: Panama\"\n    // Expected output: true\n    return false;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.isPalindrome(\"A man, a plan, a canal: Panama\")); // true\n    System.out.println(sol.isPalindrome(\"race a car\")); // false\n}"
+      }
+    },
+    {
+      "id": "two-pointers-7",
+      "title": "Move Zeroes",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Apple",
+        "Microsoft"
+      ],
+      "introduction": "Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements. Note that you must do this in-place without making a copy of the array.",
+      "problemStatement": "Move all zeros to the end of the array while maintaining relative order of non-zero elements.\n\nConstraints:\n- 1 <= nums.length <= 10^4\n- -2^31 <= nums[i] <= 2^31 - 1",
+      "examples": [
+        {
+          "input": "nums = [0,1,0,3,12]",
+          "output": "[1,3,12,0,0]",
+          "explanation": "All zeros are moved to the end while maintaining order of non-zero elements."
+        },
+        {
+          "input": "nums = [0]",
+          "output": "[0]",
+          "explanation": "Single zero stays in place."
+        }
+      ],
+      "hints": [
+        "Use a slow pointer to track position for non-zero elements",
+        "Use a fast pointer to find non-zero elements",
+        "Swap elements when fast pointer finds non-zero"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "two-pointers"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/move-zeroes/",
+        "gfg": "https://www.geeksforgeeks.org/move-zeroes-end-array/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              0,
+              1,
+              0,
+              3,
+              12
+            ]
+          },
+          "output": [
+            1,
+            3,
+            12,
+            0,
+            0
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              0
+            ]
+          },
+          "output": [
+            0
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              3
+            ]
+          },
+          "output": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              0,
+              0,
+              1
+            ]
+          },
+          "output": [
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "starterCode": {
+        "javascript": "function moveZeroes(nums) {\n  // Write your code here\n  // Example: nums = [0,1,0,3,12]\n  // Expected output: [1,3,12,0,0]\n  \n}\n\n// Test cases\nlet test1 = [0,1,0,3,12];\nmoveZeroes(test1);\nconsole.log('Test 1:', test1); // [1,3,12,0,0]\nlet test2 = [0];\nmoveZeroes(test2);\nconsole.log('Test 2:', test2); // [0]",
+        "python": "def move_zeroes(nums):\n    # Write your code here\n    # Example: nums = [0,1,0,3,12]\n    # Expected output: [1,3,12,0,0]\n    pass\n\n# Test cases\ntest1 = [0,1,0,3,12]\nmove_zeroes(test1)\nprint('Test 1:', test1)  # [1,3,12,0,0]\ntest2 = [0]\nmove_zeroes(test2)\nprint('Test 2:', test2)  # [0]",
+        "java": "public void moveZeroes(int[] nums) {\n    // Write your code here\n    // Example: nums = [0,1,0,3,12]\n    // Expected output: [1,3,12,0,0]\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    int[] test1 = {0,1,0,3,12};\n    sol.moveZeroes(test1);\n    System.out.println(Arrays.toString(test1)); // [1,3,12,0,0]\n}"
+      }
+    },
+    {
+      "id": "two-pointers-8",
+      "title": "Sort Colors",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Microsoft",
+        "Facebook",
+        "Adobe"
+      ],
+      "introduction": "Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue. We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.",
+      "problemStatement": "Sort the array containing only 0s, 1s, and 2s in-place without using the library's sort function.\n\nConstraints:\n- n == nums.length\n- 1 <= n <= 300\n- nums[i] is either 0, 1, or 2",
+      "examples": [
+        {
+          "input": "nums = [2,0,2,1,1,0]",
+          "output": "[0,0,1,1,2,2]",
+          "explanation": "Array is sorted with 0s first, then 1s, then 2s."
+        },
+        {
+          "input": "nums = [2,0,1]",
+          "output": "[0,1,2]",
+          "explanation": "Array is sorted in ascending order."
+        }
+      ],
+      "hints": [
+        "This is the Dutch National Flag problem",
+        "Use three pointers: low, mid, and high",
+        "Swap elements based on value at mid pointer"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "two-pointers",
+        "sorting"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/sort-colors/",
+        "gfg": "https://www.geeksforgeeks.org/sort-an-array-of-0s-1s-and-2s/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              2,
+              0,
+              2,
+              1,
+              1,
+              0
+            ]
+          },
+          "output": [
+            0,
+            0,
+            1,
+            1,
+            2,
+            2
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              2,
+              0,
+              1
+            ]
+          },
+          "output": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              0
+            ]
+          },
+          "output": [
+            0
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              1
+            ]
+          },
+          "output": [
+            1
+          ]
+        }
+      ],
+      "starterCode": {
+        "javascript": "function sortColors(nums) {\n  // Write your code here\n  // Example: nums = [2,0,2,1,1,0]\n  // Expected output: [0,0,1,1,2,2]\n  \n}\n\n// Test cases\nlet test1 = [2,0,2,1,1,0];\nsortColors(test1);\nconsole.log('Test 1:', test1); // [0,0,1,1,2,2]\nlet test2 = [2,0,1];\nsortColors(test2);\nconsole.log('Test 2:', test2); // [0,1,2]",
+        "python": "def sort_colors(nums):\n    # Write your code here\n    # Example: nums = [2,0,2,1,1,0]\n    # Expected output: [0,0,1,1,2,2]\n    pass\n\n# Test cases\ntest1 = [2,0,2,1,1,0]\nsort_colors(test1)\nprint('Test 1:', test1)  # [0,0,1,1,2,2]\ntest2 = [2,0,1]\nsort_colors(test2)\nprint('Test 2:', test2)  # [0,1,2]",
+        "java": "public void sortColors(int[] nums) {\n    // Write your code here\n    // Example: nums = [2,0,2,1,1,0]\n    // Expected output: [0,0,1,1,2,2]\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    int[] test1 = {2,0,2,1,1,0};\n    sol.sortColors(test1);\n    System.out.println(Arrays.toString(test1)); // [0,0,1,1,2,2]\n}"
+      }
+    },
+    {
+      "id": "two-pointers-9",
+      "title": "3Sum Closest",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Facebook",
+        "Google",
+        "Apple"
+      ],
+      "introduction": "Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers.",
+      "problemStatement": "Find three integers whose sum is closest to the target and return that sum.\n\nConstraints:\n- 3 <= nums.length <= 500\n- -1000 <= nums[i] <= 1000\n- -10^4 <= target <= 10^4",
+      "examples": [
+        {
+          "input": "nums = [-1,2,1,-4], target = 1",
+          "output": "2",
+          "explanation": "The sum that is closest to the target is 2. (-1 + 2 + 1 = 2)."
+        },
+        {
+          "input": "nums = [0,0,0], target = 1",
+          "output": "0",
+          "explanation": "The sum that is closest to the target is 0. (0 + 0 + 0 = 0)."
+        }
+      ],
+      "hints": [
+        "Sort the array first",
+        "Fix one element and use two pointers for remaining two",
+        "Track the closest sum and update when a closer sum is found"
+      ],
+      "timeComplexity": "O(n\u00b2)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "two-pointers",
+        "sorting"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/3sum-closest/",
+        "gfg": "https://www.geeksforgeeks.org/find-number-in-an-array-that-is-closest-to-given-number/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              -1,
+              2,
+              1,
+              -4
+            ],
+            "target": 1
+          },
+          "output": 2
+        },
+        {
+          "input": {
+            "nums": [
+              0,
+              0,
+              0
+            ],
+            "target": 1
+          },
+          "output": 0
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              1,
+              1,
+              0
+            ],
+            "target": -100
+          },
+          "output": 2
+        },
+        {
+          "input": {
+            "nums": [
+              4,
+              0,
+              5,
+              -5,
+              3,
+              3,
+              0,
+              -4,
+              -5
+            ],
+            "target": -2
+          },
+          "output": -2
+        }
+      ],
+      "starterCode": {
+        "javascript": "function threeSumClosest(nums, target) {\n  // Write your code here\n  // Example: nums = [-1,2,1,-4], target = 1\n  // Expected output: 2\n  \n}\n\n// Test cases\nconsole.log('Test 1:', threeSumClosest([-1,2,1,-4], 1)); // 2\nconsole.log('Test 2:', threeSumClosest([0,0,0], 1)); // 0\nconsole.log('Test 3:', threeSumClosest([1,1,1,0], -100)); // 2",
+        "python": "def three_sum_closest(nums, target):\n    # Write your code here\n    # Example: nums = [-1,2,1,-4], target = 1\n    # Expected output: 2\n    pass\n\n# Test cases\nprint('Test 1:', three_sum_closest([-1,2,1,-4], 1))  # 2\nprint('Test 2:', three_sum_closest([0,0,0], 1))  # 0\nprint('Test 3:', three_sum_closest([1,1,1,0], -100))  # 2",
+        "java": "public int threeSumClosest(int[] nums, int target) {\n    // Write your code here\n    // Example: nums = [-1,2,1,-4], target = 1\n    // Expected output: 2\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.threeSumClosest(new int[]{-1,2,1,-4}, 1)); // 2\n    System.out.println(sol.threeSumClosest(new int[]{0,0,0}, 1)); // 0\n}"
+      }
+    },
+    {
+      "id": "two-pointers-10",
+      "title": "Merge Sorted Array",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Microsoft",
+        "Google",
+        "Apple"
+      ],
+      "introduction": "You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively. Merge nums2 into nums1 as one sorted array.",
+      "problemStatement": "Merge nums2 into nums1 in-place. nums1 has enough space (size m + n) to hold additional elements from nums2.\n\nConstraints:\n- nums1.length == m + n\n- nums2.length == n\n- 0 <= m, n <= 200\n- 1 <= m + n <= 200\n- -10^9 <= nums1[i], nums2[j] <= 10^9",
+      "examples": [
+        {
+          "input": "nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3",
+          "output": "[1,2,2,3,5,6]",
+          "explanation": "The arrays we are merging are [1,2,3] and [2,5,6]. The result is [1,2,2,3,5,6]."
+        },
+        {
+          "input": "nums1 = [1], m = 1, nums2 = [], n = 0",
+          "output": "[1]",
+          "explanation": "The arrays we are merging are [1] and []. The result is [1]."
+        }
+      ],
+      "hints": [
+        "Start from the end of both arrays",
+        "Compare elements and place larger one at the end of nums1",
+        "Work backwards to avoid overwriting elements"
+      ],
+      "timeComplexity": "O(m + n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "two-pointers",
+        "sorting"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/merge-sorted-array/",
+        "gfg": "https://www.geeksforgeeks.org/merge-two-sorted-arrays/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums1": [
+              1,
+              2,
+              3,
+              0,
+              0,
+              0
+            ],
+            "m": 3,
+            "nums2": [
+              2,
+              5,
+              6
+            ],
+            "n": 3
+          },
+          "output": [
+            1,
+            2,
+            2,
+            3,
+            5,
+            6
+          ]
+        },
+        {
+          "input": {
+            "nums1": [
+              1
+            ],
+            "m": 1,
+            "nums2": [],
+            "n": 0
+          },
+          "output": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "nums1": [
+              0
+            ],
+            "m": 0,
+            "nums2": [
+              1
+            ],
+            "n": 1
+          },
+          "output": [
+            1
+          ]
+        },
+        {
+          "input": {
+            "nums1": [
+              2,
+              0
+            ],
+            "m": 1,
+            "nums2": [
+              1
+            ],
+            "n": 1
+          },
+          "output": [
+            1,
+            2
+          ]
+        }
+      ],
+      "starterCode": {
+        "javascript": "function merge(nums1, m, nums2, n) {\n  // Write your code here\n  // Example: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3\n  // Expected output: [1,2,2,3,5,6]\n  \n}\n\n// Test cases\nlet test1 = [1,2,3,0,0,0];\nmerge(test1, 3, [2,5,6], 3);\nconsole.log('Test 1:', test1); // [1,2,2,3,5,6]",
+        "python": "def merge(nums1, m, nums2, n):\n    # Write your code here\n    # Example: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3\n    # Expected output: [1,2,2,3,5,6]\n    pass\n\n# Test cases\ntest1 = [1,2,3,0,0,0]\nmerge(test1, 3, [2,5,6], 3)\nprint('Test 1:', test1)  # [1,2,2,3,5,6]",
+        "java": "public void merge(int[] nums1, int m, int[] nums2, int n) {\n    // Write your code here\n    // Example: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3\n    // Expected output: [1,2,2,3,5,6]\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    int[] test1 = {1,2,3,0,0,0};\n    sol.merge(test1, 3, new int[]{2,5,6}, 3);\n    System.out.println(Arrays.toString(test1)); // [1,2,2,3,5,6]\n}"
+      }
+    },
+    {
+      "id": "two-pointers-11",
+      "title": "Squares of a Sorted Array",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Google",
+        "Apple"
+      ],
+      "introduction": "Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.",
+      "problemStatement": "Return an array of squares of each number in sorted order.\n\nConstraints:\n- 1 <= nums.length <= 10^4\n- -10^4 <= nums[i] <= 10^4\n- nums is sorted in non-decreasing order",
+      "examples": [
+        {
+          "input": "nums = [-4,-1,0,3,10]",
+          "output": "[0,1,9,16,100]",
+          "explanation": "After squaring, the array becomes [16,1,0,9,100]. After sorting, it becomes [0,1,9,16,100]."
+        },
+        {
+          "input": "nums = [-7,-3,2,3,11]",
+          "output": "[4,9,9,49,121]",
+          "explanation": "After squaring and sorting, the result is [4,9,9,49,121]."
+        }
+      ],
+      "hints": [
+        "The largest squares will be at either end of the array",
+        "Use two pointers at both ends",
+        "Fill result array from the end to the beginning"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)",
+      "tags": [
+        "array",
+        "two-pointers",
+        "sorting"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/squares-of-a-sorted-array/",
+        "gfg": "https://www.geeksforgeeks.org/sort-array-converting-elements-squares/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              -4,
+              -1,
+              0,
+              3,
+              10
+            ]
+          },
+          "output": [
+            0,
+            1,
+            9,
+            16,
+            100
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              -7,
+              -3,
+              2,
+              3,
+              11
+            ]
+          },
+          "output": [
+            4,
+            9,
+            9,
+            49,
+            121
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              -5,
+              -3,
+              -2,
+              -1
+            ]
+          },
+          "output": [
+            1,
+            4,
+            9,
+            25
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "output": [
+            1,
+            4,
+            9,
+            16,
+            25
+          ]
+        }
+      ],
+      "starterCode": {
+        "javascript": "function sortedSquares(nums) {\n  // Write your code here\n  // Example: nums = [-4,-1,0,3,10]\n  // Expected output: [0,1,9,16,100]\n  \n}\n\n// Test cases\nconsole.log('Test 1:', JSON.stringify(sortedSquares([-4,-1,0,3,10]))); // [0,1,9,16,100]\nconsole.log('Test 2:', JSON.stringify(sortedSquares([-7,-3,2,3,11]))); // [4,9,9,49,121]",
+        "python": "def sorted_squares(nums):\n    # Write your code here\n    # Example: nums = [-4,-1,0,3,10]\n    # Expected output: [0,1,9,16,100]\n    pass\n\n# Test cases\nprint('Test 1:', sorted_squares([-4,-1,0,3,10]))  # [0,1,9,16,100]\nprint('Test 2:', sorted_squares([-7,-3,2,3,11]))  # [4,9,9,49,121]",
+        "java": "public int[] sortedSquares(int[] nums) {\n    // Write your code here\n    // Example: nums = [-4,-1,0,3,10]\n    // Expected output: [0,1,9,16,100]\n    return new int[0];\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(Arrays.toString(sol.sortedSquares(new int[]{-4,-1,0,3,10})));\n}"
+      }
+    },
+    {
+      "id": "two-pointers-12",
+      "title": "4Sum",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Apple",
+        "Goldman Sachs"
+      ],
+      "introduction": "Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that a, b, c, and d are distinct indices and nums[a] + nums[b] + nums[c] + nums[d] == target.",
+      "problemStatement": "Find all unique quadruplets that sum up to the target.\n\nConstraints:\n- 1 <= nums.length <= 200\n- -10^9 <= nums[i] <= 10^9\n- -10^9 <= target <= 10^9",
+      "examples": [
+        {
+          "input": "nums = [1,0,-1,0,-2,2], target = 0",
+          "output": "[[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]",
+          "explanation": "All unique quadruplets that sum to 0."
+        },
+        {
+          "input": "nums = [2,2,2,2,2], target = 8",
+          "output": "[[2,2,2,2]]",
+          "explanation": "Only one unique quadruplet sums to 8."
+        }
+      ],
+      "hints": [
+        "Sort the array first",
+        "Fix two elements and use two pointers for remaining two",
+        "Skip duplicates at each level to avoid duplicate quadruplets"
+      ],
+      "timeComplexity": "O(n\u00b3)",
+      "spaceComplexity": "O(1) excluding output",
+      "tags": [
+        "array",
+        "two-pointers",
+        "sorting"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/4sum/",
+        "gfg": "https://www.geeksforgeeks.org/find-four-elements-that-sum-to-a-given-value-set-2/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              1,
+              0,
+              -1,
+              0,
+              -2,
+              2
+            ],
+            "target": 0
+          },
+          "output": [
+            [
+              -2,
+              -1,
+              1,
+              2
+            ],
+            [
+              -2,
+              0,
+              0,
+              2
+            ],
+            [
+              -1,
+              0,
+              0,
+              1
+            ]
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "target": 8
+          },
+          "output": [
+            [
+              2,
+              2,
+              2,
+              2
+            ]
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              0,
+              -1,
+              0,
+              -2,
+              2
+            ],
+            "target": 1
+          },
+          "output": [
+            [
+              -2,
+              0,
+              1,
+              2
+            ],
+            [
+              -1,
+              0,
+              0,
+              2
+            ]
+          ]
+        },
+        {
+          "input": {
+            "nums": [],
+            "target": 0
+          },
+          "output": []
+        }
+      ],
+      "starterCode": {
+        "javascript": "function fourSum(nums, target) {\n  // Write your code here\n  // Example: nums = [1,0,-1,0,-2,2], target = 0\n  // Expected output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]\n  \n}\n\n// Test cases\nconsole.log('Test 1:', JSON.stringify(fourSum([1,0,-1,0,-2,2], 0)));\nconsole.log('Test 2:', JSON.stringify(fourSum([2,2,2,2,2], 8)));\nconsole.log('Test 3:', JSON.stringify(fourSum([], 0))); // []",
+        "python": "def four_sum(nums, target):\n    # Write your code here\n    # Example: nums = [1,0,-1,0,-2,2], target = 0\n    # Expected output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]\n    pass\n\n# Test cases\nprint('Test 1:', four_sum([1,0,-1,0,-2,2], 0))\nprint('Test 2:', four_sum([2,2,2,2,2], 8))\nprint('Test 3:', four_sum([], 0))  # []",
+        "java": "public List<List<Integer>> fourSum(int[] nums, int target) {\n    // Write your code here\n    // Example: nums = [1,0,-1,0,-2,2], target = 0\n    // Expected output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]\n    return new ArrayList<>();\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.fourSum(new int[]{1,0,-1,0,-2,2}, 0));\n}"
+      }
+    },
+    {
+      "id": "two-pointers-13",
+      "title": "Reverse String",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": [
+        "Amazon",
+        "Microsoft",
+        "Apple"
+      ],
+      "introduction": "Write a function that reverses a string. The input string is given as an array of characters s. You must do this by modifying the input array in-place with O(1) extra memory.",
+      "problemStatement": "Reverse the string in-place.\n\nConstraints:\n- 1 <= s.length <= 10^5\n- s[i] is a printable ASCII character",
+      "examples": [
+        {
+          "input": "s = [\"h\",\"e\",\"l\",\"l\",\"o\"]",
+          "output": "[\"o\",\"l\",\"l\",\"e\",\"h\"]",
+          "explanation": "The string is reversed in-place."
+        },
+        {
+          "input": "s = [\"H\",\"a\",\"n\",\"n\",\"a\",\"h\"]",
+          "output": "[\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"]",
+          "explanation": "The string is reversed in-place."
+        }
+      ],
+      "hints": [
+        "Use two pointers: one at start, one at end",
+        "Swap characters at both pointers",
+        "Move pointers towards center"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "string",
+        "two-pointers"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/reverse-string/",
+        "gfg": "https://www.geeksforgeeks.org/reverse-a-string/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "s": [
+              "h",
+              "e",
+              "l",
+              "l",
+              "o"
+            ]
+          },
+          "output": [
+            "o",
+            "l",
+            "l",
+            "e",
+            "h"
+          ]
+        },
+        {
+          "input": {
+            "s": [
+              "H",
+              "a",
+              "n",
+              "n",
+              "a",
+              "h"
+            ]
+          },
+          "output": [
+            "h",
+            "a",
+            "n",
+            "n",
+            "a",
+            "H"
+          ]
+        },
+        {
+          "input": {
+            "s": [
+              "A"
+            ]
+          },
+          "output": [
+            "A"
+          ]
+        },
+        {
+          "input": {
+            "s": [
+              "a",
+              "b"
+            ]
+          },
+          "output": [
+            "b",
+            "a"
+          ]
+        }
+      ],
+      "starterCode": {
+        "javascript": "function reverseString(s) {\n  // Write your code here\n  // Example: s = ['h','e','l','l','o']\n  // Expected output: ['o','l','l','e','h']\n  \n}\n\n// Test cases\nlet test1 = ['h','e','l','l','o'];\nreverseString(test1);\nconsole.log('Test 1:', test1); // ['o','l','l','e','h']\nlet test2 = ['H','a','n','n','a','h'];\nreverseString(test2);\nconsole.log('Test 2:', test2); // ['h','a','n','n','a','H']",
+        "python": "def reverse_string(s):\n    # Write your code here\n    # Example: s = ['h','e','l','l','o']\n    # Expected output: ['o','l','l','e','h']\n    pass\n\n# Test cases\ntest1 = ['h','e','l','l','o']\nreverse_string(test1)\nprint('Test 1:', test1)  # ['o','l','l','e','h']\ntest2 = ['H','a','n','n','a','h']\nreverse_string(test2)\nprint('Test 2:', test2)  # ['h','a','n','n','a','H']",
+        "java": "public void reverseString(char[] s) {\n    // Write your code here\n    // Example: s = ['h','e','l','l','o']\n    // Expected output: ['o','l','l','e','h']\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    char[] test1 = {'h','e','l','l','o'};\n    sol.reverseString(test1);\n    System.out.println(Arrays.toString(test1)); // [o,l,l,e,h]\n}"
+      }
+    },
+    {
+      "id": "two-pointers-14",
+      "title": "Two Sum II - Input Array Is Sorted",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Google",
+        "Facebook",
+        "Bloomberg"
+      ],
+      "introduction": "Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Return the indices of the two numbers, index1 and index2, added by one.",
+      "problemStatement": "Find two numbers in a sorted array that add up to the target. Return their 1-indexed positions.\n\nConstraints:\n- 2 <= numbers.length <= 3 * 10^4\n- -1000 <= numbers[i] <= 1000\n- numbers is sorted in non-decreasing order\n- -1000 <= target <= 1000\n- Only one valid answer exists",
+      "examples": [
+        {
+          "input": "numbers = [2,7,11,15], target = 9",
+          "output": "[1,2]",
+          "explanation": "The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2]."
+        },
+        {
+          "input": "numbers = [2,3,4], target = 6",
+          "output": "[1,3]",
+          "explanation": "The sum of 2 and 4 is 6. Therefore index1 = 1, index2 = 3. We return [1, 3]."
+        },
+        {
+          "input": "numbers = [-1,0], target = -1",
+          "output": "[1,2]",
+          "explanation": "The sum of -1 and 0 is -1. Therefore index1 = 1, index2 = 2. We return [1, 2]."
+        }
+      ],
+      "hints": [
+        "Use two pointers: one at start, one at end",
+        "If sum is too large, move right pointer left",
+        "If sum is too small, move left pointer right"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "two-pointers",
+        "binary-search"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+        "gfg": "https://www.geeksforgeeks.org/two-pointers-technique/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "numbers": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "target": 9
+          },
+          "output": [
+            1,
+            2
+          ]
+        },
+        {
+          "input": {
+            "numbers": [
+              2,
+              3,
+              4
+            ],
+            "target": 6
+          },
+          "output": [
+            1,
+            3
+          ]
+        },
+        {
+          "input": {
+            "numbers": [
+              -1,
+              0
+            ],
+            "target": -1
+          },
+          "output": [
+            1,
+            2
+          ]
+        },
+        {
+          "input": {
+            "numbers": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "target": 7
+          },
+          "output": [
+            3,
+            4
+          ]
+        }
+      ],
+      "starterCode": {
+        "javascript": "function twoSum(numbers, target) {\n  // Write your code here\n  // Example: numbers = [2,7,11,15], target = 9\n  // Expected output: [1,2]\n  \n}\n\n// Test cases\nconsole.log('Test 1:', JSON.stringify(twoSum([2,7,11,15], 9))); // [1,2]\nconsole.log('Test 2:', JSON.stringify(twoSum([2,3,4], 6))); // [1,3]\nconsole.log('Test 3:', JSON.stringify(twoSum([-1,0], -1))); // [1,2]",
+        "python": "def two_sum(numbers, target):\n    # Write your code here\n    # Example: numbers = [2,7,11,15], target = 9\n    # Expected output: [1,2]\n    pass\n\n# Test cases\nprint('Test 1:', two_sum([2,7,11,15], 9))  # [1,2]\nprint('Test 2:', two_sum([2,3,4], 6))  # [1,3]\nprint('Test 3:', two_sum([-1,0], -1))  # [1,2]",
+        "java": "public int[] twoSum(int[] numbers, int target) {\n    // Write your code here\n    // Example: numbers = [2,7,11,15], target = 9\n    // Expected output: [1,2]\n    return new int[0];\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(Arrays.toString(sol.twoSum(new int[]{2,7,11,15}, 9)));\n}"
+      }
+    },
+    {
+      "id": "two-pointers-15",
+      "title": "Reverse Vowels of a String",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": [
+        "Google",
+        "Amazon",
+        "Apple"
+      ],
+      "introduction": "Given a string s, reverse only all the vowels in the string and return it. The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.",
+      "problemStatement": "Reverse only the vowels in the given string.\n\nConstraints:\n- 1 <= s.length <= 3 * 10^5\n- s consist of printable ASCII characters",
+      "examples": [
+        {
+          "input": "s = \"hello\"",
+          "output": "\"holle\"",
+          "explanation": "The vowels are 'e' and 'o'. After reversing, they become 'o' and 'e'."
+        },
+        {
+          "input": "s = \"leetcode\"",
+          "output": "\"leotcede\"",
+          "explanation": "The vowels are 'e', 'e', 'o', 'e'. After reversing, they become 'e', 'o', 'e', 'e'."
+        }
+      ],
+      "hints": [
+        "Use two pointers from both ends",
+        "Skip non-vowel characters",
+        "Swap when both pointers point to vowels"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)",
+      "tags": [
+        "string",
+        "two-pointers"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/reverse-vowels-of-a-string/",
+        "gfg": "https://www.geeksforgeeks.org/reverse-vowels-given-string/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "s": "hello"
+          },
+          "output": "holle"
+        },
+        {
+          "input": {
+            "s": "leetcode"
+          },
+          "output": "leotcede"
+        },
+        {
+          "input": {
+            "s": "aA"
+          },
+          "output": "Aa"
+        },
+        {
+          "input": {
+            "s": "bcdfg"
+          },
+          "output": "bcdfg"
+        }
+      ],
+      "starterCode": {
+        "javascript": "function reverseVowels(s) {\n  // Write your code here\n  // Example: s = 'hello'\n  // Expected output: 'holle'\n  \n}\n\n// Test cases\nconsole.log('Test 1:', reverseVowels('hello')); // 'holle'\nconsole.log('Test 2:', reverseVowels('leetcode')); // 'leotcede'\nconsole.log('Test 3:', reverseVowels('aA')); // 'Aa'",
+        "python": "def reverse_vowels(s):\n    # Write your code here\n    # Example: s = 'hello'\n    # Expected output: 'holle'\n    pass\n\n# Test cases\nprint('Test 1:', reverse_vowels('hello'))  # 'holle'\nprint('Test 2:', reverse_vowels('leetcode'))  # 'leotcede'\nprint('Test 3:', reverse_vowels('aA'))  # 'Aa'",
+        "java": "public String reverseVowels(String s) {\n    // Write your code here\n    // Example: s = \"hello\"\n    // Expected output: \"holle\"\n    return \"\";\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.reverseVowels(\"hello\")); // holle\n}"
+      }
+    },
+    {
+      "id": "two-pointers-16",
+      "title": "Is Subsequence",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": [
+        "Google",
+        "Facebook",
+        "Pinterest"
+      ],
+      "introduction": "Given two strings s and t, return true if s is a subsequence of t, or false otherwise. A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters.",
+      "problemStatement": "Determine if string s is a subsequence of string t.\n\nConstraints:\n- 0 <= s.length <= 100\n- 0 <= t.length <= 10^4\n- s and t consist only of lowercase English letters",
+      "examples": [
+        {
+          "input": "s = \"abc\", t = \"ahbgdc\"",
+          "output": "true",
+          "explanation": "'a', 'b', 'c' appear in t in the same order."
+        },
+        {
+          "input": "s = \"axc\", t = \"ahbgdc\"",
+          "output": "false",
+          "explanation": "'x' does not appear in t."
+        }
+      ],
+      "hints": [
+        "Use two pointers, one for each string",
+        "Move pointer in s only when characters match",
+        "Always move pointer in t"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "string",
+        "two-pointers",
+        "dynamic-programming"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/is-subsequence/",
+        "gfg": "https://www.geeksforgeeks.org/given-two-strings-find-first-string-subsequence-second/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "s": "abc",
+            "t": "ahbgdc"
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "s": "axc",
+            "t": "ahbgdc"
+          },
+          "output": false
+        },
+        {
+          "input": {
+            "s": "",
+            "t": "ahbgdc"
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "s": "abc",
+            "t": ""
+          },
+          "output": false
+        }
+      ],
+      "starterCode": {
+        "javascript": "function isSubsequence(s, t) {\n  // Write your code here\n  // Example: s = 'abc', t = 'ahbgdc'\n  // Expected output: true\n  \n}\n\n// Test cases\nconsole.log('Test 1:', isSubsequence('abc', 'ahbgdc')); // true\nconsole.log('Test 2:', isSubsequence('axc', 'ahbgdc')); // false\nconsole.log('Test 3:', isSubsequence('', 'ahbgdc')); // true",
+        "python": "def is_subsequence(s, t):\n    # Write your code here\n    # Example: s = 'abc', t = 'ahbgdc'\n    # Expected output: True\n    pass\n\n# Test cases\nprint('Test 1:', is_subsequence('abc', 'ahbgdc'))  # True\nprint('Test 2:', is_subsequence('axc', 'ahbgdc'))  # False\nprint('Test 3:', is_subsequence('', 'ahbgdc'))  # True",
+        "java": "public boolean isSubsequence(String s, String t) {\n    // Write your code here\n    // Example: s = \"abc\", t = \"ahbgdc\"\n    // Expected output: true\n    return false;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.isSubsequence(\"abc\", \"ahbgdc\")); // true\n}"
+      }
+    },
+    {
+      "id": "two-pointers-17",
+      "title": "String Compression",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Microsoft",
+        "Apple",
+        "Goldman Sachs"
+      ],
+      "introduction": "Given an array of characters chars, compress it using the following algorithm: Begin with an empty string s. For each group of consecutive repeating characters in chars, append the character followed by the group's length if the length is greater than 1.",
+      "problemStatement": "Compress the character array in-place and return the new length.\n\nConstraints:\n- 1 <= chars.length <= 2000\n- chars[i] is a lowercase English letter, uppercase English letter, digit, or symbol",
+      "examples": [
+        {
+          "input": "chars = [\"a\",\"a\",\"b\",\"b\",\"c\",\"c\",\"c\"]",
+          "output": "6, chars = [\"a\",\"2\",\"b\",\"2\",\"c\",\"3\"]",
+          "explanation": "The groups are \"aa\", \"bb\", and \"ccc\". This compresses to \"a2b2c3\"."
+        },
+        {
+          "input": "chars = [\"a\"]",
+          "output": "1, chars = [\"a\"]",
+          "explanation": "The only group is \"a\", which remains uncompressed since it appears only once."
+        },
+        {
+          "input": "chars = [\"a\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\",\"b\"]",
+          "output": "4, chars = [\"a\",\"b\",\"1\",\"2\"]",
+          "explanation": "The groups are \"a\" and \"bbbbbbbbbbbb\". This compresses to \"ab12\"."
+        }
+      ],
+      "hints": [
+        "Use read and write pointers",
+        "Count consecutive characters with read pointer",
+        "Write character and count with write pointer"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "string",
+        "two-pointers"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/string-compression/",
+        "gfg": "https://www.geeksforgeeks.org/run-length-encoding/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "chars": [
+              "a",
+              "a",
+              "b",
+              "b",
+              "c",
+              "c",
+              "c"
+            ]
+          },
+          "output": 6
+        },
+        {
+          "input": {
+            "chars": [
+              "a"
+            ]
+          },
+          "output": 1
+        },
+        {
+          "input": {
+            "chars": [
+              "a",
+              "b",
+              "b",
+              "b",
+              "b",
+              "b",
+              "b",
+              "b",
+              "b",
+              "b",
+              "b",
+              "b",
+              "b"
+            ]
+          },
+          "output": 4
+        },
+        {
+          "input": {
+            "chars": [
+              "a",
+              "a",
+              "a",
+              "b",
+              "b",
+              "a",
+              "a"
+            ]
+          },
+          "output": 6
+        }
+      ],
+      "starterCode": {
+        "javascript": "function compress(chars) {\n  // Write your code here\n  // Example: chars = ['a','a','b','b','c','c','c']\n  // Expected output: 6\n  \n}\n\n// Test cases\nlet test1 = ['a','a','b','b','c','c','c'];\nconsole.log('Test 1:', compress(test1)); // 6\nlet test2 = ['a'];\nconsole.log('Test 2:', compress(test2)); // 1",
+        "python": "def compress(chars):\n    # Write your code here\n    # Example: chars = ['a','a','b','b','c','c','c']\n    # Expected output: 6\n    pass\n\n# Test cases\ntest1 = ['a','a','b','b','c','c','c']\nprint('Test 1:', compress(test1))  # 6\ntest2 = ['a']\nprint('Test 2:', compress(test2))  # 1",
+        "java": "public int compress(char[] chars) {\n    // Write your code here\n    // Example: chars = ['a','a','b','b','c','c','c']\n    // Expected output: 6\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.compress(new char[]{'a','a','b','b','c','c','c'})); // 6\n}"
+      }
+    },
+    {
+      "id": "two-pointers-18",
+      "title": "Boats to Save People",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Google",
+        "Amazon",
+        "Microsoft"
+      ],
+      "introduction": "You are given an array people where people[i] is the weight of the ith person, and an infinite number of boats where each boat can carry a maximum weight of limit. Each boat carries at most two people at the same time, provided the sum of the weight of those people is at most limit.",
+      "problemStatement": "Return the minimum number of boats to carry every given person.\n\nConstraints:\n- 1 <= people.length <= 5 * 10^4\n- 1 <= people[i] <= limit <= 3 * 10^4",
+      "examples": [
+        {
+          "input": "people = [1,2], limit = 3",
+          "output": "1",
+          "explanation": "1 boat can carry both people (1+2 <= 3)."
+        },
+        {
+          "input": "people = [3,2,2,1], limit = 3",
+          "output": "3",
+          "explanation": "3 boats: (1,2), (2), (3)."
+        },
+        {
+          "input": "people = [3,5,3,4], limit = 5",
+          "output": "4",
+          "explanation": "4 boats: (3), (3), (4), (5)."
+        }
+      ],
+      "hints": [
+        "Sort the array first",
+        "Try to pair the lightest with the heaviest person",
+        "Use two pointers from both ends"
+      ],
+      "timeComplexity": "O(n log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "two-pointers",
+        "sorting",
+        "greedy"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/boats-to-save-people/",
+        "gfg": "https://www.geeksforgeeks.org/minimum-boats-required-to-save-people/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "people": [
+              1,
+              2
+            ],
+            "limit": 3
+          },
+          "output": 1
+        },
+        {
+          "input": {
+            "people": [
+              3,
+              2,
+              2,
+              1
+            ],
+            "limit": 3
+          },
+          "output": 3
+        },
+        {
+          "input": {
+            "people": [
+              3,
+              5,
+              3,
+              4
+            ],
+            "limit": 5
+          },
+          "output": 4
+        },
+        {
+          "input": {
+            "people": [
+              5,
+              1,
+              4,
+              2
+            ],
+            "limit": 6
+          },
+          "output": 2
+        }
+      ],
+      "starterCode": {
+        "javascript": "function numRescueBoats(people, limit) {\n  // Write your code here\n  // Example: people = [1,2], limit = 3\n  // Expected output: 1\n  \n}\n\n// Test cases\nconsole.log('Test 1:', numRescueBoats([1,2], 3)); // 1\nconsole.log('Test 2:', numRescueBoats([3,2,2,1], 3)); // 3\nconsole.log('Test 3:', numRescueBoats([3,5,3,4], 5)); // 4",
+        "python": "def num_rescue_boats(people, limit):\n    # Write your code here\n    # Example: people = [1,2], limit = 3\n    # Expected output: 1\n    pass\n\n# Test cases\nprint('Test 1:', num_rescue_boats([1,2], 3))  # 1\nprint('Test 2:', num_rescue_boats([3,2,2,1], 3))  # 3\nprint('Test 3:', num_rescue_boats([3,5,3,4], 5))  # 4",
+        "java": "public int numRescueBoats(int[] people, int limit) {\n    // Write your code here\n    // Example: people = [1,2], limit = 3\n    // Expected output: 1\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.numRescueBoats(new int[]{1,2}, 3)); // 1\n}"
+      }
+    },
+    {
+      "id": "two-pointers-19",
+      "title": "Long Pressed Name",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": [
+        "Google",
+        "Amazon"
+      ],
+      "introduction": "Your friend is typing his name into a keyboard. Sometimes, when typing a character c, the key might get long pressed, and the character will be typed 1 or more times. You examine the typed characters of the keyboard. Return True if it is possible that it was your friends name, with some characters (possibly none) being long pressed.",
+      "problemStatement": "Determine if typed string could be a long-pressed version of name.\n\nConstraints:\n- 1 <= name.length, typed.length <= 1000\n- name and typed consist of only lowercase English letters",
+      "examples": [
+        {
+          "input": "name = \"alex\", typed = \"aaleex\"",
+          "output": "true",
+          "explanation": "'a' and 'e' in 'alex' were long pressed."
+        },
+        {
+          "input": "name = \"saeed\", typed = \"ssaaedd\"",
+          "output": "false",
+          "explanation": "'e' must have been pressed twice, but it was not in the typed output."
+        },
+        {
+          "input": "name = \"leelee\", typed = \"lleeelee\"",
+          "output": "true",
+          "explanation": "Characters were long pressed appropriately."
+        }
+      ],
+      "hints": [
+        "Use two pointers, one for each string",
+        "Characters must match in order",
+        "Extra characters in typed must match previous character"
+      ],
+      "timeComplexity": "O(n + m)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "string",
+        "two-pointers"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/long-pressed-name/",
+        "gfg": "https://www.geeksforgeeks.org/check-if-a-string-can-be-obtained-by-appending-subsequences-of-another-string/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "name": "alex",
+            "typed": "aaleex"
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "name": "saeed",
+            "typed": "ssaaedd"
+          },
+          "output": false
+        },
+        {
+          "input": {
+            "name": "leelee",
+            "typed": "lleeelee"
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "name": "alex",
+            "typed": "aaleexa"
+          },
+          "output": false
+        }
+      ],
+      "starterCode": {
+        "javascript": "function isLongPressedName(name, typed) {\n  // Write your code here\n  // Example: name = 'alex', typed = 'aaleex'\n  // Expected output: true\n  \n}\n\n// Test cases\nconsole.log('Test 1:', isLongPressedName('alex', 'aaleex')); // true\nconsole.log('Test 2:', isLongPressedName('saeed', 'ssaaedd')); // false\nconsole.log('Test 3:', isLongPressedName('leelee', 'lleeelee')); // true",
+        "python": "def is_long_pressed_name(name, typed):\n    # Write your code here\n    # Example: name = 'alex', typed = 'aaleex'\n    # Expected output: True\n    pass\n\n# Test cases\nprint('Test 1:', is_long_pressed_name('alex', 'aaleex'))  # True\nprint('Test 2:', is_long_pressed_name('saeed', 'ssaaedd'))  # False\nprint('Test 3:', is_long_pressed_name('leelee', 'lleeelee'))  # True",
+        "java": "public boolean isLongPressedName(String name, String typed) {\n    // Write your code here\n    // Example: name = \"alex\", typed = \"aaleex\"\n    // Expected output: true\n    return false;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.isLongPressedName(\"alex\", \"aaleex\")); // true\n}"
+      }
+    },
+    {
+      "id": "two-pointers-20",
+      "title": "Rotate Array",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Microsoft",
+        "Facebook"
+      ],
+      "introduction": "Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.",
+      "problemStatement": "Rotate the array to the right by k steps in-place.\n\nConstraints:\n- 1 <= nums.length <= 10^5\n- -2^31 <= nums[i] <= 2^31 - 1\n- 0 <= k <= 10^5",
+      "examples": [
+        {
+          "input": "nums = [1,2,3,4,5,6,7], k = 3",
+          "output": "[5,6,7,1,2,3,4]",
+          "explanation": "Rotate right by 1: [7,1,2,3,4,5,6], by 2: [6,7,1,2,3,4,5], by 3: [5,6,7,1,2,3,4]"
+        },
+        {
+          "input": "nums = [-1,-100,3,99], k = 2",
+          "output": "[3,99,-1,-100]",
+          "explanation": "Rotate right by 2 steps."
+        }
+      ],
+      "hints": [
+        "Reverse the entire array first",
+        "Reverse the first k elements",
+        "Reverse the remaining n-k elements"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "two-pointers",
+        "math"
+      ],
+      "starterCode": {
+        "javascript": "function rotate(nums, k) {\n  // Write your code here\n  // Example: {'nums': [1, 2, 3, 4, 5, 6, 7], 'k': 3}\n  // Expected output: [5, 6, 7, 1, 2, 3, 4]\n  \n}\n\n// Test cases\nconsole.log('Test 1:', rotate([1, 2, 3, 4, 5, 6, 7], 3)); // [5, 6, 7, 1, 2, 3, 4]",
+        "python": "def rotate(nums, k):\n    # Write your code here\n    # Example: {'nums': [1, 2, 3, 4, 5, 6, 7], 'k': 3}\n    # Expected output: [5, 6, 7, 1, 2, 3, 4]\n    pass",
+        "java": "public void rotate(int[] nums, int k) {\n    // Write your code here\n    // Example: {'nums': [1, 2, 3, 4, 5, 6, 7], 'k': 3}\n    // Expected output: [5, 6, 7, 1, 2, 3, 4]\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/rotate-array/",
+        "gfg": "https://www.geeksforgeeks.org/array-rotation/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "k": 3
+          },
+          "output": [
+            5,
+            6,
+            7,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              -1,
+              -100,
+              3,
+              99
+            ],
+            "k": 2
+          },
+          "output": [
+            3,
+            99,
+            -1,
+            -100
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              2
+            ],
+            "k": 3
+          },
+          "output": [
+            2,
+            1
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              1
+            ],
+            "k": 0
+          },
+          "output": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "two-pointers-21",
+      "title": "Shortest Unsorted Continuous Subarray",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Facebook",
+        "Google"
+      ],
+      "introduction": "Given an integer array nums, you need to find one continuous subarray such that if you only sort this subarray in non-decreasing order, then the whole array will be sorted in non-decreasing order.",
+      "problemStatement": "Return the shortest such subarray and output its length.\n\nConstraints:\n- 1 <= nums.length <= 10^4\n- -10^5 <= nums[i] <= 10^5",
+      "examples": [
+        {
+          "input": "nums = [2,6,4,8,10,9,15]",
+          "output": "5",
+          "explanation": "You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted."
+        },
+        {
+          "input": "nums = [1,2,3,4]",
+          "output": "0",
+          "explanation": "The array is already sorted."
+        },
+        {
+          "input": "nums = [1]",
+          "output": "0",
+          "explanation": "Single element array is always sorted."
+        }
+      ],
+      "hints": [
+        "Find the rightmost element smaller than some element on its left",
+        "Find the leftmost element larger than some element on its right",
+        "The subarray between these positions needs sorting"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "two-pointers",
+        "sorting"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/shortest-unsorted-continuous-subarray/",
+        "gfg": "https://www.geeksforgeeks.org/minimum-length-unsorted-subarray-sorting-which-makes-the-complete-array-sorted/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              2,
+              6,
+              4,
+              8,
+              10,
+              9,
+              15
+            ]
+          },
+          "output": 5
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "output": 0
+        },
+        {
+          "input": {
+            "nums": [
+              1
+            ]
+          },
+          "output": 0
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              3,
+              2,
+              2,
+              2
+            ]
+          },
+          "output": 4
+        }
+      ],
+      "starterCode": {
+        "javascript": "function findUnsortedSubarray(nums) {\n  // Write your code here\n  // Example: nums = [2,6,4,8,10,9,15]\n  // Expected output: 5\n  \n}\n\n// Test cases\nconsole.log('Test 1:', findUnsortedSubarray([2,6,4,8,10,9,15])); // 5\nconsole.log('Test 2:', findUnsortedSubarray([1,2,3,4])); // 0\nconsole.log('Test 3:', findUnsortedSubarray([1])); // 0",
+        "python": "def find_unsorted_subarray(nums):\n    # Write your code here\n    # Example: nums = [2,6,4,8,10,9,15]\n    # Expected output: 5\n    pass\n\n# Test cases\nprint('Test 1:', find_unsorted_subarray([2,6,4,8,10,9,15]))  # 5\nprint('Test 2:', find_unsorted_subarray([1,2,3,4]))  # 0\nprint('Test 3:', find_unsorted_subarray([1]))  # 0",
+        "java": "public int findUnsortedSubarray(int[] nums) {\n    // Write your code here\n    // Example: nums = [2,6,4,8,10,9,15]\n    // Expected output: 5\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.findUnsortedSubarray(new int[]{2,6,4,8,10,9,15})); // 5\n}"
+      }
+    },
+    {
+      "id": "two-pointers-22",
+      "title": "Compare Version Numbers",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Microsoft",
+        "Apple"
+      ],
+      "introduction": "Given two version numbers, version1 and version2, compare them. Version numbers consist of one or more revisions joined by a dot '.'. Each revision consists of digits and may contain leading zeros.",
+      "problemStatement": "Compare two version strings. Return -1 if version1 < version2, 1 if version1 > version2, otherwise return 0.\n\nConstraints:\n- 1 <= version1.length, version2.length <= 500\n- version1 and version2 only contain digits and '.'",
+      "examples": [
+        {
+          "input": "version1 = \"1.01\", version2 = \"1.001\"",
+          "output": "0",
+          "explanation": "Ignoring leading zeroes, both \"01\" and \"001\" represent the same integer \"1\"."
+        },
+        {
+          "input": "version1 = \"1.0\", version2 = \"1.0.0\"",
+          "output": "0",
+          "explanation": "version1 does not specify revision 2, which means it is treated as \"0\"."
+        },
+        {
+          "input": "version1 = \"0.1\", version2 = \"1.1\"",
+          "output": "-1",
+          "explanation": "version1's revision 0 is \"0\", while version2's revision 0 is \"1\". 0 < 1, so version1 < version2."
+        }
+      ],
+      "hints": [
+        "Use two pointers to traverse both version strings",
+        "Extract integer values between dots",
+        "Treat missing revisions as 0"
+      ],
+      "timeComplexity": "O(max(n, m))",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "string",
+        "two-pointers"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/compare-version-numbers/",
+        "gfg": "https://www.geeksforgeeks.org/compare-two-version-numbers/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "version1": "1.01",
+            "version2": "1.001"
+          },
+          "output": 0
+        },
+        {
+          "input": {
+            "version1": "1.0",
+            "version2": "1.0.0"
+          },
+          "output": 0
+        },
+        {
+          "input": {
+            "version1": "0.1",
+            "version2": "1.1"
+          },
+          "output": -1
+        },
+        {
+          "input": {
+            "version1": "1.2",
+            "version2": "1.1"
+          },
+          "output": 1
+        }
+      ],
+      "starterCode": {
+        "javascript": "function compareVersion(version1, version2) {\n  // Write your code here\n  // Example: version1 = '1.01', version2 = '1.001'\n  // Expected output: 0\n  \n}\n\n// Test cases\nconsole.log('Test 1:', compareVersion('1.01', '1.001')); // 0\nconsole.log('Test 2:', compareVersion('1.0', '1.0.0')); // 0\nconsole.log('Test 3:', compareVersion('0.1', '1.1')); // -1",
+        "python": "def compare_version(version1, version2):\n    # Write your code here\n    # Example: version1 = '1.01', version2 = '1.001'\n    # Expected output: 0\n    pass\n\n# Test cases\nprint('Test 1:', compare_version('1.01', '1.001'))  # 0\nprint('Test 2:', compare_version('1.0', '1.0.0'))  # 0\nprint('Test 3:', compare_version('0.1', '1.1'))  # -1",
+        "java": "public int compareVersion(String version1, String version2) {\n    // Write your code here\n    // Example: version1 = \"1.01\", version2 = \"1.001\"\n    // Expected output: 0\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.compareVersion(\"1.01\", \"1.001\")); // 0\n}"
+      }
+    },
+    {
+      "id": "two-pointers-23",
+      "title": "Subarray Product Less Than K",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Google",
+        "Facebook"
+      ],
+      "introduction": "Given an array of integers nums and an integer k, return the number of contiguous subarrays where the product of all the elements in the subarray is strictly less than k.",
+      "problemStatement": "Count subarrays with product less than k.\n\nConstraints:\n- 1 <= nums.length <= 3 * 10^4\n- 1 <= nums[i] <= 1000\n- 0 <= k <= 10^6",
+      "examples": [
+        {
+          "input": "nums = [10,5,2,6], k = 100",
+          "output": "8",
+          "explanation": "The 8 subarrays with product less than 100 are: [10], [5], [2], [6], [10,5], [5,2], [2,6], [5,2,6]."
+        },
+        {
+          "input": "nums = [1,2,3], k = 0",
+          "output": "0",
+          "explanation": "No subarray has product less than 0."
+        }
+      ],
+      "hints": [
+        "Use sliding window with two pointers",
+        "Expand right pointer and multiply product",
+        "Shrink from left when product >= k"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "two-pointers",
+        "sliding-window"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/subarray-product-less-than-k/",
+        "gfg": "https://www.geeksforgeeks.org/number-subarrays-product-less-k/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              10,
+              5,
+              2,
+              6
+            ],
+            "k": 100
+          },
+          "output": 8
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              3
+            ],
+            "k": 0
+          },
+          "output": 0
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              1,
+              1
+            ],
+            "k": 2
+          },
+          "output": 6
+        },
+        {
+          "input": {
+            "nums": [
+              10,
+              9,
+              10,
+              4,
+              3,
+              8,
+              3,
+              3,
+              6,
+              2,
+              10,
+              10,
+              9,
+              3
+            ],
+            "k": 19
+          },
+          "output": 18
+        }
+      ],
+      "starterCode": {
+        "javascript": "function numSubarrayProductLessThanK(nums, k) {\n  // Write your code here\n  // Example: nums = [10,5,2,6], k = 100\n  // Expected output: 8\n  \n}\n\n// Test cases\nconsole.log('Test 1:', numSubarrayProductLessThanK([10,5,2,6], 100)); // 8\nconsole.log('Test 2:', numSubarrayProductLessThanK([1,2,3], 0)); // 0\nconsole.log('Test 3:', numSubarrayProductLessThanK([1,1,1], 2)); // 6",
+        "python": "def num_subarray_product_less_than_k(nums, k):\n    # Write your code here\n    # Example: nums = [10,5,2,6], k = 100\n    # Expected output: 8\n    pass\n\n# Test cases\nprint('Test 1:', num_subarray_product_less_than_k([10,5,2,6], 100))  # 8\nprint('Test 2:', num_subarray_product_less_than_k([1,2,3], 0))  # 0\nprint('Test 3:', num_subarray_product_less_than_k([1,1,1], 2))  # 6",
+        "java": "public int numSubarrayProductLessThanK(int[] nums, int k) {\n    // Write your code here\n    // Example: nums = [10,5,2,6], k = 100\n    // Expected output: 8\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.numSubarrayProductLessThanK(new int[]{10,5,2,6}, 100)); // 8\n}"
+      }
+    },
+    {
+      "id": "two-pointers-24",
+      "title": "Next Permutation",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Google",
+        "Amazon",
+        "Facebook",
+        "Microsoft",
+        "Apple"
+      ],
+      "introduction": "A permutation of an array of integers is an arrangement of its members into a sequence or linear order. The next permutation of an array of integers is the next lexicographically greater permutation of its integer.",
+      "problemStatement": "Rearrange numbers into the lexicographically next greater permutation. If no such arrangement exists, rearrange into the lowest possible order (sorted in ascending order).\n\nConstraints:\n- 1 <= nums.length <= 100\n- 0 <= nums[i] <= 100",
+      "examples": [
+        {
+          "input": "nums = [1,2,3]",
+          "output": "[1,3,2]",
+          "explanation": "The next permutation of [1,2,3] is [1,3,2]."
+        },
+        {
+          "input": "nums = [3,2,1]",
+          "output": "[1,2,3]",
+          "explanation": "No next permutation exists, so return the smallest permutation."
+        },
+        {
+          "input": "nums = [1,1,5]",
+          "output": "[1,5,1]",
+          "explanation": "The next permutation of [1,1,5] is [1,5,1]."
+        }
+      ],
+      "hints": [
+        "Find the first decreasing element from the right",
+        "Swap it with the smallest element larger than it on its right",
+        "Reverse the suffix after the swap position"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "two-pointers"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/next-permutation/",
+        "gfg": "https://www.geeksforgeeks.org/next-permutation/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              3
+            ]
+          },
+          "output": [
+            1,
+            3,
+            2
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              3,
+              2,
+              1
+            ]
+          },
+          "output": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              1,
+              5
+            ]
+          },
+          "output": [
+            1,
+            5,
+            1
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              1
+            ]
+          },
+          "output": [
+            1
+          ]
+        }
+      ],
+      "starterCode": {
+        "javascript": "function nextPermutation(nums) {\n  // Write your code here\n  // Example: nums = [1,2,3]\n  // Expected output: [1,3,2]\n  \n}\n\n// Test cases\nlet test1 = [1,2,3];\nnextPermutation(test1);\nconsole.log('Test 1:', test1); // [1,3,2]\nlet test2 = [3,2,1];\nnextPermutation(test2);\nconsole.log('Test 2:', test2); // [1,2,3]",
+        "python": "def next_permutation(nums):\n    # Write your code here\n    # Example: nums = [1,2,3]\n    # Expected output: [1,3,2]\n    pass\n\n# Test cases\ntest1 = [1,2,3]\nnext_permutation(test1)\nprint('Test 1:', test1)  # [1,3,2]\ntest2 = [3,2,1]\nnext_permutation(test2)\nprint('Test 2:', test2)  # [1,2,3]",
+        "java": "public void nextPermutation(int[] nums) {\n    // Write your code here\n    // Example: nums = [1,2,3]\n    // Expected output: [1,3,2]\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    int[] test1 = {1,2,3};\n    sol.nextPermutation(test1);\n    System.out.println(Arrays.toString(test1)); // [1,3,2]\n}"
+      }
+    },
+    {
+      "id": "two-pointers-25",
+      "title": "Remove Element",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Google"
+      ],
+      "introduction": "Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.",
+      "problemStatement": "Remove all occurrences of val in-place and return the count of remaining elements.\n\nConstraints:\n- 0 <= nums.length <= 100\n- 0 <= nums[i] <= 50\n- 0 <= val <= 100",
+      "examples": [
+        {
+          "input": "nums = [3,2,2,3], val = 3",
+          "output": "2, nums = [2,2,_,_]",
+          "explanation": "Your function should return k = 2, with the first two elements of nums being 2."
+        },
+        {
+          "input": "nums = [0,1,2,2,3,0,4,2], val = 2",
+          "output": "5, nums = [0,1,4,0,3,_,_,_]",
+          "explanation": "Your function should return k = 5, with the first five elements containing 0, 0, 1, 3, and 4."
+        }
+      ],
+      "hints": [
+        "Use two pointers: one for iterating, one for placing valid elements",
+        "Swap element to end if it equals val",
+        "Alternatively, overwrite val elements with non-val elements"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "two-pointers"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/remove-element/",
+        "gfg": "https://www.geeksforgeeks.org/remove-all-occurrences-of-an-element-from-array-in-java/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              3,
+              2,
+              2,
+              3
+            ],
+            "val": 3
+          },
+          "output": 2
+        },
+        {
+          "input": {
+            "nums": [
+              0,
+              1,
+              2,
+              2,
+              3,
+              0,
+              4,
+              2
+            ],
+            "val": 2
+          },
+          "output": 5
+        },
+        {
+          "input": {
+            "nums": [
+              1
+            ],
+            "val": 1
+          },
+          "output": 0
+        },
+        {
+          "input": {
+            "nums": [
+              4,
+              5
+            ],
+            "val": 4
+          },
+          "output": 1
+        }
+      ],
+      "starterCode": {
+        "javascript": "function removeElement(nums, val) {\n  // Write your code here\n  // Example: nums = [3,2,2,3], val = 3\n  // Expected output: 2\n  \n}\n\n// Test cases\nlet test1 = [3,2,2,3];\nconsole.log('Test 1:', removeElement(test1, 3)); // 2\nlet test2 = [0,1,2,2,3,0,4,2];\nconsole.log('Test 2:', removeElement(test2, 2)); // 5",
+        "python": "def remove_element(nums, val):\n    # Write your code here\n    # Example: nums = [3,2,2,3], val = 3\n    # Expected output: 2\n    pass\n\n# Test cases\ntest1 = [3,2,2,3]\nprint('Test 1:', remove_element(test1, 3))  # 2\ntest2 = [0,1,2,2,3,0,4,2]\nprint('Test 2:', remove_element(test2, 2))  # 5",
+        "java": "public int removeElement(int[] nums, int val) {\n    // Write your code here\n    // Example: nums = [3,2,2,3], val = 3\n    // Expected output: 2\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.removeElement(new int[]{3,2,2,3}, 3)); // 2\n}"
+      }
+    },
+    {
+      "id": "two-pointers-26",
+      "title": "Valid Palindrome II",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Microsoft"
+      ],
+      "introduction": "Given a string s, return true if the s can be palindrome after deleting at most one character from it.",
+      "problemStatement": "Determine if string can become a palindrome by removing at most one character.\n\nConstraints:\n- 1 <= s.length <= 10^5\n- s consists of lowercase English letters",
+      "examples": [
+        {
+          "input": "s = \"aba\"",
+          "output": "true",
+          "explanation": "Already a palindrome."
+        },
+        {
+          "input": "s = \"abca\"",
+          "output": "true",
+          "explanation": "You could delete the character 'c' to get \"aba\"."
+        },
+        {
+          "input": "s = \"abc\"",
+          "output": "false",
+          "explanation": "Cannot make it a palindrome by removing one character."
+        }
+      ],
+      "hints": [
+        "Use two pointers from both ends",
+        "When characters don't match, try skipping left or right character",
+        "Check if remaining substring is a palindrome"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "string",
+        "two-pointers",
+        "greedy"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/valid-palindrome-ii/",
+        "gfg": "https://www.geeksforgeeks.org/remove-character-string-make-palindrome/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "s": "aba"
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "s": "abca"
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "s": "abc"
+          },
+          "output": false
+        },
+        {
+          "input": {
+            "s": "deeee"
+          },
+          "output": true
+        }
+      ],
+      "starterCode": {
+        "javascript": "function validPalindrome(s) {\n  // Write your code here\n  // Example: s = 'aba'\n  // Expected output: true\n  \n}\n\n// Test cases\nconsole.log('Test 1:', validPalindrome('aba')); // true\nconsole.log('Test 2:', validPalindrome('abca')); // true\nconsole.log('Test 3:', validPalindrome('abc')); // false",
+        "python": "def valid_palindrome(s):\n    # Write your code here\n    # Example: s = 'aba'\n    # Expected output: True\n    pass\n\n# Test cases\nprint('Test 1:', valid_palindrome('aba'))  # True\nprint('Test 2:', valid_palindrome('abca'))  # True\nprint('Test 3:', valid_palindrome('abc'))  # False",
+        "java": "public boolean validPalindrome(String s) {\n    // Write your code here\n    // Example: s = \"aba\"\n    // Expected output: true\n    return false;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.validPalindrome(\"aba\")); // true\n}"
+      }
+    },
+    {
+      "id": "two-pointers-27",
+      "title": "Partition Labels",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Google",
+        "Facebook"
+      ],
+      "introduction": "You are given a string s. We want to partition the string into as many parts as possible so that each letter appears in at most one part. Return a list of integers representing the size of these parts.",
+      "problemStatement": "Partition string so each letter appears in at most one part. Return list of partition sizes.\n\nConstraints:\n- 1 <= s.length <= 500\n- s consists of lowercase English letters",
+      "examples": [
+        {
+          "input": "s = \"ababcbacadefegdehijhklij\"",
+          "output": "[9,7,8]",
+          "explanation": "The partition is \"ababcbaca\", \"defegde\", \"hijhklij\". Each letter appears in at most one part."
+        },
+        {
+          "input": "s = \"eccbbbbdec\"",
+          "output": "[10]",
+          "explanation": "The entire string forms one partition."
+        }
+      ],
+      "hints": [
+        "Find the last occurrence of each character first",
+        "Use two pointers to track current partition boundaries",
+        "Extend partition end when encountering a character that appears later"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "string",
+        "two-pointers",
+        "greedy",
+        "hash-table"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/partition-labels/",
+        "gfg": "https://www.geeksforgeeks.org/partition-labels/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "s": "ababcbacadefegdehijhklij"
+          },
+          "output": [
+            9,
+            7,
+            8
+          ]
+        },
+        {
+          "input": {
+            "s": "eccbbbbdec"
+          },
+          "output": [
+            10
+          ]
+        },
+        {
+          "input": {
+            "s": "abcdef"
+          },
+          "output": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "input": {
+            "s": "aaaa"
+          },
+          "output": [
+            4
+          ]
+        }
+      ],
+      "starterCode": {
+        "javascript": "function partitionLabels(s) {\n  // Write your code here\n  // Example: s = 'ababcbacadefegdehijhklij'\n  // Expected output: [9,7,8]\n  \n}\n\n// Test cases\nconsole.log('Test 1:', JSON.stringify(partitionLabels('ababcbacadefegdehijhklij'))); // [9,7,8]\nconsole.log('Test 2:', JSON.stringify(partitionLabels('eccbbbbdec'))); // [10]",
+        "python": "def partition_labels(s):\n    # Write your code here\n    # Example: s = 'ababcbacadefegdehijhklij'\n    # Expected output: [9,7,8]\n    pass\n\n# Test cases\nprint('Test 1:', partition_labels('ababcbacadefegdehijhklij'))  # [9,7,8]\nprint('Test 2:', partition_labels('eccbbbbdec'))  # [10]",
+        "java": "public List<Integer> partitionLabels(String s) {\n    // Write your code here\n    // Example: s = \"ababcbacadefegdehijhklij\"\n    // Expected output: [9,7,8]\n    return new ArrayList<>();\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.partitionLabels(\"ababcbacadefegdehijhklij\")); // [9,7,8]\n}"
+      }
+    },
+    {
+      "id": "two-pointers-28",
+      "title": "Minimum Window Substring",
+      "category": "two-pointers",
+      "difficulty": "hard",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Google",
+        "Microsoft",
+        "Apple",
+        "Uber"
+      ],
+      "introduction": "Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string.",
+      "problemStatement": "Find the minimum window in s which contains all characters of t.\n\nConstraints:\n- m == s.length\n- n == t.length\n- 1 <= m, n <= 10^5\n- s and t consist of uppercase and lowercase English letters",
+      "examples": [
+        {
+          "input": "s = \"ADOBECODEBANC\", t = \"ABC\"",
+          "output": "\"BANC\"",
+          "explanation": "The minimum window substring \"BANC\" includes 'A', 'B', and 'C' from string t."
+        },
+        {
+          "input": "s = \"a\", t = \"a\"",
+          "output": "\"a\"",
+          "explanation": "The entire string s is the minimum window."
+        },
+        {
+          "input": "s = \"a\", t = \"aa\"",
+          "output": "\"\"",
+          "explanation": "Both 'a's from t must be included in the window. Since s has only one 'a', return empty string."
+        }
+      ],
+      "hints": [
+        "Use sliding window with two pointers",
+        "Expand right pointer to include all characters of t",
+        "Shrink from left to find minimum window"
+      ],
+      "timeComplexity": "O(m + n)",
+      "spaceComplexity": "O(m + n)",
+      "tags": [
+        "string",
+        "two-pointers",
+        "sliding-window",
+        "hash-table"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/minimum-window-substring/",
+        "gfg": "https://www.geeksforgeeks.org/find-the-smallest-window-in-a-string-containing-all-characters-of-another-string/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "s": "ADOBECODEBANC",
+            "t": "ABC"
+          },
+          "output": "BANC"
+        },
+        {
+          "input": {
+            "s": "a",
+            "t": "a"
+          },
+          "output": "a"
+        },
+        {
+          "input": {
+            "s": "a",
+            "t": "aa"
+          },
+          "output": ""
+        },
+        {
+          "input": {
+            "s": "ab",
+            "t": "b"
+          },
+          "output": "b"
+        }
+      ],
+      "starterCode": {
+        "javascript": "function minWindow(s, t) {\n  // Write your code here\n  // Example: s = 'ADOBECODEBANC', t = 'ABC'\n  // Expected output: 'BANC'\n  \n}\n\n// Test cases\nconsole.log('Test 1:', minWindow('ADOBECODEBANC', 'ABC')); // 'BANC'\nconsole.log('Test 2:', minWindow('a', 'a')); // 'a'\nconsole.log('Test 3:', minWindow('a', 'aa')); // ''",
+        "python": "def min_window(s, t):\n    # Write your code here\n    # Example: s = 'ADOBECODEBANC', t = 'ABC'\n    # Expected output: 'BANC'\n    pass\n\n# Test cases\nprint('Test 1:', min_window('ADOBECODEBANC', 'ABC'))  # 'BANC'\nprint('Test 2:', min_window('a', 'a'))  # 'a'\nprint('Test 3:', min_window('a', 'aa'))  # ''",
+        "java": "public String minWindow(String s, String t) {\n    // Write your code here\n    // Example: s = \"ADOBECODEBANC\", t = \"ABC\"\n    // Expected output: \"BANC\"\n    return \"\";\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.minWindow(\"ADOBECODEBANC\", \"ABC\")); // BANC\n}"
+      }
+    },
+    {
+      "id": "two-pointers-29",
+      "title": "Intersection of Two Arrays II",
+      "category": "two-pointers",
+      "difficulty": "easy",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Google",
+        "Apple"
+      ],
+      "introduction": "Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.",
+      "problemStatement": "Find the intersection of two arrays, including duplicates.\n\nConstraints:\n- 1 <= nums1.length, nums2.length <= 1000\n- 0 <= nums1[i], nums2[i] <= 1000",
+      "examples": [
+        {
+          "input": "nums1 = [1,2,2,1], nums2 = [2,2]",
+          "output": "[2,2]",
+          "explanation": "2 appears twice in both arrays."
+        },
+        {
+          "input": "nums1 = [4,9,5], nums2 = [9,4,9,8,4]",
+          "output": "[4,9]",
+          "explanation": "4 and 9 appear in both arrays. Order doesn't matter."
+        }
+      ],
+      "hints": [
+        "Sort both arrays first",
+        "Use two pointers to find common elements",
+        "Move pointer with smaller value forward"
+      ],
+      "timeComplexity": "O(n log n + m log m)",
+      "spaceComplexity": "O(min(n, m))",
+      "tags": [
+        "array",
+        "two-pointers",
+        "hash-table",
+        "sorting"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/intersection-of-two-arrays-ii/",
+        "gfg": "https://www.geeksforgeeks.org/find-union-and-intersection-of-two-unsorted-arrays/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums1": [
+              1,
+              2,
+              2,
+              1
+            ],
+            "nums2": [
+              2,
+              2
+            ]
+          },
+          "output": [
+            2,
+            2
+          ]
+        },
+        {
+          "input": {
+            "nums1": [
+              4,
+              9,
+              5
+            ],
+            "nums2": [
+              9,
+              4,
+              9,
+              8,
+              4
+            ]
+          },
+          "output": [
+            4,
+            9
+          ]
+        },
+        {
+          "input": {
+            "nums1": [
+              1,
+              2,
+              3
+            ],
+            "nums2": [
+              4,
+              5,
+              6
+            ]
+          },
+          "output": []
+        },
+        {
+          "input": {
+            "nums1": [
+              1
+            ],
+            "nums2": [
+              1
+            ]
+          },
+          "output": [
+            1
+          ]
+        }
+      ],
+      "starterCode": {
+        "javascript": "function intersect(nums1, nums2) {\n  // Write your code here\n  // Example: nums1 = [1,2,2,1], nums2 = [2,2]\n  // Expected output: [2,2]\n  \n}\n\n// Test cases\nconsole.log('Test 1:', JSON.stringify(intersect([1,2,2,1], [2,2]))); // [2,2]\nconsole.log('Test 2:', JSON.stringify(intersect([4,9,5], [9,4,9,8,4]))); // [4,9]",
+        "python": "def intersect(nums1, nums2):\n    # Write your code here\n    # Example: nums1 = [1,2,2,1], nums2 = [2,2]\n    # Expected output: [2,2]\n    pass\n\n# Test cases\nprint('Test 1:', intersect([1,2,2,1], [2,2]))  # [2,2]\nprint('Test 2:', intersect([4,9,5], [9,4,9,8,4]))  # [4,9]",
+        "java": "public int[] intersect(int[] nums1, int[] nums2) {\n    // Write your code here\n    // Example: nums1 = [1,2,2,1], nums2 = [2,2]\n    // Expected output: [2,2]\n    return new int[0];\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(Arrays.toString(sol.intersect(new int[]{1,2,2,1}, new int[]{2,2}))); // [2,2]\n}"
+      }
+    },
+    {
+      "id": "two-pointers-30",
+      "title": "Reverse Words in a String",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Microsoft",
+        "Apple",
+        "Bloomberg"
+      ],
+      "introduction": "Given an input string s, reverse the order of the words. A word is defined as a sequence of non-space characters. The words in s will be separated by at least one space. Return a string of the words in reverse order concatenated by a single space.",
+      "problemStatement": "Reverse the order of words in the string. Remove leading/trailing spaces and reduce multiple spaces between words to a single space.\n\nConstraints:\n- 1 <= s.length <= 10^4\n- s contains English letters (upper-case and lower-case), digits, and spaces ' '\n- There is at least one word in s",
+      "examples": [
+        {
+          "input": "s = \"the sky is blue\"",
+          "output": "\"blue is sky the\"",
+          "explanation": "Words are reversed in order."
+        },
+        {
+          "input": "s = \"  hello world  \"",
+          "output": "\"world hello\"",
+          "explanation": "Leading/trailing spaces removed, words reversed."
+        },
+        {
+          "input": "s = \"a good   example\"",
+          "output": "\"example good a\"",
+          "explanation": "Multiple spaces reduced to single space, words reversed."
+        }
+      ],
+      "hints": [
+        "Reverse the entire string first",
+        "Then reverse each individual word",
+        "Use two pointers to identify word boundaries"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)",
+      "tags": [
+        "string",
+        "two-pointers"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/reverse-words-in-a-string/",
+        "gfg": "https://www.geeksforgeeks.org/reverse-words-in-a-given-string/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "s": "the sky is blue"
+          },
+          "output": "blue is sky the"
+        },
+        {
+          "input": {
+            "s": "  hello world  "
+          },
+          "output": "world hello"
+        },
+        {
+          "input": {
+            "s": "a good   example"
+          },
+          "output": "example good a"
+        },
+        {
+          "input": {
+            "s": "  Bob    Loves  Alice   "
+          },
+          "output": "Alice Loves Bob"
+        }
+      ],
+      "starterCode": {
+        "javascript": "function reverseWords(s) {\n  // Write your code here\n  // Example: s = 'the sky is blue'\n  // Expected output: 'blue is sky the'\n  \n}\n\n// Test cases\nconsole.log('Test 1:', reverseWords('the sky is blue')); // 'blue is sky the'\nconsole.log('Test 2:', reverseWords('  hello world  ')); // 'world hello'",
+        "python": "def reverse_words(s):\n    # Write your code here\n    # Example: s = 'the sky is blue'\n    # Expected output: 'blue is sky the'\n    pass\n\n# Test cases\nprint('Test 1:', reverse_words('the sky is blue'))  # 'blue is sky the'\nprint('Test 2:', reverse_words('  hello world  '))  # 'world hello'",
+        "java": "public String reverseWords(String s) {\n    // Write your code here\n    // Example: s = \"the sky is blue\"\n    // Expected output: \"blue is sky the\"\n    return \"\";\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.reverseWords(\"the sky is blue\")); // blue is sky the\n}"
+      }
+    },
+    {
+      "id": "two-pointers-31",
+      "title": "Product of Array Except Self",
+      "category": "two-pointers",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Facebook",
+        "Google",
+        "Microsoft",
+        "Apple",
+        "Uber"
+      ],
+      "introduction": "Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer. You must write an algorithm that runs in O(n) time and without using the division operation.",
+      "problemStatement": "Return an array where each element is the product of all other elements.\n\nConstraints:\n- 2 <= nums.length <= 10^5\n- -30 <= nums[i] <= 30\n- The product of any prefix or suffix of nums fits in a 32-bit integer",
+      "examples": [
+        {
+          "input": "nums = [1,2,3,4]",
+          "output": "[24,12,8,6]",
+          "explanation": "answer[0] = 2*3*4 = 24, answer[1] = 1*3*4 = 12, answer[2] = 1*2*4 = 8, answer[3] = 1*2*3 = 6"
+        },
+        {
+          "input": "nums = [-1,1,0,-3,3]",
+          "output": "[0,0,9,0,0]",
+          "explanation": "Products calculated excluding each element."
+        }
+      ],
+      "hints": [
+        "Calculate prefix products from left to right",
+        "Calculate suffix products from right to left",
+        "Multiply prefix and suffix for each position"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1) excluding output array",
+      "tags": [
+        "array",
+        "two-pointers",
+        "prefix-sum"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/product-of-array-except-self/",
+        "gfg": "https://www.geeksforgeeks.org/a-product-array-puzzle/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "output": [
+            24,
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              -1,
+              1,
+              0,
+              -3,
+              3
+            ]
+          },
+          "output": [
+            0,
+            0,
+            9,
+            0,
+            0
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "output": [
+            60,
+            40,
+            30,
+            24
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              1
+            ]
+          },
+          "output": [
+            1,
+            1
+          ]
+        }
+      ],
+      "starterCode": {
+        "javascript": "function productExceptSelf(nums) {\n  // Write your code here\n  // Example: nums = [1,2,3,4]\n  // Expected output: [24,12,8,6]\n  \n}\n\n// Test cases\nconsole.log('Test 1:', JSON.stringify(productExceptSelf([1,2,3,4]))); // [24,12,8,6]\nconsole.log('Test 2:', JSON.stringify(productExceptSelf([-1,1,0,-3,3]))); // [0,0,9,0,0]",
+        "python": "def product_except_self(nums):\n    # Write your code here\n    # Example: nums = [1,2,3,4]\n    # Expected output: [24,12,8,6]\n    pass\n\n# Test cases\nprint('Test 1:', product_except_self([1,2,3,4]))  # [24,12,8,6]\nprint('Test 2:', product_except_self([-1,1,0,-3,3]))  # [0,0,9,0,0]",
+        "java": "public int[] productExceptSelf(int[] nums) {\n    // Write your code here\n    // Example: nums = [1,2,3,4]\n    // Expected output: [24,12,8,6]\n    return new int[0];\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(Arrays.toString(sol.productExceptSelf(new int[]{1,2,3,4}))); // [24,12,8,6]\n}"
+      }
+    }
+  ]
+}

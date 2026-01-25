@@ -1,0 +1,8 @@
+{
+  "category": {
+    "id": "trees",
+    "name": "Trees",
+    "description": "Binary trees, BST, and tree traversals"
+  },
+  "questions": []
+}

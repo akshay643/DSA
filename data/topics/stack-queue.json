@@ -1,0 +1,8 @@
+{
+  "category": {
+    "id": "stack-queue",
+    "name": "Stack & Queue",
+    "description": "Stack and queue based problems"
+  },
+  "questions": []
+}

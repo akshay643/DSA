@@ -1,0 +1,3351 @@
+{
+  "category": {
+    "id": "binary-search",
+    "name": "Binary Search",
+    "description": "Problems using binary search technique"
+  },
+  "questions": [
+    {
+      "id": "binary-search-1",
+      "title": "Binary Search",
+      "category": "binary-search",
+      "difficulty": "easy",
+      "topInterview": true,
+      "companies": [
+        "Google",
+        "Amazon",
+        "Microsoft",
+        "Facebook"
+      ],
+      "introduction": "Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.",
+      "problemStatement": "Implement binary search algorithm on a sorted array.\n\nConstraints:\n- 1 <= nums.length <= 10^4\n- -10^4 < nums[i], target < 10^4\n- All integers in nums are unique\n- nums is sorted in ascending order",
+      "examples": [
+        {
+          "input": "nums = [-1,0,3,5,9,12], target = 9",
+          "output": "4",
+          "explanation": "9 exists in nums and its index is 4"
+        },
+        {
+          "input": "nums = [-1,0,3,5,9,12], target = 2",
+          "output": "-1",
+          "explanation": "2 does not exist in nums so return -1"
+        }
+      ],
+      "hints": [
+        "Use two pointers: left and right",
+        "Calculate mid = left + (right - left) / 2",
+        "Adjust pointers based on comparison with target"
+      ],
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/binary-search/",
+        "gfg": "https://www.geeksforgeeks.org/binary-search/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              -1,
+              0,
+              3,
+              5,
+              9,
+              12
+            ],
+            "target": 9
+          },
+          "output": 4
+        },
+        {
+          "input": {
+            "nums": [
+              -1,
+              0,
+              3,
+              5,
+              9,
+              12
+            ],
+            "target": 2
+          },
+          "output": -1
+        },
+        {
+          "input": {
+            "nums": [
+              5
+            ],
+            "target": 5
+          },
+          "output": 0
+        },
+        {
+          "input": {
+            "nums": [
+              2,
+              5
+            ],
+            "target": 5
+          },
+          "output": 1
+        }
+      ],
+      "starterCode": {
+        "javascript": "function search(nums, target) {\n  // Write your code here\n  // Example: nums = [-1,0,3,5,9,12], target = 9\n  // Expected output: 4\n  \n}\n\n// Test cases\nconsole.log('Test 1:', search([-1,0,3,5,9,12], 9)); // 4\nconsole.log('Test 2:', search([-1,0,3,5,9,12], 2)); // -1\nconsole.log('Test 3:', search([5], 5)); // 0",
+        "python": "def search(nums, target):\n    # Write your code here\n    # Example: nums = [-1,0,3,5,9,12], target = 9\n    # Expected output: 4\n    pass\n\n# Test cases\nprint('Test 1:', search([-1,0,3,5,9,12], 9))  # 4\nprint('Test 2:', search([-1,0,3,5,9,12], 2))  # -1\nprint('Test 3:', search([5], 5))  # 0",
+        "java": "public int search(int[] nums, int target) {\n    // Write your code here\n    // Example: nums = [-1,0,3,5,9,12], target = 9\n    // Expected output: 4\n    return -1;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.search(new int[]{-1,0,3,5,9,12}, 9)); // 4\n    System.out.println(sol.search(new int[]{-1,0,3,5,9,12}, 2)); // -1\n}"
+      }
+    },
+    {
+      "id": "binary-search-2",
+      "title": "Binary Search",
+      "category": "binary-search",
+      "difficulty": "easy",
+      "companies": [
+        "Google",
+        "Amazon",
+        "Microsoft",
+        "Facebook"
+      ],
+      "topInterview": true,
+      "introduction": "Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.",
+      "problemStatement": "Implement binary search algorithm on a sorted array.\n\nConstraints:\n- 1 <= nums.length <= 10^4\n- -10^4 < nums[i], target < 10^4\n- All integers in nums are unique\n- nums is sorted in ascending order",
+      "examples": [
+        {
+          "input": "nums = [-1,0,3,5,9,12], target = 9",
+          "output": "4",
+          "explanation": "9 exists in nums and its index is 4"
+        },
+        {
+          "input": "nums = [-1,0,3,5,9,12], target = 2",
+          "output": "-1",
+          "explanation": "2 does not exist in nums so return -1"
+        }
+      ],
+      "hints": [
+        "Use two pointers: left and right",
+        "Calculate mid = left + (right - left) / 2",
+        "Adjust pointers based on comparison with target"
+      ],
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/binary-search/",
+        "gfg": "https://www.geeksforgeeks.org/binary-search/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              -1,
+              0,
+              3,
+              5,
+              9,
+              12
+            ],
+            "target": 9
+          },
+          "output": 4
+        },
+        {
+          "input": {
+            "nums": [
+              -1,
+              0,
+              3,
+              5,
+              9,
+              12
+            ],
+            "target": 2
+          },
+          "output": -1
+        },
+        {
+          "input": {
+            "nums": [
+              5
+            ],
+            "target": 5
+          },
+          "output": 0
+        },
+        {
+          "input": {
+            "nums": [
+              2,
+              5
+            ],
+            "target": 5
+          },
+          "output": 1
+        }
+      ],
+      "starterCode": {
+        "javascript": "function search(nums, target) {\n  // Write your code here\n  // Example: nums = [-1,0,3,5,9,12], target = 9\n  // Expected output: 4\n  \n}\n\n// Test cases\nconsole.log('Test 1:', search([-1,0,3,5,9,12], 9)); // 4\nconsole.log('Test 2:', search([-1,0,3,5,9,12], 2)); // -1",
+        "python": "def search(nums, target):\n    # Write your code here\n    # Example: nums = [-1,0,3,5,9,12], target = 9\n    # Expected output: 4\n    pass\n\n# Test cases\nprint('Test 1:', search([-1,0,3,5,9,12], 9))  # 4\nprint('Test 2:', search([-1,0,3,5,9,12], 2))  # -1",
+        "java": "public int search(int[] nums, int target) {\n    // Write your code here\n    // Example: nums = [-1,0,3,5,9,12], target = 9\n    // Expected output: 4\n    return -1;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.search(new int[]{-1,0,3,5,9,12}, 9)); // 4\n}"
+      }
+    },
+    {
+      "id": "binary-search-3",
+      "title": "Search Insert Position",
+      "category": "binary-search",
+      "difficulty": "easy",
+      "companies": [
+        "Google",
+        "Amazon",
+        "Apple",
+        "Bloomberg"
+      ],
+      "topInterview": true,
+      "introduction": "Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.",
+      "problemStatement": "Find the index where target should be inserted to maintain sorted order.\n\nConstraints:\n- 1 <= nums.length <= 10^4\n- -10^4 <= nums[i] <= 10^4\n- nums contains distinct values sorted in ascending order\n- -10^4 <= target <= 10^4",
+      "examples": [
+        {
+          "input": "nums = [1,3,5,6], target = 5",
+          "output": "2",
+          "explanation": "5 is found at index 2."
+        },
+        {
+          "input": "nums = [1,3,5,6], target = 2",
+          "output": "1",
+          "explanation": "2 would be inserted at index 1."
+        },
+        {
+          "input": "nums = [1,3,5,6], target = 7",
+          "output": "4",
+          "explanation": "7 would be inserted at index 4."
+        }
+      ],
+      "hints": [
+        "Use binary search to find the target or insertion point",
+        "When target is not found, left pointer will be at insertion point",
+        "Handle edge cases: target smaller than all or larger than all"
+      ],
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function searchInsert(nums, target) {\n  // Write your code here\n  // Example: {'nums': [1, 3, 5, 6], 'target': 5}\n  // Expected output: 2\n  \n}\n\n// Test cases\nconsole.log('Test 1:', searchInsert([1, 3, 5, 6], 5)); // 2",
+        "python": "def search_insert(nums, target):\n    # Write your code here\n    # Example: {'nums': [1, 3, 5, 6], 'target': 5}\n    # Expected output: 2\n    pass",
+        "java": "public int searchInsert(int[] nums, int target) {\n    // Write your code here\n    // Example: {'nums': [1, 3, 5, 6], 'target': 5}\n    // Expected output: 2\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/search-insert-position/",
+        "gfg": "https://www.geeksforgeeks.org/search-insert-position-of-k-in-a-sorted-array/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "target": 5
+          },
+          "output": 2
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "target": 2
+          },
+          "output": 1
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "target": 7
+          },
+          "output": 4
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "target": 0
+          },
+          "output": 0
+        }
+      ]
+    },
+    {
+      "id": "binary-search-4",
+      "title": "Search in Rotated Sorted Array",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Google",
+        "Microsoft",
+        "Apple",
+        "Bloomberg",
+        "Uber"
+      ],
+      "topInterview": true,
+      "introduction": "There is an integer array nums sorted in ascending order (with distinct values). Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k. Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.",
+      "problemStatement": "Search for target in a rotated sorted array.\n\nConstraints:\n- 1 <= nums.length <= 5000\n- -10^4 <= nums[i] <= 10^4\n- All values of nums are unique\n- nums is an ascending array that is possibly rotated\n- -10^4 <= target <= 10^4",
+      "examples": [
+        {
+          "input": "nums = [4,5,6,7,0,1,2], target = 0",
+          "output": "4",
+          "explanation": "0 is found at index 4."
+        },
+        {
+          "input": "nums = [4,5,6,7,0,1,2], target = 3",
+          "output": "-1",
+          "explanation": "3 is not in the array."
+        },
+        {
+          "input": "nums = [1], target = 0",
+          "output": "-1",
+          "explanation": "0 is not in the array."
+        }
+      ],
+      "hints": [
+        "One half of the array is always sorted",
+        "Determine which half is sorted by comparing mid with left",
+        "Check if target lies in the sorted half, adjust pointers accordingly"
+      ],
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function search(nums, target) {\n  // Write your code here\n  // Example: {'nums': [4, 5, 6, 7, 0, 1, 2], 'target': 0}\n  // Expected output: 4\n  \n}\n\n// Test cases\nconsole.log('Test 1:', search([4, 5, 6, 7, 0, 1, 2], 0)); // 4",
+        "python": "def search(nums, target):\n    # Write your code here\n    # Example: {'nums': [4, 5, 6, 7, 0, 1, 2], 'target': 0}\n    # Expected output: 4\n    pass",
+        "java": "public int search(int[] nums, int target) {\n    // Write your code here\n    // Example: {'nums': [4, 5, 6, 7, 0, 1, 2], 'target': 0}\n    // Expected output: 4\n    return -1;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+        "gfg": "https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              4,
+              5,
+              6,
+              7,
+              0,
+              1,
+              2
+            ],
+            "target": 0
+          },
+          "output": 4
+        },
+        {
+          "input": {
+            "nums": [
+              4,
+              5,
+              6,
+              7,
+              0,
+              1,
+              2
+            ],
+            "target": 3
+          },
+          "output": -1
+        },
+        {
+          "input": {
+            "nums": [
+              1
+            ],
+            "target": 0
+          },
+          "output": -1
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              3
+            ],
+            "target": 3
+          },
+          "output": 1
+        }
+      ]
+    },
+    {
+      "id": "binary-search-5",
+      "title": "Find Minimum in Rotated Sorted Array",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Facebook",
+        "Microsoft",
+        "Goldman Sachs"
+      ],
+      "topInterview": true,
+      "introduction": "Suppose an array of length n sorted in ascending order is rotated between 1 and n times. Given the sorted rotated array nums of unique elements, return the minimum element of this array.",
+      "problemStatement": "Find the minimum element in a rotated sorted array.\n\nConstraints:\n- n == nums.length\n- 1 <= n <= 5000\n- -5000 <= nums[i] <= 5000\n- All integers of nums are unique\n- nums is sorted and rotated between 1 and n times",
+      "examples": [
+        {
+          "input": "nums = [3,4,5,1,2]",
+          "output": "1",
+          "explanation": "The original array was [1,2,3,4,5] rotated 3 times."
+        },
+        {
+          "input": "nums = [4,5,6,7,0,1,2]",
+          "output": "0",
+          "explanation": "The original array was [0,1,2,4,5,6,7] and it was rotated 4 times."
+        },
+        {
+          "input": "nums = [11,13,15,17]",
+          "output": "11",
+          "explanation": "The original array was [11,13,15,17] and it was rotated 4 times (no change)."
+        }
+      ],
+      "hints": [
+        "The minimum is at the pivot point where rotation occurred",
+        "Compare mid element with right element",
+        "If mid > right, minimum is in right half; otherwise in left half"
+      ],
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function findMin(nums) {\n  // Write your code here\n  // Example: {'nums': [3, 4, 5, 1, 2]}\n  // Expected output: 1\n  \n}\n\n// Test cases\nconsole.log('Test 1:', findMin([3, 4, 5, 1, 2])); // 1",
+        "python": "def find_min(nums):\n    # Write your code here\n    # Example: {'nums': [3, 4, 5, 1, 2]}\n    # Expected output: 1\n    pass",
+        "java": "public int findMin(int[] nums) {\n    // Write your code here\n    // Example: {'nums': [3, 4, 5, 1, 2]}\n    // Expected output: 1\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
+        "gfg": "https://www.geeksforgeeks.org/find-minimum-element-in-a-sorted-and-rotated-array/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              3,
+              4,
+              5,
+              1,
+              2
+            ]
+          },
+          "output": 1
+        },
+        {
+          "input": {
+            "nums": [
+              4,
+              5,
+              6,
+              7,
+              0,
+              1,
+              2
+            ]
+          },
+          "output": 0
+        },
+        {
+          "input": {
+            "nums": [
+              11,
+              13,
+              15,
+              17
+            ]
+          },
+          "output": 11
+        },
+        {
+          "input": {
+            "nums": [
+              2,
+              1
+            ]
+          },
+          "output": 1
+        }
+      ]
+    },
+    {
+      "id": "binary-search-6",
+      "title": "Find First and Last Position of Element in Sorted Array",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Google",
+        "Microsoft",
+        "LinkedIn",
+        "Bloomberg"
+      ],
+      "topInterview": true,
+      "introduction": "Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value. If target is not found in the array, return [-1, -1].",
+      "problemStatement": "Find the first and last position of target in sorted array.\n\nConstraints:\n- 0 <= nums.length <= 10^5\n- -10^9 <= nums[i] <= 10^9\n- nums is a non-decreasing array\n- -10^9 <= target <= 10^9",
+      "examples": [
+        {
+          "input": "nums = [5,7,7,8,8,10], target = 8",
+          "output": "[3,4]",
+          "explanation": "8 first appears at index 3 and last appears at index 4."
+        },
+        {
+          "input": "nums = [5,7,7,8,8,10], target = 6",
+          "output": "[-1,-1]",
+          "explanation": "6 is not present in the array."
+        },
+        {
+          "input": "nums = [], target = 0",
+          "output": "[-1,-1]",
+          "explanation": "Empty array."
+        }
+      ],
+      "hints": [
+        "Use binary search twice: once for first position, once for last",
+        "For first position, when target found, continue searching left",
+        "For last position, when target found, continue searching right"
+      ],
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function searchRange(nums, target) {\n  // Write your code here\n  // Example: {'nums': [5, 7, 7, 8, 8, 10], 'target': 8}\n  // Expected output: [3, 4]\n  \n}\n\n// Test cases\nconsole.log('Test 1:', searchRange([5, 7, 7, 8, 8, 10], 8)); // [3, 4]",
+        "python": "def search_range(nums, target):\n    # Write your code here\n    # Example: {'nums': [5, 7, 7, 8, 8, 10], 'target': 8}\n    # Expected output: [3, 4]\n    pass",
+        "java": "public int[] searchRange(int[] nums, int target) {\n    // Write your code here\n    // Example: {'nums': [5, 7, 7, 8, 8, 10], 'target': 8}\n    // Expected output: [3, 4]\n    return new int[]{-1, -1};\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/",
+        "gfg": "https://www.geeksforgeeks.org/find-first-and-last-positions-of-an-element-in-a-sorted-array/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "target": 8
+          },
+          "output": [
+            3,
+            4
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "target": 6
+          },
+          "output": [
+            -1,
+            -1
+          ]
+        },
+        {
+          "input": {
+            "nums": [],
+            "target": 0
+          },
+          "output": [
+            -1,
+            -1
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              1
+            ],
+            "target": 1
+          },
+          "output": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "binary-search-7",
+      "title": "Find Peak Element",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Facebook",
+        "Google",
+        "Amazon",
+        "Microsoft",
+        "Apple"
+      ],
+      "topInterview": true,
+      "introduction": "A peak element is an element that is strictly greater than its neighbors. Given a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.",
+      "problemStatement": "Find any peak element in the array.\n\nConstraints:\n- 1 <= nums.length <= 1000\n- -2^31 <= nums[i] <= 2^31 - 1\n- nums[i] != nums[i + 1] for all valid i",
+      "examples": [
+        {
+          "input": "nums = [1,2,3,1]",
+          "output": "2",
+          "explanation": "3 is a peak element and its index is 2."
+        },
+        {
+          "input": "nums = [1,2,1,3,5,6,4]",
+          "output": "5",
+          "explanation": "6 is a peak element at index 5. Index 2 (value 1) is also valid."
+        }
+      ],
+      "hints": [
+        "Binary search can find a peak in O(log n)",
+        "If nums[mid] < nums[mid+1], peak is on the right side",
+        "Otherwise, peak is on the left side (including mid)"
+      ],
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function findPeakElement(nums) {\n  // Write your code here\n  // Example: {'nums': [1, 2, 3, 1]}\n  // Expected output: 2\n  \n}\n\n// Test cases\nconsole.log('Test 1:', findPeakElement([1, 2, 3, 1])); // 2",
+        "python": "def find_peak_element(nums):\n    # Write your code here\n    # Example: {'nums': [1, 2, 3, 1]}\n    # Expected output: 2\n    pass",
+        "java": "public int findPeakElement(int[] nums) {\n    // Write your code here\n    // Example: {'nums': [1, 2, 3, 1]}\n    // Expected output: 2\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/find-peak-element/",
+        "gfg": "https://www.geeksforgeeks.org/find-a-peak-in-a-given-array/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              3,
+              1
+            ]
+          },
+          "output": 2
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              1,
+              3,
+              5,
+              6,
+              4
+            ]
+          },
+          "output": 5
+        },
+        {
+          "input": {
+            "nums": [
+              1
+            ]
+          },
+          "output": 0
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              2
+            ]
+          },
+          "output": 1
+        }
+      ]
+    },
+    {
+      "id": "binary-search-8",
+      "title": "Search a 2D Matrix",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Microsoft",
+        "Facebook",
+        "Apple",
+        "Bloomberg"
+      ],
+      "topInterview": true,
+      "introduction": "You are given an m x n integer matrix with the following two properties: each row is sorted in non-decreasing order, and the first integer of each row is greater than the last integer of the previous row. Given an integer target, return true if target is in matrix or false otherwise.",
+      "problemStatement": "Search for target in a sorted 2D matrix.\n\nConstraints:\n- m == matrix.length\n- n == matrix[i].length\n- 1 <= m, n <= 100\n- -10^4 <= matrix[i][j], target <= 10^4",
+      "examples": [
+        {
+          "input": "matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3",
+          "output": "true",
+          "explanation": "3 exists in the matrix."
+        },
+        {
+          "input": "matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13",
+          "output": "false",
+          "explanation": "13 does not exist in the matrix."
+        }
+      ],
+      "hints": [
+        "Treat the 2D matrix as a 1D sorted array",
+        "Use single binary search with index conversion",
+        "row = mid / cols, col = mid % cols"
+      ],
+      "timeComplexity": "O(log(m*n))",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search",
+        "matrix"
+      ],
+      "starterCode": {
+        "javascript": "function searchMatrix(matrix, target) {\n  // Write your code here\n  // Example: {'matrix': [[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 'target': 3}\n  // Expected output: True\n  \n}\n\n// Test cases\nconsole.log('Test 1:', searchMatrix([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 3)); // True",
+        "python": "def search_matrix(matrix, target):\n    # Write your code here\n    # Example: {'matrix': [[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 'target': 3}\n    # Expected output: True\n    pass",
+        "java": "public boolean searchMatrix(int[][] matrix, int target) {\n    // Write your code here\n    // Example: {'matrix': [[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 'target': 3}\n    // Expected output: True\n    return false;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/search-a-2d-matrix/",
+        "gfg": "https://www.geeksforgeeks.org/search-in-row-wise-and-column-wise-sorted-matrix/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "matrix": [
+              [
+                1,
+                3,
+                5,
+                7
+              ],
+              [
+                10,
+                11,
+                16,
+                20
+              ],
+              [
+                23,
+                30,
+                34,
+                60
+              ]
+            ],
+            "target": 3
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "matrix": [
+              [
+                1,
+                3,
+                5,
+                7
+              ],
+              [
+                10,
+                11,
+                16,
+                20
+              ],
+              [
+                23,
+                30,
+                34,
+                60
+              ]
+            ],
+            "target": 13
+          },
+          "output": false
+        },
+        {
+          "input": {
+            "matrix": [
+              [
+                1
+              ]
+            ],
+            "target": 1
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "matrix": [
+              [
+                1
+              ]
+            ],
+            "target": 2
+          },
+          "output": false
+        }
+      ]
+    },
+    {
+      "id": "binary-search-9",
+      "title": "Search a 2D Matrix II",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Microsoft",
+        "Facebook",
+        "Apple",
+        "Google"
+      ],
+      "topInterview": true,
+      "introduction": "Write an efficient algorithm that searches for a value target in an m x n integer matrix. This matrix has the following properties: integers in each row are sorted in ascending from left to right, and integers in each column are sorted in ascending from top to bottom.",
+      "problemStatement": "Search for target in a row-wise and column-wise sorted matrix.\n\nConstraints:\n- m == matrix.length\n- n == matrix[i].length\n- 1 <= n, m <= 300\n- -10^9 <= matrix[i][j] <= 10^9\n- -10^9 <= target <= 10^9",
+      "examples": [
+        {
+          "input": "matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5",
+          "output": "true",
+          "explanation": "5 exists in the matrix."
+        },
+        {
+          "input": "matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20",
+          "output": "false",
+          "explanation": "20 does not exist in the matrix."
+        }
+      ],
+      "hints": [
+        "Start from top-right or bottom-left corner",
+        "If current > target, move left; if current < target, move down",
+        "This eliminates one row or column at each step"
+      ],
+      "timeComplexity": "O(m + n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search",
+        "matrix",
+        "divide-and-conquer"
+      ],
+      "starterCode": {
+        "javascript": "function searchMatrix(matrix, target) {\n  // Write your code here\n  // Example: {'matrix': [[1, 4, 7, 11, 15], [2, 5, 8, 12, 19], [3, 6, 9, 16, 22], [10, 13, 14, 17, 24], [18, 21, 23, 26, 30]], 'target': 5}\n  // Expected output: True\n  \n}\n\n// Test cases\nconsole.log('Test 1:', searchMatrix([[1, 4, 7, 11, 15], [2, 5, 8, 12, 19], [3, 6, 9, 16, 22], [10, 13, 14, 17, 24], [18, 21, 23, 26, 30]], 5)); // True",
+        "python": "def search_matrix(matrix, target):\n    # Write your code here\n    # Example: {'matrix': [[1, 4, 7, 11, 15], [2, 5, 8, 12, 19], [3, 6, 9, 16, 22], [10, 13, 14, 17, 24], [18, 21, 23, 26, 30]], 'target': 5}\n    # Expected output: True\n    pass",
+        "java": "public boolean searchMatrix(int[][] matrix, int target) {\n    // Write your code here\n    // Example: {'matrix': [[1, 4, 7, 11, 15], [2, 5, 8, 12, 19], [3, 6, 9, 16, 22], [10, 13, 14, 17, 24], [18, 21, 23, 26, 30]], 'target': 5}\n    // Expected output: True\n    return false;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/search-a-2d-matrix-ii/",
+        "gfg": "https://www.geeksforgeeks.org/search-in-a-row-wise-and-column-wise-sorted-2d-array/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "matrix": [
+              [
+                1,
+                4,
+                7,
+                11,
+                15
+              ],
+              [
+                2,
+                5,
+                8,
+                12,
+                19
+              ],
+              [
+                3,
+                6,
+                9,
+                16,
+                22
+              ],
+              [
+                10,
+                13,
+                14,
+                17,
+                24
+              ],
+              [
+                18,
+                21,
+                23,
+                26,
+                30
+              ]
+            ],
+            "target": 5
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "matrix": [
+              [
+                1,
+                4,
+                7,
+                11,
+                15
+              ],
+              [
+                2,
+                5,
+                8,
+                12,
+                19
+              ],
+              [
+                3,
+                6,
+                9,
+                16,
+                22
+              ],
+              [
+                10,
+                13,
+                14,
+                17,
+                24
+              ],
+              [
+                18,
+                21,
+                23,
+                26,
+                30
+              ]
+            ],
+            "target": 20
+          },
+          "output": false
+        },
+        {
+          "input": {
+            "matrix": [
+              [
+                1,
+                1
+              ]
+            ],
+            "target": 2
+          },
+          "output": false
+        },
+        {
+          "input": {
+            "matrix": [
+              [
+                1,
+                1
+              ]
+            ],
+            "target": 1
+          },
+          "output": true
+        }
+      ]
+    },
+    {
+      "id": "binary-search-10",
+      "title": "Koko Eating Bananas",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Google",
+        "Facebook",
+        "Amazon",
+        "Airbnb"
+      ],
+      "topInterview": true,
+      "introduction": "Koko loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. The guards have gone and will come back in h hours. Koko can decide her bananas-per-hour eating speed of k. Each hour, she chooses some pile of bananas and eats k bananas from that pile. If the pile has less than k bananas, she eats all of them instead and will not eat any more bananas during this hour.",
+      "problemStatement": "Find the minimum eating speed k such that Koko can eat all bananas within h hours.\n\nConstraints:\n- 1 <= piles.length <= 10^4\n- piles.length <= h <= 10^9\n- 1 <= piles[i] <= 10^9",
+      "examples": [
+        {
+          "input": "piles = [3,6,7,11], h = 8",
+          "output": "4",
+          "explanation": "With speed 4: ceil(3/4)+ceil(6/4)+ceil(7/4)+ceil(11/4) = 1+2+2+3 = 8 hours."
+        },
+        {
+          "input": "piles = [30,11,23,4,20], h = 5",
+          "output": "30",
+          "explanation": "With speed 30, Koko can finish each pile in 1 hour."
+        },
+        {
+          "input": "piles = [30,11,23,4,20], h = 6",
+          "output": "23",
+          "explanation": "With speed 23, Koko finishes in 6 hours."
+        }
+      ],
+      "hints": [
+        "Binary search on the eating speed k",
+        "Range is from 1 to max(piles)",
+        "For each k, calculate total hours needed and compare with h"
+      ],
+      "timeComplexity": "O(n * log(max(piles)))",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function minEatingSpeed(piles, h) {\n  // Write your code here\n  // Example: {'piles': [3, 6, 7, 11], 'h': 8}\n  // Expected output: 4\n  \n}\n\n// Test cases\nconsole.log('Test 1:', minEatingSpeed([3, 6, 7, 11], 8)); // 4",
+        "python": "def min_eating_speed(piles, h):\n    # Write your code here\n    # Example: {'piles': [3, 6, 7, 11], 'h': 8}\n    # Expected output: 4\n    pass",
+        "java": "public int minEatingSpeed(int[] piles, int h) {\n    // Write your code here\n    // Example: {'piles': [3, 6, 7, 11], 'h': 8}\n    // Expected output: 4\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/koko-eating-bananas/",
+        "gfg": "https://www.geeksforgeeks.org/koko-eating-bananas/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "piles": [
+              3,
+              6,
+              7,
+              11
+            ],
+            "h": 8
+          },
+          "output": 4
+        },
+        {
+          "input": {
+            "piles": [
+              30,
+              11,
+              23,
+              4,
+              20
+            ],
+            "h": 5
+          },
+          "output": 30
+        },
+        {
+          "input": {
+            "piles": [
+              30,
+              11,
+              23,
+              4,
+              20
+            ],
+            "h": 6
+          },
+          "output": 23
+        },
+        {
+          "input": {
+            "piles": [
+              1000000000
+            ],
+            "h": 2
+          },
+          "output": 500000000
+        }
+      ]
+    },
+    {
+      "id": "binary-search-11",
+      "title": "Capacity To Ship Packages Within D Days",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Google",
+        "Facebook"
+      ],
+      "topInterview": true,
+      "introduction": "A conveyor belt has packages that must be shipped from one port to another within days days. The ith package on the conveyor belt has a weight of weights[i]. Each day, we load the ship with packages on the conveyor belt (in the order given). We may not load more weight than the maximum weight capacity of the ship.",
+      "problemStatement": "Find the minimum ship capacity to ship all packages within days days.\n\nConstraints:\n- 1 <= days <= weights.length <= 5 * 10^4\n- 1 <= weights[i] <= 500",
+      "examples": [
+        {
+          "input": "weights = [1,2,3,4,5,6,7,8,9,10], days = 5",
+          "output": "15",
+          "explanation": "Ship with capacity 15: [1,2,3,4,5], [6,7], [8], [9], [10]."
+        },
+        {
+          "input": "weights = [3,2,2,4,1,4], days = 3",
+          "output": "6",
+          "explanation": "Ship with capacity 6: [3,2], [2,4], [1,4]."
+        },
+        {
+          "input": "weights = [1,2,3,1,1], days = 4",
+          "output": "3",
+          "explanation": "Ship with capacity 3: [1,2], [3], [1,1]."
+        }
+      ],
+      "hints": [
+        "Binary search on ship capacity",
+        "Minimum capacity is max(weights), maximum is sum(weights)",
+        "For each capacity, simulate shipping and count days needed"
+      ],
+      "timeComplexity": "O(n * log(sum(weights)))",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function shipWithinDays(weights, days) {\n  // Write your code here\n  // Example: {'weights': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'days': 5}\n  // Expected output: 15\n  \n}\n\n// Test cases\nconsole.log('Test 1:', shipWithinDays([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5)); // 15",
+        "python": "def ship_within_days(weights, days):\n    # Write your code here\n    # Example: {'weights': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'days': 5}\n    # Expected output: 15\n    pass",
+        "java": "public int shipWithinDays(int[] weights, int days) {\n    // Write your code here\n    // Example: {'weights': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'days': 5}\n    // Expected output: 15\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/",
+        "gfg": "https://www.geeksforgeeks.org/capacity-to-ship-packages-within-d-days/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "weights": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "days": 5
+          },
+          "output": 15
+        },
+        {
+          "input": {
+            "weights": [
+              3,
+              2,
+              2,
+              4,
+              1,
+              4
+            ],
+            "days": 3
+          },
+          "output": 6
+        },
+        {
+          "input": {
+            "weights": [
+              1,
+              2,
+              3,
+              1,
+              1
+            ],
+            "days": 4
+          },
+          "output": 3
+        },
+        {
+          "input": {
+            "weights": [
+              10,
+              50,
+              100,
+              100,
+              50,
+              100,
+              100,
+              100
+            ],
+            "days": 5
+          },
+          "output": 160
+        }
+      ]
+    },
+    {
+      "id": "binary-search-12",
+      "title": "Median of Two Sorted Arrays",
+      "category": "binary-search",
+      "difficulty": "hard",
+      "companies": [
+        "Amazon",
+        "Google",
+        "Facebook",
+        "Microsoft",
+        "Apple",
+        "Goldman Sachs",
+        "Adobe"
+      ],
+      "topInterview": true,
+      "introduction": "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).",
+      "problemStatement": "Find the median of two sorted arrays in O(log(m+n)) time.\n\nConstraints:\n- nums1.length == m\n- nums2.length == n\n- 0 <= m <= 1000\n- 0 <= n <= 1000\n- 1 <= m + n <= 2000\n- -10^6 <= nums1[i], nums2[i] <= 10^6",
+      "examples": [
+        {
+          "input": "nums1 = [1,3], nums2 = [2]",
+          "output": "2.00000",
+          "explanation": "Merged array = [1,2,3] and median is 2."
+        },
+        {
+          "input": "nums1 = [1,2], nums2 = [3,4]",
+          "output": "2.50000",
+          "explanation": "Merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5."
+        }
+      ],
+      "hints": [
+        "Binary search on the smaller array",
+        "Find partition points where left elements <= right elements",
+        "Median is derived from elements around the partition"
+      ],
+      "timeComplexity": "O(log(min(m,n)))",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search",
+        "divide-and-conquer"
+      ],
+      "starterCode": {
+        "javascript": "function findMedianSortedArrays(nums1, nums2) {\n  // Write your code here\n  // Example: {'nums1': [1, 3], 'nums2': [2]}\n  // Expected output: 2.0\n  \n}\n\n// Test cases\nconsole.log('Test 1:', findMedianSortedArrays([1, 3], [2])); // 2.0",
+        "python": "def find_median_sorted_arrays(nums1, nums2):\n    # Write your code here\n    # Example: {'nums1': [1, 3], 'nums2': [2]}\n    # Expected output: 2.0\n    pass",
+        "java": "public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n    // Write your code here\n    // Example: {'nums1': [1, 3], 'nums2': [2]}\n    // Expected output: 2.0\n    return 0.0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+        "gfg": "https://www.geeksforgeeks.org/median-of-two-sorted-arrays/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums1": [
+              1,
+              3
+            ],
+            "nums2": [
+              2
+            ]
+          },
+          "output": 2
+        },
+        {
+          "input": {
+            "nums1": [
+              1,
+              2
+            ],
+            "nums2": [
+              3,
+              4
+            ]
+          },
+          "output": 2.5
+        },
+        {
+          "input": {
+            "nums1": [],
+            "nums2": [
+              1
+            ]
+          },
+          "output": 1
+        },
+        {
+          "input": {
+            "nums1": [
+              2
+            ],
+            "nums2": []
+          },
+          "output": 2
+        }
+      ]
+    },
+    {
+      "id": "binary-search-13",
+      "title": "Split Array Largest Sum",
+      "category": "binary-search",
+      "difficulty": "hard",
+      "companies": [
+        "Google",
+        "Amazon",
+        "Facebook",
+        "Pinterest"
+      ],
+      "topInterview": true,
+      "introduction": "Given an integer array nums and an integer k, split nums into k non-empty subarrays such that the largest sum of any subarray is minimized. Return the minimized largest sum of the split.",
+      "problemStatement": "Split array into k subarrays to minimize the largest subarray sum.\n\nConstraints:\n- 1 <= nums.length <= 1000\n- 0 <= nums[i] <= 10^6\n- 1 <= k <= min(50, nums.length)",
+      "examples": [
+        {
+          "input": "nums = [7,2,5,10,8], k = 2",
+          "output": "18",
+          "explanation": "Split into [7,2,5] and [10,8]. The largest sum is 18."
+        },
+        {
+          "input": "nums = [1,2,3,4,5], k = 2",
+          "output": "9",
+          "explanation": "Split into [1,2,3,4] and [5]. Or [1,2,3] and [4,5]. Largest sum is 9."
+        },
+        {
+          "input": "nums = [1,4,4], k = 3",
+          "output": "4",
+          "explanation": "Split into [1], [4], [4]. Each subarray has sum at most 4."
+        }
+      ],
+      "hints": [
+        "Binary search on the answer (largest sum)",
+        "Range is from max(nums) to sum(nums)",
+        "Check if array can be split into <= k parts with given max sum"
+      ],
+      "timeComplexity": "O(n * log(sum(nums)))",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search",
+        "dynamic-programming",
+        "greedy"
+      ],
+      "starterCode": {
+        "javascript": "function splitArray(nums, k) {\n  // Write your code here\n  // Example: {'nums': [7, 2, 5, 10, 8], 'k': 2}\n  // Expected output: 18\n  \n}\n\n// Test cases\nconsole.log('Test 1:', splitArray([7, 2, 5, 10, 8], 2)); // 18",
+        "python": "def split_array(nums, k):\n    # Write your code here\n    # Example: {'nums': [7, 2, 5, 10, 8], 'k': 2}\n    # Expected output: 18\n    pass",
+        "java": "public int splitArray(int[] nums, int k) {\n    // Write your code here\n    // Example: {'nums': [7, 2, 5, 10, 8], 'k': 2}\n    // Expected output: 18\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/split-array-largest-sum/",
+        "gfg": "https://www.geeksforgeeks.org/split-array-largest-sum/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              7,
+              2,
+              5,
+              10,
+              8
+            ],
+            "k": 2
+          },
+          "output": 18
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "k": 2
+          },
+          "output": 9
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              4,
+              4
+            ],
+            "k": 3
+          },
+          "output": 4
+        },
+        {
+          "input": {
+            "nums": [
+              10,
+              5,
+              13,
+              4,
+              8,
+              4,
+              5,
+              11,
+              14,
+              9,
+              16,
+              10,
+              20,
+              8
+            ],
+            "k": 8
+          },
+          "output": 25
+        }
+      ]
+    },
+    {
+      "id": "binary-search-14",
+      "title": "Sqrt(x)",
+      "category": "binary-search",
+      "difficulty": "easy",
+      "companies": [
+        "Amazon",
+        "Apple",
+        "Microsoft",
+        "Bloomberg",
+        "Facebook"
+      ],
+      "topInterview": true,
+      "introduction": "Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well. You must not use any built-in exponent function or operator.",
+      "problemStatement": "Compute the integer square root of x.\n\nConstraints:\n- 0 <= x <= 2^31 - 1",
+      "examples": [
+        {
+          "input": "x = 4",
+          "output": "2",
+          "explanation": "The square root of 4 is 2."
+        },
+        {
+          "input": "x = 8",
+          "output": "2",
+          "explanation": "The square root of 8 is 2.828..., rounded down to 2."
+        }
+      ],
+      "hints": [
+        "Use binary search from 0 to x",
+        "Find the largest number whose square is <= x",
+        "Be careful with integer overflow when computing mid*mid"
+      ],
+      "timeComplexity": "O(log x)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "math",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function mySqrt(x) {\n  // Write your code here\n  // Example: {'x': 4}\n  // Expected output: 2\n  \n}\n\n// Test cases\nconsole.log('Test 1:', mySqrt(4)); // 2",
+        "python": "def my_sqrt(x):\n    # Write your code here\n    # Example: {'x': 4}\n    # Expected output: 2\n    pass",
+        "java": "public int mySqrt(int x) {\n    // Write your code here\n    // Example: {'x': 4}\n    // Expected output: 2\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/sqrtx/",
+        "gfg": "https://www.geeksforgeeks.org/square-root-of-an-integer/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "x": 4
+          },
+          "output": 2
+        },
+        {
+          "input": {
+            "x": 8
+          },
+          "output": 2
+        },
+        {
+          "input": {
+            "x": 0
+          },
+          "output": 0
+        },
+        {
+          "input": {
+            "x": 1
+          },
+          "output": 1
+        }
+      ]
+    },
+    {
+      "id": "binary-search-15",
+      "title": "Valid Perfect Square",
+      "category": "binary-search",
+      "difficulty": "easy",
+      "companies": [
+        "Amazon",
+        "Microsoft",
+        "LinkedIn"
+      ],
+      "topInterview": false,
+      "introduction": "Given a positive integer num, return true if num is a perfect square or false otherwise. A perfect square is an integer that is the square of an integer. You must not use any built-in library function, such as sqrt.",
+      "problemStatement": "Determine if num is a perfect square without using sqrt.\n\nConstraints:\n- 1 <= num <= 2^31 - 1",
+      "examples": [
+        {
+          "input": "num = 16",
+          "output": "true",
+          "explanation": "4 * 4 = 16, so 16 is a perfect square."
+        },
+        {
+          "input": "num = 14",
+          "output": "false",
+          "explanation": "No integer squared equals 14."
+        }
+      ],
+      "hints": [
+        "Binary search for the square root",
+        "Check if mid * mid equals num exactly",
+        "Handle integer overflow carefully"
+      ],
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "math",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function isPerfectSquare(num) {\n  // Write your code here\n  // Example: {'num': 16}\n  // Expected output: True\n  \n}\n\n// Test cases\nconsole.log('Test 1:', isPerfectSquare(16)); // True",
+        "python": "def is_perfect_square(num):\n    # Write your code here\n    # Example: {'num': 16}\n    # Expected output: True\n    pass",
+        "java": "public boolean isPerfectSquare(int num) {\n    // Write your code here\n    // Example: {'num': 16}\n    // Expected output: True\n    return false;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/valid-perfect-square/",
+        "gfg": "https://www.geeksforgeeks.org/check-if-given-number-is-perfect-square-in-cpp/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "num": 16
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "num": 14
+          },
+          "output": false
+        },
+        {
+          "input": {
+            "num": 1
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "num": 2000105819
+          },
+          "output": false
+        }
+      ]
+    },
+    {
+      "id": "binary-search-16",
+      "title": "Find Smallest Letter Greater Than Target",
+      "category": "binary-search",
+      "difficulty": "easy",
+      "companies": [
+        "LinkedIn",
+        "Google"
+      ],
+      "topInterview": false,
+      "introduction": "You are given an array of characters letters that is sorted in non-decreasing order, and a character target. There are at least two different characters in letters. Return the smallest character in letters that is lexicographically greater than target. If such a character does not exist, return the first character in letters.",
+      "problemStatement": "Find the smallest letter greater than target (wraps around).\n\nConstraints:\n- 2 <= letters.length <= 10^4\n- letters[i] is a lowercase English letter\n- letters is sorted in non-decreasing order\n- letters contains at least two different characters\n- target is a lowercase English letter",
+      "examples": [
+        {
+          "input": "letters = [\"c\",\"f\",\"j\"], target = \"a\"",
+          "output": "\"c\"",
+          "explanation": "The smallest character greater than 'a' is 'c'."
+        },
+        {
+          "input": "letters = [\"c\",\"f\",\"j\"], target = \"c\"",
+          "output": "\"f\"",
+          "explanation": "The smallest character strictly greater than 'c' is 'f'."
+        },
+        {
+          "input": "letters = [\"x\",\"x\",\"y\",\"y\"], target = \"z\"",
+          "output": "\"x\"",
+          "explanation": "No character greater than 'z', so wrap to 'x'."
+        }
+      ],
+      "hints": [
+        "Binary search for the first letter greater than target",
+        "If not found, return the first letter (wrap around)",
+        "Use left pointer at the end as the answer"
+      ],
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function nextGreatestLetter(letters, target) {\n  // Write your code here\n  // Example: {'letters': ['c', 'f', 'j'], 'target': 'a'}\n  // Expected output: c\n  \n}\n\n// Test cases\nconsole.log('Test 1:', nextGreatestLetter(['c', 'f', 'j'], a)); // c",
+        "python": "def next_greatest_letter(letters, target):\n    # Write your code here\n    # Example: {'letters': ['c', 'f', 'j'], 'target': 'a'}\n    # Expected output: c\n    pass",
+        "java": "public char nextGreatestLetter(char[] letters, char target) {\n    // Write your code here\n    // Example: {'letters': ['c', 'f', 'j'], 'target': 'a'}\n    // Expected output: c\n    return ' ';\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/find-smallest-letter-greater-than-target/",
+        "gfg": "https://www.geeksforgeeks.org/smallest-character-string-greater-given-character/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "letters": [
+              "c",
+              "f",
+              "j"
+            ],
+            "target": "a"
+          },
+          "output": "c"
+        },
+        {
+          "input": {
+            "letters": [
+              "c",
+              "f",
+              "j"
+            ],
+            "target": "c"
+          },
+          "output": "f"
+        },
+        {
+          "input": {
+            "letters": [
+              "x",
+              "x",
+              "y",
+              "y"
+            ],
+            "target": "z"
+          },
+          "output": "x"
+        },
+        {
+          "input": {
+            "letters": [
+              "c",
+              "f",
+              "j"
+            ],
+            "target": "j"
+          },
+          "output": "c"
+        }
+      ]
+    },
+    {
+      "id": "binary-search-17",
+      "title": "Time Based Key-Value Store",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Google",
+        "Amazon",
+        "Netflix",
+        "Lyft",
+        "Apple"
+      ],
+      "topInterview": true,
+      "introduction": "Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp. The timestamps are strictly increasing for the same key.",
+      "problemStatement": "Implement TimeMap with set(key, value, timestamp) and get(key, timestamp).\n\nConstraints:\n- 1 <= key.length, value.length <= 100\n- key and value consist of lowercase English letters and digits\n- 1 <= timestamp <= 10^7\n- All timestamps of set are strictly increasing\n- At most 2 * 10^5 calls to set and get",
+      "examples": [
+        {
+          "input": "[\"TimeMap\",\"set\",\"get\",\"get\",\"set\",\"get\",\"get\"]\n[[],[\"foo\",\"bar\",1],[\"foo\",1],[\"foo\",3],[\"foo\",\"bar2\",4],[\"foo\",4],[\"foo\",5]]",
+          "output": "[null,null,\"bar\",\"bar\",null,\"bar2\",\"bar2\"]",
+          "explanation": "get(\"foo\", 1) returns \"bar\". get(\"foo\", 3) returns \"bar\" (latest before 3). get(\"foo\", 4) returns \"bar2\". get(\"foo\", 5) returns \"bar2\"."
+        }
+      ],
+      "hints": [
+        "Store values with timestamps in a list for each key",
+        "Use binary search to find the largest timestamp <= given timestamp",
+        "HashMap with key -> list of (timestamp, value) pairs"
+      ],
+      "timeComplexity": "O(log n) for get, O(1) for set",
+      "spaceComplexity": "O(n)",
+      "tags": [
+        "hash-table",
+        "binary-search",
+        "design",
+        "string"
+      ],
+      "starterCode": {
+        "javascript": "class TimeMap {\n  constructor() {\n    // Write your code here\n  // Example: {'operations': ['TimeMap', 'set', 'get'], 'values': [[], ['foo', 'bar', 1], ['foo', 1]]}\n  // Expected output: [None, None, 'bar']\n  }\n  \n  set(key, value, timestamp) {\n    // Write your code here\n  // Example: {'operations': ['TimeMap', 'set', 'get'], 'values': [[], ['foo', 'bar', 1], ['foo', 1]]}\n  // Expected output: [None, None, 'bar']\n  }\n  \n  get(key, timestamp) {\n    // Write your code here\n  // Example: {'operations': ['TimeMap', 'set', 'get'], 'values': [[], ['foo', 'bar', 1], ['foo', 1]]}\n  // Expected output: [None, None, 'bar']\n  }\n}\n\n// Test cases\nconsole.log('Test 1:', constructor(['TimeMap', 'set', 'get'], [[], ['foo', 'bar', 1], ['foo', 1]])); // [None, None, 'bar']",
+        "python": "class TimeMap:\n    def __init__(self):\n        # Write your code here\n    # Example: {'operations': ['TimeMap', 'set', 'get'], 'values': [[], ['foo', 'bar', 1], ['foo', 1]]}\n    # Expected output: [None, None, 'bar']\n        pass\n    \n    def set(self, key: str, value: str, timestamp: int) -> None:\n        # Write your code here\n    # Example: {'operations': ['TimeMap', 'set', 'get'], 'values': [[], ['foo', 'bar', 1], ['foo', 1]]}\n    # Expected output: [None, None, 'bar']\n        pass\n    \n    def get(self, key: str, timestamp: int) -> str:\n        # Write your code here\n    # Example: {'operations': ['TimeMap', 'set', 'get'], 'values': [[], ['foo', 'bar', 1], ['foo', 1]]}\n    # Expected output: [None, None, 'bar']\n        pass",
+        "java": "class TimeMap {\n    public TimeMap() {\n        // Write your code here\n    // Example: {'operations': ['TimeMap', 'set', 'get'], 'values': [[], ['foo', 'bar', 1], ['foo', 1]]}\n    // Expected output: [None, None, 'bar']\n    }\n    \n    public void set(String key, String value, int timestamp) {\n        // Write your code here\n    // Example: {'operations': ['TimeMap', 'set', 'get'], 'values': [[], ['foo', 'bar', 1], ['foo', 1]]}\n    // Expected output: [None, None, 'bar']\n    }\n    \n    public String get(String key, int timestamp) {\n        // Write your code here\n    // Example: {'operations': ['TimeMap', 'set', 'get'], 'values': [[], ['foo', 'bar', 1], ['foo', 1]]}\n    // Expected output: [None, None, 'bar']\n        return \"\";\n    }\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/time-based-key-value-store/",
+        "gfg": "https://www.geeksforgeeks.org/design-a-data-structure-with-insert-and-get-operations/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "operations": [
+              "TimeMap",
+              "set",
+              "get"
+            ],
+            "values": [
+              [],
+              [
+                "foo",
+                "bar",
+                1
+              ],
+              [
+                "foo",
+                1
+              ]
+            ]
+          },
+          "output": [
+            null,
+            null,
+            "bar"
+          ]
+        },
+        {
+          "input": {
+            "operations": [
+              "TimeMap",
+              "set",
+              "set",
+              "get"
+            ],
+            "values": [
+              [],
+              [
+                "foo",
+                "bar",
+                1
+              ],
+              [
+                "foo",
+                "bar2",
+                4
+              ],
+              [
+                "foo",
+                5
+              ]
+            ]
+          },
+          "output": [
+            null,
+            null,
+            null,
+            "bar2"
+          ]
+        },
+        {
+          "input": {
+            "operations": [
+              "TimeMap",
+              "set",
+              "get"
+            ],
+            "values": [
+              [],
+              [
+                "love",
+                "high",
+                10
+              ],
+              [
+                "love",
+                20
+              ]
+            ]
+          },
+          "output": [
+            null,
+            null,
+            "high"
+          ]
+        },
+        {
+          "input": {
+            "operations": [
+              "TimeMap",
+              "set",
+              "get"
+            ],
+            "values": [
+              [],
+              [
+                "a",
+                "bar",
+                1
+              ],
+              [
+                "a",
+                0
+              ]
+            ]
+          },
+          "output": [
+            null,
+            null,
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "id": "binary-search-18",
+      "title": "Find K Closest Elements",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Google",
+        "LinkedIn"
+      ],
+      "topInterview": true,
+      "introduction": "Given a sorted integer array arr, two integers k and x, return the k closest integers to x in the array. The result should also be sorted in ascending order. An integer a is closer to x than an integer b if |a - x| < |b - x|, or |a - x| == |b - x| and a < b.",
+      "problemStatement": "Find k elements closest to x in a sorted array.\n\nConstraints:\n- 1 <= k <= arr.length\n- 1 <= arr.length <= 10^4\n- arr is sorted in ascending order\n- -10^4 <= arr[i], x <= 10^4",
+      "examples": [
+        {
+          "input": "arr = [1,2,3,4,5], k = 4, x = 3",
+          "output": "[1,2,3,4]",
+          "explanation": "4 closest elements to 3 are [1,2,3,4]."
+        },
+        {
+          "input": "arr = [1,2,3,4,5], k = 4, x = -1",
+          "output": "[1,2,3,4]",
+          "explanation": "4 closest elements to -1 are [1,2,3,4]."
+        }
+      ],
+      "hints": [
+        "Binary search for the left boundary of the k-element window",
+        "Compare arr[mid] and arr[mid+k] distances to x",
+        "Window starting position is the answer"
+      ],
+      "timeComplexity": "O(log(n-k) + k)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search",
+        "two-pointers",
+        "sorting",
+        "heap"
+      ],
+      "starterCode": {
+        "javascript": "function findClosestElements(arr, k, x) {\n  // Write your code here\n  // Example: {'arr': [1, 2, 3, 4, 5], 'k': 4, 'x': 3}\n  // Expected output: [1, 2, 3, 4]\n  \n}\n\n// Test cases\nconsole.log('Test 1:', findClosestElements([1, 2, 3, 4, 5], 4, 3)); // [1, 2, 3, 4]",
+        "python": "def find_closest_elements(arr, k, x):\n    # Write your code here\n    # Example: {'arr': [1, 2, 3, 4, 5], 'k': 4, 'x': 3}\n    # Expected output: [1, 2, 3, 4]\n    pass",
+        "java": "public List<Integer> findClosestElements(int[] arr, int k, int x) {\n    // Write your code here\n    // Example: {'arr': [1, 2, 3, 4, 5], 'k': 4, 'x': 3}\n    // Expected output: [1, 2, 3, 4]\n    return new ArrayList<>();\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/find-k-closest-elements/",
+        "gfg": "https://www.geeksforgeeks.org/find-k-closest-elements-given-value/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "arr": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "k": 4,
+            "x": 3
+          },
+          "output": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "input": {
+            "arr": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "k": 4,
+            "x": -1
+          },
+          "output": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "input": {
+            "arr": [
+              1,
+              1,
+              1,
+              10,
+              10,
+              10
+            ],
+            "k": 1,
+            "x": 9
+          },
+          "output": [
+            10
+          ]
+        },
+        {
+          "input": {
+            "arr": [
+              0,
+              0,
+              1,
+              2,
+              3,
+              3,
+              4,
+              7,
+              7,
+              8
+            ],
+            "k": 3,
+            "x": 5
+          },
+          "output": [
+            3,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": "binary-search-19",
+      "title": "Single Element in a Sorted Array",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Google",
+        "Microsoft",
+        "Facebook"
+      ],
+      "topInterview": true,
+      "introduction": "You are given a sorted array consisting of only integers where every element appears exactly twice, except for one element which appears exactly once. Return the single element that appears only once.",
+      "problemStatement": "Find the single non-duplicate element in O(log n) time.\n\nConstraints:\n- 1 <= nums.length <= 10^5\n- 0 <= nums[i] <= 10^5",
+      "examples": [
+        {
+          "input": "nums = [1,1,2,3,3,4,4,8,8]",
+          "output": "2",
+          "explanation": "2 is the single element that appears only once."
+        },
+        {
+          "input": "nums = [3,3,7,7,10,11,11]",
+          "output": "10",
+          "explanation": "10 is the single element that appears only once."
+        }
+      ],
+      "hints": [
+        "Before the single element, pairs are at (even, odd) indices",
+        "After the single element, pairs are at (odd, even) indices",
+        "Use this property to binary search"
+      ],
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function singleNonDuplicate(nums) {\n  // Write your code here\n  // Example: {'nums': [1, 1, 2, 3, 3, 4, 4, 8, 8]}\n  // Expected output: 2\n  \n}\n\n// Test cases\nconsole.log('Test 1:', singleNonDuplicate([1, 1, 2, 3, 3, 4, 4, 8, 8])); // 2",
+        "python": "def single_non_duplicate(nums):\n    # Write your code here\n    # Example: {'nums': [1, 1, 2, 3, 3, 4, 4, 8, 8]}\n    # Expected output: 2\n    pass",
+        "java": "public int singleNonDuplicate(int[] nums) {\n    // Write your code here\n    // Example: {'nums': [1, 1, 2, 3, 3, 4, 4, 8, 8]}\n    // Expected output: 2\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/single-element-in-a-sorted-array/",
+        "gfg": "https://www.geeksforgeeks.org/find-the-element-that-appears-once-in-a-sorted-array/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              1,
+              1,
+              2,
+              3,
+              3,
+              4,
+              4,
+              8,
+              8
+            ]
+          },
+          "output": 2
+        },
+        {
+          "input": {
+            "nums": [
+              3,
+              3,
+              7,
+              7,
+              10,
+              11,
+              11
+            ]
+          },
+          "output": 10
+        },
+        {
+          "input": {
+            "nums": [
+              1
+            ]
+          },
+          "output": 1
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              1,
+              2
+            ]
+          },
+          "output": 2
+        }
+      ]
+    },
+    {
+      "id": "binary-search-20",
+      "title": "Search in Rotated Sorted Array II",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Microsoft",
+        "LinkedIn"
+      ],
+      "topInterview": true,
+      "introduction": "There is an integer array nums sorted in non-decreasing order (not necessarily with distinct values). Before being passed to your function, nums is rotated at an unknown pivot index. Given the array nums after the rotation and an integer target, return true if target is in nums, or false if it is not in nums.",
+      "problemStatement": "Search in a rotated sorted array that may contain duplicates.\n\nConstraints:\n- 1 <= nums.length <= 5000\n- -10^4 <= nums[i] <= 10^4\n- nums is guaranteed to be rotated at some pivot\n- -10^4 <= target <= 10^4",
+      "examples": [
+        {
+          "input": "nums = [2,5,6,0,0,1,2], target = 0",
+          "output": "true",
+          "explanation": "0 exists in the array."
+        },
+        {
+          "input": "nums = [2,5,6,0,0,1,2], target = 3",
+          "output": "false",
+          "explanation": "3 does not exist in the array."
+        }
+      ],
+      "hints": [
+        "Similar to Search in Rotated Sorted Array I",
+        "When nums[left] == nums[mid] == nums[right], skip duplicates",
+        "Worst case is O(n) due to duplicates"
+      ],
+      "timeComplexity": "O(log n) average, O(n) worst",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function search(nums, target) {\n  // Write your code here\n  // Example: {'nums': [2, 5, 6, 0, 0, 1, 2], 'target': 0}\n  // Expected output: True\n  \n}\n\n// Test cases\nconsole.log('Test 1:', search([2, 5, 6, 0, 0, 1, 2], 0)); // True",
+        "python": "def search(nums, target):\n    # Write your code here\n    # Example: {'nums': [2, 5, 6, 0, 0, 1, 2], 'target': 0}\n    # Expected output: True\n    pass",
+        "java": "public boolean search(int[] nums, int target) {\n    // Write your code here\n    // Example: {'nums': [2, 5, 6, 0, 0, 1, 2], 'target': 0}\n    // Expected output: True\n    return false;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/search-in-rotated-sorted-array-ii/",
+        "gfg": "https://www.geeksforgeeks.org/search-element-sorted-and-rotated-array-duplicates/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              2,
+              5,
+              6,
+              0,
+              0,
+              1,
+              2
+            ],
+            "target": 0
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "nums": [
+              2,
+              5,
+              6,
+              0,
+              0,
+              1,
+              2
+            ],
+            "target": 3
+          },
+          "output": false
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              0,
+              1,
+              1,
+              1
+            ],
+            "target": 0
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              13,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "target": 13
+          },
+          "output": true
+        }
+      ]
+    },
+    {
+      "id": "binary-search-21",
+      "title": "Find Minimum in Rotated Sorted Array II",
+      "category": "binary-search",
+      "difficulty": "hard",
+      "companies": [
+        "Amazon",
+        "Facebook",
+        "Microsoft"
+      ],
+      "topInterview": false,
+      "introduction": "Suppose an array of length n sorted in ascending order is rotated between 1 and n times. Given the sorted rotated array nums that may contain duplicates, return the minimum element of this array.",
+      "problemStatement": "Find minimum in a rotated sorted array with duplicates.\n\nConstraints:\n- n == nums.length\n- 1 <= n <= 5000\n- -5000 <= nums[i] <= 5000\n- nums is sorted and rotated between 1 and n times",
+      "examples": [
+        {
+          "input": "nums = [1,3,5]",
+          "output": "1",
+          "explanation": "The original array was [1,3,5] and it was rotated 3 times (no change)."
+        },
+        {
+          "input": "nums = [2,2,2,0,1]",
+          "output": "0",
+          "explanation": "The minimum is 0."
+        }
+      ],
+      "hints": [
+        "Similar to Find Minimum in Rotated Sorted Array I",
+        "When nums[mid] == nums[right], decrement right",
+        "This handles the ambiguity caused by duplicates"
+      ],
+      "timeComplexity": "O(log n) average, O(n) worst",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function findMin(nums) {\n  // Write your code here\n  // Example: {'nums': [1, 3, 5]}\n  // Expected output: 1\n  \n}\n\n// Test cases\nconsole.log('Test 1:', findMin([1, 3, 5])); // 1",
+        "python": "def find_min(nums):\n    # Write your code here\n    # Example: {'nums': [1, 3, 5]}\n    # Expected output: 1\n    pass",
+        "java": "public int findMin(int[] nums) {\n    // Write your code here\n    // Example: {'nums': [1, 3, 5]}\n    // Expected output: 1\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/",
+        "gfg": "https://www.geeksforgeeks.org/find-minimum-element-in-a-sorted-and-rotated-array-with-duplicates/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              1,
+              3,
+              5
+            ]
+          },
+          "output": 1
+        },
+        {
+          "input": {
+            "nums": [
+              2,
+              2,
+              2,
+              0,
+              1
+            ]
+          },
+          "output": 0
+        },
+        {
+          "input": {
+            "nums": [
+              10,
+              1,
+              10,
+              10,
+              10
+            ]
+          },
+          "output": 1
+        },
+        {
+          "input": {
+            "nums": [
+              2,
+              2,
+              2,
+              2,
+              2
+            ]
+          },
+          "output": 2
+        }
+      ]
+    },
+    {
+      "id": "binary-search-22",
+      "title": "Pow(x, n)",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Facebook",
+        "Amazon",
+        "Google",
+        "Microsoft",
+        "LinkedIn",
+        "Bloomberg"
+      ],
+      "topInterview": true,
+      "introduction": "Implement pow(x, n), which calculates x raised to the power n.",
+      "problemStatement": "Calculate x^n efficiently.\n\nConstraints:\n- -100.0 < x < 100.0\n- -2^31 <= n <= 2^31 - 1\n- n is an integer\n- Either x is not zero or n > 0\n- -10^4 <= x^n <= 10^4",
+      "examples": [
+        {
+          "input": "x = 2.00000, n = 10",
+          "output": "1024.00000",
+          "explanation": "2^10 = 1024."
+        },
+        {
+          "input": "x = 2.10000, n = 3",
+          "output": "9.26100",
+          "explanation": "2.1^3 = 9.261."
+        },
+        {
+          "input": "x = 2.00000, n = -2",
+          "output": "0.25000",
+          "explanation": "2^-2 = 1/(2^2) = 1/4 = 0.25."
+        }
+      ],
+      "hints": [
+        "Use binary exponentiation (fast power)",
+        "x^n = (x^(n/2))^2 if n is even",
+        "Handle negative exponents by inverting x"
+      ],
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "math",
+        "binary-search",
+        "recursion"
+      ],
+      "starterCode": {
+        "javascript": "function myPow(x, n) {\n  // Write your code here\n  // Example: {'x': 2.0, 'n': 10}\n  // Expected output: 1024.0\n  \n}\n\n// Test cases\nconsole.log('Test 1:', myPow(2.0, 10)); // 1024.0",
+        "python": "def my_pow(x, n):\n    # Write your code here\n    # Example: {'x': 2.0, 'n': 10}\n    # Expected output: 1024.0\n    pass",
+        "java": "public double myPow(double x, int n) {\n    // Write your code here\n    // Example: {'x': 2.0, 'n': 10}\n    // Expected output: 1024.0\n    return 0.0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/powx-n/",
+        "gfg": "https://www.geeksforgeeks.org/write-a-c-program-to-calculate-powxn/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "x": 2,
+            "n": 10
+          },
+          "output": 1024
+        },
+        {
+          "input": {
+            "x": 2.1,
+            "n": 3
+          },
+          "output": 9.261
+        },
+        {
+          "input": {
+            "x": 2,
+            "n": -2
+          },
+          "output": 0.25
+        },
+        {
+          "input": {
+            "x": 1,
+            "n": 2147483647
+          },
+          "output": 1
+        }
+      ]
+    },
+    {
+      "id": "binary-search-23",
+      "title": "Find the Duplicate Number",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Google",
+        "Facebook",
+        "Microsoft",
+        "Bloomberg"
+      ],
+      "topInterview": true,
+      "introduction": "Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive. There is only one repeated number in nums, return this repeated number. You must solve the problem without modifying the array nums and uses only constant extra space.",
+      "problemStatement": "Find the duplicate number in O(1) space without modifying the array.\n\nConstraints:\n- 1 <= n <= 10^5\n- nums.length == n + 1\n- 1 <= nums[i] <= n\n- All integers in nums appear only once except for precisely one integer which appears two or more times",
+      "examples": [
+        {
+          "input": "nums = [1,3,4,2,2]",
+          "output": "2",
+          "explanation": "2 is the duplicate number."
+        },
+        {
+          "input": "nums = [3,1,3,4,2]",
+          "output": "3",
+          "explanation": "3 is the duplicate number."
+        },
+        {
+          "input": "nums = [3,3,3,3,3]",
+          "output": "3",
+          "explanation": "3 is the duplicate number."
+        }
+      ],
+      "hints": [
+        "Binary search on the value range [1, n]",
+        "Count numbers <= mid; if count > mid, duplicate is in [1, mid]",
+        "Alternative: Floyd's cycle detection (tortoise and hare)"
+      ],
+      "timeComplexity": "O(n log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search",
+        "two-pointers",
+        "bit-manipulation"
+      ],
+      "starterCode": {
+        "javascript": "function findDuplicate(nums) {\n  // Write your code here\n  // Example: {'nums': [1, 3, 4, 2, 2]}\n  // Expected output: 2\n  \n}\n\n// Test cases\nconsole.log('Test 1:', findDuplicate([1, 3, 4, 2, 2])); // 2",
+        "python": "def find_duplicate(nums):\n    # Write your code here\n    # Example: {'nums': [1, 3, 4, 2, 2]}\n    # Expected output: 2\n    pass",
+        "java": "public int findDuplicate(int[] nums) {\n    // Write your code here\n    // Example: {'nums': [1, 3, 4, 2, 2]}\n    // Expected output: 2\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/find-the-duplicate-number/",
+        "gfg": "https://www.geeksforgeeks.org/find-duplicates-constant-array-elements-0-n-1-o1-space/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              1,
+              3,
+              4,
+              2,
+              2
+            ]
+          },
+          "output": 2
+        },
+        {
+          "input": {
+            "nums": [
+              3,
+              1,
+              3,
+              4,
+              2
+            ]
+          },
+          "output": 3
+        },
+        {
+          "input": {
+            "nums": [
+              3,
+              3,
+              3,
+              3,
+              3
+            ]
+          },
+          "output": 3
+        },
+        {
+          "input": {
+            "nums": [
+              2,
+              5,
+              9,
+              6,
+              9,
+              3,
+              8,
+              9,
+              7,
+              1,
+              4
+            ]
+          },
+          "output": 9
+        }
+      ]
+    },
+    {
+      "id": "binary-search-24",
+      "title": "H-Index II",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Facebook",
+        "Google"
+      ],
+      "topInterview": false,
+      "introduction": "Given an array of integers citations where citations[i] is the number of citations a researcher received for their ith paper and citations is sorted in ascending order, return the researcher's h-index.",
+      "problemStatement": "Find h-index in a sorted citations array in O(log n) time.\n\nConstraints:\n- n == citations.length\n- 1 <= n <= 10^5\n- 0 <= citations[i] <= 1000\n- citations is sorted in ascending order",
+      "examples": [
+        {
+          "input": "citations = [0,1,3,5,6]",
+          "output": "3",
+          "explanation": "The researcher has 3 papers with at least 3 citations each."
+        },
+        {
+          "input": "citations = [1,2,100]",
+          "output": "2",
+          "explanation": "The researcher has 2 papers with at least 2 citations each."
+        }
+      ],
+      "hints": [
+        "Binary search for the h-index",
+        "At index i, there are (n - i) papers with >= citations[i] citations",
+        "Find smallest i where citations[i] >= n - i"
+      ],
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function hIndex(citations) {\n  // Write your code here\n  // Example: {'citations': [0, 1, 3, 5, 6]}\n  // Expected output: 3\n  \n}\n\n// Test cases\nconsole.log('Test 1:', hIndex([0, 1, 3, 5, 6])); // 3",
+        "python": "def h_index(citations):\n    # Write your code here\n    # Example: {'citations': [0, 1, 3, 5, 6]}\n    # Expected output: 3\n    pass",
+        "java": "public int hIndex(int[] citations) {\n    // Write your code here\n    // Example: {'citations': [0, 1, 3, 5, 6]}\n    // Expected output: 3\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/h-index-ii/",
+        "gfg": "https://www.geeksforgeeks.org/h-index/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "citations": [
+              0,
+              1,
+              3,
+              5,
+              6
+            ]
+          },
+          "output": 3
+        },
+        {
+          "input": {
+            "citations": [
+              1,
+              2,
+              100
+            ]
+          },
+          "output": 2
+        },
+        {
+          "input": {
+            "citations": [
+              0
+            ]
+          },
+          "output": 0
+        },
+        {
+          "input": {
+            "citations": [
+              100
+            ]
+          },
+          "output": 1
+        }
+      ]
+    },
+    {
+      "id": "binary-search-25",
+      "title": "Magnetic Force Between Two Balls",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Google",
+        "Amazon"
+      ],
+      "topInterview": false,
+      "introduction": "In the universe Earth C-137, Rick discovered a special form of magnetic force between two balls if they are put in his new invented basket. Rick has n empty baskets, the ith basket is at position[i]. Morty has m balls and needs to distribute the balls into the baskets such that the minimum magnetic force between any two balls is maximum.",
+      "problemStatement": "Maximize the minimum distance between any two balls placed in baskets.\n\nConstraints:\n- n == position.length\n- 2 <= n <= 10^5\n- 1 <= position[i] <= 10^9\n- All integers in position are distinct\n- 2 <= m <= position.length",
+      "examples": [
+        {
+          "input": "position = [1,2,3,4,7], m = 3",
+          "output": "3",
+          "explanation": "Place balls at positions 1, 4, 7. Minimum distance is 3."
+        },
+        {
+          "input": "position = [5,4,3,2,1,1000000000], m = 2",
+          "output": "999999999",
+          "explanation": "Place balls at positions 1 and 1000000000."
+        }
+      ],
+      "hints": [
+        "Binary search on the answer (minimum distance)",
+        "For each distance, greedily check if m balls can be placed",
+        "Range is from 1 to (max - min) / (m - 1)"
+      ],
+      "timeComplexity": "O(n log n + n log(max - min))",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search",
+        "sorting"
+      ],
+      "starterCode": {
+        "javascript": "function maxDistance(position, m) {\n  // Write your code here\n  // Example: {'position': [1, 2, 3, 4, 7], 'm': 3}\n  // Expected output: 3\n  \n}\n\n// Test cases\nconsole.log('Test 1:', maxDistance([1, 2, 3, 4, 7], 3)); // 3",
+        "python": "def max_distance(position, m):\n    # Write your code here\n    # Example: {'position': [1, 2, 3, 4, 7], 'm': 3}\n    # Expected output: 3\n    pass",
+        "java": "public int maxDistance(int[] position, int m) {\n    // Write your code here\n    // Example: {'position': [1, 2, 3, 4, 7], 'm': 3}\n    // Expected output: 3\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/magnetic-force-between-two-balls/",
+        "gfg": "https://www.geeksforgeeks.org/maximize-minimum-distance-between-two-balls-in-baskets/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "position": [
+              1,
+              2,
+              3,
+              4,
+              7
+            ],
+            "m": 3
+          },
+          "output": 3
+        },
+        {
+          "input": {
+            "position": [
+              5,
+              4,
+              3,
+              2,
+              1,
+              1000000000
+            ],
+            "m": 2
+          },
+          "output": 999999999
+        },
+        {
+          "input": {
+            "position": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "m": 4
+          },
+          "output": 3
+        },
+        {
+          "input": {
+            "position": [
+              79,
+              74,
+              57,
+              22
+            ],
+            "m": 4
+          },
+          "output": 5
+        }
+      ]
+    },
+    {
+      "id": "binary-search-26",
+      "title": "Minimize Max Distance to Gas Station",
+      "category": "binary-search",
+      "difficulty": "hard",
+      "companies": [
+        "Google"
+      ],
+      "topInterview": false,
+      "introduction": "You are given an integer array stations that represents the positions of the gas stations on the x-axis. You are also given an integer k. You should add k new gas stations. Find the minimum value of the maximum distance d between adjacent gas stations after adding the k new stations.",
+      "problemStatement": "Minimize the maximum gap between gas stations after adding k stations.\n\nConstraints:\n- 10 <= stations.length <= 2000\n- 0 <= stations[i] <= 10^8\n- stations is sorted in strictly increasing order\n- 1 <= k <= 10^6",
+      "examples": [
+        {
+          "input": "stations = [1,2,3,4,5,6,7,8,9,10], k = 9",
+          "output": "0.50000",
+          "explanation": "After adding 9 stations optimally, max gap is 0.5."
+        },
+        {
+          "input": "stations = [23,24,36,39,46,56,57,65,84,98], k = 1",
+          "output": "14.00000",
+          "explanation": "Adding 1 station between 84 and 98 gives max gap 14."
+        }
+      ],
+      "hints": [
+        "Binary search on the answer (maximum distance)",
+        "For each distance d, calculate stations needed to achieve it",
+        "Use floating-point binary search with precision"
+      ],
+      "timeComplexity": "O(n log(W/eps)) where W is max gap",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function minmaxGasDist(stations, k) {\n  // Write your code here\n  // Example: {'stations': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'k': 9}\n  // Expected output: 0.5\n  \n}\n\n// Test cases\nconsole.log('Test 1:', minmaxGasDist([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 9)); // 0.5",
+        "python": "def minmax_gas_dist(stations, k):\n    # Write your code here\n    # Example: {'stations': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'k': 9}\n    # Expected output: 0.5\n    pass",
+        "java": "public double minmaxGasDist(int[] stations, int k) {\n    // Write your code here\n    // Example: {'stations': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'k': 9}\n    // Expected output: 0.5\n    return 0.0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/minimize-max-distance-to-gas-station/",
+        "gfg": "https://www.geeksforgeeks.org/minimize-maximum-difference-adjacent-elements-array/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "stations": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "k": 9
+          },
+          "output": 0.5
+        },
+        {
+          "input": {
+            "stations": [
+              23,
+              24,
+              36,
+              39,
+              46,
+              56,
+              57,
+              65,
+              84,
+              98
+            ],
+            "k": 1
+          },
+          "output": 14
+        },
+        {
+          "input": {
+            "stations": [
+              10,
+              19,
+              25,
+              27,
+              56,
+              63,
+              70,
+              87,
+              96,
+              97
+            ],
+            "k": 3
+          },
+          "output": 6
+        },
+        {
+          "input": {
+            "stations": [
+              1,
+              13,
+              17,
+              23,
+              29,
+              33,
+              43,
+              46,
+              53,
+              67,
+              73,
+              77,
+              83,
+              87,
+              97,
+              99,
+              100
+            ],
+            "k": 5
+          },
+          "output": 4
+        }
+      ]
+    },
+    {
+      "id": "binary-search-27",
+      "title": "Random Pick with Weight",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Facebook",
+        "Google",
+        "Uber",
+        "Yelp",
+        "Twitter"
+      ],
+      "topInterview": true,
+      "introduction": "You are given a 0-indexed array of positive integers w where w[i] describes the weight of the ith index. Implement the function pickIndex() which randomly picks an index in the range [0, w.length - 1] and returns it. The probability of picking an index i is w[i] / sum(w).",
+      "problemStatement": "Implement weighted random selection.\n\nConstraints:\n- 1 <= w.length <= 10^4\n- 1 <= w[i] <= 10^5\n- pickIndex will be called at most 10^4 times",
+      "examples": [
+        {
+          "input": "[\"Solution\",\"pickIndex\"]\n[[[1]],[]]",
+          "output": "[null,0]",
+          "explanation": "Only index 0 exists, so pickIndex returns 0."
+        },
+        {
+          "input": "[\"Solution\",\"pickIndex\",\"pickIndex\",\"pickIndex\",\"pickIndex\",\"pickIndex\"]\n[[[1,3]],[],[],[],[],[]]",
+          "output": "[null,1,1,1,1,0]",
+          "explanation": "Index 1 has 75% probability, index 0 has 25%."
+        }
+      ],
+      "hints": [
+        "Build a prefix sum array of weights",
+        "Generate random number in range [1, total_weight]",
+        "Binary search for the index in prefix sum array"
+      ],
+      "timeComplexity": "O(n) init, O(log n) pick",
+      "spaceComplexity": "O(n)",
+      "tags": [
+        "array",
+        "binary-search",
+        "prefix-sum",
+        "randomized"
+      ],
+      "starterCode": {
+        "javascript": "class Solution {\n  constructor(w) {\n    // Write your code here\n  // Example: {'operations': ['Solution', 'pickIndex'], 'values': [[[1]], []]}\n  // Expected output: [None, 0]\n  }\n  \n  pickIndex() {\n    // Write your code here\n  // Example: {'operations': ['Solution', 'pickIndex'], 'values': [[[1]], []]}\n  // Expected output: [None, 0]\n  }\n}\n\n// Test cases\nconsole.log('Test 1:', constructor(['Solution', 'pickIndex'], [[[1]], []])); // [None, 0]",
+        "python": "class Solution:\n    def __init__(self, w: List[int]):\n        # Write your code here\n    # Example: {'operations': ['Solution', 'pickIndex'], 'values': [[[1]], []]}\n    # Expected output: [None, 0]\n        pass\n    \n    def pickIndex(self) -> int:\n        # Write your code here\n    # Example: {'operations': ['Solution', 'pickIndex'], 'values': [[[1]], []]}\n    # Expected output: [None, 0]\n        pass",
+        "java": "class Solution {\n    public Solution(int[] w) {\n        // Write your code here\n    // Example: {'operations': ['Solution', 'pickIndex'], 'values': [[[1]], []]}\n    // Expected output: [None, 0]\n    }\n    \n    public int pickIndex() {\n        // Write your code here\n    // Example: {'operations': ['Solution', 'pickIndex'], 'values': [[[1]], []]}\n    // Expected output: [None, 0]\n        return 0;\n    }\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/random-pick-with-weight/",
+        "gfg": "https://www.geeksforgeeks.org/random-number-generator-in-arbitrary-probability-distribution-fashion/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "operations": [
+              "Solution",
+              "pickIndex"
+            ],
+            "values": [
+              [
+                [
+                  1
+                ]
+              ],
+              []
+            ]
+          },
+          "output": [
+            null,
+            0
+          ]
+        },
+        {
+          "input": {
+            "operations": [
+              "Solution",
+              "pickIndex",
+              "pickIndex"
+            ],
+            "values": [
+              [
+                [
+                  1,
+                  3
+                ]
+              ],
+              [],
+              []
+            ]
+          },
+          "output": [
+            null,
+            1,
+            1
+          ]
+        },
+        {
+          "input": {
+            "operations": [
+              "Solution",
+              "pickIndex"
+            ],
+            "values": [
+              [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              []
+            ]
+          },
+          "output": [
+            null,
+            2
+          ]
+        },
+        {
+          "input": {
+            "operations": [
+              "Solution",
+              "pickIndex"
+            ],
+            "values": [
+              [
+                [
+                  10,
+                  20,
+                  30
+                ]
+              ],
+              []
+            ]
+          },
+          "output": [
+            null,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "binary-search-28",
+      "title": "Count of Smaller Numbers After Self",
+      "category": "binary-search",
+      "difficulty": "hard",
+      "companies": [
+        "Google",
+        "Amazon",
+        "Microsoft",
+        "Apple"
+      ],
+      "topInterview": true,
+      "introduction": "Given an integer array nums, return an integer array counts where counts[i] is the number of smaller elements to the right of nums[i].",
+      "problemStatement": "For each element, count how many elements to its right are smaller.\n\nConstraints:\n- 1 <= nums.length <= 10^5\n- -10^4 <= nums[i] <= 10^4",
+      "examples": [
+        {
+          "input": "nums = [5,2,6,1]",
+          "output": "[2,1,1,0]",
+          "explanation": "To the right of 5 there are 2 smaller (2 and 1). To the right of 2 there is 1 smaller (1). To the right of 6 there is 1 smaller (1). To the right of 1 there are 0 smaller."
+        },
+        {
+          "input": "nums = [-1]",
+          "output": "[0]",
+          "explanation": "No elements to the right."
+        },
+        {
+          "input": "nums = [-1,-1]",
+          "output": "[0,0]",
+          "explanation": "No smaller elements to the right of either element."
+        }
+      ],
+      "hints": [
+        "Process from right to left, maintaining a sorted list",
+        "Use binary search to find insertion position",
+        "Insertion position = count of smaller elements"
+      ],
+      "timeComplexity": "O(n log n)",
+      "spaceComplexity": "O(n)",
+      "tags": [
+        "array",
+        "binary-search",
+        "divide-and-conquer",
+        "segment-tree",
+        "merge-sort"
+      ],
+      "starterCode": {
+        "javascript": "function countSmaller(nums) {\n  // Write your code here\n  // Example: {'nums': [5, 2, 6, 1]}\n  // Expected output: [2, 1, 1, 0]\n  \n}\n\n// Test cases\nconsole.log('Test 1:', countSmaller([5, 2, 6, 1])); // [2, 1, 1, 0]",
+        "python": "def count_smaller(nums):\n    # Write your code here\n    # Example: {'nums': [5, 2, 6, 1]}\n    # Expected output: [2, 1, 1, 0]\n    pass",
+        "java": "public List<Integer> countSmaller(int[] nums) {\n    // Write your code here\n    // Example: {'nums': [5, 2, 6, 1]}\n    // Expected output: [2, 1, 1, 0]\n    return new ArrayList<>();\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/",
+        "gfg": "https://www.geeksforgeeks.org/count-of-smaller-elements-on-right-side-of-each-element-in-an-array/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "nums": [
+              5,
+              2,
+              6,
+              1
+            ]
+          },
+          "output": [
+            2,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              -1
+            ]
+          },
+          "output": [
+            0
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              -1,
+              -1
+            ]
+          },
+          "output": [
+            0,
+            0
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              2,
+              0,
+              1
+            ]
+          },
+          "output": [
+            2,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "binary-search-29",
+      "title": "Kth Smallest Element in a Sorted Matrix",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Amazon",
+        "Facebook",
+        "Google",
+        "Apple"
+      ],
+      "topInterview": true,
+      "introduction": "Given an n x n matrix where each of the rows and columns is sorted in ascending order, return the kth smallest element in the matrix. Note that it is the kth smallest element in the sorted order, not the kth distinct element.",
+      "problemStatement": "Find the kth smallest element in a row and column sorted matrix.\n\nConstraints:\n- n == matrix.length == matrix[i].length\n- 1 <= n <= 300\n- -10^9 <= matrix[i][j] <= 10^9\n- All rows and columns are sorted in non-decreasing order\n- 1 <= k <= n^2",
+      "examples": [
+        {
+          "input": "matrix = [[1,5,9],[10,11,13],[12,13,15]], k = 8",
+          "output": "13",
+          "explanation": "The elements in order are [1,5,9,10,11,12,13,13,15], and the 8th is 13."
+        },
+        {
+          "input": "matrix = [[-5]], k = 1",
+          "output": "-5",
+          "explanation": "Only one element."
+        }
+      ],
+      "hints": [
+        "Binary search on the value range [min, max]",
+        "For each value, count elements <= it in O(n) time",
+        "Find smallest value with count >= k"
+      ],
+      "timeComplexity": "O(n * log(max - min))",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search",
+        "matrix",
+        "sorting",
+        "heap"
+      ],
+      "starterCode": {
+        "javascript": "function kthSmallest(matrix, k) {\n  // Write your code here\n  // Example: {'matrix': [[1, 5, 9], [10, 11, 13], [12, 13, 15]], 'k': 8}\n  // Expected output: 13\n  \n}\n\n// Test cases\nconsole.log('Test 1:', kthSmallest([[1, 5, 9], [10, 11, 13], [12, 13, 15]], 8)); // 13",
+        "python": "def kth_smallest(matrix, k):\n    # Write your code here\n    # Example: {'matrix': [[1, 5, 9], [10, 11, 13], [12, 13, 15]], 'k': 8}\n    # Expected output: 13\n    pass",
+        "java": "public int kthSmallest(int[][] matrix, int k) {\n    // Write your code here\n    // Example: {'matrix': [[1, 5, 9], [10, 11, 13], [12, 13, 15]], 'k': 8}\n    // Expected output: 13\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/",
+        "gfg": "https://www.geeksforgeeks.org/kth-smallest-element-in-a-row-wise-and-column-wise-sorted-2d-array/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "matrix": [
+              [
+                1,
+                5,
+                9
+              ],
+              [
+                10,
+                11,
+                13
+              ],
+              [
+                12,
+                13,
+                15
+              ]
+            ],
+            "k": 8
+          },
+          "output": 13
+        },
+        {
+          "input": {
+            "matrix": [
+              [
+                -5
+              ]
+            ],
+            "k": 1
+          },
+          "output": -5
+        },
+        {
+          "input": {
+            "matrix": [
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "k": 2
+          },
+          "output": 1
+        },
+        {
+          "input": {
+            "matrix": [
+              [
+                1,
+                3,
+                5
+              ],
+              [
+                6,
+                7,
+                12
+              ],
+              [
+                11,
+                14,
+                14
+              ]
+            ],
+            "k": 3
+          },
+          "output": 5
+        }
+      ]
+    },
+    {
+      "id": "binary-search-30",
+      "title": "Aggressive Cows / Allocate Books",
+      "category": "binary-search",
+      "difficulty": "hard",
+      "companies": [
+        "Google",
+        "Amazon",
+        "Microsoft"
+      ],
+      "topInterview": true,
+      "introduction": "Given an array of integers A of size N and an integer B, find the maximum value of the minimum distance between B cows placed in the stalls. Alternatively: Given N books with pages[i] and M students, allocate books such that the maximum pages assigned to a student is minimized.",
+      "problemStatement": "Classic binary search on answer problem for resource allocation.\n\nConstraints:\n- 2 <= N <= 10^5\n- 2 <= B <= N\n- 0 <= A[i] <= 10^9",
+      "examples": [
+        {
+          "input": "stalls = [1, 2, 4, 8, 9], cows = 3",
+          "output": "3",
+          "explanation": "Place cows at positions 1, 4, 8. Minimum distance is 3."
+        },
+        {
+          "input": "books = [12, 34, 67, 90], students = 2",
+          "output": "113",
+          "explanation": "Allocate [12, 34, 67] and [90]. Max is 113."
+        }
+      ],
+      "hints": [
+        "Binary search on the answer",
+        "For cows: search for maximum minimum distance",
+        "For books: search for minimum maximum pages"
+      ],
+      "timeComplexity": "O(N * log(max - min))",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search",
+        "greedy"
+      ],
+      "starterCode": {
+        "javascript": "function aggressiveCows(stalls, cows) {\n  // Write your code here\n  // Example: {'stalls': [1, 2, 4, 8, 9], 'cows': 3}\n  // Expected output: 3\n  \n}\n\n// Test cases\nconsole.log('Test 1:', aggressiveCows([1, 2, 4, 8, 9], 3)); // 3",
+        "python": "def aggressive_cows(stalls, cows):\n    # Write your code here\n    # Example: {'stalls': [1, 2, 4, 8, 9], 'cows': 3}\n    # Expected output: 3\n    pass",
+        "java": "public int aggressiveCows(int[] stalls, int cows) {\n    // Write your code here\n    // Example: {'stalls': [1, 2, 4, 8, 9], 'cows': 3}\n    // Expected output: 3\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://www.interviewbit.com/problems/aggressive-cows/",
+        "gfg": "https://www.geeksforgeeks.org/aggressive-cows-problem-binary-search/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "stalls": [
+              1,
+              2,
+              4,
+              8,
+              9
+            ],
+            "cows": 3
+          },
+          "output": 3
+        },
+        {
+          "input": {
+            "stalls": [
+              1,
+              2,
+              8,
+              4,
+              9
+            ],
+            "cows": 3
+          },
+          "output": 3
+        },
+        {
+          "input": {
+            "stalls": [
+              10,
+              1,
+              2,
+              7,
+              5
+            ],
+            "cows": 3
+          },
+          "output": 4
+        },
+        {
+          "input": {
+            "stalls": [
+              1,
+              2,
+              3
+            ],
+            "cows": 2
+          },
+          "output": 2
+        }
+      ]
+    },
+    {
+      "id": "binary-search-31",
+      "title": "Peak Index in a Mountain Array",
+      "category": "binary-search",
+      "difficulty": "medium",
+      "companies": [
+        "Google",
+        "Amazon",
+        "Bloomberg"
+      ],
+      "topInterview": false,
+      "introduction": "An array arr is a mountain if arr.length >= 3 and there exists some i with 0 < i < arr.length - 1 such that arr[0] < arr[1] < ... < arr[i - 1] < arr[i] and arr[i] > arr[i + 1] > ... > arr[arr.length - 1]. Given a mountain array arr, return the index i such that arr[0] < arr[1] < ... < arr[i - 1] < arr[i] > arr[i + 1] > ... > arr[arr.length - 1].",
+      "problemStatement": "Find the peak index in a mountain array in O(log n) time.\n\nConstraints:\n- 3 <= arr.length <= 10^5\n- 0 <= arr[i] <= 10^6\n- arr is guaranteed to be a mountain array",
+      "examples": [
+        {
+          "input": "arr = [0,1,0]",
+          "output": "1",
+          "explanation": "Peak is at index 1."
+        },
+        {
+          "input": "arr = [0,2,1,0]",
+          "output": "1",
+          "explanation": "Peak is at index 1."
+        },
+        {
+          "input": "arr = [0,10,5,2]",
+          "output": "1",
+          "explanation": "Peak is at index 1."
+        }
+      ],
+      "hints": [
+        "Binary search for the peak",
+        "If arr[mid] < arr[mid + 1], peak is on the right",
+        "Otherwise, peak is on the left (including mid)"
+      ],
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "array",
+        "binary-search"
+      ],
+      "starterCode": {
+        "javascript": "function peakIndexInMountainArray(arr) {\n  // Write your code here\n  // Example: {'arr': [0, 1, 0]}\n  // Expected output: 1\n  \n}\n\n// Test cases\nconsole.log('Test 1:', peakIndexInMountainArray([0, 1, 0])); // 1",
+        "python": "def peak_index_in_mountain_array(arr):\n    # Write your code here\n    # Example: {'arr': [0, 1, 0]}\n    # Expected output: 1\n    pass",
+        "java": "public int peakIndexInMountainArray(int[] arr) {\n    // Write your code here\n    // Example: {'arr': [0, 1, 0]}\n    // Expected output: 1\n    return 0;\n}"
+      },
+      "links": {
+        "leetcode": "https://leetcode.com/problems/peak-index-in-a-mountain-array/",
+        "gfg": "https://www.geeksforgeeks.org/find-peak-element/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "arr": [
+              0,
+              1,
+              0
+            ]
+          },
+          "output": 1
+        },
+        {
+          "input": {
+            "arr": [
+              0,
+              2,
+              1,
+              0
+            ]
+          },
+          "output": 1
+        },
+        {
+          "input": {
+            "arr": [
+              0,
+              10,
+              5,
+              2
+            ]
+          },
+          "output": 1
+        },
+        {
+          "input": {
+            "arr": [
+              3,
+              5,
+              3,
+              2,
+              0
+            ]
+          },
+          "output": 1
+        }
+      ]
+    }
+  ]
+}

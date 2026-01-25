@@ -1,0 +1,81 @@
+{
+  "category": {
+    "id": "dynamic-programming",
+    "name": "Dynamic Programming",
+    "description": "Problems requiring optimal substructure and memoization"
+  },
+  "questions": [
+    {
+      "id": "dynamic-programming-1",
+      "title": "Climbing Stairs",
+      "category": "dynamic-programming",
+      "difficulty": "easy",
+      "topInterview": true,
+      "companies": [
+        "Amazon",
+        "Google",
+        "Adobe"
+      ],
+      "introduction": "You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?",
+      "problemStatement": "Calculate the number of distinct ways to climb to the top of a staircase with n steps.\n\nConstraints:\n- 1 <= n <= 45",
+      "examples": [
+        {
+          "input": "n = 2",
+          "output": "2",
+          "explanation": "There are two ways to climb to the top: 1+1 or 2"
+        },
+        {
+          "input": "n = 3",
+          "output": "3",
+          "explanation": "There are three ways: 1+1+1, 1+2, or 2+1"
+        }
+      ],
+      "hints": [
+        "This is a Fibonacci sequence problem",
+        "ways(n) = ways(n-1) + ways(n-2)",
+        "Can be solved iteratively with O(1) space"
+      ],
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "tags": [
+        "dynamic-programming",
+        "math"
+      ],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/climbing-stairs/",
+        "gfg": "https://www.geeksforgeeks.org/count-ways-reach-nth-stair/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "n": 2
+          },
+          "output": 2
+        },
+        {
+          "input": {
+            "n": 3
+          },
+          "output": 3
+        },
+        {
+          "input": {
+            "n": 5
+          },
+          "output": 8
+        },
+        {
+          "input": {
+            "n": 1
+          },
+          "output": 1
+        }
+      ],
+      "starterCode": {
+        "javascript": "function climbStairs(n) {\n  // Write your code here\n  // Example: n = 3\n  // Expected output: 3\n  \n}\n\n// Test cases\nconsole.log('Test 1:', climbStairs(2)); // 2\nconsole.log('Test 2:', climbStairs(3)); // 3\nconsole.log('Test 3:', climbStairs(5)); // 8",
+        "python": "def climb_stairs(n):\n    # Write your code here\n    # Example: n = 3\n    # Expected output: 3\n    pass\n\n# Test cases\nprint('Test 1:', climb_stairs(2))  # 2\nprint('Test 2:', climb_stairs(3))  # 3\nprint('Test 3:', climb_stairs(5))  # 8",
+        "java": "public int climbStairs(int n) {\n    // Write your code here\n    // Example: n = 3\n    // Expected output: 3\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.climbStairs(2)); // 2\n    System.out.println(sol.climbStairs(3)); // 3\n}"
+      }
+    }
+  ]
+}

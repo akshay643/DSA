@@ -1,0 +1,8 @@
+{
+  "category": {
+    "id": "graphs",
+    "name": "Graphs",
+    "description": "Graph traversal and algorithms"
+  },
+  "questions": []
+}

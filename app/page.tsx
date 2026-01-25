@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useTheme } from '@/context/ThemeContext';
 import { Question, Category, QuestionProgress } from '@/types';
-import questionsData from '@/data/questions.json';
+import questionsData from '@/data/loadQuestions';
 import Header from '@/components/Header';
 import QuestionCard from '@/components/QuestionCard';
 import FilterBar from '@/components/FilterBar';
