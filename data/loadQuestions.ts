@@ -15,19 +15,19 @@ import bitmanipulation from './topics/bit-manipulation.json';
 import heap from './topics/heap.json';
 import tries from './topics/tries.json';
 const topicFiles = [
+  bitmanipulation,
+  arrays,
+  strings,
   twoPointers,
   slidingWindow,
   binarySearch,
-  dynamicProgramming,
-  graphs,
-  trees,
-  arrays,
-  strings,
   linkedLists,
   stackQueue,
-  backtracking,
-  bitmanipulation,
+  graphs,
+  trees,
   heap,
+  dynamicProgramming,
+  backtracking,
   tries
 ];
 
