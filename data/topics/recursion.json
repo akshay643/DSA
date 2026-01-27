@@ -1,0 +1,263 @@
+{
+  "category": {
+    "id": "recursion",
+    "name": "Recursion",
+    "description": "Recursive problem solving and backtracking techniques"
+  },
+  "questions": [
+    {
+      "id": "recursion-1",
+      "title": "Fibonacci Number",
+      "category": "recursion",
+      "difficulty": "easy",
+      "companies": ["Google", "Amazon", "Microsoft", "Apple", "Meta", "Goldman Sachs"],
+      "introduction": "The Fibonacci sequence is one of the most classic examples of recursion. Each number in the sequence is the sum of the two preceding ones. This problem tests your understanding of recursive function calls, base cases, and optimization techniques.",
+      "problemStatement": "The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1.\n\nF(0) = 0, F(1) = 1\nF(n) = F(n - 1) + F(n - 2), for n > 1.\n\nGiven n, calculate F(n).\n\nConstraints:\n- 0 <= n <= 50",
+      "examples": [
+        {"input": "n = 2", "output": "1", "explanation": "F(2) = F(1) + F(0) = 1 + 0 = 1"},
+        {"input": "n = 3", "output": "2", "explanation": "F(3) = F(2) + F(1) = 1 + 1 = 2"},
+        {"input": "n = 4", "output": "3", "explanation": "F(4) = F(3) + F(2) = 2 + 1 = 3"}
+      ],
+      "hints": ["Start with base cases: F(0) = 0 and F(1) = 1", "Recursively calculate F(n-1) and F(n-2)", "Consider memoization to avoid redundant calculations", "Dynamic programming approach can optimize from O(2^n) to O(n)", "Iterative approach with two variables is most space-efficient"],
+      "timeComplexity": "O(2^n) without optimization, O(n) with memoization",
+      "spaceComplexity": "O(n) for memoization, O(1) for iterative approach",
+      "tags": ["recursion", "memoization", "dynamic-programming", "beginner"],
+      "testCases": [
+        {"input": {"n": 0}, "output": 0},
+        {"input": {"n": 1}, "output": 1},
+        {"input": {"n": 2}, "output": 1},
+        {"input": {"n": 3}, "output": 2},
+        {"input": {"n": 4}, "output": 3},
+        {"input": {"n": 5}, "output": 5},
+        {"input": {"n": 6}, "output": 8},
+        {"input": {"n": 10}, "output": 55},
+        {"input": {"n": 15}, "output": 610},
+        {"input": {"n": 20}, "output": 6765}
+      ],
+      "starterCode": {
+        "javascript": "function fib(n) {\n  // Write your code here\n  // Example: n = 4\n  // Expected output: 3\n}\n\n// Test cases\nconsole.log('Test 1:', fib(2)); // 1\nconsole.log('Test 2:', fib(3)); // 2\nconsole.log('Test 3:', fib(4)); // 3",
+        "python": "def fib(n):\n    # Write your code here\n    # Example: n = 4\n    # Expected output: 3\n    pass\n\n# Test cases\nprint('Test 1:', fib(2))  # 1\nprint('Test 2:', fib(3))  # 2\nprint('Test 3:', fib(4))  # 3",
+        "java": "public int fib(int n) {\n    // Write your code here\n    // Example: n = 4\n    // Expected output: 3\n    return 0;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(\"Test 1: \" + sol.fib(2)); // 1\n    System.out.println(\"Test 2: \" + sol.fib(3)); // 2\n    System.out.println(\"Test 3: \" + sol.fib(4)); // 3\n}"
+      }
+    },
+    {
+      "id": "recursion-2",
+      "title": "Permutations of Array",
+      "category": "recursion",
+      "difficulty": "medium",
+      "companies": ["Google", "Amazon", "Microsoft", "Apple", "Meta", "Adobe", "Uber"],
+      "introduction": "Generate all permutations of an array. This is a classic backtracking problem that demonstrates how to explore all possible solutions by building them incrementally and backtracking when necessary.",
+      "problemStatement": "Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.\n\nConstraints:\n- 1 <= nums.length <= 6\n- -10 <= nums[i] <= 10\n- All the integers of nums are unique",
+      "examples": [
+        {"input": "nums = [1,2,3]", "output": "[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]", "explanation": "All possible orderings of the array elements"},
+        {"input": "nums = [0,1]", "output": "[[0,1],[1,0]]", "explanation": "Two elements have two permutations"},
+        {"input": "nums = [1]", "output": "[[1]]", "explanation": "Single element has only one permutation"}
+      ],
+      "hints": ["Use backtracking to generate permutations", "Maintain a current permutation being built", "Use a boolean array to track which elements are used", "When current permutation reaches the length of input, add to result", "Backtrack by removing the last added element and marking it as unused"],
+      "timeComplexity": "O(n! * n)",
+      "spaceComplexity": "O(n! * n) for storing all permutations",
+      "tags": ["recursion", "backtracking", "permutation"],
+      "testCases": [
+        {"input": {"nums": [1]}, "output": [[1]]},
+        {"input": {"nums": [0,1]}, "output": [[0,1], [1,0]]},
+        {"input": {"nums": [1,2,3]}, "output": [[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]]},
+        {"input": {"nums": [0]}, "output": [[0]]},
+        {"input": {"nums": [-1,0,1]}, "output": "6 permutations"}
+      ],
+      "starterCode": {
+        "javascript": "function permute(nums) {\n  // Write your code here\n  const result = [];\n  // Example: nums = [1,2,3]\n  // Expected output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]\n  return result;\n}\n\n// Test cases\nconsole.log('Test 1:', JSON.stringify(permute([1,2,3])));\nconsole.log('Test 2:', JSON.stringify(permute([0,1])));\nconsole.log('Test 3:', JSON.stringify(permute([1])));",
+        "python": "def permute(nums):\n    # Write your code here\n    # Example: nums = [1,2,3]\n    # Expected output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]\n    result = []\n    return result\n\n# Test cases\nprint('Test 1:', permute([1,2,3]))\nprint('Test 2:', permute([0,1]))\nprint('Test 3:', permute([1]))",
+        "java": "public List<List<Integer>> permute(int[] nums) {\n    // Write your code here\n    List<List<Integer>> result = new ArrayList<>();\n    // Example: nums = [1,2,3]\n    // Expected output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]\n    return result;\n}"
+      }
+    },
+    {
+      "id": "recursion-3",
+      "title": "Combinations",
+      "category": "recursion",
+      "difficulty": "medium",
+      "companies": ["Google", "Amazon", "Microsoft", "Apple", "Meta", "Adobe"],
+      "introduction": "Generate all combinations of k elements from n elements. This backtracking problem teaches how to explore subsets of a given size and is fundamental for understanding combination generation.",
+      "problemStatement": "Given two integers n and k, return all possible combinations of k numbers chosen from the range [1, n].\n\nYou may return the answer in any order.\n\nConstraints:\n- 1 <= n <= 20\n- 1 <= k <= n",
+      "examples": [
+        {"input": "n = 4, k = 2", "output": "[[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]", "explanation": "All combinations of 2 elements from [1,2,3,4]"},
+        {"input": "n = 1, k = 1", "output": "[[1]]", "explanation": "Only one combination possible"}
+      ],
+      "hints": ["Use backtracking to generate combinations", "Start from a given number and iterate to n", "Add current number to combination and recurse for next numbers", "When combination size reaches k, add to result", "Backtrack by removing the last added number"],
+      "timeComplexity": "O(C(n,k) * k)",
+      "spaceComplexity": "O(C(n,k) * k) for storing all combinations",
+      "tags": ["recursion", "backtracking", "combination"],
+      "testCases": [
+        {"input": {"n": 1, "k": 1}, "output": [[1]]},
+        {"input": {"n": 2, "k": 1}, "output": [[1], [2]]},
+        {"input": {"n": 2, "k": 2}, "output": [[1,2]]},
+        {"input": {"n": 4, "k": 2}, "output": [[1,2], [1,3], [1,4], [2,3], [2,4], [3,4]]},
+        {"input": {"n": 5, "k": 3}, "output": "10 combinations"},
+        {"input": {"n": 3, "k": 1}, "output": [[1], [2], [3]]}
+      ],
+      "starterCode": {
+        "javascript": "function combine(n, k) {\n  // Write your code here\n  const result = [];\n  // Example: n = 4, k = 2\n  // Expected output: [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]\n  return result;\n}\n\n// Test cases\nconsole.log('Test 1:', JSON.stringify(combine(4, 2)));\nconsole.log('Test 2:', JSON.stringify(combine(1, 1)));",
+        "python": "def combine(n, k):\n    # Write your code here\n    # Example: n = 4, k = 2\n    # Expected output: [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]\n    result = []\n    return result\n\n# Test cases\nprint('Test 1:', combine(4, 2))\nprint('Test 2:', combine(1, 1))",
+        "java": "public List<List<Integer>> combine(int n, int k) {\n    // Write your code here\n    List<List<Integer>> result = new ArrayList<>();\n    // Example: n = 4, k = 2\n    // Expected output: [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]\n    return result;\n}"
+      }
+    },
+    {
+      "id": "recursion-4",
+      "title": "N-Queens Problem",
+      "category": "recursion",
+      "difficulty": "hard",
+      "companies": ["Google", "Amazon", "Microsoft", "Apple", "Meta", "Goldman Sachs"],
+      "introduction": "Place N queens on an NxN chessboard such that no two queens attack each other. This is a classic backtracking problem that teaches constraint satisfaction and spatial reasoning.",
+      "problemStatement": "The n-queens puzzle is the problem of placing n queens on an nxn chessboard such that no two queens attack each other.\n\nGiven an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.\n\nConstraints:\n- 1 <= n <= 9",
+      "examples": [
+        {"input": "n = 4", "output": "[[[\".Q..\",\"...Q\",\"Q...\",\"..Q.\"],[\"..Q.\",\"Q...\",\"...Q\",\".Q..\"]]", "explanation": "Two solutions for placing 4 queens on a 4x4 board"},
+        {"input": "n = 1", "output": "[[[\"Q\"]]]", "explanation": "Only one solution for single queen"}
+      ],
+      "hints": ["Use recursion to place queens row by row", "For each row, try placing a queen in each column", "Check if placement is valid (no conflicts with previously placed queens)", "Use sets to track occupied columns and diagonals", "Backtrack when no valid placement is found"],
+      "timeComplexity": "O(N!)",
+      "spaceComplexity": "O(N^2) for the board representation",
+      "tags": ["recursion", "backtracking", "constraint-satisfaction"],
+      "testCases": [
+        {"input": {"n": 1}, "output": 1},
+        {"input": {"n": 2}, "output": 0},
+        {"input": {"n": 3}, "output": 0},
+        {"input": {"n": 4}, "output": 2},
+        {"input": {"n": 5}, "output": 10},
+        {"input": {"n": 8}, "output": 92},
+        {"input": {"n": 9}, "output": 352}
+      ],
+      "starterCode": {
+        "javascript": "function solveNQueens(n) {\n  // Write your code here\n  const result = [];\n  // Example: n = 4\n  // Expected output: Two valid board configurations\n  return result;\n}\n\n// Test cases\nconsole.log('Test 1:', JSON.stringify(solveNQueens(1)));\nconsole.log('Test 2 (check length):', solveNQueens(4).length); // 2",
+        "python": "def solveNQueens(n):\n    # Write your code here\n    # Example: n = 4\n    # Expected output: Two valid board configurations\n    result = []\n    return result\n\n# Test cases\nprint('Test 1:', solveNQueens(1))\nprint('Test 2 (check length):', len(solveNQueens(4)))  # 2",
+        "java": "public List<List<String>> solveNQueens(int n) {\n    // Write your code here\n    List<List<String>> result = new ArrayList<>();\n    // Example: n = 4\n    // Expected output: Two valid board configurations\n    return result;\n}"
+      }
+    },
+    {
+      "id": "recursion-5",
+      "title": "Word Search",
+      "category": "recursion",
+      "difficulty": "medium",
+      "companies": ["Google", "Amazon", "Microsoft", "Apple", "Meta", "Bloomberg"],
+      "introduction": "Search for a word in a 2D grid by moving through adjacent cells. This problem combines backtracking with 2D array traversal and teaches how to avoid revisiting cells.",
+      "problemStatement": "Given an m x n grid of characters board and a string word, return true if word exists in the grid.\n\nThe word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.\n\nConstraints:\n- m == board.length\n- n == board[i].length\n- 1 <= m, n <= 6\n- 1 <= word.length <= 15\n- board and word consists of only lowercase and uppercase English letters",
+      "examples": [
+        {"input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCCED\"", "output": "true", "explanation": "Path exists: A->B->C->C->E->D"},
+        {"input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"SEE\"", "output": "true", "explanation": "Path exists: S->E->E"},
+        {"input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCB\"", "output": "false", "explanation": "No valid path exists"}
+      ],
+      "hints": ["Use DFS with backtracking to explore paths", "For each cell, try exploring all 4 directions", "Mark visited cells to avoid reusing them", "Backtrack by unmarking the cell", "Early termination when word is found"],
+      "timeComplexity": "O(N * 4^L) where N is number of cells and L is length of word",
+      "spaceComplexity": "O(L) for recursion depth",
+      "tags": ["recursion", "backtracking", "dfs", "grid"],
+      "testCases": [
+        {"input": {"board": [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], "word": "ABCCED"}, "output": true},
+        {"input": {"board": [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], "word": "SEE"}, "output": true},
+        {"input": {"board": [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], "word": "ABCB"}, "output": false},
+        {"input": {"board": [["A"]], "word": "A"}, "output": true},
+        {"input": {"board": [["A"]], "word": "B"}, "output": false},
+        {"input": {"board": [["A","A"]], "word": "AAA"}, "output": false},
+        {"input": {"board": [["A","A"]], "word": "AA"}, "output": true}
+      ],
+      "starterCode": {
+        "javascript": "function exist(board, word) {\n  // Write your code here\n  // Example: board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCCED\"\n  // Expected output: true\n  return false;\n}\n\n// Test cases\nconst board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]];\nconsole.log('Test 1:', exist(board, \"ABCCED\")); // true\nconsole.log('Test 2:', exist(board, \"SEE\")); // true\nconsole.log('Test 3:', exist(board, \"ABCB\")); // false",
+        "python": "def exist(board, word):\n    # Write your code here\n    # Example: board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCCED\"\n    # Expected output: True\n    return False\n\n# Test cases\nboard = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]]\nprint('Test 1:', exist(board, \"ABCCED\"))  # True\nprint('Test 2:', exist(board, \"SEE\"))  # True\nprint('Test 3:', exist(board, \"ABCB\"))  # False",
+        "java": "public boolean exist(char[][] board, String word) {\n    // Write your code here\n    // Example: board = {{\"A\",\"B\",\"C\",\"E\"},{\"S\",\"F\",\"C\",\"S\"},{\"A\",\"D\",\"E\",\"E\"}}, word = \"ABCCED\"\n    // Expected output: true\n    return false;\n}"
+      }
+    },
+    {
+      "id": "recursion-6",
+      "title": "Subset Sum Problem",
+      "category": "recursion",
+      "difficulty": "medium",
+      "companies": ["Amazon", "Microsoft", "Apple", "Meta", "Adobe", "Goldman Sachs"],
+      "introduction": "Determine if there's a subset of an array that sums to a target value. This classic problem demonstrates dynamic programming and backtracking approaches.",
+      "problemStatement": "Given a non-empty array nums containing only positive integers, determine if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.\n\nConstraints:\n- 1 <= nums.length <= 200\n- 1 <= nums[i] <= 100",
+      "examples": [
+        {"input": "nums = [1,5,11,5]", "output": "true", "explanation": "The array can be partitioned as [11] and [5,5,1]"},
+        {"input": "nums = [2,2,1,1]", "output": "false", "explanation": "Cannot partition array with equal sums"}
+      ],
+      "hints": ["Check if total sum is even (if not, can't partition)", "Problem reduces to finding if a subset with sum = total/2 exists", "Use dynamic programming or backtracking", "DP approach: dp[i][j] = can we achieve sum j using first i elements", "Optimize space by using 1D DP array"],
+      "timeComplexity": "O(n * sum/2)",
+      "spaceComplexity": "O(sum/2) with optimized DP",
+      "tags": ["recursion", "backtracking", "dynamic-programming", "subset-sum"],
+      "testCases": [
+        {"input": {"nums": [1,5,11,5]}, "output": true},
+        {"input": {"nums": [2,2,1,1]}, "output": false},
+        {"input": {"nums": [1]}, "output": false},
+        {"input": {"nums": [2,2]}, "output": true},
+        {"input": {"nums": [1,2,5]}, "output": false},
+        {"input": {"nums": [1,2,3,4,5]}, "output": true},
+        {"input": {"nums": [100]}, "output": false},
+        {"input": {"nums": [1,1,1,1,1,1,1,1,1,1]}, "output": true}
+      ],
+      "starterCode": {
+        "javascript": "function canPartition(nums) {\n  // Write your code here\n  // Example: nums = [1,5,11,5]\n  // Expected output: true\n  return false;\n}\n\n// Test cases\nconsole.log('Test 1:', canPartition([1,5,11,5])); // true\nconsole.log('Test 2:', canPartition([2,2,1,1])); // false",
+        "python": "def canPartition(nums):\n    # Write your code here\n    # Example: nums = [1,5,11,5]\n    # Expected output: True\n    return False\n\n# Test cases\nprint('Test 1:', canPartition([1,5,11,5]))  # True\nprint('Test 2:', canPartition([2,2,1,1]))  # False",
+        "java": "public boolean canPartition(int[] nums) {\n    // Write your code here\n    // Example: nums = [1,5,11,5]\n    // Expected output: true\n    return false;\n}"
+      }
+    },
+    {
+      "id": "recursion-7",
+      "title": "Unique Paths",
+      "category": "recursion",
+      "difficulty": "medium",
+      "companies": ["Google", "Amazon", "Microsoft", "Apple", "Meta", "Adobe"],
+      "introduction": "Count the number of unique paths in a grid. This problem demonstrates how recursion with memoization can efficiently solve grid traversal problems.",
+      "problemStatement": "There is an m x n grid. A robot is located at the top-left corner (grid[0][0]). The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner (grid[m-1][n-1]).\n\nHow many possible unique paths are there?\n\nConstraints:\n- 1 <= m, n <= 100\n- Answer is guaranteed to fit in a 32-bit integer",
+      "examples": [
+        {"input": "m = 3, n = 7", "output": "28", "explanation": "28 unique paths from top-left to bottom-right"},
+        {"input": "m = 3, n = 2", "output": "3", "explanation": "Paths: RDD, DRD, DDR (R=right, D=down)"}
+      ],
+      "hints": ["Use recursion: paths from (0,0) = paths from (0,1) + paths from (1,0)", "Base case: paths from (m-1, n-1) = 1", "Use memoization to avoid recomputing subproblems", "Can also be solved with combinatorics: C(m+n-2, m-1)", "Dynamic programming approach is most efficient"],
+      "timeComplexity": "O(m * n) with memoization",
+      "spaceComplexity": "O(m * n) for memoization table",
+      "tags": ["recursion", "dynamic-programming", "memoization", "grid"],
+      "testCases": [
+        {"input": {"m": 1, "n": 1}, "output": 1},
+        {"input": {"m": 1, "n": 2}, "output": 1},
+        {"input": {"m": 2, "n": 1}, "output": 1},
+        {"input": {"m": 2, "n": 2}, "output": 2},
+        {"input": {"m": 3, "n": 2}, "output": 3},
+        {"input": {"m": 3, "n": 7}, "output": 28},
+        {"input": {"m": 10, "n": 10}, "output": 48620},
+        {"input": {"m": 1, "n": 100}, "output": 1}
+      ],
+      "starterCode": {
+        "javascript": "function uniquePaths(m, n) {\n  // Write your code here\n  // Example: m = 3, n = 7\n  // Expected output: 28\n  return 0;\n}\n\n// Test cases\nconsole.log('Test 1:', uniquePaths(3, 7)); // 28\nconsole.log('Test 2:', uniquePaths(3, 2)); // 3",
+        "python": "def uniquePaths(m, n):\n    # Write your code here\n    # Example: m = 3, n = 7\n    # Expected output: 28\n    return 0\n\n# Test cases\nprint('Test 1:', uniquePaths(3, 7))  # 28\nprint('Test 2:', uniquePaths(3, 2))  # 3",
+        "java": "public int uniquePaths(int m, int n) {\n    // Write your code here\n    // Example: m = 3, n = 7\n    // Expected output: 28\n    return 0;\n}"
+      }
+    },
+    {
+      "id": "recursion-8",
+      "title": "Binary Tree Path Sum",
+      "category": "recursion",
+      "difficulty": "medium",
+      "companies": ["Google", "Amazon", "Microsoft", "Apple", "Meta", "Bloomberg"],
+      "introduction": "Find paths in a binary tree with a given sum. This problem teaches tree traversal using recursion and how to handle paths in tree structures.",
+      "problemStatement": "Given the root of a binary tree and an integer targetSum, return the number of paths where the sum of the node values in the path equals targetSum.\n\nThe path does not need to start or end at the root or a leaf, but it must go downwards (i.e., traveling only to child nodes).\n\nConstraints:\n- The number of nodes in the tree is in the range [0, 1000]\n- -10^9 <= Node.val <= 10^9\n- -1000 <= targetSum <= 1000",
+      "examples": [
+        {"input": "root = [10,5,-3,3,2,null,11,3,-2,null,1], targetSum = 8", "output": "3", "explanation": "Paths: 5+3, 5+2+1, -3+11"},
+        {"input": "root = [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum = 22", "output": "3", "explanation": "Paths with sum equal to 22"}
+      ],
+      "hints": ["Use DFS with recursion to traverse the tree", "Track current path sum as you traverse", "At each node, check if it matches the target", "Use a hash map to store prefix sums for optimization", "Prefix sum optimization reduces time complexity to O(n)"],
+      "timeComplexity": "O(n) with prefix sum optimization",
+      "spaceComplexity": "O(h) where h is height of tree (recursion depth)",
+      "tags": ["recursion", "tree", "dfs", "path-sum"],
+      "testCases": [
+        {"input": {"root": [10,5,-3,3,2,null,11,3,-2,null,1], "targetSum": 8}, "output": 3},
+        {"input": {"root": [5,4,8,11,null,13,4,7,2,null,null,5,1], "targetSum": 22}, "output": 3},
+        {"input": {"root": [0], "targetSum": 0}, "output": 1},
+        {"input": {"root": [1,null,2], "targetSum": 0}, "output": 0},
+        {"input": {"root": [1,null,2], "targetSum": 1}, "output": 1},
+        {"input": {"root": [1,null,2], "targetSum": 3}, "output": 1},
+        {"input": {"root": [1000000000,null,1000000000], "targetSum": 0}, "output": 0},
+        {"input": {"root": null, "targetSum": 0}, "output": 0}
+      ],
+      "starterCode": {
+        "javascript": "function pathSum(root, targetSum) {\n  // Write your code here\n  // Example: root = [10,5,-3,3,2,null,11,3,-2,null,1], targetSum = 8\n  // Expected output: 3\n  return 0;\n}\n\n// TreeNode definition for testing\n// class TreeNode {\n//     constructor(val = 0, left = null, right = null) {\n//         this.val = val;\n//         this.left = left;\n//         this.right = right;\n//     }\n// }",
+        "python": "def pathSum(root, targetSum):\n    # Write your code here\n    # Example: root = [10,5,-3,3,2,None,11,3,-2,None,1], targetSum = 8\n    # Expected output: 3\n    return 0\n\n# Definition for a binary tree node.\n# class TreeNode(object):\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right",
+        "java": "public int pathSum(TreeNode root, int targetSum) {\n    // Write your code here\n    // Example: root = [10,5,-3,3,2,null,11,3,-2,null,1], targetSum = 8\n    // Expected output: 3\n    return 0;\n}\n\n// Definition for a binary tree node.\n// public class TreeNode {\n//     int val;\n//     TreeNode left;\n//     TreeNode right;\n//     TreeNode() {}\n//     TreeNode(int val) { this.val = val; }\n//     TreeNode(int val, TreeNode left, TreeNode right) {\n//         this.val = val;\n//         this.left = left;\n//         this.right = right;\n//     }\n// }"
+      }
+    }
+  ]
+}

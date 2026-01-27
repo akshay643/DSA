@@ -14,12 +14,14 @@ import backtracking from './topics/backtracking.json';
 import bitmanipulation from './topics/bit-manipulation.json';
 import heap from './topics/heap.json';
 import tries from './topics/tries.json';
+import recursion from "./topics/recursion.json";
 const topicFiles = [
   bitmanipulation,
   arrays,
   strings,
   twoPointers,
   slidingWindow,
+  recursion,
   binarySearch,
   linkedLists,
   stackQueue,
