@@ -29,12 +29,19 @@ export interface Question {
     python: string;
     java: string;
   };
+  tricks?: {
+    [key: string]: any;
+  };
+  };
 }
 
 export interface Category {
   id: string;
   name: string;
   description: string;
+  tricks?: {
+    [key: string]: any;
+  };
 }
 
 export interface QuestionProgress {

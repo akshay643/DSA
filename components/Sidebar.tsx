@@ -1,7 +1,7 @@
 'use client';
 
 import { Category, Question } from '@/types';
-import { ChevronDown, ChevronRight, CheckCircle2, Circle } from 'lucide-react';
+import { ChevronDown, ChevronRight, CheckCircle2, Circle, Info } from 'lucide-react';
 import { useState } from 'react';
 
 interface SidebarProps {
@@ -24,6 +24,7 @@ export default function Sidebar({
   selectedQuestion,
 }: SidebarProps) {
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(['two-pointers']));
+  const [showInfoModal, setShowInfoModal] = useState<{ categoryId: string; name: string; description: string } | null>(null);
 
   const toggleCategory = (categoryId: string) => {
     const newExpanded = new Set(expandedCategories);
@@ -82,6 +83,16 @@ export default function Sidebar({
                       {progress.completed}/{progress.total} solved
                     </div>
                   </div>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowInfoModal({ categoryId: category.id, name: category.name, description: category.description });
+                    }}
+                    className="p-1 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded transition-colors flex-shrink-0"
+                    title={`Learn more about ${category.name}`}
+                  >
+                    <Info className="w-4 h-4 text-blue-500 hover:text-blue-600" />
+                  </button>
                 </div>
               </button>
 
@@ -131,6 +142,34 @@ export default function Sidebar({
           );
         })}
       </div>
+
+      {showInfoModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md w-full p-6">
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <Info className="w-5 h-5 text-blue-500" />
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{showInfoModal.name}</h3>
+              </div>
+              <button
+                onClick={() => setShowInfoModal(null)}
+                className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-xl font-bold"
+              >
+                ×
+              </button>
+            </div>
+            <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+              {showInfoModal.description}
+            </p>
+            <button
+              onClick={() => setShowInfoModal(null)}
+              className="mt-6 w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

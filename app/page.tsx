@@ -8,7 +8,8 @@ import questionsData from '@/data/loadQuestions';
 import Header from '@/components/Header';
 import QuestionCard from '@/components/QuestionCard';
 import FilterBar from '@/components/FilterBar';
-import { ArrowLeft, Check, Circle, ChevronDown, ChevronUp, Lightbulb } from 'lucide-react';
+import TricksViewer from '@/components/TricksViewer';
+import { ArrowLeft, Check, Circle, ChevronDown, ChevronUp, Lightbulb, Info } from 'lucide-react';
 
 export default function Home() {
   const { settings } = useTheme();
@@ -17,6 +18,7 @@ export default function Home() {
   const [filteredQuestions, setFilteredQuestions] = useState<Question[]>(questionsData.questions as Question[]);
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [activeTab, setActiveTab] = useState<'all' | 'top'>('all');
+  const [showInfoModal, setShowInfoModal] = useState<{ categoryId: string; name: string; description: string; tricks?: any } | null>(null);
 
   const categories = questionsData.categories as Category[];
   const questions = questionsData.questions as Question[];
@@ -495,6 +497,16 @@ export default function Home() {
                             {category.description}
                           </p>
                         </div>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setShowInfoModal({ categoryId: category.id, name: category.name, description: category.description, tricks: category.tricks });
+                          }}
+                          className="ml-2 p-1.5 hover:bg-blue-500/20 rounded transition-colors flex-shrink-0"
+                          title={`Learn more about ${category.name}`}
+                        >
+                          <Info className="w-5 h-5 text-blue-400 hover:text-blue-300" />
+                        </button>
                       </div>
                       
                       {/* Stats Badge */}
@@ -575,6 +587,49 @@ export default function Home() {
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Info Modal */}
+      {showInfoModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+            <div className="flex items-start justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+              <div className="flex items-center gap-2">
+                <Info className="w-5 h-5 text-blue-500" />
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{showInfoModal.name}</h3>
+              </div>
+              <button
+                onClick={() => setShowInfoModal(null)}
+                className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-xl font-bold"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-6">
+              <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-6">
+                {showInfoModal.description}
+              </p>
+
+              {/* Render tricks if available */}
+              {showInfoModal.tricks && (
+                <div>
+                  <h4 className="text-md font-bold text-gray-900 dark:text-white mb-4">Advanced Concepts & Tips</h4>
+                  <TricksViewer data={showInfoModal.tricks} />
+                </div>
+              )}
+            </div>
+
+            <div className="p-6 border-t border-gray-200 dark:border-gray-700">
+              <button
+                onClick={() => setShowInfoModal(null)}
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>

@@ -2,8 +2,283 @@
   "category": {
     "id": "bit-manipulation",
     "name": "Bit Manipulation",
-    "description": "Problems involving bitwise operations and manipulation of binary representations"
-  },
+    "description": "Problems involving bitwise operations and manipulation of binary representations",
+"tricks": {
+    "introduction": "Bit manipulation is the act of algorithmically manipulating bits using bitwise operations. It's extremely fast as it works directly on binary representations and is used in low-level programming, cryptography, graphics, and optimizing algorithms.",
+    
+    "basicConcepts": {
+      "binaryRepresentation": {
+        "title": "Binary Number System",
+        "explanation": "Computers store all data in binary (base 2). Each digit is called a 'bit' and can be 0 or 1.",
+        "examples": [
+          "5 in binary  = 101 (4 + 0 + 1)",
+          "10 in binary = 1010 (8 + 0 + 2 + 0)",
+          "7 in binary  = 111 (4 + 2 + 1)",
+          "16 in binary = 10000 (16)"
+        ],
+        "tip": "Each position from right represents 2^0, 2^1, 2^2, etc."
+      },
+      "signedVsUnsigned": {
+        "title": "Signed vs Unsigned Integers",
+        "explanation": "In signed integers, the leftmost bit (MSB) represents the sign. 0 = positive, 1 = negative. Negative numbers use Two's Complement.",
+        "twosComplement": "To get -n: Invert all bits of n, then add 1",
+        "example": "-5 = ~5 + 1 = ~(0101) + 1 = 1010 + 1 = 1011"
+      }
+    },
+
+    "bitwiseOperators": {
+      "AND": {
+        "symbol": "&",
+        "description": "Returns 1 only if BOTH bits are 1",
+        "truthTable": "0 & 0 = 0, 0 & 1 = 0, 1 & 0 = 0, 1 & 1 = 1",
+        "example": "5 & 3 = 101 & 011 = 001 = 1",
+        "useCases": [
+          "Check if a bit is set: n & (1 << i)",
+          "Clear bits: n & mask",
+          "Check if even: (n & 1) == 0",
+          "Turn off rightmost set bit: n & (n-1)"
+        ]
+      },
+      "OR": {
+        "symbol": "|",
+        "description": "Returns 1 if AT LEAST ONE bit is 1",
+        "truthTable": "0 | 0 = 0, 0 | 1 = 1, 1 | 0 = 1, 1 | 1 = 1",
+        "example": "5 | 3 = 101 | 011 = 111 = 7",
+        "useCases": [
+          "Set a bit: n | (1 << i)",
+          "Combine flags: flag1 | flag2"
+        ]
+      },
+      "XOR": {
+        "symbol": "^",
+        "description": "Returns 1 if bits are DIFFERENT",
+        "truthTable": "0 ^ 0 = 0, 0 ^ 1 = 1, 1 ^ 0 = 1, 1 ^ 1 = 0",
+        "example": "5 ^ 3 = 101 ^ 011 = 110 = 6",
+        "properties": [
+          "a ^ a = 0 (same numbers cancel out)",
+          "a ^ 0 = a (XOR with 0 gives same number)",
+          "a ^ b ^ a = b (used to find single number)",
+          "Commutative: a ^ b = b ^ a",
+          "Associative: (a ^ b) ^ c = a ^ (b ^ c)"
+        ],
+        "useCases": [
+          "Toggle a bit: n ^ (1 << i)",
+          "Swap without temp: a ^= b; b ^= a; a ^= b",
+          "Find single non-repeating element",
+          "Find two non-repeating elements"
+        ]
+      },
+      "NOT": {
+        "symbol": "~",
+        "description": "Inverts all bits (0 becomes 1, 1 becomes 0)",
+        "example": "~5 = ~(0101) = 1010 = -6 (in signed)",
+        "note": "~n = -(n+1) for signed integers",
+        "useCases": [
+          "Create mask with all 1s except position i: ~(1 << i)"
+        ]
+      },
+      "leftShift": {
+        "symbol": "<<",
+        "description": "Shifts bits to the left, fills with 0s on right",
+        "example": "5 << 2 = 101 << 2 = 10100 = 20",
+        "formula": "n << k = n × 2^k",
+        "useCases": [
+          "Multiply by power of 2: n << 1 (multiply by 2)",
+          "Create bit mask: 1 << i (bit at position i)",
+          "Set ith bit: n | (1 << i)"
+        ]
+      },
+      "rightShift": {
+        "symbol": ">>",
+        "description": "Shifts bits to the right, discards rightmost bits",
+        "example": "20 >> 2 = 10100 >> 2 = 101 = 5",
+        "formula": "n >> k = n ÷ 2^k (integer division)",
+        "types": {
+          "logical": "Fills with 0s (>>> in Java/JS)",
+          "arithmetic": "Fills with sign bit (>> in most languages)"
+        },
+        "useCases": [
+          "Divide by power of 2: n >> 1 (divide by 2)",
+          "Get ith bit: (n >> i) & 1",
+          "Count bits by shifting right"
+        ]
+      }
+    },
+
+    "commonTricks": {
+      "checkIfPowerOf2": {
+        "title": "Check if N is Power of 2",
+        "code": "n > 0 && (n & (n-1)) == 0",
+        "explanation": "Powers of 2 have exactly one bit set. n-1 has all bits after that set. AND gives 0.",
+        "example": "8 = 1000, 7 = 0111, 8 & 7 = 0000 ✓"
+      },
+      "countSetBits": {
+        "title": "Count Set Bits (Brian Kernighan's Algorithm)",
+        "code": "while(n) { count++; n = n & (n-1); }",
+        "explanation": "n & (n-1) removes the rightmost set bit. Count iterations.",
+        "example": "7 = 111 → 110 → 100 → 000 (3 iterations = 3 set bits)"
+      },
+      "getIthBit": {
+        "title": "Get ith Bit",
+        "code": "(n >> i) & 1  OR  (n & (1 << i)) != 0",
+        "explanation": "Shift bit to position 0 and mask, or create mask and AND"
+      },
+      "setIthBit": {
+        "title": "Set ith Bit (make it 1)",
+        "code": "n | (1 << i)",
+        "explanation": "Create mask with 1 at position i, OR with n"
+      },
+      "clearIthBit": {
+        "title": "Clear ith Bit (make it 0)",
+        "code": "n & ~(1 << i)",
+        "explanation": "Create mask with 0 at position i (all others 1), AND with n"
+      },
+      "toggleIthBit": {
+        "title": "Toggle ith Bit",
+        "code": "n ^ (1 << i)",
+        "explanation": "XOR with 1 toggles the bit"
+      },
+      "turnOffRightmost1": {
+        "title": "Turn Off Rightmost Set Bit",
+        "code": "n & (n-1)",
+        "explanation": "n-1 flips all bits from rightmost 1 to end"
+      },
+      "isolateRightmost1": {
+        "title": "Isolate Rightmost Set Bit",
+        "code": "n & (-n)  OR  n & ~(n-1)",
+        "explanation": "Returns a number with only the rightmost set bit"
+      },
+      "rightPropagateRightmost1": {
+        "title": "Right Propagate Rightmost Set Bit",
+        "code": "n | (n-1)",
+        "explanation": "Turns on all bits to the right of rightmost 1"
+      },
+      "checkIfIthBitSet": {
+        "title": "Check if ith Bit is Set",
+        "code": "(n & (1 << i)) != 0",
+        "explanation": "AND with mask having 1 at position i"
+      },
+      "swapWithoutTemp": {
+        "title": "Swap Two Numbers Without Temp Variable",
+        "code": "a ^= b; b ^= a; a ^= b;",
+        "explanation": "Uses XOR property: a ^ b ^ b = a"
+      },
+      "isEvenOdd": {
+        "title": "Check Even/Odd",
+        "code": "(n & 1) == 0 // even, (n & 1) == 1 // odd",
+        "explanation": "Last bit is 0 for even, 1 for odd"
+      },
+      "multiplyBy2": {
+        "title": "Multiply by 2^k",
+        "code": "n << k",
+        "explanation": "Left shift by k positions"
+      },
+      "divideBy2": {
+        "title": "Divide by 2^k",
+        "code": "n >> k",
+        "explanation": "Right shift by k positions (integer division)"
+      },
+      "clearLastIBits": {
+        "title": "Clear Last i Bits",
+        "code": "n & (~0 << i)",
+        "explanation": "Create mask with i trailing zeros, AND with n"
+      },
+      "extractLastIBits": {
+        "title": "Extract Last i Bits",
+        "code": "n & ((1 << i) - 1)",
+        "explanation": "Create mask with i trailing ones, AND with n"
+      },
+      "singleNumber": {
+        "title": "Find Single Number (others appear twice)",
+        "code": "XOR all elements",
+        "explanation": "Pairs cancel out (a ^ a = 0), single remains"
+      }
+    },
+
+    "advancedTechniques": {
+      "findTwoNonRepeating": {
+        "title": "Find Two Non-Repeating Numbers",
+        "steps": [
+          "XOR all elements to get xor = a ^ b",
+          "Find rightmost set bit in xor (differentiating bit)",
+          "Divide numbers into two groups based on this bit",
+          "XOR each group separately to get a and b"
+        ]
+      },
+      "subsetGeneration": {
+        "title": "Generate All Subsets Using Bits",
+        "explanation": "For array of n elements, iterate i from 0 to 2^n - 1. Each bit in i represents whether to include that element.",
+        "code": "for(i = 0; i < (1 << n); i++) { for(j = 0; j < n; j++) if(i & (1 << j)) include arr[j] }"
+      },
+      "bitDP": {
+        "title": "Bitmask Dynamic Programming",
+        "explanation": "Use integer as bitmask to represent state. Common in problems with small n (≤20) where state is a subset.",
+        "examples": ["Traveling Salesman Problem", "Assignment Problem", "Counting subsets with property"]
+      },
+      "grayCode": {
+        "title": "Gray Code",
+        "formula": "G(n) = n ^ (n >> 1)",
+        "explanation": "Adjacent values differ by exactly one bit"
+      },
+      "reverseBits": {
+        "title": "Reverse Bits",
+        "approach": "Swap nibbles, then pairs, then individual bits, or iterate and build"
+      }
+    },
+
+    "importantPatterns": {
+      "pattern1": {
+        "name": "n & (n-1)",
+        "uses": ["Remove rightmost 1", "Check power of 2", "Count set bits"]
+      },
+      "pattern2": {
+        "name": "n & (-n) or n & ~(n-1)",
+        "uses": ["Isolate rightmost 1", "Fenwick Tree operations"]
+      },
+      "pattern3": {
+        "name": "XOR of same numbers = 0",
+        "uses": ["Find unique element", "Find missing number", "Swap without temp"]
+      },
+      "pattern4": {
+        "name": "1 << i",
+        "uses": ["Create mask", "Power of 2", "Set/Get/Clear bit at position i"]
+      }
+    },
+
+    "complexityAdvantages": {
+      "title": "Why Use Bit Manipulation?",
+      "reasons": [
+        "O(1) operations: Bit operations are constant time",
+        "Space efficient: Store multiple boolean flags in single integer",
+        "Faster than arithmetic: Direct hardware support",
+        "Elegant solutions: Some problems have beautiful bit-based solutions"
+      ]
+    },
+
+    "commonMistakes": [
+      "Forgetting operator precedence: (n & 1) == 0 needs parentheses",
+      "Integer overflow when shifting: 1 << 32 may overflow (use 1L << 32)",
+      "Signed vs unsigned right shift confusion",
+      "Negative number handling in bit operations",
+      "Off-by-one errors in bit positions (0-indexed)"
+    ],
+
+    "cheatSheet": {
+      "setBit": "n | (1 << i)",
+      "clearBit": "n & ~(1 << i)", 
+      "toggleBit": "n ^ (1 << i)",
+      "checkBit": "(n >> i) & 1",
+      "clearRightmostSetBit": "n & (n-1)",
+      "isolateRightmostSetBit": "n & (-n)",
+      "checkPowerOf2": "n && !(n & (n-1))",
+      "countSetBits": "while(n) { count++; n &= (n-1); }",
+      "isEven": "!(n & 1)",
+      "isOdd": "n & 1",
+      "multiply2": "n << 1",
+      "divide2": "n >> 1",
+      "swapXOR": "a^=b; b^=a; a^=b;"
+    }
+  }  },
   "questions": [{
     "id": "bit-manipulation-1",
     "title": "Single Number",

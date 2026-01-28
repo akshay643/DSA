@@ -338,6 +338,102 @@
         "python": "def is_valid(s):\n    # Write your code here\n    # Example: s = '()'\n    # Expected output: true\n    pass\n\n# Test cases\nprint('Test 1:', is_valid('()'))  # True\nprint('Test 2:', is_valid('()[]{}'))  # True\nprint('Test 3:', is_valid('(]'))  # False",
         "java": "public boolean isValid(String s) {\n    // Write your code here\n    // Example: s = \"()\"\n    // Expected output: true\n    return false;\n}\n\n// Test in main\npublic static void main(String[] args) {\n    Solution sol = new Solution();\n    System.out.println(sol.isValid(\"()\")); // true\n    System.out.println(sol.isValid(\"()[]{}\")); // true\n}"
       }
+    },
+    {
+      "id": "stack-queue-2",
+      "title": "Reverse Stack Using Recursion",
+      "category": "stack-queue",
+      "difficulty": "hard",
+      "topInterview": true,
+      "companies": ["Amazon", "Microsoft", "Google", "Facebook", "Goldman Sachs"],
+      "introduction": "Reverse Stack Using Recursion is an elegant problem that tests your understanding of recursion, stack operations, and problem-solving without traditional loops. Given a stack, reverse its elements using only recursive function calls and standard stack operations.",
+      "problemStatement": "You are given a stack of integers. Your task is to reverse the stack using recursion.\n\nConstraints:\n- You may only use standard stack operations (push, pop, top/peek, isEmpty)\n- You are NOT allowed to use any loop constructs (for, while, do-while)\n- You are NOT allowed to use additional data structures (arrays, lists, queues)\n- The stack can contain any integer values\n- Stack size can be from 1 to 10⁵ elements\n\nExample:\nInput Stack (top to bottom): [1, 2, 3, 4, 5]\nOutput Stack (top to bottom): [5, 4, 3, 2, 1]",
+      "examples": [
+        {
+          "input": "Stack: [1, 2, 3]",
+          "output": "[3, 2, 1]",
+          "explanation": "The stack is reversed so that the last element (3) is now at the top."
+        },
+        {
+          "input": "Stack: [5]",
+          "output": "[5]",
+          "explanation": "A single element stack remains unchanged after reversal."
+        },
+        {
+          "input": "Stack: [10, 20, 30, 40]",
+          "output": "[40, 30, 20, 10]",
+          "explanation": "All elements are reversed in order."
+        }
+      ],
+      "hints": [
+        "Think about how recursion can help you reach the bottom of the stack",
+        "You need two recursive functions: one to pop all elements and one to insert them back",
+        "The key insight is to insert elements at the bottom of the stack without using loops",
+        "Base case: when stack is empty, start inserting elements back",
+        "How can you insert an element at the bottom of a stack recursively?"
+      ],
+      "timeComplexity": "O(n²)",
+      "spaceComplexity": "O(n)",
+      "tags": ["stack", "recursion", "problem-solving"],
+      "links": {
+        "leetcode": "https://leetcode.com/problems/reverse-a-stack/",
+        "gfg": "https://www.geeksforgeeks.org/reverse-a-stack-using-recursion/"
+      },
+      "testCases": [
+        {
+          "input": {
+            "stack": [1, 2, 3, 4, 5]
+          },
+          "output": [5, 4, 3, 2, 1]
+        },
+        {
+          "input": {
+            "stack": [5]
+          },
+          "output": [5]
+        },
+        {
+          "input": {
+            "stack": [10, 20, 30, 40]
+          },
+          "output": [40, 30, 20, 10]
+        },
+        {
+          "input": {
+            "stack": [-5, 0, 15, 100]
+          },
+          "output": [100, 15, 0, -5]
+        },
+        {
+          "input": {
+            "stack": [1, 1, 1, 1]
+          },
+          "output": [1, 1, 1, 1]
+        },
+        {
+          "input": {
+            "stack": [999, -999, 0]
+          },
+          "output": [0, -999, 999]
+        },
+        {
+          "input": {
+            "stack": [7, 8, 9]
+          },
+          "output": [9, 8, 7]
+        },
+        {
+          "input": {
+            "stack": [100]
+          },
+          "output": [100]
+        }
+      ],
+      "starterCode": {
+        "javascript": "// Helper function to insert element at bottom of stack recursively\nfunction insertAtBottom(stack, element) {\n  // Write your code here\n  // If stack is empty, push the element\n  // Otherwise, pop current top, recursively insert element, then push back the popped top\n}\n\n// Main function to reverse the stack\nfunction reverseStack(stack) {\n  // Write your code here\n  // Base case: if stack is empty, return\n  // Otherwise, pop the top element, reverse the remaining stack, then insert the popped element at bottom\n}\n\n// Test cases\nlet stack1 = [1, 2, 3, 4, 5];\nreverseStack(stack1);\nconsole.log('Test 1:', stack1); // [5, 4, 3, 2, 1]\n\nlet stack2 = [5];\nreverseStack(stack2);\nconsole.log('Test 2:', stack2); // [5]",
+        "python": "def insert_at_bottom(stack, element):\n    # Write your code here\n    # If stack is empty, append the element\n    # Otherwise, pop current top, recursively insert element, then append back the popped top\n    pass\n\ndef reverse_stack(stack):\n    # Write your code here\n    # Base case: if stack is empty, return\n    # Otherwise, pop the top element, reverse the remaining stack, then insert the popped element at bottom\n    pass\n\n# Test cases\nstack1 = [1, 2, 3, 4, 5]\nreverse_stack(stack1)\nprint('Test 1:', stack1)  # [5, 4, 3, 2, 1]\n\nstack2 = [5]\nreverse_stack(stack2)\nprint('Test 2:', stack2)  # [5]",
+        "java": "public class StackReversal {\n    // Helper method to insert element at bottom of stack recursively\n    public static void insertAtBottom(Stack<Integer> stack, int element) {\n        // Write your code here\n        // If stack is empty, push the element\n        // Otherwise, pop current top, recursively insert element, then push back the popped top\n    }\n    \n    // Main method to reverse the stack\n    public static void reverseStack(Stack<Integer> stack) {\n        // Write your code here\n        // Base case: if stack is empty, return\n        // Otherwise, pop the top element, reverse the remaining stack, then insert the popped element at bottom\n    }\n    \n    // Test cases\n    public static void main(String[] args) {\n        Stack<Integer> stack1 = new Stack<>();\n        stack1.push(5);\n        stack1.push(4);\n        stack1.push(3);\n        stack1.push(2);\n        stack1.push(1);\n        \n        reverseStack(stack1);\n        System.out.println(\"Test 1: \" + stack1); // [5, 4, 3, 2, 1]\n    }\n}"
+      }
     }
   ]
 }
