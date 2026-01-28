@@ -9,7 +9,9 @@ import Header from '@/components/Header';
 import QuestionCard from '@/components/QuestionCard';
 import FilterBar from '@/components/FilterBar';
 import TricksViewer from '@/components/TricksViewer';
-import { ArrowLeft, Check, Circle, ChevronDown, ChevronUp, Lightbulb, Info } from 'lucide-react';
+import InterviewViewer from '@/components/InterviewViewer';
+import { ArrowLeft, Check, Circle, ChevronDown, ChevronUp, Lightbulb, Info, BookOpen } from 'lucide-react';
+import reactInterview from '@/data/interviews/react.json';
 
 export default function Home() {
   const { settings } = useTheme();
@@ -19,6 +21,7 @@ export default function Home() {
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [activeTab, setActiveTab] = useState<'all' | 'top'>('all');
   const [showInfoModal, setShowInfoModal] = useState<{ categoryId: string; name: string; description: string; tricks?: any } | null>(null);
+  const [selectedInterview, setSelectedInterview] = useState<string | null>(null);
 
   const categories = questionsData.categories as Category[];
   const questions = questionsData.questions as Question[];
@@ -151,7 +154,12 @@ export default function Home() {
     <div className="h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
       <Header onExport={handleExport} onImport={handleImport} onClearData={handleClearData} />
       
-      {selectedQuestionData ? (
+      {selectedInterview ? (
+        <InterviewViewer 
+          data={reactInterview as any}
+          onBack={() => setSelectedInterview(null)}
+        />
+      ) : selectedQuestionData ? (
         <div className="flex-1 flex overflow-hidden">
           {/* Left Side - Problem Description */}
           <div className="w-1/2 border-r border-gray-200 dark:border-gray-700 overflow-y-auto bg-white dark:bg-gray-800">
@@ -330,6 +338,58 @@ export default function Home() {
 
           <div className="flex-1 overflow-y-auto p-6 pb-12">
             <div className="max-w-6xl mx-auto space-y-6 pb-8">
+              {/* Interview Prep Section */}
+              <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl p-8 border-2 border-indigo-200 dark:border-indigo-800 shadow-lg">
+                <div className="flex items-start justify-between mb-6">
+                  <div>
+                    <div className="flex items-center gap-3 mb-3">
+                      <BookOpen className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />
+                      <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                        Interview Preparation
+                      </h2>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      Master key concepts through comprehensive guides with code examples and interview tips
+                    </p>
+                  </div>
+                </div>
+
+                {/* Interview Topics Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* React Interview */}
+                  <button
+                    onClick={() => setSelectedInterview('react')}
+                    className="group bg-white dark:bg-gray-800 rounded-lg p-6 hover:shadow-xl transition-all duration-300 border border-indigo-200 dark:border-indigo-700 hover:border-indigo-500 dark:hover:border-indigo-500 text-left"
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                          React Interview
+                        </h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                          Master React fundamentals and advanced patterns
+                        </p>
+                      </div>
+                      <span className="text-3xl">⚛️</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-indigo-600 dark:text-indigo-400 group-hover:gap-3 transition-all">
+                      <span>Start Learning</span>
+                      <span>→</span>
+                    </div>
+                  </button>
+
+                  {/* Placeholder for more topics */}
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-300 dark:border-gray-600 border-dashed">
+                    <h3 className="text-xl font-bold text-gray-400 dark:text-gray-600 mb-2">
+                      Coming Soon
+                    </h3>
+                    <p className="text-sm text-gray-400 dark:text-gray-500">
+                      More interview prep topics coming soon...
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               {/* Hero Stats Section */}
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 rounded-xl p-8 border border-blue-200 dark:border-gray-700 shadow-lg">
                 <div className="text-center mb-6">

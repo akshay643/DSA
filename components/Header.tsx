@@ -27,11 +27,11 @@ export default function Header({ onExport, onImport, onClearData }: HeaderProps)
   };
 
   return (
-    <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
+    <header className="sticky top-0 z-50 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           {/* Logo */}
-          <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 shadow-lg">
+          <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400">
             <svg
               viewBox="0 0 24 24"
               fill="none"
