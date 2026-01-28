@@ -32,7 +32,6 @@ export interface Question {
   tricks?: {
     [key: string]: any;
   };
-  };
 }
 
 export interface Category {
