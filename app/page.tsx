@@ -157,7 +157,12 @@ export default function Home() {
       <Header onExport={handleExport} onImport={handleImport} onClearData={handleClearData} />
       
       {showNotes ? (
-        <NotesViewer onBack={() => setShowNotes(false)} />
+        <NotesViewer 
+          onBack={() => setShowNotes(false)} 
+          completedQuestions={questions
+            .filter(q => completedQuestions.has(q.id))
+            .map(q => ({ question: q, progress: progress[q.id] }))}
+        />
       ) : selectedInterview ? (
         <InterviewViewer 
           data={reactInterview as any}

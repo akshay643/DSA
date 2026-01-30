@@ -1,11 +1,13 @@
 'use client';
 
 import { useLocalStorage } from '@/hooks/useLocalStorage';
-import { ArrowLeft, Trash2, Plus } from 'lucide-react';
-import { useState } from 'react';
+import { ArrowLeft, Trash2, Plus, RefreshCw } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Question } from '@/types';
 
 interface NotesViewerProps {
   onBack: () => void;
+  completedQuestions?: Array<{ question: Question; progress: any }>;
 }
 
 interface Note {
@@ -14,18 +16,58 @@ interface Note {
   content: string;
   createdAt: string;
   updatedAt: string;
+  linkedQuestionId?: string;
 }
 
-export default function NotesViewer({ onBack }: NotesViewerProps) {
+export default function NotesViewer({ onBack, completedQuestions = [] }: NotesViewerProps) {
   const [notes, setNotes] = useLocalStorage<Note[]>('dsa-notes', []);
   const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showSyncNotification, setShowSyncNotification] = useState(false);
 
   const selectedNote = selectedNoteId ? notes.find(n => n.id === selectedNoteId) : null;
   const filteredNotes = notes.filter(n => 
     n.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     n.content.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const syncCompletedQuestions = () => {
+    if (completedQuestions.length === 0) {
+      alert('No completed questions to sync');
+      return;
+    }
+
+    // Check if completed questions note already exists
+    const existingNote = notes.find(n => n.linkedQuestionId === 'completed-questions');
+    
+    const titles = completedQuestions.map(({ question }) => `• ${question.title}`).join('\n');
+    const content = `Completed Questions:\n\n${titles}`;
+
+    if (existingNote) {
+      // Update existing note
+      updateNote({
+        ...existingNote,
+        content: content,
+        updatedAt: new Date().toISOString(),
+      });
+      setSelectedNoteId(existingNote.id);
+    } else {
+      // Create new note
+      const newNote: Note = {
+        id: `note-completed-questions`,
+        title: 'Completed Questions',
+        content: content,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        linkedQuestionId: 'completed-questions',
+      };
+      setNotes([newNote, ...notes]);
+      setSelectedNoteId(newNote.id);
+    }
+
+    setShowSyncNotification(true);
+    setTimeout(() => setShowSyncNotification(false), 3000);
+  };
 
   const createNewNote = () => {
     const newNote: Note = {
@@ -87,14 +129,41 @@ export default function NotesViewer({ onBack }: NotesViewerProps) {
           </button>
           <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">My Notes</h2>
           
-          {/* Create Note Button */}
-          <button
-            onClick={createNewNote}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-shadow font-medium mb-4"
-          >
-            <Plus className="w-5 h-5" />
-            New Note
-          </button>
+          {/* Buttons Container */}
+          <div className="flex gap-2 mb-4">
+            {/* Create Note Button */}
+            <button
+              onClick={createNewNote}
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-shadow font-medium"
+            >
+              <Plus className="w-5 h-5" />
+              New
+            </button>
+            
+            {/* Sync Completed Questions Button */}
+            <button
+              onClick={syncCompletedQuestions}
+              disabled={completedQuestions.length === 0}
+              title={completedQuestions.length === 0 ? "Mark questions as completed first" : "Sync notes for completed questions"}
+              className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-shadow font-medium ${
+                completedQuestions.length > 0
+                  ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:shadow-lg cursor-pointer'
+                  : 'bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed'
+              }`}
+            >
+              <RefreshCw className="w-5 h-5" />
+              Sync {completedQuestions.length > 0 ? `(${completedQuestions.length})` : '(0)'}
+            </button>
+          </div>
+
+          {/* Sync Notification */}
+          {showSyncNotification && (
+            <div className="mb-4 p-3 bg-green-100 dark:bg-green-900/30 border border-green-500 rounded-lg">
+              <p className="text-sm text-green-700 dark:text-green-400 font-medium">
+                Notes synced successfully!
+              </p>
+            </div>
+          )}
 
           {/* Search */}
           <input
