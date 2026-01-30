@@ -3,7 +3,7 @@
     "id": "bit-manipulation",
     "name": "Bit Manipulation",
     "description": "Problems involving bitwise operations and manipulation of binary representations",
-"tricks": {
+    "tricks": {
     "introduction": "Bit manipulation is the act of algorithmically manipulating bits using bitwise operations. It's extremely fast as it works directly on binary representations and is used in low-level programming, cryptography, graphics, and optimizing algorithms.",
     
     "basicConcepts": {

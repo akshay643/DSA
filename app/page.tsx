@@ -10,7 +10,8 @@ import QuestionCard from '@/components/QuestionCard';
 import FilterBar from '@/components/FilterBar';
 import TricksViewer from '@/components/TricksViewer';
 import InterviewViewer from '@/components/InterviewViewer';
-import { ArrowLeft, Check, Circle, ChevronDown, ChevronUp, Lightbulb, Info, BookOpen } from 'lucide-react';
+import NotesViewer from '@/components/NotesViewer';
+import { ArrowLeft, Check, Circle, ChevronDown, ChevronUp, Lightbulb, Info, BookOpen, FileText } from 'lucide-react';
 import reactInterview from '@/data/interviews/react.json';
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<'all' | 'top'>('all');
   const [showInfoModal, setShowInfoModal] = useState<{ categoryId: string; name: string; description: string; tricks?: any } | null>(null);
   const [selectedInterview, setSelectedInterview] = useState<string | null>(null);
+  const [showNotes, setShowNotes] = useState(false);
 
   const categories = questionsData.categories as Category[];
   const questions = questionsData.questions as Question[];
@@ -154,7 +156,9 @@ export default function Home() {
     <div className="h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
       <Header onExport={handleExport} onImport={handleImport} onClearData={handleClearData} />
       
-      {selectedInterview ? (
+      {showNotes ? (
+        <NotesViewer onBack={() => setShowNotes(false)} />
+      ) : selectedInterview ? (
         <InterviewViewer 
           data={reactInterview as any}
           onBack={() => setSelectedInterview(null)}
@@ -338,6 +342,31 @@ export default function Home() {
 
           <div className="flex-1 overflow-y-auto p-6 pb-12">
             <div className="max-w-6xl mx-auto space-y-6 pb-8">
+              {/* Notes Section */}
+              <button
+                onClick={() => setShowNotes(true)}
+                className="group w-full bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-xl p-8 hover:shadow-xl transition-all duration-300 border-2 border-amber-200 dark:border-amber-800 hover:border-amber-500 dark:hover:border-amber-500 text-left"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <div className="flex items-center gap-3 mb-3">
+                      <FileText className="w-8 h-8 text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform" />
+                      <h2 className="text-3xl font-bold text-gray-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        My Notes
+                      </h2>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      Create and manage your personal notes separate from question notes
+                    </p>
+                  </div>
+                  <span className="text-4xl group-hover:scale-110 transition-transform">📝</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-amber-600 dark:text-amber-400 group-hover:gap-3 transition-all">
+                  <span>Open Notes</span>
+                  <span>→</span>
+                </div>
+              </button>
+
               {/* Interview Prep Section */}
               <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl p-8 border-2 border-indigo-200 dark:border-indigo-800 shadow-lg">
                 <div className="flex items-start justify-between mb-6">

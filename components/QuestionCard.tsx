@@ -1,7 +1,7 @@
 'use client';
 
 import { Question } from '@/types';
-import { Check, Clock, X, PlayCircle, StopCircle, Play } from 'lucide-react';
+import { Check, Clock, X, PlayCircle, StopCircle, Play, FileText, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import Editor from '@monaco-editor/react';
 
@@ -34,6 +34,7 @@ export default function QuestionCard({
   const [currentTime, setCurrentTime] = useState(timeSpent);
   const [output, setOutput] = useState<string>('');
   const [isRunning, setIsRunning] = useState(false);
+  const [showNotesModal, setShowNotesModal] = useState(false);
   const pyodideRef = useRef<any>(null);
   const [isPyodideLoading, setIsPyodideLoading] = useState(false);
   const [showOutput, setShowOutput] = useState(true);
@@ -768,6 +769,14 @@ public class Solution {
             </>
           )}
           <button
+            onClick={() => setShowNotesModal(true)}
+            className="flex items-center gap-2 px-4 py-1.5 rounded text-sm font-medium bg-amber-600 hover:bg-amber-700 text-white"
+            title="Open notes"
+          >
+            <FileText className="w-4 h-4" />
+            Notes
+          </button>
+          <button
             onClick={onToggleComplete}
             className={`flex items-center gap-2 px-3 py-1.5 rounded text-sm font-medium ${
               isCompleted
@@ -866,57 +875,46 @@ public class Solution {
             </button>
           </div>
         )}
+      </div>
 
-        {/* Notes Section */}
-        {showNotes && (
-          <div 
-            className="border-t border-gray-700 bg-gray-800 flex flex-col"
-            style={{ height: `${notesHeight}px` }}
-          >
-            <div className="px-4 py-2 border-b border-gray-700 flex items-center justify-between flex-shrink-0">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold text-gray-400">Notes</span>
-                <button
-                  onClick={() => setNotesHeight(prev => Math.min(prev + 50, 500))}
-                  className="text-xs text-gray-400 hover:text-gray-200 px-2 py-0.5 rounded bg-gray-700 hover:bg-gray-600"
-                >
-                  ↕ Expand
-                </button>
-                <button
-                  onClick={() => setNotesHeight(prev => Math.max(prev - 50, 80))}
-                  className="text-xs text-gray-400 hover:text-gray-200 px-2 py-0.5 rounded bg-gray-700 hover:bg-gray-600"
-                >
-                  ↕ Shrink
-                </button>
+      {/* Notes Modal */}
+      {showNotesModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-gray-900 rounded-lg shadow-xl w-full max-w-2xl max-h-[80vh] flex flex-col">
+            {/* Modal Header */}
+            <div className="px-6 py-4 border-b border-gray-700 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <FileText className="w-6 h-6 text-amber-400" />
+                <h2 className="text-xl font-bold text-white">Notes</h2>
               </div>
               <button
-                onClick={() => setShowNotes(false)}
-                className="text-xs text-gray-400 hover:text-gray-200"
+                onClick={() => setShowNotesModal(false)}
+                className="text-gray-400 hover:text-white transition-colors"
               >
-                ✕ Hide
+                <X className="w-6 h-6" />
               </button>
             </div>
+
+            {/* Modal Content */}
             <textarea
               value={savedNotes}
               onChange={(e) => onNotesChange(e.target.value)}
               placeholder="Add your notes, approach, or learnings here..."
-              className="flex-1 p-4 text-sm bg-gray-800 text-gray-100 border-none focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+              className="flex-1 p-6 text-sm bg-gray-800 text-gray-100 border-none focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
             />
-          </div>
-        )}
 
-        {/* Show Notes Button when hidden */}
-        {!showNotes && (
-          <div className="border-t border-gray-700 bg-gray-800 px-4 py-2">
-            <button
-              onClick={() => setShowNotes(true)}
-              className="text-xs text-blue-400 hover:text-blue-300"
-            >
-              ↑ Show Notes
-            </button>
+            {/* Modal Footer */}
+            <div className="px-6 py-4 border-t border-gray-700 flex justify-end gap-3">
+              <button
+                onClick={() => setShowNotesModal(false)}
+                className="px-4 py-2 rounded text-sm font-medium bg-gray-700 hover:bg-gray-600 text-white"
+              >
+                Close
+              </button>
+            </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
