@@ -1,0 +1,141 @@
+,
+    {
+      "id": "section-7",
+      "title": "JavaScript - Event Loop",
+      "blocks": [
+        {
+          "type": "title",
+          "level": 2,
+          "content": "Q1. Explain the JavaScript Event Loop? How does it work?"
+        },
+        {
+          "type": "description",
+          "content": "The Event Loop is JavaScript's concurrency model that handles asynchronous operations. It continuously monitors the call stack and task queues, executing code from queues when the stack is empty. Order: Call Stack → Microtask Queue → Macrotask Queue → Render. Ensures single-threaded JavaScript can handle async operations efficiently."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "title": "Event Loop Examples",
+          "code": "// Basic event loop execution\nconsole.log('1: Sync'); // Call stack\n\nsetTimeout(() => {\n  console.log('2: Timeout'); // Macrotask queue\n}, ,
+    {
+      "id": "section-7",
+      "title": "JavaScript - Event Loop",
+      "beue\    \n      "title": "JavaScr);      "blocks": [
+        {
+          "tn/        {
+      //        ut          "level": 2,
+   ,           "contte all         },
+        {
+          "type": "description",
+          "content": "Th.l        {')        Ti          "content": "The Eventt         },
+        {
+          "type": "code",
+          "language": "javascript",
+          "title": "Event Loop Examples",
+          "code": "// Basic event loop execution\nconsole.log('1: Sync'); // Call stack\n\nsetTimeout(() => {\n  console.log('2: Timeout'); // Macrotask queue\n}, ,
+    {
+      "id": "section-7",
+      "title": "JavaScript - Event Loop",
+);        {tp        St          "language": "j//          "title": "Event Loop Exaal          "code": "// Basic event loop eta    {
+      "id": "section-7",
+      "title": "JavaScript - Event Loop",
+      "beue\    \n      "title": "JavaScr);      "blocks": [
+        {
+          "tn/     n     so      "title": "JavaScr}\      "beue\    \n      "title": "JavaScec        {
+          "tn/        {
+      //        ut       ct        d(      //        ut    ir   ,           "contte all         },
+\n        {
+          first]\n// → sec        ?           "content": "Th.l      ?       {
+          "type": "code",
+          "language": "javascript",
+          "title"et        ir          "language": "jte          "title": "Event Loop Exad,          "code": "// Basic event loop eoc    {
+      "id": "section-7",
+      "title": "JavaScript - Event Loop",
+);        {tp        Stte.now() - start < 3000) {\n    // Blocks for 3 seconds - UI freezes!    }\      "title": "JavaScred);        {tp        St          "languavo      "id": "section-7",
+      "title": "JavaScript - Event Loop",
+      "beue\    \n      "title": "JavaScr);      "blocks": [
+           "title": "JavaScr+       "beue\    \n      "title": "Je (i <         {
+          "tn/     n     so      "title": "JavaScf         ra          "tn/        {
+      //        ut       ct        d(      //        ut    ir   ,           "cn       //        ut    \n\n        {
+          first]\n// → sec        ?           "content": "Th.l      ?       {
+    sk          romises, queueMicrotask, MutationObserver\n// 3. Macrotask Queue - setTimeout, setI          "language": "jer          "title"et        ir      M      "id": "secority\nsetTimeout(() => console.log('Macro 1'), 0);\nqueueMicrotask(() => console.log('Micro 1'));\nsetTimeout(() => consol      "title": "JavaScrqu);        {tp        Stte.now() - start ))      "title": "JavaScript - EventMacro 1, Macro 2\n\n// Recursive setTimeout vs setInterval\nlet count1 = 0;\nsetTimeout(function repeat() {\n  console.log('Recursive setTimeout:', ++count1      "beue\    \n      "title": "JavaSc 1           "title": "JavaScr+       "beue\    \n      "titls\          "tn/     n     so      "title": "JavaScf         ra          "tn/     rv      //        ut       ct        d(      //        ut    ir   ,           "cn    e           first]\n// → sec        ?           "content": "Th.l      ?       {
+    sk          romises, queueMic {    sk          romises, queueMicrotask, MutationObserver\n// 3. Macrotask Queun     sk          romises, queueMic {    sk          romises, queueMicrotask, MutationObserver\n// 3. Macrotask Queun     sk          romises, queueMic {    sk          romises, queueMicrotask, MutationObserver\n// 3. Macrotask Queun     sk          romises, queueMic {    sk          romises, queueMicrotask, MutationObserver\n// 3. Macrotask Queun     sk          romises, queueMic {    sk          romises, queueMicrotask, MutationObserver\n// 3. Macrotask Queun     sk          romises, queueMic {    sk          romises, queueMicrotask, MutationObserver\n// 3. Macrotask Queun     sk          romises, queueMic {    sk          romises, queueMicrotask, MutationObserver\n// 3. Macrotask Queun     sk          romises, queueMic {    sk          romises, queueMicrotask, MutationObserver\n// 3. Macrotask Queun     sk          romises, queueMic {    sk          romises, queueMicrotask, MutationObserver\n{\n  // Block for 50ms\n}\n\nconsole.log('D');\n\n// Output: A, D, B, C\n// B runs after ~50ms (not 0ms - blocked by while loop)\n// C runs after ~100ms from original setTimeout call"
+        },
+        {
+          "type": "interview-tip",
+          "tip": "Event Loop Key Points",
+          "explanation": "EXECUTION ORDER:\n1. Execute synchronous code (Call Stack)\n2. Execute ALL microtasks (Promises, queueMicrotask)\n3. Execute ONE macrotask (setTimeout, setInterval)\n4. Execute ALL microtasks created by that macrotask\n5. Render (if needed, browser only)\n6. Repeat from step 3\n\nQUEUE TYPES:\nMicrotasks (higher priority):\n- Promise.then/catch/finally\n- queueMicrotask()\n- MutationObserver\n- process.nextTick (Node.js)\n\nMacrotasks (lower priority):\n- setTimeout, setInterval\n- setImmediate (Node.js)\n- I/O operations\n- UI events\n\nKEY CONCEPTS:\n- JavaScript is single-threaded\n- Event loop enables concurrency\n- Microtasks run before next macrotask\n- Long synchronous code blocks everything\n\nCOMMON         },
+        {
+          "type": "interview-tip",
+          "tip": "Event Loop Key Points",
+          "explanation": "EXECUTION ORDER:\n1. Execute synchronous code (Call St: 2,
+                  ":          "tip": "Event Loop Key et          "explanation": "EXECUTION ORDE
+         {
+          "type": "interview-tip",
+          "tip": "Event Loop Key Points",
+          "explanation": "EXECUTION ORDER:\n1. Execute synchronous code (Call St: 2,
+                  ":          "tip": "Event Loop Key et          "explanation": "EXECUTION ORDE
+         {
+          "type": "interview-tip",
+          "tip": "Event Loop Key Points",
+          "explanation": "EXECUTION ORDER:\n1. Execute synchronous code (Call St: 2,
+                  ":          "tip": "Event Loop Key et          "explanation": "EXECUTION ORDE
+         {
+          "type": "interview-tip",
+          "tip": "Event Loop Key Points",
+          "explanation": "EXECUTION ORDER:\n1. Execute synchronous code (Call St: 2,
+      n// Cancel before it runs\nclearTimeout        Id          "tip": "Event Loop Kents\          "explanation": "EXECUTION ORDElo                  ":          "tip": "Event Loop Key et          "explanation": "EXRE         {
+          "type": "interview-tip",
+          "tip": "Event Loop Key Points",
+      un                     "tip": "Event Loop Key rv          "explanation": "EXECUTION ORDE 1                  ":          "tip": "Event Loop Key et          "explanation": "EXio         {
+          "type": "interview-tip",
+          "tip": "Event Loop Key Points",
+      ex         s           "tip": "Event Loop Key             "explanation": "EXECUTION ORDE 1                  ":          "tip": "Event Loop Key et          "explanation": "EXrv         {
+          "type": "interview-tip",
+          "tip": "Event Loop Key Points",
+      T          n           "tip": "Event Loop Key s           "explanation": "EXECUTION ORDEte      n// Cancel before it runs\nclearTimeout        Id          "tip": "Event Loop{\          "type": "interview-tip",
+          "tip": "Event Loop Key Points",
+      un                     "tip": "Event Loop Key rv          "explanation": "EXECUTION ORDE 1                  ":          "tip": "Event Loop Key ct          "tip": "Event Loop Key n       un                     "tip": "Eve n          "type": "interview-tip",
+          "tip": "Event Loop Key Points",
+      ex         s           "tip": "Event Loop Key             "explanation": "EXECUTION OActually runs after ~1-4          "tip": "Event Loop Key  a      ex         s           "tip": "Eve:           "type": "interview-tip",
+          "tip": "Event Loop Key Points",
+      T          n           "tip": "Event Loop Key s           "explanation": "EXECUTION ORDEte      n// Cancel on          "tip": "Event Loop Key 'A      T          n           "tip": "Eveer          "tip": "Event Loop Key Points",
+      un                     "tip": "Event Loop Key rv          "explanation": "EXECUTION ORDE 1                  ":          "tip": "Event Loop Key ct          "tip": "Eve        un                     "tip": "Evear          "tip": "Event Loop Key Points",
+      ex         s           "tip": "Event Loop Key             "explanation": "EXECUTION OActually runs after ~1-4          "tip": "Event Loop Key  a      ex         s           "tip": "Eve:                }\n    }, 1000      ex         s           "tip": "Evete          "tip": "Event Loop Key Points",
+      T          n           "tip": "Event Loop Key s           "explanation": "EXECUTION ORDEte      n// Cancel on          "tip": "Event Loop Key 'A      T          n           "tip        T          n           "tip": "EveTi      un                     "tip": "Event Loop Key rv          "explanation": "EXECUTION ORDE 1                  ":          "tip": "Event Loop Key ct          "tip": "Eve        un                     "tip": "Evear          "tip":{\      ex         s           "tip": "Event Loop Key             "explanation": "EXECUTION OActually runs after ~1-4          "tip": "Event Loop Key  a      ex         s           "tip": "Eve:                }\n    }, 1000      ex         s           "tionsol      T          n           "tip": "Event Loop Key s           "explanation": "EXECUTION ORDEte      n// Cancel on          "tip": "Event Loop Key 'A      T          n           "tip        T          n           "tip": "EveTi      un                     "tip": "Event Loop Key rv          "explanationole.log(`Next poll in ${delay}ms`);\n    setTimeout(poll, delay);\n  }\n  \n  poll();\n}\n\n// Practical: Rate limiting\nclass RateLimiter {\n  constructor(maxCalls, windowMs) {\n    this.maxCalls = maxCalls;\n    this.windowMs = windowMs;\n    this.calls = [];\n  }\n  \n  async execute(fn) {\n    const now = Date.now();\n    this.calls = this.calls.filter(time => now - time < this.windowMs);\n    \n    if (this.calls.length >= this.maxCalls) {\n      const oldestCall = this.calls[0];\n      const waitTime = this.windowMs - (now - oldestCall);\n      \n      await new Promise(resolve => setTimeout(resolve, waitTime));\n      return this.execute(fn);\n    }\n    \n    this.calls.push(now);\n    return fn();\n  }\n}\n\nconst limiter = new RateLimiter(3, 1000); // 3 calls per second\n\n// Memory leaks with timers\nfunction createLeak() {\n  const hugeData = new Array(1000000).fill('data');\n  \n  setInterval(() => {\n    // This keeps hugeData in memory!\n    console.log(hugeData.length);\n  }, 1000);\n}\n\n// Better: Clear timers when done\nclass Component {\n  constructor() {\n    this.timers = [];\n  }\n  \n  addTimer(fn, delay) {\n    const id = setTimeout(fn, delay);\n    this.timers.push(id);\n    return id;\n  }\n  \n  addInterval(fn, delay) {\n    const id = setInterval(fn, delay);\n    this.timers.push(id);\n    return id;\n  }\n  \n  cleanup() {\n    this.timers.forEach(id => {\n      clearTimeout(id);\n      clearInterval(id);\n    });\n    this.timers = [];\n  }\n}\n\n// Accurate timing with drift compensation\nclass AccurateTimer {\n  constructor(callback, interval) {\n    this.callback = callback;\n    this.interval = interval;\n    this.expected = Date.now() + interval;\n    this.timeoutId = null;\n  }\n  \n  start() {\n    this.step();\n  }\n  \n  step() {\n    const drift = Date.now() - this.expected;\n    this.callback();\n    \n    this.expected += this.interval;\n    this.timeoutId = setTimeout(() => this.step(), this.interval - drift);\n  }\n  \n  stop() {\n    if (this.timeoutId) {\n      clearTimeout(this.timeoutId);\n      this.timeoutId = null;\n    }\n  }\n}\n\nconst accurateTimer = new AccurateTimer(\n  () => console.log(new Date().toISOString()),\n  1000\n);\naccurateTimer.start();"
+        },
+        {
+          "type": "interview-tip",
+          "tip": "setTimeout vs setInterval",
+          "explanation": "setTimeout:\n- Executes ONCE after delay\n- clearTimeout(id) to cancel\n- Guaranteed delay between executions (if recursive)\n- Safer for variable-time operations\n\nsetInterval:\n- Executes REPEATEDLY at intervals\n- clearInterval(id) to cancel\n- May have less delay if callback is slow\n- Can queue up executions\n\nBEST PRACTICES:\n1. Always clear timers to prevent memory leaks\n2. Use setTimeout for recursive delays (more control)\n3. Store timer IDs for cleanup\n4. Minimum delay is ~4ms (browser throttling)\n5. setTimeout(..., 0) is NOT instant\n\nCOMMON USES:\n- setTimeout: debouncing, delayed actions\n- setInterval: polling, countdowns, animations\n- Modern: requestAnimationFrame for         },
+        {
+          "type": "interview-tip",
+          "tip": "setTimeout vs setInterval",
+          "explanation": "setTimeout:\n- Executes ONCE after delay\n- clearTimeout(id) to can2,        {          ":          "tip": "setTimeout vs sto          "explanation": "setTimeout:\n- Exety        {
+          "type": "interview-tip",
+          "tip": "setTimeout vs setInterval",
+          "explanation": "setTimeout:\n- Executes ONCE after delay\n- clearTimeout(id) to can2,        {          ":          "tip": "setTimeout vs sto          "explanation": "setTimeout:\n- Exety        {
+          "type": "interview-tip",
+          "tip": "setTimeout vs setInterval",
+          "explanation": "setTimeout:\n- Executes ONCE after delay\n- clearTimeout(id) to can2,        {          ":          "tip": "setTimeout vs sto          "explanation": "setTimeout:\n- Exety        {
+          "type": "interview-tip",
+          "tip": "setTimeout vs setInterval",
+          "explanation": "setTimeout:\n- Executes ONCE after delay\(p     t, (r          "tip": "setTimeout vs sma          "explanation": "setTimeout:\n- Exe            "type": "interview-tip",
+          "tip": "setTimeout vs setInterval",
+       n  });\n});\n// Problems: Hard to read, error handling is messy, indentation grows\n\n// Solution 1: Named Functions\nf          "tip": "setTimeout vs sma          "explanation": "setTimeout:\n- Exeti          "type": "interview-tip",
+          "tip": "setTimeout vs setInterval",
+          "explanation": "setTimeout:\n- Executes ONCE after delay\n- clearTimeout(id) to can2,        {          ":        nd          "tip": "setTimeout vs say          "explanation": "setTimeout:\n- Exen}          "type": "interview-tip",
+          "tip": "setTimeout vs setInterval",
+          "explanation": "setTimeout:\n- Executes ONCE after delay\(p     t, (r          "tip": "setTimeout vs sma          r           "tip": "setTimeout vs sn\          "explanation": "setTimeout:\n- Exeom          "tip": "setTimeout vs setInterval",
+       n  });\n});\n// Problems: Hard to read, error handling is messy, indentation grows\n\n// Solution 1: Named Functions\nf          "tip": "set\n       n  });\n});\n// Problems: Hard to reard          "tip": "setTimeout vs setInterval",
+          "explanation": "setTimeout:\n- Executes ONCE after delay\n- clearTimeout(id) to can2,        {          ":        nd          "tip": "setTimeout vs say          "explanation": "setTimet)          "explanation": "setTimeout:\n- Exedo          "tip": "setTimeout vs setInterval",
+          "explanation": "setTimeout:\n- Executes ONCE after delay\(p     t, (r          "tip": "setTimeout vs sma          r           "tip": "setTimeout vs sn\          "explanation": "setTimePr          "explanation": "setTimeout:\n- ExeOr       n  });\n});\n// Problems: Hard to read, error handling is messy, indentation grows\n\n// Solution 1: Named Functions\nf          "tip": "set\n       n  });\n});\n// Problems: Hard to reard          "tip": "setTimeout vs setInterval",
+          on          "explanation": "setTimeout:\n- Executes ONCE after delay\n- clearTimeout(id) to can2,        {          ":        nd          "tip": "setTimeout vs say          "explanation": "setTimet)          "explanation": "setTimeout:\n- Exns          "explanation": "setTimeout:\n- Executes ONCE after delay\(p     t, (r          "tip": "setTimeout vs sma          r           "tip": "setTimeout vs sn\          "explanation": "setTimePr          "explanation": "setTimeout:\n- ExeOr       n  });\n});\n// Problems: Hard to reafi          on          "explanation": "setTimeout:\n- Executes ONCE after delay\n- clearTimeout(id) to can2,        {          ":        nd          "tip": "setTimeout vs say          "explanation": "setTimet)          "explanation": "setTimeout:\n- Exns          "explanation": "setTimeout:\n- Executes ONCE after delay\(p     t, (r          "tip": "setTimeout vs sma          r           "tip": "setTimeout vs sn\          "explanation": "setTimePr          "explanation": "setTime.all([\n  readFileAsync('file1.txt', 'utf8'),\n  readFileAsync('file2.txt', 'utf8'),\n  readFileAsync('file3.txt', 'utf8')\n])\n  .then(([data1, data2, data3]) => {\n    const combined = data1 + data2 + data3;\n    return writeFileAsync('output.txt', combined);\n  })\n  .then(() => console.log('Files combined!'))\n  .catch(error => console.error('Error:', error));\n\n// async/await version\nasync function combineFiles() {\n  try {\n    const [data1, data2, data3] = await Promise.all([\n      readFileAsync('file1.txt', 'utf8'),\n      readFileAsync('file2.txt', 'utf8'),\n      readFileAsync('file3.txt', 'utf8')\n    ]);\n    \n    const combined = data1 + data2 + data3;\n    await writeFileAsync('output.txt', combined);\n    console.log('Files combined!');\n  } catch (error) {\n    console.error('Error:', error);\n  }\n}\n\ncombineFiles();\n\n// Solution 4: Control flow libraries (async.js)\nconst async = require('async');\n\nasync.waterfall([\n  (callback) => getUser(userId, callback),\n  (user, callback) => getOrders(user.id, callback),\n  (orders, callback) => getOrderDetails(orders[0].id, callback),\n  (details, callback) => getPaymentInfo(details.paymentId, callback),\n  (payment, callback) => processPayment(payment, callback),\n  (result, callback) => sendConfirmation(result, callback)\n], (error, confirmation) => {\n  if (error) return console.error('Error:', error);\n  console.log('All done!', confirmation);\n});\n\n// Error handling patterns\n\n// Callback pattern (node-style)\nfunction nodeStyleCallback(err, data) {\n  if (err) {\n    console.error('Error:', err);\n    return;\n  }\n  console.log('Data:', data);\n}\n\n// Promise pattern\npromiseFunction()\n  .then(data => console.log('Data:', data))\n  .catch(err => console.error('Error:', err));\n\n// async/await pattern\nasync function asyncPattern() {\n  try {\n    const data = await promiseFunction();\n    console.log('Data:', data);\n  } catch (err) {\n    console.error('Error:', err);\n  }\n}\n\n// Parallel execution\n\n// Callback hell (sequential)\ngetData1((data1) => {\n  getData2((data2) => {\n    getData3((data3) => {\n      console.log('All data:', data1, data2, data3);\n    });\n  });\n});\n\n// Promises (parallel)\nPromise.all([\n  getData1Promise(),\n  getData2Promise(),\n  getData3Promise()\n])\n  .then(([data1, data2, data3]) => {\n    console.log('All data:', data1, data2, data3);\n  });\n\n// async/await (parallel)\nasync function getAllData() {\n  const [data1, data2, data3] = await Promise.all([\n    getData1Promise(),\n    getData2Promise(),\n    getData3Promise()\n  ]);\n  console.log('All data:', data1, data2, data3);\n}\n\n// Migrating from callbacks to Promises\nfunction callbackToPromise(callbackFn) {\n  return function(...args) {\n    return new Promise((resolve, reject) => {\n      callbackFn(...args, (err, result) => {\n        if (err) reject(err);\n        else resolve(result);\n      });\n    });\n  };\n}\n\n// Usage\nconst getUserAsync = callbackToPromise(getUser);\ngetUserAsync(userId)\n  .then(user => console.log(user))\n  .catch(err => console.error(err));"
+        },
+        {
+          "type": "interview-tip",
+          "tip": "Avoiding Callback Hell",
+          "explanation": "PROBLEMS WITH CALLBACK HELL:\n- Deep nesting (pyramid of doom)\n- Hard to read and maintain\n- Error handling is complex\n- Difficult to debug\n- Can't use try/catch\n\nSOLUTIONS (Best to Worst):\n1. async/await - Modern, clean, looks synchronous\n2. Promises - Chainable, flat structure\n3. Named functions - Better organization\n4. Control flow libraries - async.js, etc.\n\nMODERN APPROACH:\n- Use async/await for new code\n- Convert callbacks to Promises (util.promisify in Node)\n- Promise.all() for parallel operations\n- try/catch for error handling\n\nMIGRATION PATH:\nCallbacks → Promises → async/await\n\nKEY BENEFITS:\n- Flat code structure\n- Better error handling\n- Easier testing\n- More maintainable"
+        }
+      ]
+    }

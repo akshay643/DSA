@@ -1,28 +1,25 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useTheme } from '@/context/ThemeContext';
 import { Question, Category, QuestionProgress } from '@/types';
 import questionsData from '@/data/loadQuestions';
 import Header from '@/components/Header';
-import QuestionCard from '@/components/QuestionCard';
 import FilterBar from '@/components/FilterBar';
 import TricksViewer from '@/components/TricksViewer';
-import InterviewViewer from '@/components/InterviewViewer';
 import NotesViewer from '@/components/NotesViewer';
-import { ArrowLeft, Check, Circle, ChevronDown, ChevronUp, Lightbulb, Info, BookOpen, FileText } from 'lucide-react';
-import reactInterview from '@/data/interviews/react.json';
+import { Check, Circle, ChevronDown, ChevronUp, Info, BookOpen, FileText, ExternalLink } from 'lucide-react';
 
 export default function Home() {
+  const router = useRouter();
   const { settings } = useTheme();
   const [progress, setProgress] = useLocalStorage<Record<string, QuestionProgress>>('dsa-progress', {});
-  const [selectedQuestion, setSelectedQuestion] = useState<string | null>(null);
   const [filteredQuestions, setFilteredQuestions] = useState<Question[]>(questionsData.questions as Question[]);
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [activeTab, setActiveTab] = useState<'all' | 'top'>('all');
   const [showInfoModal, setShowInfoModal] = useState<{ categoryId: string; name: string; description: string; tricks?: any } | null>(null);
-  const [selectedInterview, setSelectedInterview] = useState<string | null>(null);
   const [showNotes, setShowNotes] = useState(false);
 
   const categories = questionsData.categories as Category[];
@@ -39,58 +36,8 @@ export default function Home() {
       .map(([id]) => id)
   );
 
-  const handleQuestionSelect = (questionId: string) => {
-    setSelectedQuestion(questionId);
-  };
-
-  const updateProgress = (questionId: string, updates: Partial<QuestionProgress>) => {
-    setProgress((prev) => {
-      const existingProgress = prev[questionId] || {
-        completed: false,
-        attempts: 0,
-        lastAttempted: new Date().toISOString(),
-        notes: '',
-        code: {
-          javascript: '',
-          python: '',
-          java: '',
-        },
-        timeSpent: 0,
-      };
-      
-      return {
-        ...prev,
-        [questionId]: {
-          ...existingProgress,
-          ...updates,
-        },
-      };
-    });
-  };
-
-  const handleCodeChange = (questionId: string, code: string) => {
-    const language = settings.preferredLanguage;
-    updateProgress(questionId, {
-      code: {
-        ...progress[questionId]?.code,
-        [language]: code,
-      },
-    });
-  };
-
-  const handleNotesChange = (questionId: string, notes: string) => {
-    updateProgress(questionId, { notes });
-  };
-
-  const handleToggleComplete = (questionId: string) => {
-    updateProgress(questionId, {
-      completed: !progress[questionId]?.completed,
-      attempts: (progress[questionId]?.attempts || 0) + 1,
-    });
-  };
-
-  const handleTimeUpdate = (questionId: string, seconds: number) => {
-    updateProgress(questionId, { timeSpent: seconds });
+  const handleQuestionSelect = (questionId: string, category: string) => {
+    router.push(`/questions/${category}/${questionId}`);
   };
 
   const handleExport = () => {
@@ -116,10 +63,6 @@ export default function Home() {
   const handleClearData = () => {
     setProgress({});
   };
-
-  const selectedQuestionData = selectedQuestion
-    ? questions.find((q) => q.id === selectedQuestion)
-    : null;
 
   const getCategoryName = (categoryId: string) => {
     return categories.find(c => c.id === categoryId)?.name || categoryId;
@@ -153,7 +96,7 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
+    <div className="h-screen flex flex-col bg-gray-800 dark:bg-gray-900">
       <Header onExport={handleExport} onImport={handleImport} onClearData={handleClearData} />
       
       {showNotes ? (
@@ -163,180 +106,6 @@ export default function Home() {
             .filter(q => completedQuestions.has(q.id))
             .map(q => ({ question: q, progress: progress[q.id] }))}
         />
-      ) : selectedInterview ? (
-        <InterviewViewer 
-          data={reactInterview as any}
-          onBack={() => setSelectedInterview(null)}
-        />
-      ) : selectedQuestionData ? (
-        <div className="flex-1 flex overflow-hidden">
-          {/* Left Side - Problem Description */}
-          <div className="w-1/2 border-r border-gray-200 dark:border-gray-700 overflow-y-auto bg-white dark:bg-gray-800">
-            <div className="max-w-3xl mx-auto px-8 py-6">
-              <button
-                onClick={() => setSelectedQuestion(null)}
-                className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mb-6 transition-colors"
-              >
-                <ArrowLeft className="w-5 h-5" />
-                Back to Questions
-              </button>
-
-              <div className="space-y-6">
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                      {selectedQuestionData.title}
-                    </h1>
-                    {selectedQuestionData.links && (
-                      <div className="flex items-center gap-3">
-                        {selectedQuestionData.links.leetcode && (
-                          <a
-                            href={selectedQuestionData.links.leetcode}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-3 py-1.5 rounded bg-orange-100 dark:bg-orange-900/30 hover:bg-orange-200 dark:hover:bg-orange-900/50 text-orange-700 dark:text-orange-400 transition-colors text-sm font-medium"
-                            title="View on LeetCode"
-                          >
-                            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
-                            </svg>
-                            LeetCode
-                          </a>
-                        )}
-                        {selectedQuestionData.links.gfg && (
-                          <a
-                            href={selectedQuestionData.links.gfg}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-3 py-1.5 rounded bg-green-100 dark:bg-green-900/30 hover:bg-green-200 dark:hover:bg-green-900/50 text-green-700 dark:text-green-400 transition-colors text-sm font-medium"
-                            title="View on GeeksforGeeks"
-                          >
-                            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M21.45 17.99c-1.2-1.2-2.7-1.8-4.5-1.8-1.8 0-3.3.6-4.5 1.8-1.2 1.2-1.8 2.7-1.8 4.5s.6 3.3 1.8 4.5c1.2 1.2 2.7 1.8 4.5 1.8 1.8 0 3.3-.6 4.5-1.8 1.2-1.2 1.8-2.7 1.8-4.5s-.6-3.3-1.8-4.5zm-4.5 7.8c-1.8 0-3.3-1.5-3.3-3.3s1.5-3.3 3.3-3.3 3.3 1.5 3.3 3.3-1.5 3.3-3.3 3.3zM11.55 3.6c-1.2-1.2-2.7-1.8-4.5-1.8C5.25 1.8 3.75 2.4 2.55 3.6 1.35 4.8.75 6.3.75 8.1s.6 3.3 1.8 4.5c1.2 1.2 2.7 1.8 4.5 1.8 1.8 0 3.3-.6 4.5-1.8 1.2-1.2 1.8-2.7 1.8-4.5s-.6-3.3-1.8-4.5zm-4.5 7.8c-1.8 0-3.3-1.5-3.3-3.3s1.5-3.3 3.3-3.3 3.3 1.5 3.3 3.3-1.5 3.3-3.3 3.3z"/>
-                            </svg>
-                            GFG
-                          </a>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex flex-wrap gap-2 items-center mb-4">
-                    <span className={`px-3 py-1 rounded text-sm font-medium ${
-                      selectedQuestionData.difficulty === 'easy' 
-                        ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400'
-                        : selectedQuestionData.difficulty === 'medium'
-                        ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400'
-                        : 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400'
-                    }`}>
-                      {selectedQuestionData.difficulty.toUpperCase()}
-                    </span>
-                    <span className="px-3 py-1 rounded text-sm bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400">
-                      {getCategoryName(selectedQuestionData.category)}
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {selectedQuestionData.companies.map((company) => (
-                      <span
-                        key={company}
-                        className="px-2 py-1 rounded text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300"
-                      >
-                        {company}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {selectedQuestionData.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <h2 className="font-semibold text-gray-900 dark:text-white mb-2">Introduction</h2>
-                  <p className="text-gray-700 dark:text-gray-300">{selectedQuestionData.introduction}</p>
-                </div>
-
-                <div>
-                  <h2 className="font-semibold text-gray-900 dark:text-white mb-2">Problem Statement</h2>
-                  <pre className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap font-sans">
-                    {selectedQuestionData.problemStatement}
-                  </pre>
-                </div>
-
-                <div>
-                  <h2 className="font-semibold text-gray-900 dark:text-white mb-2">Examples</h2>
-                  {selectedQuestionData.examples.map((example, idx) => (
-                    <div key={idx} className="mb-3 p-3 bg-gray-50 dark:bg-gray-900 rounded">
-                      <div className="mb-1">
-                        <span className="font-medium text-gray-900 dark:text-white">Input: </span>
-                        <code className="text-sm text-gray-700 dark:text-gray-300">{example.input}</code>
-                      </div>
-                      <div className="mb-1">
-                        <span className="font-medium text-gray-900 dark:text-white">Output: </span>
-                        <code className="text-sm text-gray-700 dark:text-gray-300">{example.output}</code>
-                      </div>
-                      <div>
-                        <span className="font-medium text-gray-900 dark:text-white">Explanation: </span>
-                        <span className="text-sm text-gray-700 dark:text-gray-300">{example.explanation}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex gap-6">
-                  <div>
-                    <span className="font-medium text-gray-900 dark:text-white">Time: </span>
-                    <code className="text-sm text-blue-600 dark:text-blue-400">{selectedQuestionData.timeComplexity}</code>
-                  </div>
-                  <div>
-                    <span className="font-medium text-gray-900 dark:text-white">Space: </span>
-                    <code className="text-sm text-blue-600 dark:text-blue-400">{selectedQuestionData.spaceComplexity}</code>
-                  </div>
-                </div>
-
-                <div>
-                  <h2 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
-                    <Lightbulb className="w-5 h-5" />
-                    Hints
-                  </h2>
-                  <details className="bg-yellow-50 dark:bg-yellow-900/20 rounded p-3">
-                    <summary className="cursor-pointer text-gray-700 dark:text-gray-300 font-medium">
-                      Click to reveal hints
-                    </summary>
-                    <div className="mt-2 space-y-2">
-                      {selectedQuestionData.hints.map((hint, idx) => (
-                        <div key={idx} className="text-sm text-gray-700 dark:text-gray-300">
-                          💡 {hint}
-                        </div>
-                      ))}
-                    </div>
-                  </details>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Side - Code Editor */}
-          <div className="w-1/2 flex flex-col bg-gray-900">
-            <QuestionCard
-              question={selectedQuestionData}
-              isCompleted={completedQuestions.has(selectedQuestionData.id)}
-              savedCode={progress[selectedQuestionData.id]?.code?.[settings.preferredLanguage] || ''}
-              savedNotes={progress[selectedQuestionData.id]?.notes || ''}
-              onCodeChange={(code) => handleCodeChange(selectedQuestionData.id, code)}
-              onNotesChange={(notes) => handleNotesChange(selectedQuestionData.id, notes)}
-              onToggleComplete={() => handleToggleComplete(selectedQuestionData.id)}
-              language={settings.preferredLanguage}
-              timeSpent={progress[selectedQuestionData.id]?.timeSpent || 0}
-              onTimeUpdate={(seconds) => handleTimeUpdate(selectedQuestionData.id, seconds)}
-            />
-          </div>
-        </div>
       ) : (
         <div className="flex-1 flex flex-col overflow-hidden">
           <FilterBar
@@ -392,7 +161,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* React Interview */}
                   <button
-                    onClick={() => setSelectedInterview('react')}
+                    onClick={() => router.push('/interviews/react')}
                     className="group bg-white dark:bg-gray-800 rounded-lg p-6 hover:shadow-xl transition-all duration-300 border border-indigo-200 dark:border-indigo-700 hover:border-indigo-500 dark:hover:border-indigo-500 text-left"
                   >
                     <div className="flex items-start justify-between mb-3">
@@ -412,15 +181,27 @@ export default function Home() {
                     </div>
                   </button>
 
-                  {/* Placeholder for more topics */}
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-300 dark:border-gray-600 border-dashed">
-                    <h3 className="text-xl font-bold text-gray-400 dark:text-gray-600 mb-2">
-                      Coming Soon
-                    </h3>
-                    <p className="text-sm text-gray-400 dark:text-gray-500">
-                      More interview prep topics coming soon...
-                    </p>
-                  </div>
+                  {/* JavaScript Full Stack Interview */}
+                  <button
+                    onClick={() => router.push('/interviews/javascript-fullstack')}
+                    className="group bg-white dark:bg-gray-800 rounded-lg p-6 hover:shadow-xl transition-all duration-300 border border-yellow-200 dark:border-yellow-700 hover:border-yellow-500 dark:hover:border-yellow-500 text-left"
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">
+                          JavaScript Full Stack
+                        </h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                          Complete technical Q&A covering JS, TypeScript, Angular, Node.js & more
+                        </p>
+                      </div>
+                      <span className="text-3xl">💻</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-yellow-600 dark:text-yellow-400 group-hover:gap-3 transition-all">
+                      <span>Start Learning</span>
+                      <span>→</span>
+                    </div>
+                  </button>
                 </div>
               </div>
 
@@ -634,15 +415,17 @@ export default function Home() {
                           return (
                             <div
                               key={question.id}
-                              onClick={() => handleQuestionSelect(question.id)}
-                              className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all border border-transparent group hover:bg-gradient-to-r hover:from-blue-900/30 hover:to-purple-900/30 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 hover:scale-[1.02]"
+                              className="flex items-center gap-3 p-3 rounded-lg transition-all border border-transparent group hover:bg-gradient-to-r hover:from-blue-900/30 hover:to-purple-900/30 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 hover:scale-[1.02]"
                             >
                               {isCompleted ? (
                                 <Check className="w-5 h-5 text-green-400 flex-shrink-0 drop-shadow-[0_0_8px_rgba(34,197,94,0.5)]" />
                               ) : (
                                 <Circle className="w-5 h-5 text-gray-500 flex-shrink-0 group-hover:text-blue-400 transition-colors" />
                               )}
-                              <div className="flex-1 min-w-0">
+                              <div 
+                                className="flex-1 min-w-0 cursor-pointer"
+                                onClick={() => handleQuestionSelect(question.id, question.category)}
+                              >
                                 <h4 className="font-medium text-white transition-all duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400">
                                   {question.title}
                                 </h4>
@@ -673,6 +456,16 @@ export default function Home() {
                               >
                                 {question.difficulty}
                               </span>
+                              <a
+                                href={`/questions/${question.category}/${question.id}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="p-2 rounded-lg bg-blue-600/80 hover:bg-blue-500 text-white transition-colors flex-shrink-0 opacity-0 group-hover:opacity-100"
+                                title="Open in new tab"
+                              >
+                                <ExternalLink className="w-4 h-4" />
+                              </a>
                             </div>
                           );
                         })}
